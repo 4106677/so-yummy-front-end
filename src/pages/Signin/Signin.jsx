@@ -16,6 +16,7 @@ export const Signin = () => {
           style={{
             height: '200px',
           }}
+          alt={'Homer'}
         />
         Типу кумандний проект
       </div>
