@@ -5,7 +5,7 @@ import { GlobalStyle } from './GlobalStyles';
 // import { Signin } from 'pages/Signin/Signin';
 import { SearchPage } from 'pages/SearchPage/SearchPage';
 import { RegisterPage } from 'pages/Register/Register';
-// import {MainPage} from 'pages/MainPage/MainPage'
+import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 
 export const App = () => {
