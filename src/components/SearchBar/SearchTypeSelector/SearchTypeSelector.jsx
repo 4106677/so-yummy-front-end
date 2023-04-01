@@ -1,7 +1,15 @@
+import { Label, SelectWrapper, Select, Option } from "./SearchTypeSelector.styled";
+
 export const SearchTypeSelector = () => {
     return (
-        <div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium commodi magnam consectetur? Atque asperiores tempora est dolore optio, saepe iure labore, autem rem adipisci cum? Odio voluptates quasi eveniet magni.</p>
-        </div>
-    )
-}
+      <SelectWrapper>
+        <p>Search by:</p>
+        <Label>
+          <Select>
+            <Option value="Title">Title</Option>
+            <Option value="Ingridients">Ingridients</Option>
+          </Select>
+        </Label>
+      </SelectWrapper>
+    );
+} 
