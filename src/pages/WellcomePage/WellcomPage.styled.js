@@ -1,103 +1,130 @@
 import styled from 'styled-components';
 
-import Background from '../../images/WellcomePage/wellcome_desk.jpg';
+import BgDesk from '../../images/WellcomePage/wellcome_desk.jpg';
+import BgDesk2x from '../../images/WellcomePage/wellcome2x_desk.jpg';
+import BgTab from '../../images/WellcomePage/wellcome_tab.jpg';
+import BgTab2x from '../../images/WellcomePage/wellcome2x_tab.jpg';
+import BgMob from '../../images/WellcomePage/wellcome_mob.jpg';
+import BgMob2x from '../../images/WellcomePage/wellcome2x_mob.jpg';
 
 export const Wrapper = styled.div`
-  background-image: url(${Background});
+  height: 100%;
+  background-image: url(${BgMob});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   max-width: 1600px;
-  height: 770px;
-  /* margin: 0 auto; */
-  /* background-color: #2f303a; */
+
   text-align: center;
   align-content: 'center';
 
-  /* align-items: center; */
-  /* display: flex; */
   color: #fafafa;
-  /* width: 1200px;
-  height: 600px; */
-  /* 
-  padding-top: 118px;
-  padding-bottom: 118px; */
 
-  /* @include retina {
-    background-image: linear-gradient(
-        rgba(47, 48, 58, 0.4),
-        rgba(47, 48, 58, 0.4)
-      ),
-      url(../images/index/hero/header-mob-2x.jpg);
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+    background-image: url(${BgMob2x});
   }
 
-  @include tablet {
-    background-image: linear-gradient(
-        rgba(47, 48, 58, 0.4),
-        rgba(47, 48, 58, 0.4)
-      ),
-      url(../images/index/hero/header-tablet.jpg);
-
-    @include retina {
-      background-image: linear-gradient(
-          rgba(47, 48, 58, 0.4),
-          rgba(47, 48, 58, 0.4)
-        ),
-        url(../images/index/hero/header-tablet-2x.jpg);
-    }
+  @media (min-width: 768px) {
+    background-image: url(${BgTab});
   }
 
-  @include desktop {
-    background-image: linear-gradient(
-        rgba(47, 48, 58, 0.4),
-        rgba(47, 48, 58, 0.4)
-      ),
-      url(../images/index/hero/header.jpg);
-    padding-top: 200px;
-    padding-bottom: 200px;
+  @media (min-width: 1440px) {
+    background-image: url(${BgDesk});
 
-    @include retina {
-      background-image: linear-gradient(
-          rgba(47, 48, 58, 0.4),
-          rgba(47, 48, 58, 0.4)
-        ),
-        url(../images/index/hero/header-2x.jpg);
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${BgDesk2x});
     }
-  } */
+  }
 `;
 
 export const Container = styled.div`
-  width: 540px;
+  padding-top: 275px;
+  padding-bottom: 261px;
+  width: 305px;
+
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 505px;
+    padding-top: 342px;
+    padding-bottom: 342px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 540px;
+    padding-top: 214px;
+    padding-bottom: 216px;
+  } ;
 `;
 
 export const Logo = styled.img`
-  margin-top: 214px;
+  height: 54px;
+  width: 54px;
+
+  @media (min-width: 768px) {
+    height: 68px;
+    width: 68px;
+  }
 `;
 
 export const H1 = styled.h1`
-  padding-top: 44px;
-  margin: 0;
+  padding-top: 24px;
 
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 28px;
-  font-feature-settings: 'liga' off;
+  font-size: 24px;
+  line-height: 24px;
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+    line-height: 28px;
+
+    padding-top: 44px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 28px;
+    line-height: 28px;
+  } ;
 `;
+
 export const P = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  /* or 133% */
+  font-size: 14px;
+  line-height: 18px;
+
   text-align: center;
+
   letter-spacing: -0.02em;
+  margin-top: 14px;
+  margin-bottom: 44px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 18px;
+    line-height: 24px;
+  } ;
 `;
 
 export const Btn = styled.button`
+  &:hover {
+    background-color: #22252a;
+  }
+
   color: rgb(255, 255, 255);
   border-radius: 24px 44px;
 
@@ -105,17 +132,40 @@ export const Btn = styled.button`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 21px;
+
   background-color: #8baa36;
 
-  height: 67px;
-  width: 184px;
+  height: 45px;
+  width: 132px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (min-width: 768px) {
+    width: 184px;
+    height: 67px;
+
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 24px;
+    height: 67px;
+    width: 184px;
+  } ;
 `;
 
-export const BtnFill = styled.button`
-  margin-left: 18px;
-  /* position: absolute; */
+export const BtnTransp = styled.button`
+  &:hover {
+    border: 2px solid #8baa36;
+    color: #8baa36;
+  }
+  margin-left: 12px;
+  /* margin-left: 18px; */
   background-color: transparent;
   color: rgb(255, 255, 255);
   border-radius: 24px 44px;
@@ -124,8 +174,29 @@ export const BtnFill = styled.button`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  /* line-height: 24px; */
-  height: 67px;
-  width: 141px;
+  font-size: 14px;
+  line-height: 21px;
+
+  height: 45px;
+  width: 132px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (min-width: 768px) {
+    width: 141px;
+    height: 67px;
+
+    font-size: 16px;
+    line-height: 24px;
+
+    margin-left: 18px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 24px;
+    height: 67px;
+    width: 141px;
+  } ;
 `;
