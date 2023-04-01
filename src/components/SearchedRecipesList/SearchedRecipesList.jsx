@@ -1,51 +1,16 @@
 
-export const SearchedRecipesList = () => {
-    return (
-      <div>
-        <ul>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
+export const SearchedRecipesList = ({ items}) => {
+console.log(items);
+  return (
+    <div>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            <img src={items.photo} alt={items.titles}></img>
+            <p>{item.titles}</p>
           </li>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
-          </li>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
-          </li>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
-          </li>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
-          </li>
-          <li>
-            <img
-              src="../../images/search_not_found_mobile.png"
-              alt="food"
-              width="400"
-            />
-          </li>
-        </ul>
-      </div>
-    );
+        ))}
+      </ul>
+    </div>
+  );
 }

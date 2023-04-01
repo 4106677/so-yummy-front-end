@@ -6,9 +6,7 @@ export const SearchTypeSelector = () => {
         <p>Search by:</p>
         <Label>
           <Select>
-            <Option value="Title" selected>
-              Title
-            </Option>
+            <Option value="Title">Title</Option>
             <Option value="Ingridients">Ingridients</Option>
           </Select>
         </Label>
