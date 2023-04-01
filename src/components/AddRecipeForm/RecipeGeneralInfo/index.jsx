@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+// components
 import { FileUploadInput } from '../SharedFormFields/FileUploadInput';
 import { Select } from '../SharedFormFields/Select';
 import { Input } from '../SharedFormFields/Input';
@@ -11,40 +14,52 @@ const selectConfig = {
   className: 'general-info'
 };
 
-export function RecipeGeneralInfo() {
+export function RecipeGeneralInfo({
+  names = [],
+  selectOneOptionList = [],
+  selectTwoOptionList = []
+}) {
+  const [image, title, description, category, cookingTime] = names;
+
   return (
     <Styled.BlockWrapper>
-      <FileUploadInput name="image" className="mobile" />
+      <FileUploadInput name={image} className="mobile" />
 
       <Styled.InnerWrapper>
         <Input
           type="text"
-          name="title"
+          name={title}
           variant="outlined"
           placeholder="Enter item title"
           className="general-info"
         />
         <Input
           type="text"
-          name="description"
+          name={description}
           variant="outlined"
           placeholder="Enter about recipe"
           className="general-info"
         />
 
         <Select
-          name="category"
+          name={category}
           label="Category"
-          optionList={['food', 'drink', 'else']}
+          optionList={selectOneOptionList}
           {...selectConfig}
         />
         <Select
-          name="cookingTime"
+          name={cookingTime}
           label="Cooking time"
-          optionList={['40min', '20min', '1h', '420min', '220min', '2h', '430min', '24min', '5h']}
+          optionList={selectTwoOptionList}
           {...selectConfig}
         />
       </Styled.InnerWrapper>
     </Styled.BlockWrapper>
   );
 }
+
+RecipeGeneralInfo.propTypes = {
+  names: PropTypes.array,
+  selectOneOptionList: PropTypes.array,
+  selectTwoOptionList: PropTypes.array
+};

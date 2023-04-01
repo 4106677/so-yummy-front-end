@@ -1,15 +1,18 @@
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 
 // Components
 import { RecipeGeneralInfo } from './RecipeGeneralInfo';
+import { RecipeIngredients } from './RecipeIngredients';
+import { RecipePreparation } from './RecipePreparation';
 
 // styles
 import * as Styled from './AddRecipeForm.styled';
-import { RecipeIngredients } from './RecipeIngredients';
 
 const initialValues = {
+  image: '',
   title: '',
   description: '',
+  preparationSteps: '',
   category: 'food',
   cookingTime: '40min',
   ingredients: []
@@ -29,19 +32,25 @@ function AddRecipeForm() {
         const hasErrors = Object.values(errors).some((error) => error);
 
         return (
-          <Form onSubmit={handleSubmit}>
-            <RecipeGeneralInfo />
-            <RecipeIngredients name="ingredients" />
+          <Styled.FormikForm onSubmit={handleSubmit}>
+            <RecipeGeneralInfo
+              names={['iamge', 'title', 'description', 'category', 'cookingTime']}
+              selectOneOptionList={['food', 'drink', 'else']}
+              selectTwoOptionList={['40min', '20min', '1h']}
+            />
 
-            {/* Preparation */}
-            <Styled.BlockWrapper>
-              <Styled.InnerWrapper></Styled.InnerWrapper>
-            </Styled.BlockWrapper>
+            <RecipeIngredients
+              name="ingredients"
+              selectOptionList={['tbs', 'tsp', 'kg', 'g']}
+              inputOptionList={['cola', 'tea', 'coffee', 'sprite']}
+            />
 
-            <button disabled={hasErrors} type="submit">
-              Submit
-            </button>
-          </Form>
+            <RecipePreparation name="preparationSteps" />
+
+            <Styled.SubmitFormButton disabled={hasErrors} type="submit">
+              Add
+            </Styled.SubmitFormButton>
+          </Styled.FormikForm>
         );
       }}
     </Formik>

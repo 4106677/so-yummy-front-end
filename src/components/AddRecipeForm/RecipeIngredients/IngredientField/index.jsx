@@ -17,10 +17,11 @@ const selectConfg = {
 
 export function IngredientField({
   onDelete,
-  optionList,
   gap = '1.5rem',
   inputHandlers = {},
-  selectHandlers = {}
+  selectHandlers = {},
+  selectOptionList = [],
+  inputOptionList = []
 }) {
   const selectFieldHandlers = {
     selectValue: selectHandlers?.selectValue,
@@ -38,14 +39,14 @@ export function IngredientField({
         <Input
           asFieldGroup
           withDatalist
-          dataListOptions={['2', '4', '6', '565']}
+          dataListOptions={inputOptionList}
           fieldGroupHandlers={inputFieldHandlers}
           variant="filled"
         />
         <Select
           asFieldGroup
           fieldGroupHandlers={selectFieldHandlers}
-          optionList={optionList}
+          optionList={selectOptionList}
           {...selectConfg}
         />
       </Styled.InputsWrapper>
@@ -75,7 +76,8 @@ export function IngredientField({
 IngredientField.propTypes = {
   onDelete: PropTypes.func.isRequired,
   gap: PropTypes.string,
-  optionList: PropTypes.array,
+  selectOptionList: PropTypes.array,
   inputHandlers: PropTypes.object,
-  selectHandlers: PropTypes.object
+  selectHandlers: PropTypes.object,
+  inputOptionList: PropTypes.array
 };

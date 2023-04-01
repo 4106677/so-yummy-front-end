@@ -20,23 +20,52 @@ export const Input = ({
   const { value, onBlur, onChange, ...restField } = field;
   const { inputValue, onInputChange } = fieldGroupHandlers;
 
+  const datalist =
+    dataListOptions?.filter((option) => option.toLowerCase().includes(inputValue.toLowerCase())) ??
+    [];
+
   // handlers
   function handleInputChange(event) {
     const inputValue = event.currentTarget.value;
-    if (!inputValue) hideDropdown();
+
+    if (!inputValue) {
+      hideDropdown();
+    } else {
+      if (!getIsDropdownActive()) showDropdown();
+    }
 
     onChange(event);
   }
+
+  function handleInputWithDatalistChange(event) {
+    const { value } = event.currentTarget;
+
+    if (!value) {
+      hideDropdown();
+    } else {
+      if (!getIsDropdownActive()) showDropdown();
+    }
+
+    onInputChange(value);
+  }
+
   function handleBlur() {
     hideDropdown();
   }
   function handleOptionSelect(option) {
     hideDropdown();
-    setValue(option);
+    asFieldGroup ? onInputChange(option) : setValue(option);
   }
-  // helper
+
+  // helpers
   function hideDropdown() {
     wrapperRef.current.classList.remove('is-active');
+  }
+  function showDropdown() {
+    wrapperRef.current.classList.add('is-active');
+  }
+  function getIsDropdownActive() {
+    wrapperRef.current.classList.contains('is-active');
   }
 
   return (
@@ -59,14 +88,14 @@ export const Input = ({
           gapFromLabel={gapFromLabel}
           variant={variant}
           value={inputValue}
-          onChange={({ currentTarget }) => onInputChange(currentTarget.value)}
+          onChange={handleInputWithDatalistChange}
           {...restProps}
         />
       )}
 
-      {withDatalist ? (
+      {withDatalist && datalist.length ? (
         <Styled.DropdownList>
-          {dataListOptions.map((option, idx) => (
+          {datalist.map((option, idx) => (
             <Styled.Option key={option + idx} onClick={handleOptionSelect.bind(null, option)}>
               {option}
             </Styled.Option>

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 const COLORS = {
   accent: '#8BAA36',
   border: '#E0E0E0',
-  inputBg: '#D9D9D9',
+  inputBg: '#ececec',
+  bgDefault: '#ffffff',
   focused: '#cecece',
-  inputText: 'rgba(0, 0, 0, .5)'
+  text: 'rgba(0, 0, 0, .5)'
 };
 
 const inputAppearencesMap = {
@@ -45,7 +46,7 @@ export const Input = styled.input.attrs(({ gapFromLabel, height, variant }) => (
   border: none;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: ${COLORS.inputText};
+  color: ${COLORS.text};
 
   ${({ variant }) => inputAppearencesMap[variant]};
 
@@ -108,6 +109,10 @@ export const Option = styled.li`
     margin-bottom: ${({ optionGap }) => optionGap};
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &:hover,
   &.selected {
     color: ${COLORS.accent};
@@ -125,6 +130,7 @@ export const Label = styled.label`
 // ============= WRAPPER ==========//
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 100%;
 
   &.is-active {

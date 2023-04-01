@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const COLORS = {
   accent: '#8BAA36',
   border: '#E0E0E0',
-  inputBg: '#d9d9d9',
+  inputBg: '#ececec',
   focused: '#cecece',
   inputText: 'rgba(0, 0, 0, .5)'
 };

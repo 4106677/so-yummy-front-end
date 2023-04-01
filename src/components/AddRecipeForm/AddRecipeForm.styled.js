@@ -1,26 +1,32 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { Form } from 'formik';
 
-export const BlockWrapper = styled.div`
+export const FormikForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  gap: 2.75rem;
 
-  &:not(:last-child) {
-    margin-bottom: 6.25rem;
+  @media screen and (min-width: 768px) {
+    gap: 6.25rem;
   }
-
-  ${({ row }) =>
-    row &&
-    css`
-      flex-direction: row;
-    `}
 `;
 
-export const InnerWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-grow: 2;
+export const SubmitFormButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  gap: ${({ gap }) => gap ?? '1rem'};
-  margin-left: ${({ ml }) => ml ?? '2rem'};
+  min-width: 8.125rem;
+  width: max-content;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  color: #fafafa;
+  background-color: #22252a;
+  border: none;
+  border-radius: 16px 44px;
 `;

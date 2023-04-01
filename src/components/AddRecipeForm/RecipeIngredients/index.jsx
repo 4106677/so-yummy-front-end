@@ -10,7 +10,7 @@ import { Counter } from './Counter';
 import * as Styled from './RecipeIngredients.styled';
 import { IngredientField } from './IngredientField';
 
-export function RecipeIngredients({ name }) {
+export function RecipeIngredients({ name, selectOptionList = [], inputOptionList = [] }) {
   const [fields, , { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
 
@@ -19,7 +19,7 @@ export function RecipeIngredients({ name }) {
     if (updatedQuantity > actualQuatity) {
       setValue([
         ...fields.value,
-        { id: uuidv4(), ingredient: '', amount: '', measurementUnit: '' }
+        { id: uuidv4(), ingredient: '', amount: '', measurementUnit: selectOptionList[0] }
       ]);
     } else {
       const filedValuesArray = [...fields.value];
@@ -48,9 +48,8 @@ export function RecipeIngredients({ name }) {
 
             function handleValueChange(key, id, value) {
               const updatedFields = fields.value.map((fld) => {
-                if (fld.id === id) {
-                  return { ...fld, [key]: value };
-                }
+                if (fld.id === id) return { ...fld, [key]: value };
+
                 return { ...fld };
               });
 
@@ -63,7 +62,8 @@ export function RecipeIngredients({ name }) {
                 name={name}
                 onDelete={onDelete.bind(null, field.id)}
                 gap={idx === actualQuatity - 1 ? '0' : '1.5rem'}
-                optionList={['g', 'kg', 'tbs']}
+                selectOptionList={selectOptionList}
+                inputOptionList={inputOptionList}
                 inputHandlers={{
                   inputValue: ingredient,
                   onInputChange: handleValueChange.bind(null, 'ingredient', field.id)
@@ -84,5 +84,7 @@ export function RecipeIngredients({ name }) {
 }
 
 RecipeIngredients.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  selectOptionList: PropTypes.array,
+  inputOptionList: PropTypes.array
 };

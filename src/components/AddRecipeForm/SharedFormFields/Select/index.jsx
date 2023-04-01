@@ -28,6 +28,7 @@ export function Select({
   // consts
   const value = asFieldGroup ? selectValue : field.value;
   const updateValue = asFieldGroup ? onSelectChange : setValue;
+
   // conditions
   const isOutlined = variant === 'outlined';
 
@@ -37,6 +38,16 @@ export function Select({
   }
   function selectOption({ currentTarget }) {
     updateValue(currentTarget.id);
+  }
+  function handleNumberInputChange({ currentTarget }) {
+    let value = currentTarget.value;
+
+    // prevent number form starting with 0, like 02
+    if (value.length > 1 && Number.isInteger(+value) && /^0/.test(value)) {
+      value = value.replace(/^0/, '');
+    }
+
+    onInputChange(value);
   }
 
   return (
@@ -60,6 +71,7 @@ export function Select({
             <Styled.Input
               inputTextAlign={inputTextAlign}
               type="number"
+              min="0"
               value={label}
               onChange={() => {}}
             />
@@ -68,8 +80,9 @@ export function Select({
             <Styled.Input
               inputTextAlign={inputTextAlign}
               type="number"
+              min="0"
               value={inputValue}
-              onChange={({ currentTarget }) => onInputChange(currentTarget.value)}
+              onChange={handleNumberInputChange}
             />
           ) : null}
 
@@ -83,7 +96,7 @@ export function Select({
           aria-activedescendant={value}
         >
           {optionList
-            ? optionList.map((option) => {
+            ? optionList.map((option, idx) => {
                 const isSelected = value === option;
 
                 return (
@@ -91,7 +104,7 @@ export function Select({
                     role="option"
                     onClick={selectOption}
                     aria-selected={isSelected}
-                    key={option}
+                    key={option + idx}
                     id={option}
                     optionAlign={optionAlign}
                     optionGap={optionGap}

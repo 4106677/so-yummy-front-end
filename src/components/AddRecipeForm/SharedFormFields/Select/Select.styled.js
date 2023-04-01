@@ -4,7 +4,7 @@ const COLORS = {
   accent: '#8BAA36',
   text: 'rgba(0, 0, 0, .3)',
   bgDefault: '#ffffff',
-  bgAlternative: '#D9D9D9',
+  bgAlternative: '#ececec',
   selectedOption: '#23262A',
   border: '#E0E0E0',
   scroll: '#E7E5E5'
@@ -13,7 +13,7 @@ const COLORS = {
 const selectAppearencesMap = {
   filled: `
       background-color: ${COLORS.bgAlternative};
-      padding: 1rem 1rem 1rem 0.5rem;
+      padding: 0.75rem 1rem 0.75rem 0.5rem;
 
         & input {
           display: inline-block;
@@ -34,7 +34,6 @@ const selectAppearencesMap = {
           justify-content: center;
           gap: 0.25rem;
         }
-      }
     `,
   outlined: `
       background-color: transparent;
@@ -165,5 +164,16 @@ export const Input = styled.input`
 
   &:read-only {
     outline: none;
+  }
+
+  // reset arrows
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
   }
 `;
