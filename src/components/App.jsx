@@ -5,6 +5,8 @@ import { GlobalStyle } from './GlobalStyles';
 import { Signin } from 'pages/Signin/Signin';
 import {SearchPage} from 'pages/SearchPage/SearchPage';
 
+import {MainPage} from 'pages/MainPage/MainPage'
+
 export const App = () => {
   return (
     <>
