@@ -5,15 +5,6 @@ export const Section = styled.section`
   padding-top: 4.625rem;
 `;
 
-export const Container = styled.div`
-  max-width: 1440px;
-  padding: 0 1rem;
-
-  @media screen and (min-width: 768px) {
-    padding: 0 2rem;
-  }
-`;
-
 export const Heading = styled.h1`
   margin-bottom: 6.25rem;
 

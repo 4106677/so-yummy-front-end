@@ -5,6 +5,9 @@ import { RecipeGeneralInfo } from './RecipeGeneralInfo';
 import { RecipeIngredients } from './RecipeIngredients';
 import { RecipePreparation } from './RecipePreparation';
 
+// validation schema
+import { addRecipeValidationSchema } from 'validation/addRecipeValidationSchema';
+
 // styles
 import * as Styled from './AddRecipeForm.styled';
 
@@ -22,19 +25,24 @@ function AddRecipeForm() {
   function handleFormSubmit(values) {
     values.ingredients.forEach((ingredient) => delete ingredient.id);
 
+    alert(JSON.stringify(values, null, 2));
     // TODO
     // send data to server
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={addRecipeValidationSchema}
+      onSubmit={handleFormSubmit}
+    >
       {({ errors, handleSubmit }) => {
         const hasErrors = Object.values(errors).some((error) => error);
 
         return (
           <Styled.FormikForm onSubmit={handleSubmit}>
             <RecipeGeneralInfo
-              names={['iamge', 'title', 'description', 'category', 'cookingTime']}
+              names={['image', 'title', 'description', 'category', 'cookingTime']}
               selectOneOptionList={['food', 'drink', 'else']}
               selectTwoOptionList={['40min', '20min', '1h']}
             />

@@ -14,7 +14,7 @@ export const Wrapper = styled.label`
   margin-bottom: ${({ mb }) => mb};
 
   border-radius: 8px;
-  background-color: #8baa36;
+  background-color: ${({ hasImage }) => (hasImage ? 'transtapent' : '#8baa36')};
   isolation: isolate;
 `;
 
@@ -52,4 +52,11 @@ export const FileUploadIcon = styled(FileUploadSvgIcon)`
 export const Error = styled.strong`
   display: block;
   text-align: center;
+`;
+
+export const Image = styled.img`
+  ${sharedStyles}
+
+  width: auto;
+  height: 100%;
 `;
