@@ -2,12 +2,13 @@ import styled from "styled-components";
 import {Form, Field} from "formik"
 
 export const FormWrap = styled(Form)`
-  padding-top: 90px;
+  padding-top: 0;
   width: 295px;
   position: relative;
   align-item: center;
   justify-content: center;
   flex-wrap: nowrap;
+  margin: 0 auto;
 `;
 
 export const Input = styled(Field)`
@@ -29,6 +30,6 @@ export const BtnSearch = styled.button`
   text-align: center;
   justify-content: center;
   position: absolute;
-  right:0
+  right:0;
 `;
 

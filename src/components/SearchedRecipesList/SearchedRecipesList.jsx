@@ -1,0 +1,51 @@
+
+export const SearchedRecipesList = () => {
+    return (
+      <div>
+        <ul>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+          <li>
+            <img
+              src="../../images/search_not_found_mobile.png"
+              alt="food"
+              width="400"
+            />
+          </li>
+        </ul>
+      </div>
+    );
+}

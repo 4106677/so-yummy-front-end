@@ -10,7 +10,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Signin />}></Route>
-        <Route path="/SearchPage" element={<SearchPage />}></Route>
+        <Route path="/search" element={<SearchPage />}></Route>
       </Routes>
       <GlobalStyle />
     </>
