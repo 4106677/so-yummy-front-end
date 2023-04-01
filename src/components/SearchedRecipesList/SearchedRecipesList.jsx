@@ -1,6 +1,6 @@
 import { ListWrap } from "./SearchedRecipesList.styled";
 
-export const SearchedRecipesList = ({ items}) => {
+export const SearchedRecipesList = ({ items = []}) => {
 console.log(items);
   
   return (
