@@ -1,20 +1,24 @@
 {
   "files": {
     "main.css": "/so-yummy-front-end/static/css/main.7acaea2f.css",
-    "main.js": "/so-yummy-front-end/static/js/main.9f586c92.js",
+    "main.js": "/so-yummy-front-end/static/js/main.921419c8.js",
     "static/media/wellcome2x_desk.jpg": "/so-yummy-front-end/static/media/wellcome2x_desk.8f791d55616c85c219b2.jpg",
     "static/media/wellcome2x_tab.jpg": "/so-yummy-front-end/static/media/wellcome2x_tab.83ea0886d9c7a94446a4.jpg",
     "static/media/wellcome2x_mob.jpg": "/so-yummy-front-end/static/media/wellcome2x_mob.078c82db9f4f46ea87ec.jpg",
     "static/media/wellcome_desk.jpg": "/so-yummy-front-end/static/media/wellcome_desk.660f3c1a89d499ac55f9.jpg",
     "static/media/wellcome_tab.jpg": "/so-yummy-front-end/static/media/wellcome_tab.6e6aa3b9196267a3d6ad.jpg",
     "static/media/wellcome_mob.jpg": "/so-yummy-front-end/static/media/wellcome_mob.8c0759a8f74d86cecc1a.jpg",
+    "static/media/Order-food-pana.svg": "/so-yummy-front-end/static/media/Order-food-pana.385bc53ff93756268481b368cafeeb4b.svg",
+    "static/media/Order-food-pana-white.svg": "/so-yummy-front-end/static/media/Order-food-pana-white.6361a1e99fbaf698d48f38ee699bb430.svg",
+    "static/media/bgTablet@2x.png": "/so-yummy-front-end/static/media/bgTablet@2x.1ad2efc56502ea4513d3.png",
+    "static/media/bgDesktop@2x.png": "/so-yummy-front-end/static/media/bgDesktop@2x.aa77c0f211dc3cfaae1c.png",
     "index.html": "/so-yummy-front-end/index.html",
     "static/media/logo.svg": "/so-yummy-front-end/static/media/logo.409a243ea7f68b41aa46be0a3f1c3459.svg",
     "main.7acaea2f.css.map": "/so-yummy-front-end/static/css/main.7acaea2f.css.map",
-    "main.9f586c92.js.map": "/so-yummy-front-end/static/js/main.9f586c92.js.map"
+    "main.921419c8.js.map": "/so-yummy-front-end/static/js/main.921419c8.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.9f586c92.js"
+    "static/js/main.921419c8.js"
   ]
 }
