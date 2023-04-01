@@ -29,6 +29,12 @@ export const Wrapper = styled.div`
 
   @media (min-width: 768px) {
     background-image: url(${BgTab});
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${BgTab2x});
+    }
   }
 
   @media (min-width: 1440px) {
