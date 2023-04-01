@@ -4,7 +4,6 @@ import {
   Container,
   Btn,
   BtnFill,
-  BCover,
   Logo,
 } from './WellcomPage.styled';
 import LogoSVG from '../../images/Logo/logo.svg';
