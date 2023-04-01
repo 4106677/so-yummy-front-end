@@ -2,11 +2,17 @@ import { SearchForm } from "./SearchForm/SearchForm"
 import { SearchTypeSelector } from "./SearchTypeSelector/SearchTypeSelector";
 
 
-export const SearchBar = ({ items}) => {
+export const SearchBar = ({ items, value}) => {
   console.log(items);
-    return (
+   
+
+  return (
       <div>
-        <SearchForm items={items} />
+        <SearchForm
+          name="filter"
+          type="text"
+          value={value}
+        />
         <SearchTypeSelector items={items} />
       </div>
     );
