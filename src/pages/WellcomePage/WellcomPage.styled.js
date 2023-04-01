@@ -98,53 +98,34 @@ export const P = styled.p`
 `;
 
 export const Btn = styled.button`
-  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
-  padding: 50px 42px;
-  background-color: #8baa36;
+  color: rgb(255, 255, 255);
+  border-radius: 24px 44px;
+
   border: none;
-  color: #fafafa;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  background-color: #8baa36;
+
+  height: 67px;
+  width: 184px;
 `;
 
 export const BtnFill = styled.button`
   margin-left: 18px;
   /* position: absolute; */
-  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
-  padding: 50px 42px;
-  /* background-color: green; */
-  /* border: 2px solid #fafafa; */
-  box-sizing: border-box;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border-radius: 24px 44px;
+  border: 2px solid rgb(250, 250, 250);
 
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   /* line-height: 24px; */
-
-  width: 141px;
-`;
-
-export const BCover = styled.div`
-  /* position: absolute; */
-  top: 2px;
-  bottom: 2px;
-  left: 2px;
-  right: 2px;
-  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
-  /* padding: 50px 42px; */
-  background: white;
-  /* border: 2px solid #fafafa; */
-  box-sizing: border-box;
-
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  /* line-height: 24px; */
-
+  height: 67px;
   width: 141px;
 `;
