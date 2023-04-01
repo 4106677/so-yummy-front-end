@@ -10,7 +10,8 @@ export const SearchBar = ({ items, value}) => {
         <SearchForm
           name="filter"
           type="text"
-          value={value}
+        value={value}
+        items={items}
         />
         <SearchTypeSelector items={items} />
       </div>
