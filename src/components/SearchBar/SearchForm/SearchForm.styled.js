@@ -25,11 +25,17 @@ export const BtnSearch = styled.button`
   font-weight: 16px;
   clip-path: inset(25% 0 25% round 15% 35% 15% 30%);
   border: none;
+  outline: none;
   width: 113px;
   background-color: #8baa36;
   text-align: center;
   justify-content: center;
   position: absolute;
-  right:0;
+  right: 0;
+
+  &:hover {
+    background-color: #22252a;
+    color: #fafafa;
+  }
 `;
 

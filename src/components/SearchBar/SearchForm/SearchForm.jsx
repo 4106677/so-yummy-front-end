@@ -26,6 +26,8 @@ export const SearchForm = () => {
     setQuery('');
   };
 
+  
+
 
   return (
     <div>
@@ -47,4 +49,4 @@ export const SearchForm = () => {
       </Formik>
     </div>
   );
-};
+}; 

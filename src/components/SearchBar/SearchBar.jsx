@@ -4,8 +4,7 @@ import { SearchTypeSelector } from "./SearchTypeSelector/SearchTypeSelector";
 
 export const SearchBar = ({ items, value}) => {
   console.log(items);
-   
-
+  
   return (
       <div>
         <SearchForm
@@ -16,4 +15,4 @@ export const SearchBar = ({ items, value}) => {
         <SearchTypeSelector items={items} />
       </div>
     );
-}
+} 

@@ -12,4 +12,4 @@ export const SearchTypeSelector = () => {
         </Label>
       </SelectWrapper>
     );
-}
+} 
