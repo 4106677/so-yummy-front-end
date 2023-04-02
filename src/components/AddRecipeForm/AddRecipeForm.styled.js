@@ -29,4 +29,8 @@ export const SubmitFormButton = styled.button`
   background-color: #22252a;
   border: none;
   border-radius: 16px 44px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 10rem;
+  }
 `;

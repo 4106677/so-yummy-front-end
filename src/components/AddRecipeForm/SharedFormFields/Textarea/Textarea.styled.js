@@ -16,4 +16,8 @@ export const Textarea = styled.textarea`
   &:focus-within {
     outline: 1px solid #ececec;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 31.625rem;
+  }
 `;

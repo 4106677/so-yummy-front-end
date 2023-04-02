@@ -31,10 +31,11 @@ const inputAppearencesMap = {
   `
 };
 
-export const Input = styled.input.attrs(({ gapFromLabel, height, variant }) => ({
+export const Input = styled.input.attrs(({ gapFromLabel, height, variant, asGroupField }) => ({
   gapFromLabel,
   height,
-  variant
+  variant,
+  asGroupField
 }))`
   display: block;
   width: 100%;
@@ -60,6 +61,10 @@ export const Input = styled.input.attrs(({ gapFromLabel, height, variant }) => (
 
     letter-spacing: inherit;
     color: inherit;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 24.875rem;
   }
 `;
 

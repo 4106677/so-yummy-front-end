@@ -89,6 +89,7 @@ export const Input = ({
           variant={variant}
           value={inputValue}
           onChange={handleInputWithDatalistChange}
+          asFieldGroup={asFieldGroup}
           {...restProps}
         />
       )}

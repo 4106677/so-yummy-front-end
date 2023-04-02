@@ -21,7 +21,7 @@ const initialValues = {
   ingredients: []
 };
 
-function AddRecipeForm() {
+export function AddRecipeForm() {
   function handleFormSubmit(values) {
     values.ingredients.forEach((ingredient) => delete ingredient.id);
 
@@ -64,5 +64,3 @@ function AddRecipeForm() {
     </Formik>
   );
 }
-
-export default AddRecipeForm;

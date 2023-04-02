@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ReactComponent as FileUploadSvgIcon } from '../../../../assets/icons/picture-load.svg';
+import { ReactComponent as FileUploadSvgIcon } from '../../../../images/icons/picture-load.svg';
 
 export const Wrapper = styled.label`
   display: block;
