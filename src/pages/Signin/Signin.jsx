@@ -1,28 +1,9 @@
-export const Signin = () => {
+import { SigninForm } from 'components/SigninForm/SigninForm';
+
+export const SigninPage = () => {
   return (
     <>
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        <img
-          src="https://i.pinimg.com/originals/4e/7e/6c/4e7e6c3cc3ba277088c4b1eef93bbc1b.png"
-          style={{
-            height: '200px',
-          }}
-          alt={'Homer'}
-        />
-        Типу кумандний проект
-      </div>
+      <SigninForm />
     </>
   );
 };
-
-// src =
-//   'https://w7.pngwing.com/pngs/1013/272/png-transparent-the-simpsons-game-homer-simpson-xbox-360-playstation-3-simpsons-game-white-heroes.png';
