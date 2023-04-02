@@ -8,12 +8,12 @@ import BgMob from '../../images/WellcomePage/wellcome_mob.jpg';
 import BgMob2x from '../../images/WellcomePage/wellcome2x_mob.jpg';
 
 export const Wrapper = styled.div`
-  height: 100%;
+  min-height: 100vh;
   background-image: url(${BgMob});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  max-width: 1600px;
+  /* max-width: 1600px; */
 
   text-align: center;
   align-content: 'center';
