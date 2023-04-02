@@ -1,10 +1,6 @@
 export const HeaderLogo = () => {
   return (
-    <svg
-      viewBox="0 0 44 44"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="44" height="44" rx="12" fill="#8BAA36" />
       <path
         d="M10 10.1025V15.5561V15.6661V15.5561C10 17.1133 10.6794 18.4919 11.7328 19.3842C12.2479 19.8205 12.5882 20.4096 12.5882 21.0635V30.1667C12.5882 31.1788 13.4579 32.0001 14.5294 32.0001C15.6009 32.0001 16.4706 31.1788 16.4706 30.1667V21.0635C16.4706 20.4096 16.8109 19.8205 17.326 19.3842C18.3794 18.4919 19.0588 17.1133 19.0588 15.5561V10.1025V15.5561"
@@ -33,11 +29,7 @@ export const HeaderLogo = () => {
 
 export const BurgerIcon = () => {
   return (
-    <svg
-      viewBox="0 0 28 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M2 10H26M2 2H26M2 18H18"
         stroke="#22252A"
@@ -47,4 +39,22 @@ export const BurgerIcon = () => {
       />
     </svg>
   );
-}
+};
+
+export const CrossIcon = () => {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.6663 1.33334L1.33301 14.6667M1.33301 1.33334L14.6663 14.6667"
+        stroke="#22252A"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};

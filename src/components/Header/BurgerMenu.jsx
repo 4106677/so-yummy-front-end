@@ -1,12 +1,16 @@
 import { fallDown as Menu } from 'react-burger-menu';
-import { AppBarMobileNavStyles, AppBarMobileNavContainer } from './BurgerMenu.styled';
+import {
+  BurgerMenuStyles,
+  BurgerMenuContainer,
+  BurgerMenuLogoLink,
+  BurgerMenuStyledNavLink,
+} from './BurgerMenu.styled';
 import { useState } from 'react';
-import { BurgerIcon } from './HeaderLogo';
-
+import { BurgerIcon, HeaderLogo, CrossIcon } from './HeaderIcons';
+import { RiSearchLine } from 'react-icons/ri';
 
 export const BurgerMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
 
   const handleStateChange = state => {
     setMenuOpen(state.isOpen);
@@ -17,14 +21,41 @@ export const BurgerMenu = () => {
   };
 
   return (
-    <AppBarMobileNavContainer>
+    <BurgerMenuContainer>
       <Menu
-        customBurgerIcon={ <BurgerIcon/>} 
+        customBurgerIcon={<BurgerIcon />}
+        customCrossIcon={<CrossIcon />}
         right
         isOpen={menuOpen}
         onStateChange={state => handleStateChange(state)}
-        styles={AppBarMobileNavStyles}
-      ></Menu>
-    </AppBarMobileNavContainer>
+        styles={BurgerMenuStyles}
+      >
+        <BurgerMenuLogoLink onClick={() => closeMenu()} to={'/'}>
+          <HeaderLogo />
+        </BurgerMenuLogoLink>
+        <BurgerMenuStyledNavLink onClick={() => closeMenu()} to={'categories'}>
+          Categories
+        </BurgerMenuStyledNavLink>
+        <BurgerMenuStyledNavLink onClick={() => closeMenu()} to={'add'}>
+          Add recipes
+        </BurgerMenuStyledNavLink>
+        <BurgerMenuStyledNavLink onClick={() => closeMenu()} to={'my'}>
+          My recipes
+        </BurgerMenuStyledNavLink>
+        <BurgerMenuStyledNavLink onClick={() => closeMenu()} to={'favorite'}>
+          Favorites
+        </BurgerMenuStyledNavLink>
+        <BurgerMenuStyledNavLink
+          onClick={() => closeMenu()}
+          to={'shopping-list'}
+        >
+          Shopping list
+        </BurgerMenuStyledNavLink>
+        <BurgerMenuStyledNavLink onClick={() => closeMenu()} to={'search'}>
+          <RiSearchLine />
+          Search
+        </BurgerMenuStyledNavLink>
+      </Menu>
+    </BurgerMenuContainer>
   );
 };
