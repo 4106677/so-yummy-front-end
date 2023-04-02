@@ -1,0 +1,36 @@
+import {
+  ChooseBlock,
+  ChooseLink,
+  ChooseSpan,
+  ChooseText,
+  RightArrow,
+} from './СhooseYourBreakfast.styles';
+
+export const СhooseYourBreakfast = () => {
+  return (
+    <ChooseBlock>
+      <ChooseText>
+        <ChooseSpan>Delicious and healthy &nbsp;</ChooseSpan>
+        way to enjoy a variety of fresh ingredients in one satisfying meal
+      </ChooseText>
+      <ChooseLink>
+        See recipes
+        <RightArrow
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 9H15M15 9L10.5 4.5M15 9L10.5 13.5"
+            stroke="#3E4462"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </RightArrow>
+      </ChooseLink>
+    </ChooseBlock>
+  );
+};
