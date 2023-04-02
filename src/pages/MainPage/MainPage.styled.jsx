@@ -6,16 +6,17 @@ import bgrImageMob2 from '../../images/mainpage2x_mob.png';
 import bgrImageTab2 from '../../images/mainpage2x_tab.png';
 import bgrImageDesk2 from '../../images/mainpage2x_desk.png';
 
-export const MainPage = styled.h1`
+export const MainPageH1 = styled.h1`
   margin: 132px 12px 0px 12px;
   color: '#22252A';
-  font-family: 'Poppins, sans-serif';
+  
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
   line-height: 60px;
   display: flex;
   text-align: center;
+  justify-content: center;
   letter-spacing: -0.005em;
 
   @media (min-width: 768px) {
@@ -31,12 +32,12 @@ export const MainPage = styled.h1`
 `;
 
 export const ColorWrap = styled.div`
-  background-color: '#FAFAFA';
+  background-color: #fafafa;
 `;
 
 export const SpanGr = styled.span`
-  color: '#8BAA36';
-  font-family: 'Poppins, sans-serif';
+  color: #8baa36;
+
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
@@ -57,7 +58,7 @@ export const SpanGr = styled.span`
 export const MainPageText = styled.p`
   margin: 14px 40px 157px 40px;
   color: '#23262A';
-  font-family: 'Poppins, sans-serif';
+  
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -84,7 +85,7 @@ export const MainPageBg = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: '#FAFAFA';
+  background-color: #fafafa;
   display: flex;
   height: 777px;
   margin-bottom: 60px;
