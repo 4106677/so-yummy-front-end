@@ -15,7 +15,8 @@ import {
   InputBox,
   Title,
   Input,
-  Link,
+  LinkStyled,
+  GoogleAuth,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
@@ -54,6 +55,7 @@ export const RegisterForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
+              <GoogleAuth />
               <Title>Registration</Title>
               <Formik
                 initialValues={initialValues}
@@ -81,7 +83,7 @@ export const RegisterForm = () => {
               </Formik>
             </InnerBox>
           </AuthFormBox>
-          <Link>Sign In</Link>
+          <LinkStyled to="/signin">Sign In</LinkStyled>
         </MainWrapper>
       </Container>
     </>

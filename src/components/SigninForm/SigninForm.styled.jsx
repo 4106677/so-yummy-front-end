@@ -1,4 +1,5 @@
 import { Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import imageMobile from '../../images/startPage/bgMobile@1x.png';
@@ -10,6 +11,8 @@ import imageDesktopRetina from '../../images/startPage/bgDesktop@2x.png';
 
 import { ReactComponent as SvgAuthBlack } from '../../images/startPage/Order-food-pana.svg';
 import { ReactComponent as SvgAuthWhite } from '../../images/startPage/Order-food-pana-white.svg';
+
+import { ReactComponent as GoogleLogo } from '../../images/startPage/logo-google-icon.svg';
 
 export const Container = styled.div`
   box-sizing: border-box;
@@ -34,6 +37,39 @@ export const MainWrapper = styled.div`
 
 export const AuthFormBox = styled.div`
   box-sizing: border-box;
+`;
+
+export const GoogleAuth = styled(GoogleLogo)`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 17px;
+  left: 252px;
+  animation: pulse 1s infinite;
+  @keyframes pulse {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+      -webkit-transform: scale3d(1.2, 1.2, 1.2);
+      transform: scale3d(1.2, 1.2, 1.2);
+    }
+
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+    top: 18px;
+    left: 379px;
+  }
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const FormSvgBlack = styled(SvgAuthBlack)`
@@ -233,13 +269,16 @@ export const Button = styled.button`
   }
 `;
 
-export const Link = styled.p`
+export const LinkStyled = styled(Link)`
   margin: 18px 0 0 0;
   fornt-family: 'Poppins',
   font-size: 14px;
   line-height: 1.5;
   color: #fafafa;
   text-align: center;
+  display: block;
+  cursor: pointer;
+  text-decoration: underline;
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
