@@ -19,11 +19,25 @@ export function Select({
   asFieldGroup = false,
   fieldGroupHandlers = {},
   inputTextAlign = 'left',
+  zIndex = 3,
+  errorMsg,
+  isSubmit,
   ...restProps
 }) {
+  // touuch state for group input
+  const [isGroupInputTouched, setIsGroupInputTouched] = React.useState(false);
+  const isFirstFocus = React.useRef(true);
   // formik
   const [field, , { setValue }] = useField(name);
   const { selectValue, inputValue, onSelectChange, onInputChange } = fieldGroupHandlers;
+
+  const wrapperRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isSubmit) {
+      wrapperRef.current.classList.remove('is-active');
+    }
+  }, [isSubmit]);
 
   // consts
   const value = asFieldGroup ? selectValue : field.value;
@@ -50,6 +64,11 @@ export function Select({
     onInputChange(value);
   }
 
+  function onInputBlur() {
+    if (isFirstFocus.current) setIsGroupInputTouched(true);
+    isFirstFocus.current = false;
+  }
+
   return (
     <Styled.OuterWrapper variant={variant} {...restProps}>
       {isOutlined ? (
@@ -62,6 +81,7 @@ export function Select({
         selectWidth={selectWidth}
         selectHeight={selectHeight}
         onClick={handleDropdownClick}
+        ref={wrapperRef}
       >
         <Styled.SelectedOption
           selectedOptionFontSize={selectedOptionFontSize}
@@ -83,6 +103,7 @@ export function Select({
               min="0"
               value={inputValue}
               onChange={handleNumberInputChange}
+              onBlur={onInputBlur}
             />
           ) : null}
 
@@ -94,6 +115,7 @@ export function Select({
           tabIndex="0"
           aria-labelledby={label}
           aria-activedescendant={value}
+          zIndex={zIndex}
         >
           {optionList
             ? optionList.map((option, idx) => {
@@ -116,6 +138,11 @@ export function Select({
               })
             : null}
         </Styled.DropdownList>
+
+        {(asFieldGroup && isGroupInputTouched && errorMsg) ||
+        (asFieldGroup && isSubmit && errorMsg) ? (
+          <Styled.Error asFieldGroup={asFieldGroup}>{errorMsg}</Styled.Error>
+        ) : null}
       </Styled.Wrapper>
     </Styled.OuterWrapper>
   );
@@ -136,5 +163,8 @@ Select.propTypes = {
   chevronOffset: PropTypes.string,
   asFieldGroup: PropTypes.bool,
   fieldGroupHandlers: PropTypes.object,
-  inputTextAlign: PropTypes.oneOf(['left', 'center', 'right'])
+  inputTextAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  zIndex: PropTypes.number,
+  errorMsg: PropTypes.string,
+  isSubmit: PropTypes.bool
 };

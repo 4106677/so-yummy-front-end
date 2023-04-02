@@ -45,12 +45,14 @@ export function RecipeGeneralInfo({
           name={category}
           label="Category"
           optionList={selectOneOptionList}
+          zIndex={4}
           {...selectConfig}
         />
         <Select
           name={cookingTime}
           label="Cooking time"
           optionList={selectTwoOptionList}
+          zIndex={3}
           {...selectConfig}
         />
       </Styled.InnerWrapper>

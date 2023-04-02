@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const COLORS = {
   accent: '#8BAA36',
@@ -70,6 +70,17 @@ export const Input = styled.input.attrs(({ gapFromLabel, height, variant, asGrou
 
 export const Error = styled.div`
   position: absolute;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  font-size: 0.6rem;
+  color: #f94b4b;
+
+  ${({ asFieldGroup }) =>
+    asFieldGroup &&
+    css`
+      bottom: -0.85rem;
+      left: 0.75rem;
+    `}
 `;
 
 //========= DATALIST DROPDOWN ============//

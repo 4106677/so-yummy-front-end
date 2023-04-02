@@ -10,8 +10,21 @@ export const Wrapper = styled.div``;
 export const List = styled.ul`
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   gap: 1.25rem;
+  border-radius: 4px;
+  transition: background-color 350ms;
+
+  &:hover {
+    background-color: #8baa36;
+
+    & svg {
+      color: #ffffff;
+    }
+  }
 `;
 export const ListItem = styled.li``;
 
@@ -21,7 +34,7 @@ export const Link = styled.a`
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.15);
+    transform: scale(1.25);
   }
 `;
 
@@ -37,10 +50,12 @@ export const Title = styled.h3`
 `;
 
 const sharedIconStyles = css`
+  display: block;
   width: 1.625rem;
   height: 1.625rem;
 
-  fill: ${({ theme }) => (theme === 'light' ? '#8BAA36' : '#ffffff')};
+  /* color: ${({ theme }) => (theme === 'light' ? '#8BAA36' : '#ffffff')}; */
+  color: #8baa36;
 `;
 
 const FacebookIcon = styled(FacebookSvgIcon)`

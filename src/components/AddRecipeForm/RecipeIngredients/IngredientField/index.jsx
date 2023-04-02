@@ -21,7 +21,10 @@ export function IngredientField({
   inputHandlers = {},
   selectHandlers = {},
   selectOptionList = [],
-  inputOptionList = []
+  inputOptionList = [],
+  zIndex,
+  error = {},
+  isSubmit
 }) {
   const selectFieldHandlers = {
     selectValue: selectHandlers?.selectValue,
@@ -33,6 +36,7 @@ export function IngredientField({
     inputValue: inputHandlers?.inputValue,
     onInputChange: inputHandlers?.onInputChange
   };
+
   return (
     <Styled.FieldWrapper gap={gap}>
       <Styled.InputsWrapper>
@@ -41,12 +45,18 @@ export function IngredientField({
           withDatalist
           dataListOptions={inputOptionList}
           fieldGroupHandlers={inputFieldHandlers}
+          placeholder="Enter ingredient"
           variant="filled"
+          errorMsg={error['ingredient']}
+          isSubmit={isSubmit}
         />
         <Select
           asFieldGroup
           fieldGroupHandlers={selectFieldHandlers}
           optionList={selectOptionList}
+          zIndex={zIndex}
+          errorMsg={error['amount']}
+          isSubmit={isSubmit}
           {...selectConfg}
         />
       </Styled.InputsWrapper>
@@ -79,5 +89,7 @@ IngredientField.propTypes = {
   selectOptionList: PropTypes.array,
   inputHandlers: PropTypes.object,
   selectHandlers: PropTypes.object,
-  inputOptionList: PropTypes.array
+  inputOptionList: PropTypes.array,
+  zIndex: PropTypes.number,
+  error: PropTypes.object
 };

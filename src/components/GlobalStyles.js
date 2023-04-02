@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
    background-color: rgb(231 236 242);
       color: rgb(1,67,97);
+      -webkit-tap-highlight-color: transparent;
 }
 
 code {
@@ -38,6 +39,4 @@ ul {
   *, *::before, *::after {
     box-sizing: border-box;
   }
-
-  -webkit-tap-highlight-color: transparent;
 `;

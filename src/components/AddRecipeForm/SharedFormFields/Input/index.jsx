@@ -13,12 +13,17 @@ export const Input = ({
   dataListOptions,
   asFieldGroup = false,
   fieldGroupHandlers = {},
+  errorMsg,
+  isSubmit,
   ...restProps
 }) => {
-  const wrapperRef = React.useRef(null);
+  const [isGroupInputTouched, setIsGroupInputTouched] = React.useState(false);
+  const isFirstFocus = React.useRef(true);
+
   const [field, { touched, error }, { setValue }] = useField(name);
   const { value, onBlur, onChange, ...restField } = field;
   const { inputValue, onInputChange } = fieldGroupHandlers;
+  const wrapperRef = React.useRef(null);
 
   const datalist =
     dataListOptions?.filter((option) => option.toLowerCase().includes(inputValue.toLowerCase())) ??
@@ -57,6 +62,11 @@ export const Input = ({
     asFieldGroup ? onInputChange(option) : setValue(option);
   }
 
+  function onInputAsGroupBlur() {
+    if (isFirstFocus.current) setIsGroupInputTouched(true);
+    isFirstFocus.current = false;
+  }
+
   // helpers
   function hideDropdown() {
     wrapperRef.current.classList.remove('is-active');
@@ -90,6 +100,7 @@ export const Input = ({
           value={inputValue}
           onChange={handleInputWithDatalistChange}
           asFieldGroup={asFieldGroup}
+          onBlur={onInputAsGroupBlur}
           {...restProps}
         />
       )}
@@ -104,7 +115,12 @@ export const Input = ({
         </Styled.DropdownList>
       ) : null}
 
-      {touched && error && <Styled.Error>{error}</Styled.Error>}
+      {!asFieldGroup && touched && error && <Styled.Error>{error}</Styled.Error>}
+
+      {(asFieldGroup && isGroupInputTouched && errorMsg) ||
+        (asFieldGroup && isSubmit && errorMsg && (
+          <Styled.Error asFieldGroup={asFieldGroup}>{errorMsg}</Styled.Error>
+        ))}
     </Styled.Wrapper>
   );
 };
@@ -118,5 +134,7 @@ Input.propTypes = {
   withDatalist: PropTypes.bool,
   dataListOptions: PropTypes.array,
   asFieldGroup: PropTypes.bool,
-  fieldGroupHandlers: PropTypes.object
+  fieldGroupHandlers: PropTypes.object,
+  errorMsg: PropTypes.string,
+  isSubmit: PropTypes.bool
 };

@@ -28,7 +28,18 @@ export const SubmitFormButton = styled.button`
   color: #fafafa;
   background-color: #22252a;
   border: none;
-  border-radius: 16px 44px;
+  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
+  padding: 50px 42px;
+  transition: background-color 200ms;
+
+  &:not(:disabled):hover {
+    cursor: pointer;
+    background-color: #8baa36;
+  }
+
+  &:disabled {
+    background-color: rgb(151 151 151);
+  }
 
   @media screen and (min-width: 768px) {
     min-width: 10rem;

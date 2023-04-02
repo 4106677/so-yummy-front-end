@@ -1,30 +1,5 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
-  // temp
-  padding-top: 4.625rem;
-  padding-bottom: 6.25rem;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 12.5rem;
-  }
-`;
-
-export const Heading = styled.h1`
-  margin-bottom: 6.25rem;
-
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 1;
-
-  letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
-
-  color: #001833;
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -10,8 +10,8 @@ import { Counter } from './Counter';
 import * as Styled from './RecipeIngredients.styled';
 import { IngredientField } from './IngredientField';
 
-export function RecipeIngredients({ name, selectOptionList = [], inputOptionList = [] }) {
-  const [fields, , { setValue }] = useField(name);
+export function RecipeIngredients({ name, selectOptionList = [], inputOptionList = [], isSubmit }) {
+  const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
 
   // handlers
@@ -45,6 +45,7 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
         {hasFields &&
           fields.value.map((field, idx) => {
             const { ingredient, amount, measurementUnit } = field;
+            const zIndex = actualQuatity * 3;
 
             function handleValueChange(key, id, value) {
               const updatedFields = fields.value.map((fld) => {
@@ -58,12 +59,14 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
 
             return (
               <IngredientField
-                key={field.id}
-                name={name}
+                key={field.id + idx}
                 onDelete={onDelete.bind(null, field.id)}
                 gap={idx === actualQuatity - 1 ? '0' : '1.5rem'}
+                zIndex={zIndex - idx}
                 selectOptionList={selectOptionList}
                 inputOptionList={inputOptionList}
+                error={error && error[idx]}
+                isSubmit={isSubmit}
                 inputHandlers={{
                   inputValue: ingredient,
                   onInputChange: handleValueChange.bind(null, 'ingredient', field.id)

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 // components
 import { AddRecipeForm } from 'components/AddRecipeForm/index.jsx';
-import { MainConteiner } from 'components/Container/Container.styled.jsx';
 import { Socials } from 'components/Socials/index.jsx';
 import { PopularRecipes } from 'components/PopularRecipes/index.jsx';
 
@@ -14,6 +13,7 @@ import { useMatchMediaQuery } from 'components/Hooks/useMatchMediaQuery.js';
 
 //temp
 import img from '../../images//icons/youtube.svg';
+import { PageLayout } from 'components/Layout/PageLayout/PageLayout.jsx';
 
 // mock data, DELETE once backend ready
 const recipes = [
@@ -61,25 +61,21 @@ export function AddRecipePage({ heading = defaultHeading }) {
   const { isLaptop } = useMatchMediaQuery();
 
   return (
-    <Styled.Section>
-      <MainConteiner>
-        {heading ? <Styled.Heading>{heading}</Styled.Heading> : null}
+    <PageLayout title={heading}>
+      <Styled.Wrapper>
+        {/* LEFT SIDE */}
+        <Styled.SubWrapper1>
+          <AddRecipeForm />
+        </Styled.SubWrapper1>
 
-        <Styled.Wrapper>
-          {/* LEFT SIDE */}
-          <Styled.SubWrapper1>
-            <AddRecipeForm />
-          </Styled.SubWrapper1>
+        {/* RIGHT SIDE */}
+        <Styled.SubWrapper2>
+          {isLaptop ? <Socials /> : null}
 
-          {/* RIGHT SIDE */}
-          <Styled.SubWrapper2>
-            {isLaptop ? <Socials /> : null}
-
-            <PopularRecipes recipes={recipes} />
-          </Styled.SubWrapper2>
-        </Styled.Wrapper>
-      </MainConteiner>
-    </Styled.Section>
+          <PopularRecipes recipes={recipes} />
+        </Styled.SubWrapper2>
+      </Styled.Wrapper>
+    </PageLayout>
   );
 }
 

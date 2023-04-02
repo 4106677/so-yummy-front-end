@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const addRecipeValidationSchema = Yup.object().shape({
   image: Yup.string(),
-  title: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required field'),
+  title: Yup.string().required('Required field'),
   description: Yup.string(),
   preparationSteps: Yup.string(),
   category: Yup.string().required('Required field'),
@@ -16,6 +16,6 @@ export const addRecipeValidationSchema = Yup.object().shape({
         measurementUnit: Yup.string()
       })
     )
-    .compact((v) => !v)
+    .compact(({ ingredient, amount }) => ingredient || amount)
     .required('Required field')
 });
