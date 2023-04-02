@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { CategoriesList } from './CategoriesList/CategoriesList';
 import { RecipeList } from './RecipeList/RecipeList';
+import { PageContainer, Title } from 'styled-components';
+
 
 export function CategoriesPage({ categories }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -10,14 +12,14 @@ export function CategoriesPage({ categories }) {
   };
 
   return (
-    <div>
-      <h1>Categories</h1>
+    <PageContainer>
+      <Title>Categories</Title>
       <div>
         <CategoriesList categories={categories} onCategoryClick={handleCategoryClick} />
       </div>
       <div>
         <RecipeList category={selectedCategory} />
       </div>
-    </div>
+    </PageContainer>
   );
 };
