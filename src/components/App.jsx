@@ -4,8 +4,8 @@ import { GlobalStyle } from './GlobalStyles';
 
 // import { Signin } from 'pages/Signin/Signin';
 import { SearchPage } from 'pages/SearchPage/SearchPage';
-
-// import {MainPage} from 'pages/MainPage/MainPage'
+import { RegisterPage } from 'pages/Register/Register';
+import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 
@@ -14,6 +14,8 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<WellcomePage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/main" element={<MainPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/add-recipe" element={<AddRecipePage />}></Route>
       </Routes>
