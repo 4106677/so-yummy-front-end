@@ -1,14 +1,15 @@
 import { RecipeCard } from '../FavoritePage/RecipeCard';
+import { MyRecipesContainer, Title } from 'styled-components';
 
 export function MyRecipesList({ recipes, onDelete }) {
   return (
-    <div>
-      <h1>My recipes</h1>
+    <MyRecipesContainer>
+      <Title>My recipes</Title>
       <div>
         {recipes.map(recipe => (
           <RecipeCard key={recipe.id} recipe={recipe} onDelete={onDelete} />
         ))}
       </div>
-    </div>
+    </MyRecipesContainer>
   );
 }
