@@ -1,15 +1,23 @@
+import { useState } from "react";
+import { CategoryListItem, CategoryListContainer } from 'styled-components';
 
+export function CategoriesList ({ categories, onCategoryClick }) {
+  const [activeCategory, setActiveCategory] = useState('');
 
-export function CategoriesList({ categories, onCategoryClick }) {
-   const handleClick = category => {
+  const handleClick = category => {
+    setActiveCategory(category.name);
     onCategoryClick(category);
   };
 
   const categoryItems = categories.map(category => (
-    <li key={category.id} onClick={() => handleClick(category)}>
+    <CategoryListItem
+      key={category.id}
+      onClick={() => handleClick(category)}
+      active={activeCategory === category.name}
+    >
       {category.name}
-    </li>
+    </CategoryListItem>
   ));
 
-  return <ul>{categoryItems}</ul>;
-}
+  return <CategoryListContainer>{categoryItems}</CategoryListContainer>;
+};

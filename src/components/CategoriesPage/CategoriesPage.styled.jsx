@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MyRecipesContainer = styled.div`
+export const FavoriteContainer = styled.div`
 background: #ECECEC;
 `;
 

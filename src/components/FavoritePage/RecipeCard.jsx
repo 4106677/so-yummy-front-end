@@ -1,16 +1,19 @@
-export function RecipeCard ({ recipe, onDelete }) {
+import { Image, RecipeCardContainer, Title, Text } from 'styled-components';
+
+export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = () => {
     onDelete(recipe.id);
   }
 
   return (
-    <div>
-      <img src={recipe.image} alt={recipe.title} />
+    <RecipeCardContainer>
+      <Image src={recipe.image} alt={recipe.title} />
       <div>
-        <h3>{recipe.title}</h3>
+        <Title>{recipe.title}</Title>
+        <Text>{recipe.texst}</Text>
         <button onClick={handleDelete}>Remove</button>
         <button>See recipe</button>
       </div>
-    </div>
+    </RecipeCardContainer>
   );
 }
