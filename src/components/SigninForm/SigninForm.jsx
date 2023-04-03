@@ -1,6 +1,6 @@
 import React from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
+
 import {
   BackgroundImage,
   MainWrapper,
@@ -11,7 +11,11 @@ import {
   FormSvgBlack,
   FormSvgWhite,
   Container,
-  FormBox,
+  EmailIcon,
+  PasswordIcon,
+  ErrorIcon,
+  // WarningIcon,
+  SuccessIcon,
   InputFormBox,
   InputBox,
   Title,
@@ -21,6 +25,8 @@ import {
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 
+import { SigninSchema } from '../../validation/inputsValidationAchema';
+
 export const SigninForm = () => {
   const initialValues = {
     email: '',
@@ -29,13 +35,7 @@ export const SigninForm = () => {
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email().required('Email is Required.'),
-    password: Yup.string()
-      .required('No password provided.')
-      .min(8, 'Password is too short - should be 8 chars minimum.')
-      .matches(/(?=.*[0-9])/, 'Password must contain a number.'),
-  });
+  const validationSchema = SigninSchema;
 
   const onSubmit = e => {
     e.preventDefault();
@@ -58,21 +58,54 @@ export const SigninForm = () => {
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
               >
-                <FormBox>
-                  <InputFormBox>
-                    <InputBox>
-                      <Input name="email" type="email" placeholder="Email" />
-                    </InputBox>
-                    <InputBox>
-                      <Input
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                      />
-                    </InputBox>
-                  </InputFormBox>
-                  <Button type="submit">Sign in</Button>
-                </FormBox>
+                {({ errors, touched }) => (
+                  <Form>
+                    <InputFormBox>
+                      <InputBox>
+                        <EmailIcon
+                          $error={errors.email && touched.email}
+                          $success={!errors.email && touched.email}
+                        />
+                        <Input
+                          // value={email}
+                          // onSubmit={handleChange}
+                          name="email"
+                          type="email"
+                          placeholder="Email"
+                          autoComplete="off"
+                          $error={errors.email && touched.email}
+                          $success={!errors.email && touched.email}
+                        />
+                        {!errors.email && touched.email && <SuccessIcon />}
+                        {errors.email && touched.email && <ErrorIcon />}
+                      </InputBox>
+                      <InputBox>
+                        <PasswordIcon
+                          $error={errors.password && touched.password}
+                          // $warning={errors.password && touched.password}
+                          $success={!errors.password && touched.password}
+                        />
+                        <Input
+                          // value={password}
+                          // onSubmit={handleChange}
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          autoComplete="off"
+                          $error={errors.password && touched.password}
+                          // $warning={errors.password && !touched.password}
+                          $success={!errors.password && touched.password}
+                        />
+                        {!errors.password && touched.password && (
+                          <SuccessIcon />
+                        )}
+                        {/* {errors.password && touched.password && <WarningIcon />} */}
+                        {errors.password && touched.password && <ErrorIcon />}
+                      </InputBox>
+                    </InputFormBox>
+                    <Button type="submit">Sign up</Button>
+                  </Form>
+                )}
               </Formik>
             </InnerBox>
           </AuthFormBox>

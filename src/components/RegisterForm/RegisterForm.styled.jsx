@@ -1,7 +1,8 @@
-import { Form, Field } from 'formik';
+import { Field } from 'formik';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+//background
 import imageMobile from '../../images/startPage/bgMobile@1x.png';
 import imageMobileRetina from '../../images/startPage/bgMobile@2x.png';
 import imageTablet from '../../images/startPage/bgTablet@1x.png';
@@ -9,10 +10,186 @@ import imageTabletRetina from '../../images/startPage/bgTablet@2x.png';
 import imageDesktop from '../../images/startPage/bgDesktop@1x.png';
 import imageDesktopRetina from '../../images/startPage/bgDesktop@2x.png';
 
+//main image
 import { ReactComponent as SvgAuthBlack } from '../../images/startPage/Order-food-pana.svg';
 import { ReactComponent as SvgAuthWhite } from '../../images/startPage/Order-food-pana-white.svg';
 
+//svg icons
 import { ReactComponent as GoogleLogo } from '../../images/startPage/logo-google-icon.svg';
+
+import { ReactComponent as User } from '../../images/startPage/icon-user-name.svg';
+import { ReactComponent as Email } from '../../images/startPage/icon-email.svg';
+import { ReactComponent as Password } from '../../images/startPage/icon-password.svg';
+
+import { ReactComponent as Success } from '../../images/startPage/icon-success.svg';
+import { ReactComponent as Warning } from '../../images/startPage/icon-warning.svg';
+import { ReactComponent as Error } from '../../images/startPage/icon-error.svg';
+
+export const SuccessIcon = styled(Success)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
+
+export const WarningIcon = styled(Warning)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
+
+export const ErrorIcon = styled(Error)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
+
+export const UserIcon = styled(User)`
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  opacity: 80%;
+  top: 14px;
+  left: 15px;
+  fill: none;
+  stroke: #fafafa;
+  ${props =>
+    props.$error &&
+    css`
+      fill: none;
+      stroke: #e74a3b;
+    `}
+  ${props =>
+    props.$success &&
+    css`
+      stroke: #3cbc81;
+    `}
+    ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
+    `}
+  @media screen and (min-width: 768px) {
+    height: 24px;
+    width: 24px;
+    top: 11.5px;
+    left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 10.5px;
+  }
+`;
+
+export const EmailIcon = styled(Email)`
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  opacity: 80%;
+  top: 14px;
+  left: 15px;
+  fill: none;
+  stroke: #fafafa;
+  ${props =>
+    props.$error &&
+    css`
+      fill: none;
+      stroke: #e74a3b;
+    `}
+  ${props =>
+    props.$success &&
+    css`
+      stroke: #3cbc81;
+    `}
+    ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
+    `}
+  @media screen and (min-width: 768px) {
+    height: 24px;
+    width: 24px;
+    top: 11.5px;
+    left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 10.5px;
+  }
+`;
+
+export const PasswordIcon = styled(Password)`
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  opacity: 80%;
+  top: 14px;
+  left: 15px;
+  fill: none;
+  stroke: #fafafa;
+  ${props =>
+    props.$error &&
+    css`
+      fill: none;
+      stroke: #e74a3b;
+    `}
+  ${props =>
+    props.$success &&
+    css`
+      stroke: #3cbc81;
+    `}
+    ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
+    `}
+  @media screen and (min-width: 768px) {
+    height: 24px;
+    width: 24px;
+    top: 11.5px;
+    left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 10.5px;
+  }
+`;
+
+export const ErrorText = styled.p`
+  color: #e74a3b;
+  font-size: 10px;
+  ${'' /* margin-top: 8px; */}
+  line-height: 2;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
 
 export const Container = styled.div`
   box-sizing: border-box;
@@ -24,7 +201,7 @@ export const Container = styled.div`
   align-items: flex-end;
   position: relative;
   @media screen and (min-width: 768px) {
-    padding: 0 134px 120px;
+    padding: 0 20px 59px;
   }
   @media screen and (min-width: 1440px) {
     padding: 0 20px 122px;
@@ -176,22 +353,23 @@ export const Title = styled.h2`
   }
 `;
 
-export const FormBox = styled(Form)``;
 export const InputFormBox = styled.div`
   display: grid;
-  gap: 12px;
   margin-bottom: 35px;
   width: 100%;
+  gap: 12px;
   @media screen and (min-width: 768px) {
-    gap: 24px;
     margin-bottom: 50px;
+    gap: 24px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 30px;
   }
 `;
 
-export const InputBox = styled.div``;
+export const InputBox = styled.div`
+  position: relative;
+`;
 
 export const Input = styled(Field)`
   box-sizing: border-box;
@@ -214,6 +392,17 @@ export const Input = styled(Field)`
 
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  ${props =>
+    props.$error &&
+    css`
+      border-color: #e74a3b;
+    `}
+  ${props =>
+    props.$success &&
+    css`
+      border-color: #3cbc81;
+    `}
+
   :-webkit-autofill,
   :-webkit-autofill:focus {
       transition: background-color 600000s 0s, color 600000s 0s;
@@ -231,6 +420,7 @@ export const Input = styled(Field)`
   }
   @media screen and (min-width: 768px) {
     font-size: 18px;
+    padding: 16px 16px 16px 50px;
   }
 `;
 
