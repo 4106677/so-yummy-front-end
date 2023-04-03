@@ -8,6 +8,7 @@ import { RegisterPage } from 'pages/Register/Register';
 import { SigninPage } from 'pages/Signin/Signin';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
+import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
         <Route path="/signin" element={<SigninPage />}></Route>
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
+        <Route path="/add-recipe" element={<AddRecipePage />}></Route>
       </Routes>
       <GlobalStyle />
     </>
