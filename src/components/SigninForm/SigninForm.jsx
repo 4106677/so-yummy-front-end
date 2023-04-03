@@ -7,6 +7,7 @@ import {
   InnerBox,
   Button,
   AuthFormBox,
+  GoogleAuth,
   FormSvgBlack,
   FormSvgWhite,
   Container,
@@ -15,7 +16,7 @@ import {
   InputBox,
   Title,
   Input,
-  Link,
+  LinkStyled,
 } from './SigninForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
@@ -50,6 +51,7 @@ export const SigninForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
+              <GoogleAuth />
               <Title>Sign In</Title>
               <Formik
                 initialValues={initialValues}
@@ -74,7 +76,7 @@ export const SigninForm = () => {
               </Formik>
             </InnerBox>
           </AuthFormBox>
-          <Link>Registration</Link>
+          <LinkStyled to="/register">Registration</LinkStyled>
         </MainWrapper>
       </Container>
     </>
