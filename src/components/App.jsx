@@ -11,6 +11,8 @@ import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 
+
+
 export const App = () => {
   return (
     <>
@@ -20,8 +22,8 @@ export const App = () => {
         <Route path="/signin" element={<SigninPage />}></Route>
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
-                <Route path="/add-recipe" element={<AddRecipePage />}></Route>
   <Route path="/recipe/:recipeId" element={<RecipePage />}></Route>
+        <Route path="/add-recipe" element={<AddRecipePage />}></Route>
       </Routes>
       <GlobalStyle />
     </>
