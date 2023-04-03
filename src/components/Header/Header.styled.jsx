@@ -49,7 +49,6 @@ export const HeaderStyledNav = styled.nav`
   display: none;
   align-items: center;
   margin-right: auto;
-  margin-right: auto;
   @media (min-width: 768px) {
     display: flex;
   }
@@ -75,6 +74,9 @@ export const HeaderStyledNavLink = styled(NavLink)`
   svg {
     width: 24px;
     height: 24px;
+  }
+  @media(max-width: 830px){
+    margin-right: 15px;
   }
 `;
 
@@ -105,7 +107,7 @@ export const HeaderStyledUserText = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #22252a;
   margin: 0;
   @media (min-width: 478px) {
