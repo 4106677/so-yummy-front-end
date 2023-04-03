@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front-end/static/css/main.7acaea2f.css",
-    "main.js": "/so-yummy-front-end/static/js/main.29dabf72.js",
+    "main.js": "/so-yummy-front-end/static/js/main.05099436.js",
     "static/media/wellcome2x_desk.jpg": "/so-yummy-front-end/static/media/wellcome2x_desk.8f791d55616c85c219b2.jpg",
     "static/media/wellcome2x_tab.jpg": "/so-yummy-front-end/static/media/wellcome2x_tab.83ea0886d9c7a94446a4.jpg",
     "static/media/mainpage2x_desk.png": "/so-yummy-front-end/static/media/mainpage2x_desk.906cdb4f2d00194ec785.png",
@@ -22,13 +22,14 @@
     "static/media/search_not_found_mob_1x.png": "/so-yummy-front-end/static/media/search_not_found_mob_1x.63c33e63d51609222126.png",
     "static/media/bgTablet@2x.png": "/so-yummy-front-end/static/media/bgTablet@2x.1ad2efc56502ea4513d3.png",
     "static/media/bgDesktop@2x.png": "/so-yummy-front-end/static/media/bgDesktop@2x.aa77c0f211dc3cfaae1c.png",
+    "static/media/logo-google-icon.svg": "/so-yummy-front-end/static/media/logo-google-icon.efa560d32653a615a1db742bbf78c815.svg",
     "index.html": "/so-yummy-front-end/index.html",
     "static/media/logo.svg": "/so-yummy-front-end/static/media/logo.409a243ea7f68b41aa46be0a3f1c3459.svg",
     "main.7acaea2f.css.map": "/so-yummy-front-end/static/css/main.7acaea2f.css.map",
-    "main.29dabf72.js.map": "/so-yummy-front-end/static/js/main.29dabf72.js.map"
+    "main.05099436.js.map": "/so-yummy-front-end/static/js/main.05099436.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.29dabf72.js"
+    "static/js/main.05099436.js"
   ]
 }
