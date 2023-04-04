@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/so-yummy-front-end/static/css/main.0d5b2924.css",
-    "main.js": "/so-yummy-front-end/static/js/main.833f78f2.js",
+    "main.css": "/so-yummy-front-end/static/css/main.ad6ee417.css",
+    "main.js": "/so-yummy-front-end/static/js/main.aed89778.js",
     "static/media/wellcome2x_desk.jpg": "/so-yummy-front-end/static/media/wellcome2x_desk.8f791d55616c85c219b2.jpg",
     "static/media/wellcome2x_tab.jpg": "/so-yummy-front-end/static/media/wellcome2x_tab.83ea0886d9c7a94446a4.jpg",
     "static/media/mainpage2x_desk.png": "/so-yummy-front-end/static/media/mainpage2x_desk.906cdb4f2d00194ec785.png",
@@ -54,11 +54,11 @@
     "index.html": "/so-yummy-front-end/index.html",
     "static/media/youtube.svg": "/so-yummy-front-end/static/media/youtube.7dabf5e96c00b5fb7036ffdef4712a7b.svg",
     "static/media/facebook.svg": "/so-yummy-front-end/static/media/facebook.9990b83de6560d8b93bc73fb0bac9e7c.svg",
-    "main.0d5b2924.css.map": "/so-yummy-front-end/static/css/main.0d5b2924.css.map",
-    "main.833f78f2.js.map": "/so-yummy-front-end/static/js/main.833f78f2.js.map"
+    "main.ad6ee417.css.map": "/so-yummy-front-end/static/css/main.ad6ee417.css.map",
+    "main.aed89778.js.map": "/so-yummy-front-end/static/js/main.aed89778.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d5b2924.css",
-    "static/js/main.833f78f2.js"
+    "static/css/main.ad6ee417.css",
+    "static/js/main.aed89778.js"
   ]
 }
