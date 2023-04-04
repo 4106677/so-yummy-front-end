@@ -2,8 +2,8 @@ import {
   Wrapper,
   H1,
   Container,
-  Btn,
-  BtnTransp,
+  StyledLink,
+  StyledLinkTransp,
   Logo,
   P,
 } from './WellcomPage.styled';
@@ -26,13 +26,13 @@ export const WellcomePage = () => {
             and retrieve your own recipes at any time.
           </P>
           <div>
-            <Btn type="button" onClick={handleClick}>
+            <StyledLink type="button" onClick={handleClick} to="/register">
               Registration
-            </Btn>
+            </StyledLink>
 
-            <BtnTransp type="button" onClick={handleClick}>
+            <StyledLinkTransp type="button" onClick={handleClick} to="/signin">
               Sign in
-            </BtnTransp>
+            </StyledLinkTransp>
           </div>
         </Container>
       </Wrapper>

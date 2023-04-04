@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import BgDesk from '../../images/WellcomePage/wellcome_desk.jpg';
 import BgDesk2x from '../../images/WellcomePage/wellcome2x_desk.jpg';
@@ -126,7 +127,7 @@ export const P = styled.p`
   } ;
 `;
 
-export const Btn = styled.button`
+export const StyledLink = styled(Link)`
   &:hover {
     background-color: #22252a;
   }
@@ -143,7 +144,8 @@ export const Btn = styled.button`
 
   background-color: #8baa36;
 
-  height: 45px;
+  ${'' /* height: 45px; */}
+  padding: 12px 24px;
   width: 132px;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -151,8 +153,8 @@ export const Btn = styled.button`
 
   @media (min-width: 768px) {
     width: 184px;
-    height: 67px;
-
+    ${'' /* height: 67px; */}
+    padding: 22px 44px;
     font-size: 16px;
     line-height: 24px;
   }
@@ -160,12 +162,12 @@ export const Btn = styled.button`
   @media (min-width: 1440px) {
     font-size: 16px;
     line-height: 24px;
-    height: 67px;
+    ${'' /* height: 67px; */}
     width: 184px;
   } ;
 `;
 
-export const BtnTransp = styled.button`
+export const StyledLinkTransp = styled(Link)`
   &:hover {
     border: 2px solid #8baa36;
     color: #8baa36;
@@ -183,7 +185,8 @@ export const BtnTransp = styled.button`
   font-size: 14px;
   line-height: 21px;
 
-  height: 45px;
+  ${'' /* height: 45px; */}
+  padding: 12px 24px;
   width: 132px;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -191,7 +194,8 @@ export const BtnTransp = styled.button`
 
   @media (min-width: 768px) {
     width: 141px;
-    height: 67px;
+    ${'' /* height: 67px; */}
+    padding: 22px 42px;
 
     font-size: 16px;
     line-height: 24px;
@@ -202,7 +206,8 @@ export const BtnTransp = styled.button`
   @media (min-width: 1440px) {
     font-size: 16px;
     line-height: 24px;
-    height: 67px;
+    /* height: 67px; */
+
     width: 141px;
   } ;
 `;

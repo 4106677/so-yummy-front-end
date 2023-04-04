@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const ChooseBlock = styled.div`
   width: 225px;
   height: 92px;
-  background-color: '#22252A';
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 8px;
   margin-left: 88px;
@@ -19,7 +19,7 @@ export const ChooseBlock = styled.div`
     height: 100px;
     position: absolute;
     right: 25px;
-    top: 370px;
+    top: 350px;
   }
 
   @media (min-width: 1440px) {
@@ -34,7 +34,7 @@ export const ChooseBlock = styled.div`
 `;
 
 export const ChooseText = styled.p`
-  font-family: 'Poppins, sans-serif';
+  
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -52,8 +52,8 @@ export const ChooseText = styled.p`
 `;
 
 export const ChooseSpan = styled.span`
-  color: '#8BAA36';
-  font-family: 'Poppins, sans-serif';
+  color: #8BAA36;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -69,13 +69,12 @@ export const ChooseSpan = styled.span`
   }
 `;
 export const ChooseLink = styled(NavLink)`
-  font-family: 'Poppins, sans-serif';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   letter-spacing: '-0.02em';
-  color: '#3E4462';
+  color: #3e4462;
 
   margin-top: 4px;
 
