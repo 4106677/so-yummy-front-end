@@ -9,6 +9,8 @@ import { SigninPage } from 'pages/Signin/Signin';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 
+import { ToastContainer } from 'react-toastify';
+
 export const App = () => {
   return (
     <>
@@ -20,6 +22,7 @@ export const App = () => {
         <Route path="/search" element={<SearchPage />}></Route>
       </Routes>
       <GlobalStyle />
+      <ToastContainer autoClose={3000} />
     </>
   );
 };

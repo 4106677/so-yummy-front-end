@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container } from 'components/Container/Container';
 import {
   MainPageBg,
@@ -9,9 +9,22 @@ import {
   ColorWrap,
 } from './MainPage.styled';
 import { СhooseYourBreakfast } from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
-import {SearchForm} from '../../components/SearchFormMain/SearchFormMain'
+import { SearchForm } from '../../components/SearchFormMain/SearchFormMain'
+import { toastWarnEmptyField } from '../../services/toasts'
+import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
 
 export const MainPage = () => {
+    const navigate = useNavigate();
+
+    const handleOnSubmit = (query, type) => {
+        if (query === '') {
+        return toastWarnEmptyField(query)
+        } else {
+        navigate(`/search?query=${query}&type=${type}`);
+    }
+  
+};
+
   return (
     <>
       <ColorWrap>
@@ -27,10 +40,13 @@ export const MainPage = () => {
                 future.
               </MainPageText>
               <СhooseYourBreakfast />
-              <SearchForm styled={'black'}  />
+              <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
             </MainPageDiv>
           </Container>
         </MainPageBg>
+        <Container>
+          <PreviewCategories />
+        </Container>
       </ColorWrap>
     </>
   );
