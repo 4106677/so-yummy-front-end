@@ -1,4 +1,8 @@
-import { ErrorText, SuccessText, WarningText } from './validationStatus.styled';
+import {
+  ErrorText,
+  SuccessText,
+  // WarningText
+} from './validationStatus.styled';
 
 const ValigationStatus = ({
   name = '',

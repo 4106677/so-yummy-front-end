@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 
 import {
@@ -21,7 +21,7 @@ import {
   Input,
   LinkStyled,
   GoogleAuth,
-  WarningIcon,
+  // WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
