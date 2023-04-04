@@ -10,6 +10,7 @@ import {
 } from './MainPage.styled';
 import { СhooseYourBreakfast } from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
 import {SearchForm} from '../../components/SearchFormMain/SearchFormMain'
+import { Footer } from 'components/Footer/Footer';
 
 export const MainPage = () => {
   return (
@@ -32,6 +33,7 @@ export const MainPage = () => {
           </Container>
         </MainPageBg>
       </ColorWrap>
+      <Footer/>
     </>
   );
 };

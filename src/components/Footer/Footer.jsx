@@ -1,26 +1,23 @@
-import { Foo } from './Footer.styled';
-import { About } from './content/About';
-import { Logo } from './content/Logo';
-import { Navigation } from './content/Navigation';
-import { Subscription } from './content/Subscription';
-import { SocLink } from './content/SocLink';
-import { AllRightReserved } from './content/AllRightReserved';
+import {
+  FooterSection,
+  ARRdiv,
+  ARR,
+  ToS
+} from "./Footer.styled"
+import { Navigation } from "./Navigation/Navigation"
 
-const Footer = () => {
+
+export const Footer = () => {
   return (
     <>
-      <Foo>
-        <div>
-          <div>
-            <Logo />
-            <About />
-          </div>
-          <Navigation />
-          <Subscription />
-        </div>
-        <SocLink />
-      </Foo>
-      <AllRightReserved />
+      <FooterSection>
+        <Navigation />
+      </FooterSection>
+      
+      <ARRdiv>
+        <ARR>© 2023 All Rights Reserved.</ARR>
+        <ToS>Terms of Service</ToS>
+      </ARRdiv>
     </>
-  );
-};
+  )
+}
