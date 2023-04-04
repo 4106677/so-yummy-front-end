@@ -9,9 +9,14 @@ import {
   ColorWrap,
 } from './MainPage.styled';
 import { СhooseYourBreakfast } from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
-import { SearchForm } from '../../components/SearchFormMain/SearchFormMain'
+
+
 import { toastWarnEmptyField } from '../../services/toasts'
 import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
+
+import {SearchForm} from '../../components/SearchFormMain/SearchFormMain'
+import { Footer } from 'components/Footer/Footer';
+
 
 export const MainPage = () => {
     const navigate = useNavigate();
@@ -48,6 +53,7 @@ export const MainPage = () => {
           <PreviewCategories />
         </Container>
       </ColorWrap>
+      <Footer/>
     </>
   );
 };
