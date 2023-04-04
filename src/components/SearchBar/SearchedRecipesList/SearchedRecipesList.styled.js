@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import notFoundSearchMob from "../../images/SearchPage/search_not_found_mob_1x.png"
-import notFoundSearchMobRetina from "../../images/SearchPage/search_not_found_mob_2x.png"
-import notFoundSearchTab from '../../images/SearchPage/search_not_found_tab_1x.png';
-import notFoundSearchTabRetina from '../../images/SearchPage/search_not_found_tab_2x.png';
-import notFoundSearchDesk from '../../images/SearchPage/search_not_found_tab_1x.png';
-import notFoundSearchDeskRetina from '../../images/SearchPage/search_not_found_tab_2x.png';
+import notFoundSearchMob from "../../../images/SearchPage/search_not_found_mob_1x.png"
+import notFoundSearchMobRetina from "../../../images/SearchPage/search_not_found_mob_2x.png"
+import notFoundSearchTab from '../../../images/SearchPage/search_not_found_tab_1x.png';
+import notFoundSearchTabRetina from '../../../images/SearchPage/search_not_found_tab_2x.png';
+import notFoundSearchDesk from '../../../images/SearchPage/search_not_found_desk_1x.png';
+import notFoundSearchDeskRetina from '../../../images/SearchPage/search_not_found_desk_2x.png';
 
 export const ListWrap = styled.ul`
 text-align: center;`

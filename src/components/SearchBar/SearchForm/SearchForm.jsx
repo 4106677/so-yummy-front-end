@@ -3,19 +3,19 @@ import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
 
 export const SearchForm = ({ onSubmit }) => {
-  const [query, setQuery] = useState({ search: "" });
+  const [state, setState] = useState({ search: "" });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setQuery(prevState => { return { ...prevState, [name]: value } })
+    setState(prevState => { return { ...prevState, [name]: value } })
   };
   
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...query });
-    setQuery({ search: '' });
+    onSubmit({ ...state });
+    setState({ search: '' });
   }
 
 
@@ -29,7 +29,7 @@ export const SearchForm = ({ onSubmit }) => {
                 placeholder="Beef"
                 name="search"
                 onChange={handleInputChange}
-                value={query.search}
+                value={state.search}
                 autoComplete="on"
                 autoFocus
               ></Input>
