@@ -5,9 +5,9 @@ import {
   NotFoundText,
 } from './SearchedRecipesList.styled';
 
-export const SearchedRecipesList = ({ items = []}) => {
-console.log(items);
-  
+export const SearchedRecipesList = ({ items = [] }) => {
+  console.log(items);
+
   return (
     <div>
       {items.length === 0 ? (
@@ -18,13 +18,13 @@ console.log(items);
       ) : (
         <ListWrap>
           {items.map(item => (
-            <li key={item.id}>
-              <img src={items.photo} alt={items.titles}></img>
-              <p>{item.titles}</p>
+            <li key={item._id}>
+              <img src={item.preview} alt={item.title}></img>
+              <p>{item.title}</p>
             </li>
           ))}
         </ListWrap>
       )}
     </div>
   );
-}
+};
