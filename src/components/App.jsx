@@ -11,10 +11,14 @@ import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 
+
+import { ToastContainer } from 'react-toastify';
+
+
 export const App = () => {
   return (
     <>
-      <Routes>
+ <Routes>
         <Route path="/" element={<WellcomePage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
@@ -24,6 +28,7 @@ export const App = () => {
         <Route path="/add-recipe" element={<AddRecipePage />}></Route>
       </Routes>
       <GlobalStyle />
+      <ToastContainer autoClose={3000} />
     </>
   );
 };
