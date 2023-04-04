@@ -7,7 +7,7 @@ const shoppingInstance = axios.create({
 
 export const getAllShoppingList = async () => {
    const { data } = await shoppingInstance.get(
-     '/recipes/search/beef?pages=1&limit=3'
+     '/recipes/search/beef?type=title&pages=1&limit=5'
    );
   console.log(data);
   return data;

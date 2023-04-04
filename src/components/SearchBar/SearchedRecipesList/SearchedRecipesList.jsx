@@ -1,11 +1,11 @@
-import {
+  import {
   ListWrap,
   NotFoundPhoto,
   NotFoundWrap,
   NotFoundText,
 } from './SearchedRecipesList.styled';
 
-export const SearchedRecipesList = ({ items = [] }) => {
+  export const SearchedRecipesList = ({ items = [] }) => {
   console.log(items);
 
   return (
@@ -27,4 +27,4 @@ export const SearchedRecipesList = ({ items = [] }) => {
       )}
     </div>
   );
-};
+}; 
