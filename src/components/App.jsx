@@ -11,8 +11,6 @@ import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 
-
-
 export const App = () => {
   return (
     <>
@@ -29,6 +27,3 @@ export const App = () => {
     </>
   );
 };
-
-
-
