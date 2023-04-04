@@ -24,8 +24,9 @@ import {
 } from './SigninForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
+import ValigationStatus from './validationStatus';
 
-import { SigninSchema } from '../../validation/inputsValidationAchema';
+import { SigninSchema } from '../../validation/inputsValidationSchema';
 
 export const SigninForm = () => {
   const initialValues = {
@@ -60,8 +61,10 @@ export const SigninForm = () => {
               >
                 {({ errors, touched }) => (
                   <Form>
-                    <InputFormBox>
-                      <InputBox>
+                    <InputFormBox
+                      $gap={errors.name || errors.email || errors.password}
+                    >
+                      <InputBox $gap={errors.email}>
                         <EmailIcon
                           $error={errors.email && touched.email}
                           $success={!errors.email && touched.email}
@@ -78,11 +81,16 @@ export const SigninForm = () => {
                         />
                         {!errors.email && touched.email && <SuccessIcon />}
                         {errors.email && touched.email && <ErrorIcon />}
+                        {errors.email && (
+                          <ValigationStatus name="email" error={errors.email} />
+                        )}
                       </InputBox>
-                      <InputBox>
+                      <InputBox
+                        style={{ marginBottom: 0 }}
+                        $gap={errors.password}
+                      >
                         <PasswordIcon
                           $error={errors.password && touched.password}
-                          // $warning={errors.password && touched.password}
                           $success={!errors.password && touched.password}
                         />
                         <Input
@@ -93,14 +101,18 @@ export const SigninForm = () => {
                           placeholder="Password"
                           autoComplete="off"
                           $error={errors.password && touched.password}
-                          // $warning={errors.password && !touched.password}
                           $success={!errors.password && touched.password}
                         />
                         {!errors.password && touched.password && (
                           <SuccessIcon />
                         )}
-                        {/* {errors.password && touched.password && <WarningIcon />} */}
                         {errors.password && touched.password && <ErrorIcon />}
+                        {errors.password && (
+                          <ValigationStatus
+                            name="password"
+                            error={errors.password}
+                          />
+                        )}
                       </InputBox>
                     </InputFormBox>
                     <Button type="submit">Sign up</Button>

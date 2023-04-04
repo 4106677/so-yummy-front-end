@@ -89,11 +89,6 @@ export const UserIcon = styled(User)`
     css`
       stroke: #3cbc81;
     `}
-    ${props =>
-    props.$warning &&
-    css`
-      stroke: #f6c23e;
-    `}
   @media screen and (min-width: 768px) {
     height: 24px;
     width: 24px;
@@ -126,11 +121,6 @@ export const EmailIcon = styled(Email)`
     props.$success &&
     css`
       stroke: #3cbc81;
-    `}
-    ${props =>
-    props.$warning &&
-    css`
-      stroke: #f6c23e;
     `}
   @media screen and (min-width: 768px) {
     height: 24px;
@@ -165,11 +155,6 @@ export const PasswordIcon = styled(Password)`
     css`
       stroke: #3cbc81;
     `}
-    ${props =>
-    props.$warning &&
-    css`
-      stroke: #f6c23e;
-    `}
   @media screen and (min-width: 768px) {
     height: 24px;
     width: 24px;
@@ -178,16 +163,6 @@ export const PasswordIcon = styled(Password)`
   }
   @media screen and (min-width: 1440px) {
     top: 10.5px;
-  }
-`;
-
-export const ErrorText = styled.p`
-  color: #e74a3b;
-  font-size: 10px;
-  ${'' /* margin-top: 8px; */}
-  line-height: 2;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
   }
 `;
 
@@ -357,10 +332,18 @@ export const InputFormBox = styled.div`
   display: grid;
   margin-bottom: 35px;
   width: 100%;
-  gap: 12px;
+  ${props =>
+    props.$gap &&
+    css`
+      margin-bottom: 15px;
+    `}
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
-    gap: 24px;
+    ${props =>
+      props.$gap &&
+      css`
+        margin-bottom: 35px;
+      `}
   }
   @media screen and (min-width: 1440px) {
     font-size: 30px;
@@ -369,6 +352,20 @@ export const InputFormBox = styled.div`
 
 export const InputBox = styled.div`
   position: relative;
+  margin-bottom: 12px;
+  ${props =>
+    props.$gap &&
+    css`
+      margin-bottom: 0;
+    `}
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+    ${props =>
+      props.$gap &&
+      css`
+        margin-bottom: 0;
+      `}
+  }
 `;
 
 export const Input = styled(Field)`
@@ -414,6 +411,16 @@ export const Input = styled(Field)`
   :focus {
     border: 1px solid #ffffff;
     border-radius: 6px;
+    ${props =>
+      props.$error &&
+      css`
+        border-color: #e74a3b;
+      `}
+  ${props =>
+    props.$success &&
+    css`
+      border-color: #3cbc81;
+    `}
   }
   ::placeholder {
     color: #ffffff;

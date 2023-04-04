@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 
 import {
@@ -14,22 +14,21 @@ import {
   EmailIcon,
   PasswordIcon,
   ErrorIcon,
-  // WarningIcon,
   SuccessIcon,
-  ErrorText,
   InputFormBox,
   InputBox,
   Title,
   Input,
   LinkStyled,
   GoogleAuth,
+  WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 import ValigationStatus from './validationStatus';
 // import useForm from '../sHooks/useForm';
 
-import { SignupSchema } from '../../validation/inputsValidationAchema';
+import { SignupSchema } from '../../validation/inputsValidationSchema';
 // import initialState from './initialState';
 
 export const RegisterForm = ({ onSubmit }) => {
@@ -70,8 +69,10 @@ export const RegisterForm = ({ onSubmit }) => {
               >
                 {({ errors, touched }) => (
                   <Form>
-                    <InputFormBox>
-                      <InputBox>
+                    <InputFormBox
+                      $gap={errors.name || errors.email || errors.password}
+                    >
+                      <InputBox $gap={errors.name}>
                         <UserIcon
                           $success={!errors.name && touched.name}
                           $error={errors.name && touched.name}
@@ -92,7 +93,7 @@ export const RegisterForm = ({ onSubmit }) => {
                           <ValigationStatus name="name" error={errors.name} />
                         )}
                       </InputBox>
-                      <InputBox>
+                      <InputBox $gap={errors.email}>
                         <EmailIcon
                           $error={errors.email && touched.email}
                           $success={!errors.email && touched.email}
@@ -113,10 +114,12 @@ export const RegisterForm = ({ onSubmit }) => {
                           <ValigationStatus name="email" error={errors.email} />
                         )}
                       </InputBox>
-                      <InputBox>
+                      <InputBox
+                        style={{ marginBottom: 0 }}
+                        $gap={errors.password}
+                      >
                         <PasswordIcon
                           $error={errors.password && touched.password}
-                          // $warning={errors.password && touched.password}
                           $success={!errors.password && touched.password}
                         />
                         <Input
@@ -127,13 +130,11 @@ export const RegisterForm = ({ onSubmit }) => {
                           placeholder="Password"
                           autoComplete="off"
                           $error={errors.password && touched.password}
-                          // $warning={errors.password && !touched.password}
                           $success={!errors.password && touched.password}
                         />
                         {!errors.password && touched.password && (
                           <SuccessIcon />
                         )}
-                        {/* {errors.password && touched.password && <WarningIcon />} */}
                         {errors.password && touched.password && <ErrorIcon />}
                         {errors.password && (
                           <ValigationStatus
