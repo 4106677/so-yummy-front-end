@@ -4,10 +4,12 @@ import {
   BurgerMenuContainer,
   BurgerMenuLogoLink,
   BurgerMenuStyledNavLink,
+  BurgerMenuBackgroundContainer
 } from './BurgerMenu.styled';
 import { useState } from 'react';
 import { BurgerIcon, HeaderLogo, CrossIcon } from './HeaderIcons';
 import { RiSearchLine } from 'react-icons/ri';
+
 
 export const BurgerMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,6 +57,7 @@ export const BurgerMenu = () => {
           <RiSearchLine />
           Search
         </BurgerMenuStyledNavLink>
+        <BurgerMenuBackgroundContainer />
       </Menu>
     </BurgerMenuContainer>
   );
