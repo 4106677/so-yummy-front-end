@@ -195,7 +195,7 @@ export const StyledLinkTransp = styled(Link)`
   @media (min-width: 768px) {
     width: 141px;
     ${'' /* height: 67px; */}
-    padding: 22px 44px;
+    padding: 22px 42px;
 
     font-size: 16px;
     line-height: 24px;
@@ -206,7 +206,8 @@ export const StyledLinkTransp = styled(Link)`
   @media (min-width: 1440px) {
     font-size: 16px;
     line-height: 24px;
-    ${'' /* height: 67px; */}
+    /* height: 67px; */
+
     width: 141px;
   } ;
 `;

@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import modernNormalize from 'modern-normalize';
 import Poppins700 from '../Fonts/Poppins/Poppins-Bold.ttf';
 import Poppins600 from '../Fonts/Poppins/Poppins-SemiBold.ttf';
 import Poppins500 from '../Fonts/Poppins/Poppins-Medium.ttf';
 import Poppins400 from '../Fonts/Poppins/Poppins-Regular.ttf';
-// @import-normalize;
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -22,10 +22,10 @@ font-family: 'Poppins';
       color: rgb(1,67,97);
       -webkit-tap-highlight-color: transparent;
 }
+${modernNormalize}
 
 code {
  font-family: 'Poppins', sans-serif;
-    /* monospace; */
 }
 
 ul {
