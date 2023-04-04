@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front-end/static/css/main.ad6ee417.css",
-    "main.js": "/so-yummy-front-end/static/js/main.750c1de1.js",
+    "main.js": "/so-yummy-front-end/static/js/main.1e82da38.js",
     "static/media/wellcome2x_desk.jpg": "/so-yummy-front-end/static/media/wellcome2x_desk.8f791d55616c85c219b2.jpg",
     "static/media/wellcome2x_tab.jpg": "/so-yummy-front-end/static/media/wellcome2x_tab.83ea0886d9c7a94446a4.jpg",
     "static/media/mainpage2x_desk.png": "/so-yummy-front-end/static/media/mainpage2x_desk.906cdb4f2d00194ec785.png",
@@ -14,6 +14,7 @@
     "static/media/wellcome_tab.jpg": "/so-yummy-front-end/static/media/wellcome_tab.6e6aa3b9196267a3d6ad.jpg",
     "static/media/mainpage1x_desk.png": "/so-yummy-front-end/static/media/mainpage1x_desk.7c9ba1d121fa87c3fbc3.png",
     "static/media/page-layout-bg-tablet-x2.png": "/so-yummy-front-end/static/media/page-layout-bg-tablet-x2.cd43d70475172762555c.png",
+    "static/media/search_not_found_desk_2x.png": "/so-yummy-front-end/static/media/search_not_found_desk_2x.195c8cc165ac8d4aba1f.png",
     "static/media/search_not_found_tab_2x.png": "/so-yummy-front-end/static/media/search_not_found_tab_2x.195c8cc165ac8d4aba1f.png",
     "static/media/mainpage1x_tab.png": "/so-yummy-front-end/static/media/mainpage1x_tab.a72e2a0525816c730bc6.png",
     "static/media/wellcome_mob.jpg": "/so-yummy-front-end/static/media/wellcome_mob.8c0759a8f74d86cecc1a.jpg",
@@ -31,6 +32,7 @@
     "static/media/recipeBackgroundTab.png": "/so-yummy-front-end/static/media/recipeBackgroundTab.39a9dd70a0f61a6a7690.png",
     "static/media/Order-food-pana-white.svg": "/so-yummy-front-end/static/media/Order-food-pana-white.6361a1e99fbaf698d48f38ee699bb430.svg",
     "static/media/page-layout-bg-tablet-x1.png": "/so-yummy-front-end/static/media/page-layout-bg-tablet-x1.63c5f6b2f0767e50b71b.png",
+    "static/media/search_not_found_desk_1x.png": "/so-yummy-front-end/static/media/search_not_found_desk_1x.bc91271998b75900e48e.png",
     "static/media/search_not_found_tab_1x.png": "/so-yummy-front-end/static/media/search_not_found_tab_1x.bc91271998b75900e48e.png",
     "static/media/recipePageHeroImgMob.jpg": "/so-yummy-front-end/static/media/recipePageHeroImgMob.a3c32aa11ce76775737e.jpg",
     "static/media/page-layout-bg-tablet-x2.webp": "/so-yummy-front-end/static/media/page-layout-bg-tablet-x2.7819f803f1294dd52c74.webp",
@@ -61,10 +63,10 @@
     "static/media/facebook.svg": "/so-yummy-front-end/static/media/facebook.9990b83de6560d8b93bc73fb0bac9e7c.svg",
     "static/media/icon-success.svg": "/so-yummy-front-end/static/media/icon-success.2c20cfce5010676dc2acf065541b3183.svg",
     "main.ad6ee417.css.map": "/so-yummy-front-end/static/css/main.ad6ee417.css.map",
-    "main.750c1de1.js.map": "/so-yummy-front-end/static/js/main.750c1de1.js.map"
+    "main.1e82da38.js.map": "/so-yummy-front-end/static/js/main.1e82da38.js.map"
   },
   "entrypoints": [
     "static/css/main.ad6ee417.css",
-    "static/js/main.750c1de1.js"
+    "static/js/main.1e82da38.js"
   ]
 }
