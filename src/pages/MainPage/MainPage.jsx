@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container } from 'components/Container/Container';
 import {
   MainPageBg,
@@ -9,9 +9,31 @@ import {
   ColorWrap,
 } from './MainPage.styled';
 import { СhooseYourBreakfast } from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
+import { ButtonOthCtgWrap } from 'components/ButtonOthCtg/ButtonOthCtg.styled';
+import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
+import { toastWarnEmptyField } from '../../services/toasts'
+import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
+
 import {SearchForm} from '../../components/SearchFormMain/SearchFormMain'
+import { Footer } from 'components/Footer/Footer';
+
 
 export const MainPage = () => {
+  const navigate = useNavigate();
+  
+  const onClick = e => {
+    navigate('/categories');
+  };
+
+    const handleOnSubmit = (query, type) => {
+        if (query === '') {
+        return toastWarnEmptyField(query)
+        } else {
+        navigate(`/search?query=${query}&type=${type}`);
+    }
+  
+};
+
   return (
     <>
       <ColorWrap>
@@ -27,11 +49,30 @@ export const MainPage = () => {
                 future.
               </MainPageText>
               <СhooseYourBreakfast />
-              <SearchForm styled={'black'}  />
+              <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
             </MainPageDiv>
           </Container>
         </MainPageBg>
+        <Container>
+          <PreviewCategories />
+          <ButtonOthCtgWrap>
+            <Link
+              to="/byCategory/beef"
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              <ButtonSkew
+                type={'button'}
+                fn={onClick}
+                styled={'other'}
+                text={'Other categories'}
+              />
+            </Link>
+          </ButtonOthCtgWrap>
+        </Container>
       </ColorWrap>
+      <Footer />
     </>
   );
 };

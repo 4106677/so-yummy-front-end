@@ -16,6 +16,6 @@ font-size: 14px;
 line-height: 1;
 color: #8BAA36;
   cursor: pointer;
-  margin: 0 10px;
-  border-bottom: ${({ active }) => (active ? '2px solid #8BAA36' : 'none')};
+  /* margin: 0 10px;
+  border-bottom: ${({ active }) => (active ? '2px solid #8BAA36' : 'none')}; */
 `;

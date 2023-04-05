@@ -1,6 +1,6 @@
-import React from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+
 import {
   BackgroundImage,
   MainWrapper,
@@ -10,42 +10,49 @@ import {
   FormSvgBlack,
   FormSvgWhite,
   Container,
-  FormBox,
+  UserIcon,
+  EmailIcon,
+  PasswordIcon,
+  ErrorIcon,
+  SuccessIcon,
   InputFormBox,
   InputBox,
   Title,
   Input,
   LinkStyled,
   GoogleAuth,
+  // WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 
+import ValigationStatus from './validationStatus';
+import { SignupSchema } from '../../validation/inputsValidationSchema';
+
+import { register } from '../../redux/auth/operations';
+
 export const RegisterForm = () => {
-  const initialValues = {
+  const initialState = {
     name: '',
     email: '',
     password: '',
   };
 
-  const isDesktop = useMediaQuery('(min-width: 1440px)');
+  const dispatch = useDispatch();
+  const handleSubmit = (values, actions) => {
+    const authData = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
 
-  const validationSchema = Yup.object().shape({
-    name: Yup.string()
-      .required('Name is Required.')
-      .min(1, 'Name is Too Short.'),
-    email: Yup.string().email().required('Email is Required.'),
-    password: Yup.string()
-      .required('No password provided.')
-      .min(8, 'Password is too short - should be 8 chars minimum.')
-      .matches(/(?=.*[0-9])/, 'Password must contain a number.'),
-  });
-
-  const onSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    form.reset();
+    dispatch(register(authData));
+    actions.resetForm();
   };
+
+  const validationSchema = SignupSchema;
+
+  const isDesktop = useMediaQuery('(min-width: 1440px)');
 
   return (
     <>
@@ -58,28 +65,84 @@ export const RegisterForm = () => {
               <GoogleAuth />
               <Title>Registration</Title>
               <Formik
-                initialValues={initialValues}
+                initialValues={initialState}
                 validationSchema={validationSchema}
-                onSubmit={onSubmit}
+                onSubmit={handleSubmit}
               >
-                <FormBox>
-                  <InputFormBox>
-                    <InputBox>
-                      <Input type="text" name="name" placeholder="Name" />
-                    </InputBox>
-                    <InputBox>
-                      <Input name="email" type="email" placeholder="Email" />
-                    </InputBox>
-                    <InputBox>
-                      <Input
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                      />
-                    </InputBox>
-                  </InputFormBox>
-                  <Button type="submit">Sign up</Button>
-                </FormBox>
+                {({ errors, touched }) => (
+                  <Form>
+                    <InputFormBox
+                      $gap={errors.name || errors.email || errors.password}
+                    >
+                      <InputBox $gap={errors.name}>
+                        <UserIcon
+                          $success={!errors.name && touched.name}
+                          $error={errors.name && touched.name}
+                        />
+                        <Input
+                          type="text"
+                          name="name"
+                          placeholder="Name"
+                          autoComplete="off"
+                          $success={!errors.name && touched.name}
+                          $error={errors.name && touched.name}
+                        />
+                        {!errors.name && touched.name && <SuccessIcon />}
+                        {errors.name && touched.name && <ErrorIcon />}
+                        {errors.name && (
+                          <ValigationStatus name="name" error={errors.name} />
+                        )}
+                      </InputBox>
+                      <InputBox $gap={errors.email}>
+                        <EmailIcon
+                          $error={errors.email && touched.email}
+                          $success={!errors.email && touched.email}
+                        />
+                        <Input
+                          name="email"
+                          type="email"
+                          placeholder="Email"
+                          autoComplete="off"
+                          $error={errors.email && touched.email}
+                          $success={!errors.email && touched.email}
+                        />
+                        {!errors.email && touched.email && <SuccessIcon />}
+                        {errors.email && touched.email && <ErrorIcon />}
+                        {errors.email && (
+                          <ValigationStatus name="email" error={errors.email} />
+                        )}
+                      </InputBox>
+                      <InputBox
+                        style={{ marginBottom: 0 }}
+                        $gap={errors.password}
+                      >
+                        <PasswordIcon
+                          $error={errors.password && touched.password}
+                          $success={!errors.password && touched.password}
+                        />
+                        <Input
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          autoComplete="off"
+                          $error={errors.password && touched.password}
+                          $success={!errors.password && touched.password}
+                        />
+                        {!errors.password && touched.password && (
+                          <SuccessIcon />
+                        )}
+                        {errors.password && touched.password && <ErrorIcon />}
+                        {errors.password && (
+                          <ValigationStatus
+                            name="password"
+                            error={errors.password}
+                          />
+                        )}
+                      </InputBox>
+                    </InputFormBox>
+                    <Button type="submit">Sign up</Button>
+                  </Form>
+                )}
               </Formik>
             </InnerBox>
           </AuthFormBox>

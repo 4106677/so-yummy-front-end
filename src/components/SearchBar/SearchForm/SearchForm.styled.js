@@ -9,6 +9,7 @@ export const FormWrap = styled(Form)`
   flex-wrap: nowrap;
   display: flex;
   margin: 0 auto;
+  border-radius: 24px 44px;
   @media (min-width: 768px) {
     width: 362px;
   }

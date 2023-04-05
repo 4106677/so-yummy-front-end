@@ -3,13 +3,11 @@ import {
   HeaderStyledLogoLink,
   HeaderStyledNav,
   HeaderStyledNavLink,
-  HeaderStyledUser,
-  HeaderStyledUserText,
 } from './Header.styled';
 import { HeaderLogo } from './HeaderIcons';
 import { RiSearchLine } from 'react-icons/ri';
-import { FaUserCircle } from 'react-icons/fa';
 import { BurgerMenu } from './BurgerMenu';
+import { HeaderUser } from './HeaderUser';
 
 export const Header = () => {
   return (
@@ -32,10 +30,7 @@ export const Header = () => {
             <RiSearchLine />
           </HeaderStyledNavLink>
         </HeaderStyledNav>
-        <HeaderStyledUser>
-          <FaUserCircle />
-          <HeaderStyledUserText>User-Name</HeaderStyledUserText>
-        </HeaderStyledUser>
+   <HeaderUser/>
       </HeaderStyled>
       <BurgerMenu />
     </>
