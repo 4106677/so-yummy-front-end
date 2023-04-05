@@ -1,8 +1,10 @@
+
 import { useState } from 'react';
 import { CategoriesList } from './CategoriesList/CategoriesList';
 import { RecipeList } from './RecipeList/RecipeList';
-import { PageContainer, Title } from 'styled-components';
-
+import { PageContainer, Title } from "./CategoriesPage.styled";
+import { Header } from '../Header/Header';
+// import { Footer } from '../Footer/Footer';
 
 export function CategoriesPage({ categories }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -11,15 +13,17 @@ export function CategoriesPage({ categories }) {
     setSelectedCategory(category.id);
   };
 
-  return (
-    <PageContainer>
-      <Title>Categories</Title>
-      <div>
-        <CategoriesList categories={categories} onCategoryClick={handleCategoryClick} />
-      </div>
-      <div>
-        <RecipeList category={selectedCategory} />
-      </div>
-    </PageContainer>
-  );
+    return (
+        <PageContainer>
+            <Header/>
+            <Title>Categories</Title>
+            <div>
+                <CategoriesList categories={categories} onCategoryClick={handleCategoryClick} />
+            </div>
+            <div>
+                <RecipeList category={selectedCategory} />
+            </div>
+            {/* <Footer/> */}
+        </PageContainer>
+    );
 };

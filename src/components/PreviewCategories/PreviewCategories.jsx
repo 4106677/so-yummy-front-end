@@ -13,11 +13,11 @@ import {
 
 import { getMainCategories } from '../../redux/mainRecipes/operations';
 
-import { selectCatogories } from '../../redux/mainRecipes/selectors';
+import { getContentForMain } from '../../redux/mainRecipes/selectors';
 
 
 export const PreviewCategories = () => {
-    const mainCategories = useSelector(selectCatogories);
+    const mainCategories = useSelector(getContentForMain);
     console.log(mainCategories);
     const dispatch = useDispatch();
     const isDesktop = useMediaQuery({ minWidth: 1440 });
