@@ -34,6 +34,7 @@ export function MyRecipesList({ onDelete }) {
 
   return (
     <MyRecipesContainer>
+      <Header />
       <Title>My recipes</Title>
       {recipes.length > 0 && (
         <RecipeList>
