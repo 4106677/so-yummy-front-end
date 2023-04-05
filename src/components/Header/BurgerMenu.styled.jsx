@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
-import BurgerMenuBackground from '../../images/Header/burgermenubackground.png';
+import BurgerMenuBackground320 from '../../images/Header/burgermenubackground320.png';
+import BurgerMenuBackground320X2 from '../../images/Header/burgermenubackground320x2.png';
+import BurgerMenuBackground480 from '../../images/Header/burgermenubackground480.png';
+import BurgerMenuBackground480X2 from '../../images/Header/burgermenubackground480x2.png';
 
 export const BurgerMenuStyles = {
   bmBurgerButton: {
@@ -11,10 +14,7 @@ export const BurgerMenuStyles = {
     top: '32px',
   },
   bmBurgerBars: {
-    background: 'black',
-  },
-  bmBurgerBarsHover: {
-    background: '#a90000',
+    background: '#22252A',
   },
   bmCrossButton: {
     height: '14px',
@@ -26,7 +26,6 @@ export const BurgerMenuStyles = {
     background: '#22252A',
   },
   bmMenuWrap: {
-    position: 'fixed',
     height: '100%',
     width: '100%',
   },
@@ -37,9 +36,6 @@ export const BurgerMenuStyles = {
     alignItems: 'center',
     textAlign: 'center',
     paddingTop: '184px',
-    backgroundImage: `url(${BurgerMenuBackground})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right 0 bottom 0'
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)',
@@ -50,6 +46,36 @@ export const BurgerMenuContainer = styled.div`
   display: none;
   @media (max-width: 767px) {
     display: block;
+  }
+`;
+
+export const BurgerMenuBackgroundContainer = styled.div`
+  background-image: url(${BurgerMenuBackground320});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right 0 bottom 0;
+  position: absolute;
+  width: 321px;
+  height: 190px;
+  bottom: 0;
+  right: 0;
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+    background-image: url(${BurgerMenuBackground320X2});
+  }
+
+  @media (min-width: 478px) {
+    background-image: url(${BurgerMenuBackground480});
+    width: 591px;
+    height: 190px;
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(${BurgerMenuBackground480X2});
+    }
   }
 `;
 
@@ -74,6 +100,8 @@ export const BurgerMenuLogoLink = styled(Link)`
 `;
 
 export const BurgerMenuStyledNavLink = styled(NavLink)`
+  position: relative;
+  z-index: 1;
   font-family: 'Poppins';
   text-decoration: none;
   margin-bottom: 32px;
@@ -89,7 +117,7 @@ export const BurgerMenuStyledNavLink = styled(NavLink)`
     line-height: 24px;
     margin-bottom: 40px;
   }
-  &:last-child {
+  &:last-of-type {
     margin-bottom: 0;
   }
   &.active {

@@ -11,9 +11,11 @@ export const FormWrap = styled(Form)`
   margin: 0 auto;
   @media (min-width: 768px) {
     width: 362px;
+    border-radius: 22px 42px;
   }
   @media (min-width: 1440px) {
     width: 510px;
+    border-radius: 22px 42px;
   }
 `;
 
@@ -42,9 +44,11 @@ export const FormWrap = styled(Form)`
    @media (min-width: 768px) {
      height: 57px;
      width: 161px;
+     border-radius: 22px 42px;
    }
    @media (min-width: 1440px) {
      height: 70px;
+     border-radius: 22px 42px;
    }
  `;
 

@@ -13,6 +13,7 @@ import { RecipePage } from 'pages/RecipePage/RecipePage';
 import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 
 import { ToastContainer } from 'react-toastify';
+
 // import { CategoriesPage } from '../components/CategoriesPage/CategoriesPage';
 // import { FavoriteRecipeList } from "../components/FavoritePage/FavoriteRecipeList";
 // import { MyRecipesList } from '../components/MyRecipesPage/MyRecipesList';
@@ -20,7 +21,7 @@ import { ToastContainer } from 'react-toastify';
 export const App = () => {
   return (
     <>
-      <Routes>
+ <Routes>
         <Route path="/" element={<WellcomePage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
@@ -34,7 +35,7 @@ export const App = () => {
         <Route path="/my" element={<MyRecipesList />}></Route> */}
       </Routes>
       <GlobalStyle />
-       <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} />
     </>
   );
 };
