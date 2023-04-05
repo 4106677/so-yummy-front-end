@@ -1,4 +1,4 @@
-import { Image, RecipeCardContainer, Title, Text } from 'styled-components';
+import { Image, RecipeCardContainer, Title, Text } from './RecipeCard.styled';
 
 export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = () => {
