@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const Error = styled.h3`
   font-family: 'Poppins';
   font-style: normal;
@@ -20,6 +21,8 @@ export const Error = styled.h3`
   }
 `;
 export const RecipeList = styled.ul`
+  position: relative;
+  z-index: 1;
   list-style-type: none;
   padding: 0;
   margin: 0;

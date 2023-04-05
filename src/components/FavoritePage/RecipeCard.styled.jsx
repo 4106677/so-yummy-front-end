@@ -52,17 +52,33 @@ export const Title = styled.h3`
   }
 `;
 
+export const Icon = styled.img`
+  height: 26px;
+  width: 26px;
+  transform: translate(25%, 25%);
+
+  @media (min-width: 768px) {
+    height: 44px;
+    width: 44px;
+  }
+`;
+
 export const BtnRemove = styled.button`
+  &:hover {
+    background-color: #22252a;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
   height: 24px;
   width: 24px;
-  /* padding: 10px; */
   border-radius: 4px;
   border: none;
   color: #fff;
   background-color: #8baa36;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     height: 38px;
     width: 38px;

@@ -9,8 +9,9 @@ import {
   Time,
   SeeRecipe,
   BtnRemove,
+  Icon,
 } from './RecipeCard.styled';
-import { Dustbin } from './DustbinUsIcon';
+import IconDes from '../../images/icons/Des.svg';
 
 export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = () => {
@@ -24,7 +25,7 @@ export function RecipeCard({ recipe, onDelete }) {
         <TopCard>
           <Title>{recipe.title}</Title>
           <BtnRemove onClick={handleDelete}>
-            <Dustbin />
+            <Icon src={IconDes} alt="Logo" />
           </BtnRemove>
         </TopCard>
         <Text>
