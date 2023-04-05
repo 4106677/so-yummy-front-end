@@ -2,25 +2,37 @@ import { useState, useCallback } from 'react';
 import { HeaderStyledUser, HeaderStyledUserText } from './Header.styled';
 import { FaUserCircle } from 'react-icons/fa';
 import { HeaderUserModal } from './HeaderUserModal';
+import { HeaderLogoutModal } from './HeaderLogoutModal';
 
 export const HeaderUser = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const openModal = e => {
-    togleModal();
+  const openUserModal = e => {
+    togleUserModal();
   };
 
-  const togleModal = useCallback(() => {
-    setShowModal(!showModal);
-  }, [showModal]);
+  const openLogoutModal = e => {
+    togleLogoutModal();
+  };
+
+
+  const togleUserModal = useCallback(() => {
+    setShowUserModal(!showUserModal);
+  }, [showUserModal]);
+
+  const togleLogoutModal = useCallback(() => {
+    setShowLogoutModal(!showLogoutModal);
+  }, [showLogoutModal]);
 
     return (
       <>
-        <HeaderStyledUser onClick={openModal}>
+        <HeaderStyledUser onClick={openUserModal}>
           <FaUserCircle />
           <HeaderStyledUserText>User-Name</HeaderStyledUserText>
         </HeaderStyledUser>
-        {showModal && <HeaderUserModal onClose={togleModal} />}
+        {showUserModal && <HeaderUserModal onClose={togleUserModal} logOutOpen={openLogoutModal} />}
+        {showLogoutModal && <HeaderLogoutModal onClose={togleLogoutModal} />}
       </>
     );
 };
