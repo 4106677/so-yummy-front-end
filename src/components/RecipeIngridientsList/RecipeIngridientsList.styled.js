@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 export const RecipeIngridientsWrapper = styled.div`
-  padding: 32px 16px 0 16px;
+  /* padding: 32px 16px 0 16px; */
+  padding-top: 32px;
   @media screen and (min-width: 768px) {
-    padding: 50px 32px 0 32px;
+    /* padding: 50px 32px 0 32px; */
+    padding-top: 50px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 50px 100px 0 100px;
+    /* padding: 50px 100px 0 100px; */
+    padding-top: 50px;
   }
 `;
 
