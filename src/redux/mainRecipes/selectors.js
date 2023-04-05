@@ -10,7 +10,7 @@ console.log(getFullCategoryList);
 //   Ключи содержат категории: завтрак, разное, веганский, десерты.
 // Значения содержат 4 рецепта для каждой категории
 //   Используйте с функцией "getMainCategories()"
-export const getContentForMain = state => state.outerRecipes.mainCategories;
+export const getContentForMain = state => state.outerRecipes.mainCategories.meals;
 console.log(getContentForMain)
 
 // ------------------ Recipes by Category with LIMIT ------------------

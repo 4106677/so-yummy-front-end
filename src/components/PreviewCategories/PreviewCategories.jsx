@@ -17,16 +17,16 @@ import { getContentForMain } from '../../redux/mainRecipes/selectors';
 
 
 export const PreviewCategories = () => {
-    const mainCategories = useSelector(getContentForMain);
-    console.log(mainCategories);
+    const categories = useSelector(getContentForMain);
+    console.log(categories);
     const dispatch = useDispatch();
     const isDesktop = useMediaQuery({ minWidth: 1440 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
 
     useEffect(() => {
-      if (mainCategories !== null) return;
+      
       dispatch(getMainCategories());
-    }, [dispatch, mainCategories]);
+    }, [dispatch, categories]);
 
     let numCard;
     if (isDesktop) {
@@ -39,20 +39,16 @@ export const PreviewCategories = () => {
 
     return (
       <CategoryList>
-        {mainCategories &&
-          Object.entries(mainCategories).map(([category, meals]) => (
-            <CategoryItem key={category}>
-              <TitlePrew>{category}</TitlePrew>
+        {categories &&
+          Object.entries(categories).map(([_id, meals]) => (
+            <CategoryItem key={_id}>
+              <TitlePrew>{_id}</TitlePrew>
               <CardWrapper>
                 {meals.slice(0, numCard).map(meal => (
-                  
                   <CardMeal key={meal._id} meal={meal} />
-                  
                 ))}
               </CardWrapper>
-              <BtnCategories to={`/categories/${category}`}>
-                See all
-              </BtnCategories>
+              <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
             </CategoryItem>
           ))}
       </CategoryList>
