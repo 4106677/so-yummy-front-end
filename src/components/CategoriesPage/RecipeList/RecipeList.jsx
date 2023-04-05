@@ -5,7 +5,7 @@ export function RecipeList({ categories }) {
 
   useEffect(() => {
     const fetchRecipes = async () => {
-      const response = await fetch(`/api/recipes?category=${categories}`);
+      const response = await fetch(`/byCategory/:category=${categories}`);
       const data = await response.json();
       setRecipes(data);
     };
