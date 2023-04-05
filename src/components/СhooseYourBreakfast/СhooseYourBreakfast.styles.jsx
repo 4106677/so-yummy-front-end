@@ -18,8 +18,8 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 25px;
-    top: 350px;
+    right: 32px;
+    top: 380px;
   }
 
   @media (min-width: 1440px) {
@@ -28,8 +28,8 @@ export const ChooseBlock = styled.div`
     width: 298px;
     height: 114px;
     position: absolute;
-    right: 120px;
-    top: 425px;
+    right: 129px;
+    top: 460px;
   }
 `;
 

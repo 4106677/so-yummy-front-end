@@ -1,43 +1,108 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getMainCategories } from './operations';
+import {
+  getMainCategories,
+  getCategoryList,
+  getAllRecipesByCategory,
+  getLimitedRecipesByCategory,
+  
+  getPopularRecipes,
+  getRecipesByQuery,
+} from './operations';
 
-const handleRequest = state => {
-  state.isLoading = true;
+
+
+const pending = state => {
+  state.isCategoryFetching = true;
+};
+const rejected = state => {
+  state.isCategoryFetching = false;
 };
 
-const handleSuccess = state => {
-  state.isLoading = false;
-  state.error = null;
-};
-
-const handleError = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-
-const MainRecipeSlice = createSlice({
-  name: 'recipe',
-  initialState: {
-    categories: {},
-    isLoading: false,
-    error: null,
+const initialState = {
+  isCategoryFetching: false,
+  categoryList: [],
+  mainCategories: null,
+  limitedRecipesByCategory: [],
+  allRecipesByCategory: [],
+  singleRecipe: null,
+  popularRecipes: [],
+  recipesByQuery: {
+    meals: [],
+    totalHits: 0,
   },
-  extraReducers: {
-    [getMainCategories.pending](state) {
-      handleRequest(state);
-    },
-    [getMainCategories.fulfilled](state, action) {
-      state.items = action.payload;
-      handleSuccess(state, action);
-    },
-    [getMainCategories.rejected](state, action) {
-      handleError(state, action);
-    },
-  },
+  isError: false,
+};
+
+export const outerRecipesSlice = createSlice({
+  name: 'outerRecipes',
+  initialState,
+  extraReducers: builder =>
+    builder
+      .addCase(getCategoryList.fulfilled, (state, { payload }) => {
+        state.categoryList = payload;
+        state.isCategoryFetching = false;
+      })
+      .addCase(getMainCategories.fulfilled, (state, { payload }) => {
+        state.mainCategories = payload;
+        state.isCategoryFetching = false;
+      })
+      .addCase(getLimitedRecipesByCategory.fulfilled, (state, { payload }) => {
+        state.limitedRecipesByCategory = payload;
+        state.isCategoryFetching = false;
+      })
+      .addCase(getAllRecipesByCategory.fulfilled, (state, { payload }) => {
+        state.allRecipesByCategory = payload;
+        state.isCategoryFetching = false;
+      })
+      // .addCase(getOneRecipeById.fulfilled, (state, { payload }) => {
+      //   state.singleRecipe = payload;
+      //   state.isCategoryFetching = false;
+      // })
+      .addCase(getPopularRecipes.fulfilled, (state, { payload }) => {
+        state.popularRecipes = payload;
+        state.isCategoryFetching = false;
+      })
+      .addCase(getRecipesByQuery.fulfilled, (state, { payload }) => {
+        state.recipesByQuery.meals = payload.meals;
+        state.recipesByQuery.totalHits = payload.totalHits;
+        state.isCategoryFetching = false;
+        state.isError = false;
+      })
+      // .addCase(logOut.fulfilled, () => ({ ...initialState }))
+      // .addCase(getRecipesByIngredient.fulfilled, (state, { payload }) => {
+      //   state.isError = false;
+      //   state.recipesByQuery.meals = payload.meals;
+      //   state.recipesByQuery.totalHits = payload.totalHits;
+      //   state.isCategoryFetching = false;
+      // })
+      .addCase(getMainCategories.pending, pending)
+      .addCase(getLimitedRecipesByCategory.pending, pending)
+      .addCase(getAllRecipesByCategory.pending, pending)
+      // .addCase(getOneRecipeById.pending, pending)
+      .addCase(getPopularRecipes.pending, pending)
+      .addCase(getRecipesByQuery.pending, pending)
+      // .addCase(getRecipesByIngredient.pending, pending)
+
+      .addCase(getMainCategories.rejected, rejected)
+      .addCase(getLimitedRecipesByCategory.rejected, rejected)
+      .addCase(getAllRecipesByCategory.rejected, rejected)
+      // .addCase(getOneRecipeById.rejected, rejected)
+      .addCase(getPopularRecipes.rejected, rejected)
+      .addCase(getRecipesByQuery.rejected, state => {
+        state.isCategoryFetching = false;
+        state.isError = true;
+        state.recipesByQuery.meals = [];
+        state.recipesByQuery.totalHits = 0;
+      })
+      // .addCase(getRecipesByIngredient.rejected, state => {
+      //   state.isCategoryFetching = false;
+      //   state.isError = true;
+      //   state.recipesByQuery.meals = [];
+      //   state.recipesByQuery.totalHits = 0;
+      // }),
 });
 
 
 
 
-export const mainRecipeReduser = MainRecipeSlice.reducer;
+export const mainRecipeReduser = outerRecipesSlice.reducer;

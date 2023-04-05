@@ -13,9 +13,21 @@ const authPersistConfig = {
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
+const outerRecipesPersistConfig = {
+  key: 'outerRecipes',
+  storage,
+  whitelist: ['mainCategories', 'categoryList', 'popularRecipes'],
+};
+
+const persistedOuterRecipesReducer = persistReducer(
+  outerRecipesPersistConfig,
+  mainRecipeReduser
+);
+
 export const store = configureStore({
   reducer: {
-    auth: persistedAuthReducer,
+    outerRecipes: persistedOuterRecipesReducer,
+      auth: persistedAuthReducer,
     recipe: mainRecipeReduser,
   },
   middleware: getDefaultMiddleware =>
@@ -24,4 +36,6 @@ export const store = configureStore({
     }),
 });
 
+
 export const persistor = persistStore(store);
+

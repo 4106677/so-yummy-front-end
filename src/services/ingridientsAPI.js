@@ -7,5 +7,4 @@ const ingridientsInstance = axios.create({
 
 export const getAllIngridients = (search) => {
    return ingridientsInstance.get('/ingredients/list', {params: {search}});
-}
- 
+ }

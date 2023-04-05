@@ -1,15 +1,16 @@
 import { SearchBar } from "components/SearchBar/SearchBar";
 import { SearchHeader } from "./SearchPage.styled";
-import { SearchedRecipesList } from "components/SearchedRecipesList/SearchedRecipesList"
+import { MainConteiner } from "components/Container/Container.styled";
+
 
 
 export const SearchPage = () => {
-  
     return (
       <div>
-        <SearchHeader>Search</SearchHeader>
-        <SearchBar/>
-        <SearchedRecipesList />
+        <MainConteiner>
+          <SearchHeader>Search</SearchHeader>
+          <SearchBar />
+        </MainConteiner>
       </div>
     );
 }

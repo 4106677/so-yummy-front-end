@@ -1,38 +1,98 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import axios from 'axios';
+import {
+  getSetOfCategoriestAPI,
+  getCategoryListAPI,
+  getAllRecipesByCategoryAPI,
+  getLimitedRecipesByCategoryAPI,
+  getOneRecipeByIdAPI,
+  getPopularRecipesAPI,
+  getRecipesByQueryAPI,
+  
+} from '../../services/TheMealAPI';
 
-
-axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com';
-
-export const getRecipesByCategoryAPI = category => {
-  return axios
-    .get(`/recipes/main-page/${category}`)
-    .then(({ data }) => {
-      console.log(data);
-      return data;
-    });
-};
-
-export const getMainCategories = createAsyncThunk(
-  'main/fetchRecipe',
-  async (_, thunkAPI) => {
+export const getCategoryList = createAsyncThunk(
+  'outerRecipes/categoryList',
+  async (_, { rejectWithValue }) => {
     try {
-      const breakfast = await getRecipesByCategoryAPI('breakfast');
-      const miscellaneous = await getRecipesByCategoryAPI('miscellaneous');
-      const vegan = await getRecipesByCategoryAPI('vegan');
-      const desserts = await getRecipesByCategoryAPI('dessert');
-
-      const data = {
-        breakfast,
-        miscellaneous,
-        vegan,
-        desserts,
-      };
-      console.log('main recipes', data);
+      const data = await getCategoryListAPI();
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getMainCategories = createAsyncThunk(
+  'outerRecipes/mainCategories',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getSetOfCategoriestAPI();
+      return data.mainCategories;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getAllRecipesByCategory = createAsyncThunk(
+  'outerRecipes/allRecipes',
+  async (category, { rejectWithValue }) => {
+    try {
+      const data = await getAllRecipesByCategoryAPI(category);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getLimitedRecipesByCategory = createAsyncThunk(
+  'outerRecipes/limitedRecipes',
+  async (params, { rejectWithValue }) => {
+    try {
+      const { category, limit } = params;
+      const data = await getLimitedRecipesByCategoryAPI(category, limit);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getOneRecipeById = createAsyncThunk(
+  'outerRecipes/recipe',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await getOneRecipeByIdAPI(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getPopularRecipes = createAsyncThunk(
+  'outerRecipes/popular',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getPopularRecipesAPI();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getRecipesByQuery = createAsyncThunk(
+  'outerRecipes/recipesByQuery',
+  async (params, { rejectWithValue }) => {
+    try {
+      const { query, page, per_page } = params;
+      const data = await getRecipesByQueryAPI(query, page, per_page);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
     }
   }
 );
