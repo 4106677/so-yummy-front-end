@@ -3,13 +3,14 @@ import {
   HeaderUserModalBodyStyled,
   HeaderUserModalContainerStyled,
   HeaderUserModalEditButton,
-  HeaderUserModalLogoutButton
+  HeaderUserModalLogoutButton,
+  HeaderUserModalContainer
 } from './HeaderModals.styled';
 import { useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-export const HeaderUserModal = ({ onClose, logOutOpen }) => {
+export const HeaderUserModal = ({ onClose, editOpen, logOutOpen }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -30,23 +31,30 @@ export const HeaderUserModal = ({ onClose, logOutOpen }) => {
 
   return (
     <HeaderUserModalOverlayStyled onClick={handleOverlayClick}>
-      <HeaderUserModalBodyStyled>
-        <HeaderUserModalContainerStyled>
-          <HeaderUserModalEditButton>
-            Edit profile
-            <FiEdit2></FiEdit2>
-          </HeaderUserModalEditButton>
-          <HeaderUserModalLogoutButton
-            onClick={() => {
-              onClose();
-              logOutOpen();
-            }}
-          >
-            Log-out
-            <AiOutlineArrowRight />
-          </HeaderUserModalLogoutButton>
-        </HeaderUserModalContainerStyled>
-      </HeaderUserModalBodyStyled>
+      <HeaderUserModalContainer onClick={handleOverlayClick}>
+        <HeaderUserModalBodyStyled>
+          <HeaderUserModalContainerStyled>
+            <HeaderUserModalEditButton onClick={
+              () => {
+                onClose();
+                editOpen();
+              }
+            }>
+              Edit profile
+              <FiEdit2></FiEdit2>
+            </HeaderUserModalEditButton>
+            <HeaderUserModalLogoutButton
+              onClick={() => {
+                onClose();
+                logOutOpen();
+              }}
+            >
+              Log-out
+              <AiOutlineArrowRight />
+            </HeaderUserModalLogoutButton>
+          </HeaderUserModalContainerStyled>
+        </HeaderUserModalBodyStyled>
+      </HeaderUserModalContainer>
     </HeaderUserModalOverlayStyled>
   );
 };

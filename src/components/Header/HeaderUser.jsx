@@ -1,16 +1,23 @@
 import { useState, useCallback } from 'react';
-import { HeaderStyledUser, HeaderStyledUserText } from './Header.styled';
+import { HeaderStyledUser, HeaderStyledUserText, HeaderStyledUserImg } from './Header.styled';
 import { FaUserCircle } from 'react-icons/fa';
 import { HeaderUserModal } from './HeaderUserModal';
+import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
 
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
 
   const openUserModal = e => {
     togleUserModal();
   };
+
+   const openEditModal = e => {
+     togleEditModal();
+   };
 
   const openLogoutModal = e => {
     togleLogoutModal();
@@ -21,6 +28,10 @@ export const HeaderUser = () => {
     setShowUserModal(!showUserModal);
   }, [showUserModal]);
 
+    const togleEditModal = useCallback(() => {
+      setShowEditModal(!showEditModal);
+    }, [showEditModal]);
+
   const togleLogoutModal = useCallback(() => {
     setShowLogoutModal(!showLogoutModal);
   }, [showLogoutModal]);
@@ -28,11 +39,16 @@ export const HeaderUser = () => {
     return (
       <>
         <HeaderStyledUser onClick={openUserModal}>
-          <FaUserCircle />
-          <HeaderStyledUserText>User-Name</HeaderStyledUserText>
+          {/* {
+          ? <HeaderStyledUserImg alt="user-avatar" />
+          : 
+          } */}
+         <FaUserCircle />
+          <HeaderStyledUserText>User-name</HeaderStyledUserText>
         </HeaderStyledUser>
-        {showUserModal && <HeaderUserModal onClose={togleUserModal} logOutOpen={openLogoutModal} />}
+        {showUserModal && <HeaderUserModal onClose={togleUserModal} editOpen={openEditModal} logOutOpen={openLogoutModal} />}
         {showLogoutModal && <HeaderLogoutModal onClose={togleLogoutModal} />}
+        {showEditModal && <HeaderEditModal onClose={togleEditModal} />}
       </>
     );
 };
