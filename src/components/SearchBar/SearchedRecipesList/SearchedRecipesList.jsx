@@ -7,22 +7,24 @@
 
   export const SearchedRecipesList = ({ items = [] }) => {
   console.log(items);
-
+    const recipeCreator = items.map(({ _id, preview, title, ingredients }) => {
+      <li key={_id}>
+      <a href={preview} alt="dish"></a>
+      <p>{title}</p>
+      <p>{ingredients}</p>
+    </li>
+    });
+    
   return (
     <div>
-      {items.length === 0 ? (
+      {items ? (
         <NotFoundWrap>
           <NotFoundPhoto></NotFoundPhoto>
           <NotFoundText>Try looking for something else...</NotFoundText>
         </NotFoundWrap>
       ) : (
         <ListWrap>
-          {items.map(item => (
-            <li key={item._id}>
-              <img src={item.preview} alt={item.title}></img>
-              <p>{item.title}</p>
-            </li>
-          ))}
+              {recipeCreator}
         </ListWrap>
       )}
     </div>

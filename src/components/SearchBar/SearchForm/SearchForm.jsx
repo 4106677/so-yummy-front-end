@@ -39,4 +39,4 @@ export const SearchForm = ({ onSubmit }) => {
         </Formik>
       </div>
     );
-  };
+  }; 

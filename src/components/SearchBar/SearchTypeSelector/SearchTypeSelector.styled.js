@@ -37,6 +37,7 @@ export const Select = styled.select`
   outline: none;
   border-radius: 6px 6px 6px 6px;
   padding-left: 14px;
+  padding-right: 15px;
 
   font-family: 'Poppins';
   height: 2rem;
