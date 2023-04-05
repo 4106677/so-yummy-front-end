@@ -82,7 +82,7 @@ export const SearchBar = () => {
   return (
     <div>
       <SearchForm onSubmit={updateSearch} />
-      <SearchTypeSelector onChange={updateTypeSearch} />
+      <SearchTypeSelector value={searchType} onChange={updateTypeSearch} />
       {isLoading && <Loader />}
       <SearchedRecipesList items={recipes} />
     </div>
