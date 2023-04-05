@@ -1,32 +1,33 @@
   import {
-  ListWrap,
-  NotFoundPhoto,
-  NotFoundWrap,
-  NotFoundText,
-} from './SearchedRecipesList.styled';
+    ListWrap,
+    NotFoundPhoto,
+    NotFoundWrap,
+    NotFoundText,
+    Image,
+    RecipeTitle,
+    RecipeWrap
+  } from './SearchedRecipesList.styled';
 
-  export const SearchedRecipesList = ({ items = [] }) => {
+export const SearchedRecipesList = ({ items = [] }) => {
   console.log(items);
-    const recipeCreator = items.map(({ _id, preview, title, ingredients }) => {
-      <li key={_id}>
-      <a href={preview} alt="dish"></a>
-      <p>{title}</p>
-      <p>{ingredients}</p>
-    </li>
-    });
+  const recipeCreator = items.map(({ _id, preview, title }) => (
+    <RecipeWrap key={_id}>
+      <a href={preview}>
+        <Image src={preview} alt="dish" />
+      </a>
+      <RecipeTitle>{title}</RecipeTitle>
+    </RecipeWrap>
+  ));
     
   return (
     <div>
       {items ? (
+        <ListWrap>{recipeCreator}</ListWrap>
+      ) : (
         <NotFoundWrap>
           <NotFoundPhoto></NotFoundPhoto>
           <NotFoundText>Try looking for something else...</NotFoundText>
-        </NotFoundWrap>
-      ) : (
-        <ListWrap>
-              {recipeCreator}
-        </ListWrap>
-      )}
-    </div>
-  );
-}; 
+        </NotFoundWrap>)}
+    </div>);
+
+}

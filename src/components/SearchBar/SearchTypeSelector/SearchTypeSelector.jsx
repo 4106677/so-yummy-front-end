@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Label, SelectWrapper, Select, Option } from "./SearchTypeSelector.styled";
 
-export const SearchTypeSelector = () => {
+export const SearchTypeSelector = ({onChange}) => {
      const [searchType, setSearchType] = useState('title');
 
      const handleSelectChange = event => {

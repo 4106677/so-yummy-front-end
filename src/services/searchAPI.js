@@ -4,13 +4,13 @@ const recipesSearchInstance = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
 });
 
-export const getAllRecipesSearch = async (search, searchType) => {
+export const getAllRecipesSearch = async (search, searchType, page) => {
   try {
-    const  data  = await recipesSearchInstance.get(
-      `/recipes/search/${search}?type=${searchType}&pages=1&limit=6`
+    const  response  = await recipesSearchInstance.get(
+      `/recipes/search/${search}?type=${searchType}&pages${page}1&limit=6`
     );
-    console.log(data);
-    return data;
+    console.log(response.data);
+    return response.data;
   } catch (err) {
     console.log(err.message);
   }

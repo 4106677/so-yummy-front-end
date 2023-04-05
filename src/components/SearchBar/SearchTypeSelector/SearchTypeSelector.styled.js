@@ -23,6 +23,7 @@ export const SelectWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   @media (min-width: 1440px) {
     margin-top: 1.75rem;
   }
