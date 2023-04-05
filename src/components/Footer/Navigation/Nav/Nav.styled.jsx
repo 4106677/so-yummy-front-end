@@ -9,6 +9,10 @@ export const FooterNav = styled.nav`
   margin-left: auto;
   margin-right: auto;
   margin-top: 32px;
+  @media(min-width: 768px){
+    margin: 0;
+    justify-content: flex-start;
+  }
 `;
 export const FooterNaviLink = styled(NavLink)`
     font-family: 'Poppins';
@@ -19,5 +23,10 @@ export const FooterNaviLink = styled(NavLink)`
     letter-spacing: -0.02em;
     color: white;
     margin-bottom 14px;
-    
+      &:last-child{
+    margin-bottom: 0;
+  }
+    @media(min-width: 768px){
+      margin-bottom 20px;
+  }
 `;
