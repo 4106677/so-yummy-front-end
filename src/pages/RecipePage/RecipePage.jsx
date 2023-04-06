@@ -12,13 +12,7 @@ const BASE_URL = 'https://recipes-becend-49lg.onrender.com/';
 
 const getRecipeDetails = async id => {
   const response = await axios.get(`${BASE_URL}recipes/byId/${id}`);
-
   return response;
-};
-
-const getIngredientByID = async id => {
-  const response = await axios.get(`${BASE_URL}ingredients/byId/${id}`);
-  return response.data[0];
 };
 
 export const RecipePage = () => {
@@ -50,20 +44,7 @@ export const RecipePage = () => {
         const preparationData = { thumb, preview, instructions };
         setPreparationData(preparationData);
 
-        const ingridientsData = await Promise.all(
-          ingredients.map(async item => {
-            const response = await getIngredientByID(item.id);
-            // console.log(response);
-            const data = {
-              measure: item.measure,
-              name: response.ttl,
-              img: response.thb,
-              id: response._id,
-            };
-            return data;
-          })
-        );
-        setIngridientsData(ingridientsData);
+        setIngridientsData(ingredients);
       } catch (error) {
         setError(error);
       } finally {
@@ -98,3 +79,16 @@ export const RecipePage = () => {
     </>
   );
 };
+
+// const ingridientsData = await Promise.all(
+//   ingredients.map(async item => {
+//     const response = await getIngredientByID(item.id);
+//     const data = {
+//       measure: item.measure,
+//       name: response.ttl,
+//       img: response.thb,
+//       id: response._id,
+//     };
+//     return data;
+//   })
+// );

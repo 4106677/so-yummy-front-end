@@ -22,19 +22,19 @@ export const RecipeIngridientsList = ({ ingridientsData }) => {
       </IngridientsTableHeader>
       <IngridientsList>
         {ingridientsData.map(ingridient => (
-          <IngridientsItem key={ingridient.id}>
-            {ingridient.img ? (
-              <IngridientImage src={ingridient.img} alt={ingridient.name} />
+          <IngridientsItem key={ingridient._id}>
+            {ingridient.thb ? (
+              <IngridientImage src={ingridient.thb} alt={ingridient.ttl} />
             ) : (
               <IngridientPlaceholder>No Image</IngridientPlaceholder>
             )}
             <IngridientInfo>
-              <IngridientName>{ingridient.name}</IngridientName>
+              <IngridientName>{ingridient.ttl}</IngridientName>
               <IngridientDetails>
                 <IngridientQuantity>{ingridient.measure}</IngridientQuantity>
                 <IngridientCheck>
-                  <input type={'checkbox'} id={ingridient.id} />
-                  <label htmlFor={ingridient.id}></label>
+                  <input type={'checkbox'} id={ingridient._id} />
+                  <label htmlFor={ingridient._id}></label>
                 </IngridientCheck>
               </IngridientDetails>
             </IngridientInfo>
