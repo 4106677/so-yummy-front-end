@@ -9,19 +9,19 @@ import { FollowUsNav, FollowUsLink } from './FollowUs.styled';
 export const FollowUs = () => {
     return (
         <FollowUsNav>
-            <FollowUsLink>
+            <FollowUsLink to='https://facebook.com'>
                 <Facebook/>
             </FollowUsLink>
 
-            <FollowUsLink>
+            <FollowUsLink to='https://www.instagram.com/'>
                 <Instagram/>
             </FollowUsLink>
 
-            <FollowUsLink>
+            <FollowUsLink to='https://twitter.com/'>
                 <Twitter/>
             </FollowUsLink>
 
-            <FollowUsLink>
+            <FollowUsLink to="https://www.youtube.com">
                 <YouTube/>
             </FollowUsLink>
         </FollowUsNav>
