@@ -1,34 +1,42 @@
 import {
   RecipeContainer,
-  BagImageLeft,
-  BagImageRight,
-  RectangleBlack,
-  RectangleGreenOne,
-  RectangleGreenTwo,
+  DecorativeSquare,
+  Section,
+  // BagImageLeft,
+  // BagImageRight,
+  // RectangleBlack,
+  // RectangleGreenOne,
+  // RectangleGreenTwo,
 } from './MyRecipePage.styled';
+import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
+
 import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
 import { Header } from 'components/Header/Header';
 import { Footer } from 'components/Footer/Footer';
 import { DeleteMyRecipeById } from '../../services/myRecipes';
 
-import BgImgLeft from '../../images/MayRecipesPage/myrecipespagev1x1.png';
-import BgImgRight from '../../images/MayRecipesPage/myrecipespagev2x1.png';
-import Rectangle8 from '../../images/MayRecipesPage/Rectangle8.png';
-import Rectangle9 from '../../images/MayRecipesPage/Rectangle9.png';
-import Rectangle11 from '../../images/MayRecipesPage/Rectangle11.png';
-
 export const MyRecipePage = () => {
   return (
     <RecipeContainer>
-      <RectangleGreenOne src={Rectangle8} alt="Green leafs" />
-      <RectangleBlack src={Rectangle9} alt="Green leafs" />
-      <RectangleGreenTwo src={Rectangle11} alt="Green leafs" />
-
       <Header />
-      <MyRecipesList onDelete={DeleteMyRecipeById} />
+      <Section>
+        <DecorativeSquare
+          data-1
+          color="#8BAA36"
+          top="3.375rem"
+          left="14.75rem"
+        />
+        <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
+        <DecorativeSquare
+          data-3
+          color="#8BAA36"
+          top="4.125rem"
+          right="4.5rem"
+        />
+
+        <MyRecipesList onDelete={DeleteMyRecipeById} />
+      </Section>
       <Footer />
-      <BagImageLeft src={BgImgLeft} alt="Green leafs" />
-      <BagImageRight src={BgImgRight} alt="Green leafs" />
     </RecipeContainer>
   );
 };

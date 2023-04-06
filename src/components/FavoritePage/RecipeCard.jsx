@@ -14,9 +14,10 @@ import {
 import IconDes from '../../images/icons/Des.svg';
 
 export function RecipeCard({ recipe, onDelete }) {
-  const handleDelete = () => {
-    onDelete(recipe.id);
+  const handleDelete = ev => {
+    onDelete(ev.target.id);
   };
+  console.log(recipe);
 
   return (
     <Recipeitem>
@@ -24,16 +25,11 @@ export function RecipeCard({ recipe, onDelete }) {
       <Info>
         <TopCard>
           <Title>{recipe.title}</Title>
-          <BtnRemove onClick={handleDelete}>
-            <Icon src={IconDes} alt="Logo" />
+          <BtnRemove id={recipe._id} onClick={handleDelete}>
+            <Icon id={recipe._id} src={IconDes} alt="Icon" />
           </BtnRemove>
         </TopCard>
-        <Text>
-          {recipe.texst} Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Eligendi, in iste, error dolorum sunt eius sapiente magnam
-          deserunt, alias quaerat fugit. Tenetur necessitatibus quos minus sed
-          inventore!
-        </Text>
+        <Text>{recipe.texst}</Text>
         <BottomCard>
           <Time>{recipe.time} min</Time>
           <SeeRecipe>See recipe</SeeRecipe>
