@@ -26,5 +26,4 @@ export const getAllRecipesSearchIngredients = async (search, page, limit) => {
   } catch (err) {
     console.log(err.message);
   }
-}; 
-
+};
