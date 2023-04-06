@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+const getToken = () => {
+  const serializedState = localStorage.getItem('persist:auth');
+  const serializedStateParse =
+    serializedState === null ? undefined : JSON.parse(serializedState);
+  return serializedStateParse.token;
+};
+// axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
+
 const MyRecipesBase = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
   headers: {
@@ -8,8 +16,10 @@ const MyRecipesBase = axios.create({
   },
 });
 export const getAllRecipesSearch = async () => {
-  const { data } = await MyRecipesBase.get(`/recipes/ownRecipes/getRecipes`);
-  return data.result;
+  const { data } = await MyRecipesBase.get(
+    `/recipes/ownRecipes/getRecipes?type=title&pages=1&limit=6`
+  );
+  return data;
 };
 
 export const DeleteMyRecipeById = async id => {

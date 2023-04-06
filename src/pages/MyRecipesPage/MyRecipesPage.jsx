@@ -8,7 +8,7 @@ import {
   // RectangleGreenOne,
   // RectangleGreenTwo,
 } from './MyRecipePage.styled';
-import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
+// import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
 
 import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
 import { Header } from 'components/Header/Header';
@@ -19,6 +19,7 @@ export const MyRecipePage = () => {
   return (
     <RecipeContainer>
       <Header />
+
       <Section>
         <DecorativeSquare
           data-1

@@ -181,7 +181,7 @@ export const DecorativeSquare = styled.div`
 
     &[data-1] {
       top: 85px;
-      left: 30%;
+      left: 219px;
     }
 
     &[data-2] {
@@ -197,13 +197,13 @@ export const DecorativeSquare = styled.div`
     }
   }
 
-  @media screen and (min-width: 1240px) {
+  @media screen and (min-width: 1440px) {
     width: 0.875rem;
     height: 0.875rem;
 
     &[data-1] {
       top: 116px;
-      left: 18%;
+      left: 328px;
     }
 
     &[data-2] {

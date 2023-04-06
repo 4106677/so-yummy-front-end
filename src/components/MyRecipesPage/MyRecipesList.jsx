@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 
 import { RecipeCard } from '../FavoritePage/RecipeCard';
-import { Header } from '../../components/Header/Header';
+// import { Header } from '../../components/Header/Header';
 
 export function MyRecipesList() {
   const [recipes, setRecipes] = useState([]);
@@ -40,7 +40,7 @@ export function MyRecipesList() {
 
   return (
     <MyRecipesContainer>
-      <Header />
+      {/* <Header /> */}
       <Title>My recipes</Title>
       {recipes.length > 0 && (
         <RecipeList>
