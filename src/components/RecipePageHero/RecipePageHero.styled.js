@@ -74,8 +74,9 @@ export const RecipeAddToFavotite = styled.button`
   padding: 10px 18px;
   font-size: 10px;
   line-height: 1.5;
-
   color: #22252a;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     background-color: #8baa36;
     cursor: pointer;

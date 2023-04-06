@@ -18,10 +18,13 @@ const rejected = state => {
   state.isCategoryFetching = false;
 };
 
-const initialState = {
+
+export const outerRecipesSlice = createSlice({
+  name: 'outerRecipes',
+  initialState: {
   isCategoryFetching: false,
   categoryList: [],
-  mainCategories: null,
+  mainCategories: [],
   limitedRecipesByCategory: [],
   allRecipesByCategory: [],
   singleRecipe: null,
@@ -31,11 +34,8 @@ const initialState = {
     totalHits: 0,
   },
   isError: false,
-};
+},
 
-export const outerRecipesSlice = createSlice({
-  name: 'outerRecipes',
-  initialState,
   extraReducers: builder =>
     builder
       .addCase(getCategoryList.fulfilled, (state, { payload }) => {
@@ -43,7 +43,7 @@ export const outerRecipesSlice = createSlice({
         state.isCategoryFetching = false;
       })
       .addCase(getMainCategories.fulfilled, (state, { payload }) => {
-        state.mainCategories = payload;
+        state.mainCategories= payload.data;
         state.isCategoryFetching = false;
       })
       .addCase(getLimitedRecipesByCategory.fulfilled, (state, { payload }) => {

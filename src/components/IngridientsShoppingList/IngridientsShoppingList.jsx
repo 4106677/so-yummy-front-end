@@ -8,10 +8,13 @@ import {
   getAllShoppingList,
   deleteShoppingList,
 } from '../../services/shoppingListAPI';
+import { Loader } from "components/Loader/Loader";
 
 export const IngridientsShoppingList = () => {
   const [ingridients, setIngridients] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   console.log(deleteId);
 
     const elements = ingridients.map(
@@ -28,13 +31,16 @@ export const IngridientsShoppingList = () => {
   ); 
   
   useEffect(() => {
+    setIsLoading(true);
     const fetchIngridients = async () => {
       try { 
         const data = await getAllShoppingList();
         setIngridients(data);
+        setIsLoading(false);
       }
       catch ({ response }) {
         console.log(response.data.message);
+        setIsLoading(false);
       }
     }
     fetchIngridients();
@@ -63,6 +69,7 @@ export const IngridientsShoppingList = () => {
           <ShopTitle>Remove</ShopTitle>
         </ShopWrap>
       </ShopWrapper>
+      {isLoading && <Loader />}
       <ul>{elements}</ul>
     </>
   );

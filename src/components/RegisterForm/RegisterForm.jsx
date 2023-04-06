@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import {
   BackgroundImage,
@@ -25,28 +25,30 @@ import {
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
+
 import ValigationStatus from './validationStatus';
-// import useForm from '../sHooks/useForm';
-
 import { SignupSchema } from '../../validation/inputsValidationSchema';
-// import initialState from './initialState';
 
-export const RegisterForm = ({ onSubmit }) => {
-  // const { state, handleChange, handleSubmit } = useForm({
-  //   initialState,
-  //   onSubmit,
-  // });
+import { register } from '../../redux/auth/operations';
+
+export const RegisterForm = () => {
   const initialState = {
     name: '',
     email: '',
     password: '',
   };
 
-  const handleSubmit = () => {
-    console.log('initialState');
-  };
+  const dispatch = useDispatch();
+  const handleSubmit = (values, actions) => {
+    const authData = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
 
-  // const { name, email, password } = value;
+    dispatch(register(authData));
+    actions.resetForm();
+  };
 
   const validationSchema = SignupSchema;
 
@@ -78,8 +80,6 @@ export const RegisterForm = ({ onSubmit }) => {
                           $error={errors.name && touched.name}
                         />
                         <Input
-                          // value={name}
-                          // onSubmit={handleChange}
                           type="text"
                           name="name"
                           placeholder="Name"
@@ -99,8 +99,6 @@ export const RegisterForm = ({ onSubmit }) => {
                           $success={!errors.email && touched.email}
                         />
                         <Input
-                          // value={email}
-                          // onSubmit={handleChange}
                           name="email"
                           type="email"
                           placeholder="Email"
@@ -123,8 +121,6 @@ export const RegisterForm = ({ onSubmit }) => {
                           $success={!errors.password && touched.password}
                         />
                         <Input
-                          // value={password}
-                          // onSubmit={handleChange}
                           name="password"
                           type="password"
                           placeholder="Password"
