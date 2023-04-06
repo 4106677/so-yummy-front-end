@@ -5,11 +5,10 @@ axios.defaults.baseURL =
 
 export const getSetOfCategoriestAPI = () => {
   return axios.get('/recipes/main-page').then(({ data }) => {
-    console.log(data)
-    return data;
+    console.log(data.data);
+    return data.data;
   });
 };
-
 export const getCategoryListAPI = () => {
   return axios.get('/recipes/category-list ').then(({ data }) => {
     return data;
@@ -65,3 +64,4 @@ export const getRecipesByIngredientAPI = (
       return data;
     });
 };
+

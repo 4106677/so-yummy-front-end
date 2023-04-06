@@ -35,8 +35,9 @@ export const ButtonOthCtgWrap = styled.div`
   margin: 40px 0px 100px;
   display: flex;
   justify-content: center;
-  
+
   ${ButtonSkewStyle} {
+    border: 1px solid rgb(139, 170, 54);
     color: '#22252A';
     &:hover {
       color: '#FAFAFA';
