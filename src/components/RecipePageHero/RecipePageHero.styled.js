@@ -35,7 +35,6 @@ export const RecipeHeroWrapper = styled.div`
 `;
 
 export const RecipeTitle = styled.h1`
-  margin: 0; //убрать позже
   font-weight: 600;
   font-size: 24px;
   line-height: 1;
@@ -47,8 +46,8 @@ export const RecipeTitle = styled.h1`
     margin-bottom: 24px;
   }
 `;
+
 export const RecipeDescription = styled.p`
-  margin: 0; //убрать позже
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: -0.02em;
@@ -63,9 +62,7 @@ export const RecipeDescription = styled.p`
 `;
 export const RecipeAddToFavotite = styled.button`
   display: inline-block;
-  width: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  min-width: 150px;
   background-color: transparent;
   color: #23262a;
   border-radius: 24px 44px;
@@ -93,6 +90,7 @@ export const RecipeAddToFavotite = styled.button`
     margin-bottom: 48px;
   }
 `;
+
 export const RecipeTimer = styled.div`
   display: flex;
   justify-content: center;
@@ -108,7 +106,6 @@ export const RecipeTimer = styled.div`
 `;
 
 export const RecipeTime = styled.p`
-  margin: 0;
   font-weight: 500;
   font-size: 10px;
   line-height: 1.4;
@@ -116,7 +113,5 @@ export const RecipeTime = styled.p`
   color: #23262a;
   @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
-  @media screen and (min-width: 1440px) {
   }
 `;

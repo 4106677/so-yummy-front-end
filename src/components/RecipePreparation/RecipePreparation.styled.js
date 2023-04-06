@@ -28,7 +28,6 @@ export const RecipePreparationWrapper = styled.div`
   }
 
   h2 {
-    margin: 0;
     margin-bottom: 28px;
     font-weight: 600;
     font-size: 24px;
