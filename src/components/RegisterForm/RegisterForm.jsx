@@ -146,7 +146,7 @@ export const RegisterForm = () => {
               </Formik>
             </InnerBox>
           </AuthFormBox>
-          <LinkStyled to="/signin">Sign In</LinkStyled>
+          <LinkStyled to="/login">Sign In</LinkStyled>
         </MainWrapper>
       </Container>
     </>
