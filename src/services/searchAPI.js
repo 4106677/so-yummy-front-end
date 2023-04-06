@@ -6,7 +6,7 @@ const recipesSearchInstance = axios.create({
 
 export const getAllRecipesSearch = async (search, searchType, page, limit) => {
   try {
-    const  response  = await recipesSearchInstance.get(
+    const response = await recipesSearchInstance.get(
       `/recipes/search/${search}?type=${searchType}&pages${page}1&limit=${limit}`
     );
     console.log(response.data);
@@ -14,5 +14,4 @@ export const getAllRecipesSearch = async (search, searchType, page, limit) => {
   } catch (err) {
     console.log(err.message);
   }
-}; 
-
+};
