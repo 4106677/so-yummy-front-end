@@ -14,7 +14,7 @@ export const Footer = () => {
         <Navigation />
       </FooterSection>
       
-      <ARRdiv>
+        <ARRdiv>
         <ARR>© 2023 All Rights Reserved.</ARR>
         <ToS>Terms of Service</ToS>
       </ARRdiv>
