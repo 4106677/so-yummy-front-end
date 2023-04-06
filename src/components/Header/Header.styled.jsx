@@ -102,6 +102,18 @@ export const HeaderStyledUser = styled.div`
   }
 `;
 
+
+export const HeaderStyledUserImg = styled.img`
+border-radius: 50px;
+    width: 44px;
+    height: 44px;
+    margin-right: 14px;
+    @media (max-width: 477px) {
+      width: 34px;
+      height: 34px;
+  }
+`;
+
 export const HeaderStyledUserText = styled.p`
   font-family: 'Poppins';
   font-style: normal;

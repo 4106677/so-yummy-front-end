@@ -43,7 +43,7 @@ export const ButtonSkewStyle = styled.button`
     }
   }};
   outline: none;
-  border: none;
+  /* border: none; */
 
   border-top-left-radius: 30px;
   border-top-right-radius: 80px;

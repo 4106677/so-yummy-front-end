@@ -32,7 +32,11 @@ export const AboutList = styled.ul`
         margin-left: auto;
         margin-right: auto;
         margin-top: 24px;
-          margin-right: 175px;
+        margin-right: 175px;
+  }
+  @media (min-width: 1440px) {
+     margin-right: 159px;
+     width: 418px;
   }
 `
 
@@ -47,6 +51,10 @@ export const AboutItem = styled.li`
   margin-bottom: 10px;
   &:last-child{
     margin-bottom: 0;
+  }
+  @media (min-width: 1440px){
+    font-size: 18px;
+    line-height: 24px;
   }
 `
 
@@ -65,5 +73,6 @@ export const WrapperLogoNavSub = styled.div`
 display: contents;
 @media (min-width: 1440px){
     display: flex;
+    
 }
 `

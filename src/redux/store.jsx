@@ -1,7 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mainRecipeReduser } from './mainRecipes/slice';
-import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+import { mainRecipeReduser } from './mainRecipes/slice';
+import { authReducer } from './auth/slice';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const outerRecipesPersistConfig = {
   key: 'outerRecipes',
@@ -9,21 +19,23 @@ const outerRecipesPersistConfig = {
   whitelist: ['mainCategories', 'categoryList', 'popularRecipes'],
 };
 
-
-
 const persistedOuterRecipesReducer = persistReducer(
   outerRecipesPersistConfig,
   mainRecipeReduser
 );
 
-
 export const store = configureStore({
   reducer: {
     outerRecipes: persistedOuterRecipesReducer,
+      auth: persistedAuthReducer,
+    recipe: mainRecipeReduser,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
 });
+
+
 export const persistor = persistStore(store);
+
