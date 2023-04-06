@@ -1,5 +1,4 @@
 import { Formik, Form } from 'formik';
-import { useDispatch } from 'react-redux';
 
 import {
   BackgroundImage,
@@ -21,36 +20,32 @@ import {
   Input,
   LinkStyled,
   GoogleAuth,
+  GoogleLink,
   // WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
+import { useDispatch } from 'react-redux';
 
 import ValigationStatus from './validationStatus';
-import { SignupSchema } from '../../validation/inputsValidationSchema';
+// import { SignupSchema } from '../../validation/inputsValidationSchema';
 
 import { register } from '../../redux/auth/operations';
+import { Link } from 'components/Socials/Socials.styled';
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
+  const handleSubmit = data => {
+    dispatch(register(data));
+    console.log(data);
+  };
   const initialState = {
     name: '',
     email: '',
     password: '',
   };
 
-  const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    const authData = {
-      name: values.name,
-      email: values.email,
-      password: values.password,
-    };
-
-    dispatch(register(authData));
-    actions.resetForm();
-  };
-
-  const validationSchema = SignupSchema;
+  // const validationSchema = SignupSchema;
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -62,11 +57,13 @@ export const RegisterForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
-              <GoogleAuth />
+              <GoogleLink to="https://recipes-becend-49lg.onrender.com/auth/google">
+                <GoogleAuth />
+              </GoogleLink>
               <Title>Registration</Title>
               <Formik
                 initialValues={initialState}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >
                 {({ errors, touched }) => (
@@ -80,6 +77,7 @@ export const RegisterForm = () => {
                           $error={errors.name && touched.name}
                         />
                         <Input
+                          id="name"
                           type="text"
                           name="name"
                           placeholder="Name"
@@ -99,6 +97,7 @@ export const RegisterForm = () => {
                           $success={!errors.email && touched.email}
                         />
                         <Input
+                          id="email"
                           name="email"
                           type="email"
                           placeholder="Email"
@@ -121,6 +120,7 @@ export const RegisterForm = () => {
                           $success={!errors.password && touched.password}
                         />
                         <Input
+                          id="password"
                           name="password"
                           type="password"
                           placeholder="Password"

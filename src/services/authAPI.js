@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
-
 const instance = axios.create({
-  baseURL: REACT_APP_API_URL,
+  baseURL: 'https://recipes-becend-49lg.onrender.com/',
 });
 
 const setToken = token => {
@@ -15,26 +13,20 @@ const setToken = token => {
 
 export const register = async data => {
   const { data: result } = await instance.post('/auth/register', data);
-  setToken(result.token);
+  console.log(data);
   return result;
 };
 
 export const login = async data => {
-  const { data: result } = await instance.post('/auth/login', data);
+  const { data: result } = await instance.post('/users/login', data);
   setToken(result.token);
   return result;
-};
-
-export const logout = async () => {
-  const { data } = await instance.post('/auth/logout');
-  setToken();
-  return data;
 };
 
 export const getCurrent = async token => {
   try {
     setToken(token);
-    const { data } = await instance.get('/auth/current');
+    const { data } = await instance.get('/users/current');
     return data;
   } catch (error) {
     setToken();

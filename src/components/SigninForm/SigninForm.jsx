@@ -21,27 +21,31 @@ import {
   Title,
   Input,
   LinkStyled,
+  GoogleLink,
 } from './SigninForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 import ValigationStatus from './validationStatus';
 
-import { SigninSchema } from '../../validation/inputsValidationSchema';
+import { login } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+
+// import { SigninSchema } from '../../validation/inputsValidationSchema';
 
 export const SigninForm = () => {
-  const initialValues = {
+  const initialState = {
     email: '',
     password: '',
   };
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
-  const validationSchema = SigninSchema;
+  // const validationSchema = SigninSchema;
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    form.reset();
+  const dispatch = useDispatch();
+  const handleSubmit = data => {
+    dispatch(login(data));
+    console.log(data);
   };
 
   return (
@@ -52,12 +56,14 @@ export const SigninForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
-              <GoogleAuth />
+              <GoogleLink to="https://recipes-becend-49lg.onrender.com/auth/google">
+                <GoogleAuth />
+              </GoogleLink>
               <Title>Sign In</Title>
               <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
+                initialValues={initialState}
+                // validationSchema={validationSchema}
+                onSubmit={handleSubmit}
               >
                 {({ errors, touched }) => (
                   <Form>
@@ -72,6 +78,7 @@ export const SigninForm = () => {
                         <Input
                           // value={email}
                           // onSubmit={handleChange}
+                          id="email"
                           name="email"
                           type="email"
                           placeholder="Email"
@@ -96,6 +103,7 @@ export const SigninForm = () => {
                         <Input
                           // value={password}
                           // onSubmit={handleChange}
+                          id="password"
                           name="password"
                           type="password"
                           placeholder="Password"

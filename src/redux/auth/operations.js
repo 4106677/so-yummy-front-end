@@ -1,59 +1,52 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../services/authAPI';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
+
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (data, { rejectWithValue }) => {
+  async (credentials, thunkAPI) => {
     try {
-      const result = await api.register(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
+      const response = await axios.post('/auth/register', credentials);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const login = createAsyncThunk(
   'auth/login',
-  async (data, { rejectWithValue }) => {
+  async (credentials, thunkAPI) => {
     try {
-      const result = await api.login(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
+      const response = await axios.post('/auth/login', credentials);
+      setToken(response.data.user.token);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk(
-  'auth/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      const result = await api.logout();
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
-  }
-);
+export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
 
-export const current = createAsyncThunk(
-  'auth/current',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      const { auth } = getState();
-      const result = await api.getCurrent(auth.token);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
-  },
-  {
-    condition: (_, { getState }) => {
-      const { auth } = getState();
-      if (!auth.token) {
-        return false;
-      }
-    },
+  // if (persistedToken === null) {
+  //   return thunkAPI.rejectWithValue('Unable to download user information');
+  // }
+  try {
+    setToken(persistedToken);
+    const response = await axios.get('/auth/current');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});

@@ -1,16 +1,9 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../components/Hooks/useAuth';
 
-import { isUserLogin } from '../redux/auth/selectors';
-
-const PublicRoute = () => {
-  const isLogin = useSelector(isUserLogin);
-
-  if (isLogin) {
-    return <Navigate to="/main" />;
-  }
-
-  return <Outlet />;
+const RestrictedRoute = ({ component: Component, redirectTo = '/main' }) => {
+  const { isLoggedIn } = useAuth();
+  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 
-export default PublicRoute;
+export default RestrictedRoute;
