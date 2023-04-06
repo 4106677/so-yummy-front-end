@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-front-end/static/css/main.ad6ee417.css",
-    "main.js": "/so-yummy-front-end/static/js/main.8e3f8752.js",
+    "main.js": "/so-yummy-front-end/static/js/main.320a31c0.js",
     "static/media/wellcome2x_desk.jpg": "/so-yummy-front-end/static/media/wellcome2x_desk.8f791d55616c85c219b2.jpg",
     "static/media/wellcome2x_tab.jpg": "/so-yummy-front-end/static/media/wellcome2x_tab.83ea0886d9c7a94446a4.jpg",
     "static/media/mainpage2x_desk.png": "/so-yummy-front-end/static/media/mainpage2x_desk.906cdb4f2d00194ec785.png",
@@ -46,6 +46,7 @@
     "static/media/recipePageHeroImgTab.jpg": "/so-yummy-front-end/static/media/recipePageHeroImgTab.c85ba40b3ff500ccc9d1.jpg",
     "static/media/recipeImg.jpg": "/so-yummy-front-end/static/media/recipeImg.8f0d1106d49d2ade75f0.jpg",
     "static/media/page-layout-bg-tablet-x1.webp": "/so-yummy-front-end/static/media/page-layout-bg-tablet-x1.864c1f88235775bbc52f.webp",
+    "static/media/default.svg": "/so-yummy-front-end/static/media/default.0b701dcf754a89c1424e22b127765a1b.svg",
     "static/media/page-layout-bg-mobil-x1.webp": "/so-yummy-front-end/static/media/page-layout-bg-mobil-x1.bc812eea9859e7c096f7.webp",
     "static/media/bgTablet@2x.png": "/so-yummy-front-end/static/media/bgTablet@2x.1ad2efc56502ea4513d3.png",
     "static/media/bgDesktop@2x.png": "/so-yummy-front-end/static/media/bgDesktop@2x.aa77c0f211dc3cfaae1c.png",
@@ -64,10 +65,10 @@
     "static/media/facebook.svg": "/so-yummy-front-end/static/media/facebook.9990b83de6560d8b93bc73fb0bac9e7c.svg",
     "static/media/icon-success.svg": "/so-yummy-front-end/static/media/icon-success.2c20cfce5010676dc2acf065541b3183.svg",
     "main.ad6ee417.css.map": "/so-yummy-front-end/static/css/main.ad6ee417.css.map",
-    "main.8e3f8752.js.map": "/so-yummy-front-end/static/js/main.8e3f8752.js.map"
+    "main.320a31c0.js.map": "/so-yummy-front-end/static/js/main.320a31c0.js.map"
   },
   "entrypoints": [
     "static/css/main.ad6ee417.css",
-    "static/js/main.8e3f8752.js"
+    "static/js/main.320a31c0.js"
   ]
 }
