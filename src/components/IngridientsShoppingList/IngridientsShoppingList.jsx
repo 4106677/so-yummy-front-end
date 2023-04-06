@@ -9,26 +9,31 @@ import {
   deleteShoppingList,
 } from '../../services/shoppingListAPI';
 import { Loader } from "components/Loader/Loader";
+import { ReactComponent as Default } from "../../images/ShoppingList/default.svg"
 
-export const IngridientsShoppingList = () => {
+  export const IngridientsShoppingList = () => {
   const [ingridients, setIngridients] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(deleteId);
+  console.log(ingridients);
 
     const elements = ingridients.map(
       (
-        { _id, preview, title, time } //сверить с названиями от бекенда
+        { _id, thb, ttl, time } //добавить thb c картинкой
       ) => (
         <li key={_id}>
-          <div>{preview}</div>
-          <div>{title}</div>
+         { thb ? (<a href={thb}>
+           <img src={thb} alt="dish" />
+          </a>) : <Default/>}
+          <div>{ttl}</div>
           <div>{time}</div>
-          <button type="button" onClick={()=> setDeleteId(_id)}>X</button>
+          <button type="button" onClick={() => setDeleteId(_id)}>
+            X
+          </button>
         </li>
       )
-  ); 
+    ); 
   
   useEffect(() => {
     setIsLoading(true);
@@ -50,7 +55,7 @@ export const IngridientsShoppingList = () => {
       const fetchDeleteShoppingList = async () => {
         try {
           await deleteShoppingList(deleteId);
-         setIngridients(prevIngridients => prevIngridients.filter(({_id}) => _id !== deleteId));
+         setIngridients(prevIngridients => prevIngridients.filter(({id}) => id !== deleteId));
         } catch ({ response }) {
           console.log(response.data.message);
         }
@@ -59,6 +64,7 @@ export const IngridientsShoppingList = () => {
           fetchDeleteShoppingList();
       }
     }, [deleteId]);
+  
 
   return (
     <>
@@ -72,5 +78,5 @@ export const IngridientsShoppingList = () => {
       {isLoading && <Loader />}
       <ul>{elements}</ul>
     </>
-  );
-};
+  ); 
+}; 

@@ -13,6 +13,9 @@ export const FooterNav = styled.nav`
     margin: 0;
     justify-content: flex-start;
   }
+  @media (min-width: 1440px){
+    margin-right: 235px;
+  }
 `;
 export const FooterNaviLink = styled(NavLink)`
     font-family: 'Poppins';
@@ -27,6 +30,9 @@ export const FooterNaviLink = styled(NavLink)`
     margin-bottom: 0;
   }
     @media(min-width: 768px){
-      margin-bottom 20px;
+      // margin-bottom 20px;
+  }
+  @media(min-width: 768px){
+    margin: 0;
   }
 `;

@@ -3,32 +3,41 @@ import {
   CookingRecipe,
   RecipeImageWrapper,
   RecipePreparationBlock,
+  CookingSteps,
+  CookingStep,
 } from './RecipePreparation.styled';
 
-export const RecipePreparation = () => {
+export const RecipePreparation = ({ preparationData }) => {
+  const { instructions, thumb } = preparationData;
+  let cookingSteps = [];
+  if (instructions) {
+    if (!instructions.includes('\r\n')) {
+      return;
+    } else {
+      cookingSteps = instructions.split('\n');
+    }
+  }
+
   return (
     <RecipePreparationWrapper>
       <RecipePreparationBlock>
         <h2>RecipePreparation</h2>
         <CookingRecipe>
-          To make the pastry, measure the flour into a bowl and rub in the
-          butter with your fingertips until the mixture resembles fine
-          breadcrumbs. Add the water, mixing to form a soft dough.\r\nRoll out
-          the dough on a lightly floured work surface and use to line a 20cm/8in
-          flan tin. Leave in the fridge to chill for 30 minutes.\r\nPreheat the
-          oven to 200C/400F/Gas 6 (180C fan).\r\nLine the pastry case with foil
-          and fill with baking beans. Bake blind for about 15 minutes, then
-          remove the beans and foil and cook for a further five minutes to dry
-          out the base.\r\nFor the filing, spread the base of the flan
-          generously with raspberry jam.\r\nMelt the butter in a pan, take off
-          the heat and then stir in the sugar. Add ground almonds, egg and
-          almond extract. Pour into the flan tin and sprinkle over the flaked
-          almonds.\r\nBake for about 35 minutes. If the almonds seem to be
-          browning too quickly, cover the tart loosely with foil to prevent them
-          burning
+          {cookingSteps.length > 0 ? (
+            <CookingSteps>
+              {cookingSteps.length > 0 &&
+                cookingSteps.map((step, idx) => (
+                  <CookingStep key={idx}>
+                    <p>{step}</p>
+                  </CookingStep>
+                ))}
+            </CookingSteps>
+          ) : (
+            instructions
+          )}
         </CookingRecipe>
       </RecipePreparationBlock>
-      <RecipeImageWrapper></RecipeImageWrapper>
+      <RecipeImageWrapper img={thumb}></RecipeImageWrapper>
     </RecipePreparationWrapper>
   );
 };
