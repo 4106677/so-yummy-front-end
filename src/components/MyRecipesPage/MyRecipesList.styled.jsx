@@ -35,7 +35,7 @@ export const RecipeList = styled.ul`
 `;
 
 export const MyRecipesContainer = styled.div`
-  background: #fafafa;
+  // background: #fafafa;
   padding-top: 114px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {

@@ -9,18 +9,29 @@ import {
   // RectangleGreenTwo,
 } from './MyRecipePage.styled';
 // import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
-
+import React from 'react';
 import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
 import { Header } from 'components/Header/Header';
 import { Footer } from 'components/Footer/Footer';
+import { checkWebpSupport } from 'components/Utils/checkWebpSupport';
+
 import { DeleteMyRecipeById } from '../../services/myRecipes';
 
 export const MyRecipePage = () => {
+  const sectionRef = React.useRef(null);
+
+  React.useEffect(() => {
+    checkWebpSupport()
+      .then(isWebpSupported =>
+        sectionRef.current.classList.add(isWebpSupported ? 'webp' : 'no-webp')
+      )
+      .catch(err => err);
+  }, []);
   return (
     <RecipeContainer>
       <Header />
 
-      <Section>
+      <Section ref={sectionRef}>
         <DecorativeSquare
           data-1
           color="#8BAA36"

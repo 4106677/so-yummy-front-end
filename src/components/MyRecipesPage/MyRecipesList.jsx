@@ -40,7 +40,6 @@ export function MyRecipesList() {
 
   return (
     <MyRecipesContainer>
-      {/* <Header /> */}
       <Title>My recipes</Title>
       {recipes.length > 0 && (
         <RecipeList>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 // webp
 import bgMobileWebpx1 from '../../images/PageLayout/page-layout-bg-mobil-x1.webp';
 import bgMobileWebpx2 from '../../images/PageLayout/page-layout-bg-mobil-x2.webp';
@@ -20,9 +21,10 @@ import bgDesktopPngx1 from '../../images/PageLayout/page-layout-bg-desktop-x1.pn
 import bgDesktopPngx2 from '../../images/PageLayout/page-layout-bg-desktop-x2.png';
 
 export const Section = styled.section`
+  z-index: 2;
   position: relative;
 
-  // padding-top: 4.625rem;
+  padding-top: 4.625rem;
   padding-bottom: 6.25rem;
   background-repeat: no-repeat;
   background-size: 256px 392px;
