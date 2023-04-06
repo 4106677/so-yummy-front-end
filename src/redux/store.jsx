@@ -16,7 +16,7 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const outerRecipesPersistConfig = {
   key: 'outerRecipes',
   storage,
-  whitelist: ['mainCategories', 'categoryList', 'popularRecipes'],
+  whitelist: ['mainCategories'],
 };
 
 const persistedOuterRecipesReducer = persistReducer(

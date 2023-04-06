@@ -22,20 +22,22 @@ export const TitlePrew = styled.p`
 `;
 
 export const BtnCategories = styled(NavLink)`
-  border-radius: 6px;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: '#FAFAFA';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding: 10px 24px;
-  background-color: '#8BAA36';
+  gap: 8px;
+  color: rgb(250, 250, 250);
+  background: #8aa936;
+  border-radius: 6px;
   cursor: pointer;
   float: right;
-  transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
   &:hover {
-    background-color: '#23262A';
+    background-color: rgb(35, 38, 42);
+    border: 1px solid transparent;
+    color: rgb(255, 255, 255);
   }
 `;
 
