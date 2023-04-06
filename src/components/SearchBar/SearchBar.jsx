@@ -4,12 +4,11 @@ import { SearchedRecipesList } from "./SearchedRecipesList/SearchedRecipesList";
 
 
 
-export const SearchBar = ({ onSubmit, value, onChange, items }) => {
+export const SearchBar = ({ onSubmit, type, onChange, items }) => {
   return (
     <div>
       <SearchForm onSubmit={onSubmit} />
-      <SearchTypeSelector value={value} onChange={onChange} />
-      
+      <SearchTypeSelector type={type} onChange={onChange} />
       <SearchedRecipesList items={items} />
     </div>
   );

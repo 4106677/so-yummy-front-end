@@ -7,8 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getAllRecipesSearch } from 'services/searchAPI';
-import {Loader} from 'components/Loader/Loader'
+import { getAllRecipesSearchTitle } from 'services/searchAPI';
+import { Loader } from 'components/Loader/Loader'
+import {getAllRecipesSearchIngredients} from 'services/searchAPI'
 
 
 
@@ -17,8 +18,8 @@ export const SearchPage = () => {
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchType, setSearchType] = useState('title');
   const [page, setPage] = useState(1);
+   const [type, setType] = useState('title');
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -34,10 +35,13 @@ export const SearchPage = () => {
     setIsLoading(true);
     const fetchIngridients = async () => {
       try {
-        const data = await getAllRecipesSearch(search, searchType, page, limit);
-        console.log(data);
-        setRecipes(data);
-        setIsLoading(false);
+               const data =
+                 type === 'title'
+                   ? await getAllRecipesSearchTitle(search, page, limit)
+                   : await getAllRecipesSearchIngredients(search, page, limit);
+               console.log(data);
+               setRecipes(data);
+               setIsLoading(false);
         if (data.length === 0) {
           return toast.warn("We couldn't find result on your request.", {
             position: 'top-right',
@@ -69,7 +73,7 @@ export const SearchPage = () => {
     if (search) {
       fetchIngridients();
     }
-  }, [search, searchType, page, limit]);
+  }, [search, page, limit, type]);
 
   const updateSearch = value => {
     if (value.search === '') {
@@ -87,10 +91,9 @@ export const SearchPage = () => {
     setSearch(value.search);
   };
 
-  const updateTypeSearch = value => {
-    console.log(value);
-    setSearchType(value.searchType);
-  };
+    const handleTypeChange = newType => {
+      setType(newType);
+    };
   
     return (
       <div>
@@ -98,8 +101,8 @@ export const SearchPage = () => {
           <SearchHeader>Search</SearchHeader>
           <SearchBar
             onSubmit={updateSearch}
-            value={searchType}
-            onChange={updateTypeSearch}
+            type={type}
+            onChange={handleTypeChange}
             items={recipes}
           />
           {isLoading && <Loader />}
