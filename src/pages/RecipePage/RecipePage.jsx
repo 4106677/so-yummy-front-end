@@ -74,7 +74,7 @@ export const RecipePage = () => {
         )
       )}
       {/* <PageLayout title={null}> */}
-
+      {/* // уточнить как приминить этот компонент к моей странице*/}
       {/* </PageLayout> */}
     </>
   );
