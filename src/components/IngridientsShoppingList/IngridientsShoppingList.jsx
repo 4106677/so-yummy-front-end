@@ -1,64 +1,40 @@
-import { useState, useEffect } from "react";
 import {
   ShopWrapper,
   ShopWrap,
   ShopTitle,
+  ShopListWrap,
+  ShopItem,
+  ShopImg,
+  ShopName,
+  ShopQuantity,
+  ShopBtn,
 } from './IngridientsShoppingList.styled';
-import {
-  getAllShoppingList,
-  deleteShoppingList,
-} from '../../services/shoppingListAPI';
-import { Loader } from "components/Loader/Loader";
+import { ReactComponent as Default } from "../../images/ShoppingList/default.svg"
 
-export const IngridientsShoppingList = () => {
-  const [ingridients, setIngridients] = useState([]);
-  const [deleteId, setDeleteId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  export const IngridientsShoppingList = ({items, onClick }) => {
 
-  console.log(deleteId);
-
-    const elements = ingridients.map(
+    const elements = items.map(
       (
-        { _id, preview, title, time } //сверить с названиями от бекенда
+        { _id, thb, ttl, t } //добавить thb c картинкой
       ) => (
-        <li key={_id}>
-          <div>{preview}</div>
-          <div>{title}</div>
-          <div>{time}</div>
-          <button type="button" onClick={()=> setDeleteId(_id)}>X</button>
-        </li>
+        <ShopItem key={_id}>
+          {thb ? (
+            <a href={thb}>
+              <ShopImg src={thb} alt="dish" />
+            </a>
+          ) : (
+            <Default />
+          )}
+          <ShopName>{ttl}</ShopName>
+            <ShopQuantity>{t ? t : 1}</ShopQuantity>
+          <ShopBtn type="button" onClick={() => onClick(_id)}>
+            X
+          </ShopBtn>
+        </ShopItem>
       )
-  ); 
+    ); 
   
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchIngridients = async () => {
-      try { 
-        const data = await getAllShoppingList();
-        setIngridients(data);
-        setIsLoading(false);
-      }
-      catch ({ response }) {
-        console.log(response.data.message);
-        setIsLoading(false);
-      }
-    }
-    fetchIngridients();
-  }, [])
-  
-    useEffect(() => {
-      const fetchDeleteShoppingList = async () => {
-        try {
-          await deleteShoppingList(deleteId);
-         setIngridients(prevIngridients => prevIngridients.filter(({_id}) => _id !== deleteId));
-        } catch ({ response }) {
-          console.log(response.data.message);
-        }
-      };
-      if (deleteId) {
-          fetchDeleteShoppingList();
-      }
-    }, [deleteId]);
+
 
   return (
     <>
@@ -69,8 +45,7 @@ export const IngridientsShoppingList = () => {
           <ShopTitle>Remove</ShopTitle>
         </ShopWrap>
       </ShopWrapper>
-      {isLoading && <Loader />}
-      <ul>{elements}</ul>
+      <ShopListWrap>{elements}</ShopListWrap>
     </>
-  );
-};
+  ); 
+}; 

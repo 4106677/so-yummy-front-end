@@ -21,6 +21,7 @@ import {
   Input,
   LinkStyled,
   GoogleAuth,
+  GoogleLink,
   // WarningIcon,
 } from './RegisterForm.styled';
 
@@ -62,7 +63,9 @@ export const RegisterForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
-              <GoogleAuth />
+              <GoogleLink to="https://recipes-becend-49lg.onrender.com/auth/google">
+                <GoogleAuth />
+              </GoogleLink>
               <Title>Registration</Title>
               <Formik
                 initialValues={initialState}

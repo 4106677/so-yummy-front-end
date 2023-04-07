@@ -11,17 +11,7 @@ import {
   
 } from '../../services/TheMealAPI';
 
-export const getCategoryList = createAsyncThunk(
-  'outerRecipes/categoryList',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await getCategoryListAPI();
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.response.status);
-    }
-  }
-);
+
 
 export const getMainCategories = createAsyncThunk(
   'outerRecipes/mainCategories',
@@ -29,6 +19,18 @@ export const getMainCategories = createAsyncThunk(
     try {
       const data = await getSetOfCategoriestAPI();
       console.log(data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getCategoryList = createAsyncThunk(
+  'outerRecipes/categoryList',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await getCategoryListAPI();
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -97,3 +99,5 @@ export const getRecipesByQuery = createAsyncThunk(
     }
   }
 );
+
+

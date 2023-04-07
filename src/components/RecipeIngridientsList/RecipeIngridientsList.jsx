@@ -9,9 +9,10 @@ import {
   IngridientDetails,
   IngridientQuantity,
   IngridientCheck,
+  IngridientImage,
 } from './RecipeIngridientsList.styled';
 
-export const RecipeIngridientsList = () => {
+export const RecipeIngridientsList = ({ ingridientsData }) => {
   return (
     <RecipeIngridientsWrapper>
       <IngridientsTableHeader>
@@ -20,26 +21,25 @@ export const RecipeIngridientsList = () => {
         <p>Add to list</p>
       </IngridientsTableHeader>
       <IngridientsList>
-        <IngridientsItem>
-          {/* {ingridient.image ? (
-            <IngridientImage />
-          ) : (
-            <IngridientPlaceholder>No Image</IngridientPlaceholder>
-          )} */}
-          <IngridientPlaceholder></IngridientPlaceholder>
-          <IngridientInfo>
-            <IngridientName>{/* {product.name} */}Salmon</IngridientName>
-            <IngridientDetails>
-              <IngridientQuantity>
-                {/* {product.quantity} */}400 g
-              </IngridientQuantity>
-              <IngridientCheck>
-                <input type={'checkbox'} id="ch1" />
-                <label for={'ch1'}></label>
-              </IngridientCheck>
-            </IngridientDetails>
-          </IngridientInfo>
-        </IngridientsItem>
+        {ingridientsData.map(ingridient => (
+          <IngridientsItem key={ingridient._id}>
+            {ingridient.thb ? (
+              <IngridientImage src={ingridient.thb} alt={ingridient.ttl} />
+            ) : (
+              <IngridientPlaceholder>No Image</IngridientPlaceholder>
+            )}
+            <IngridientInfo>
+              <IngridientName>{ingridient.ttl}</IngridientName>
+              <IngridientDetails>
+                <IngridientQuantity>{ingridient.measure}</IngridientQuantity>
+                <IngridientCheck>
+                  <input type={'checkbox'} id={ingridient._id} />
+                  <label htmlFor={ingridient._id}></label>
+                </IngridientCheck>
+              </IngridientDetails>
+            </IngridientInfo>
+          </IngridientsItem>
+        ))}
       </IngridientsList>
     </RecipeIngridientsWrapper>
   );

@@ -1,26 +1,27 @@
 
 
+
+export const getContentForMain = state => state.outerRecipes.mainCategories;
+console.log(getContentForMain)
+
+
+
+
+export const getIsError = state => state.outerRecipes.isError;
+console.log(getIsError);
+
+
 //  Список категорий ------------------
 // возвращает массив с категориями ТОЛЬКО ИМЕНА
 // использовать с функцией "getCategoryList()"
 export const getFullCategoryList = state => state.outerRecipes.categoryList;
 console.log(getFullCategoryList);
-// ------------------ Categories & Recipes for MAIN PAGE ------------------
-// ---- возвращает ОБЪЕКТ с 4 ключами.
-//   Ключи содержат категории: завтрак, разное, веганский, десерты.
-// Значения содержат 4 рецепта для каждой категории
-//   Используйте с функцией "getMainCategories()"
-export const getContentForMain = state => state.outerRecipes.mainCategories.meals;
-console.log(getContentForMain)
-
-// ------------------ Recipes by Category with LIMIT ------------------
 // ---- возвращает массив объектов с 4 или 12 рецептами по запрошенной категории
 // В качестве аргумента вы ДОЛЖНЫ отправить объект с категорией и лимитом
 // ---- Пример: const params = {category: 'beef', limit: 4}
 // ---- Использовать с функцией "getLimitedRecipesByCategory(params)"
 export const getLimitedRecipes = state =>
   state.outerRecipes.limitedRecipesByCategory;
-
 // ------------------ ВСЕ рецепты по категориям без ОГРАНИЧЕНИЯ ------------------
 // ---- возвращает массив объектов со всеми рецептами по запрошенной категории
 // В качестве аргумента вы ДОЛЖНЫ отправить название категории (строка)
@@ -48,6 +49,3 @@ export const getRecipesBySearchQuery = state =>
 // ------------------ Additional ------------------
 export const getIsCategoryFetching = state =>
   state.outerRecipes.isCategoryFetching;
-
-export const getIsError = state => state.outerRecipes.isError;
-console.log(getIsError);

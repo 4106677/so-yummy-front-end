@@ -1,18 +1,16 @@
-import { useState } from "react";
 import { Label, SelectWrapper, Select, Option } from "./SearchTypeSelector.styled";
 
-export const SearchTypeSelector = ({onChange}) => {
-     const [searchType, setSearchType] = useState('title');
-
-     const handleSelectChange = event => {
-       setSearchType(event.target.value);
+export const SearchTypeSelector = ({type, onChange}) => {
+  const handleSelectChange = event => {
+    let type = event.target.value
+    onChange(type);
   };
   
     return (
       <SelectWrapper>
         <p>Search by:</p>
         <Label>
-          <Select value={searchType} onChange={handleSelectChange}>
+          <Select value={type.toString()} onChange={handleSelectChange}>
             <Option value="title">Title</Option>
             <Option value="ingredients">Ingredients</Option>
           </Select>
@@ -20,4 +18,6 @@ export const SearchTypeSelector = ({onChange}) => {
       </SelectWrapper>
     ); 
 } 
+
+
 

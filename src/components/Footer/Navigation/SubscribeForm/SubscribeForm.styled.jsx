@@ -16,6 +16,7 @@ export const SubscribeFormWrapp = styled.div`
   @media (min-width: 1440px){
     display: block;
     width: 339px;
+    margin: 0;
   }
 `
 export const SubscribeTitle = styled.h1`
@@ -28,20 +29,32 @@ display: none;
   font-size: 18px;
   line-height: 27px;
   color: #FAFAFA;
+  margin-bottom: 14px;
 }
 `
 
 export const SubscribeText = styled.p`
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 18px;
-/* or 129% */
+  display: none;
+  @media(min-width: 1440px){
+    display: block;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: #FAFAFA;
+    margin-bottom: 28px;
+}
 
-letter-spacing: -0.02em;
-
-color: #FAFAFA;
+`
+export const Form = styled.form`
+  @media screen and (min-width: 768px){
+     display: flex;
+  }
+  @media screen and (min-width: 1440px){
+    display: block;
+  }
 `
 
 export const SubInputEmail = styled.input`
@@ -70,9 +83,22 @@ export const SubInputEmail = styled.input`
     margin: 0 12px 0 0;
     width: 259px;
     height: 50px;
+    font-size: 14px;
+      line-height: 21px;
     &::placeholder{
       font-size: 14px;
       line-height: 21px;
+    }
+  }
+  @media (min-width: 1440px){
+    width: 339px;
+    height: 60px;
+    font-size: 18px;
+      line-height: 27px;
+    margin-bottom: 16px;
+    &::placeholder{
+      font-size: 18px;
+      line-height: 27px;
     }
   }
 `;
@@ -91,10 +117,19 @@ export const SubBtn = styled.button`
   font-size: 14px;
   line-height: 16px;
   cursor: pointer;
+  &:disabled{
+    background: rgba(139, 170, 54, 0.5);
+    cursor: auto;
+  }
   @media(min-width: 768px){
     width: 171px;
     height: 50px;
-    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+  }
+   @media (min-width: 1440px){
+    width: 339px;
+    height: 60px;
     font-size: 16px;
     line-height: 18px;
   }
