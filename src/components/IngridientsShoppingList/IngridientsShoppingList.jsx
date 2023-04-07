@@ -2,6 +2,12 @@ import {
   ShopWrapper,
   ShopWrap,
   ShopTitle,
+  ShopListWrap,
+  ShopItem,
+  ShopImg,
+  ShopName,
+  ShopQuantity,
+  ShopBtn,
 } from './IngridientsShoppingList.styled';
 import { ReactComponent as Default } from "../../images/ShoppingList/default.svg"
 
@@ -9,18 +15,22 @@ import { ReactComponent as Default } from "../../images/ShoppingList/default.svg
 
     const elements = items.map(
       (
-        { _id, thb, ttl, time } //добавить thb c картинкой
+        { _id, thb, ttl, t } //добавить thb c картинкой
       ) => (
-        <li key={_id}>
-         { thb ? (<a href={thb}>
-           <img src={thb} alt="dish" />
-          </a>) : <Default/>}
-          <div>{ttl}</div>
-          <div>{time}</div>
-          <button type="button" onClick={() => onClick(_id)}>
+        <ShopItem key={_id}>
+          {thb ? (
+            <a href={thb}>
+              <ShopImg src={thb} alt="dish" />
+            </a>
+          ) : (
+            <Default />
+          )}
+          <ShopName>{ttl}</ShopName>
+            <ShopQuantity>{t ? t : 1}</ShopQuantity>
+          <ShopBtn type="button" onClick={() => onClick(_id)}>
             X
-          </button>
-        </li>
+          </ShopBtn>
+        </ShopItem>
       )
     ); 
   
@@ -35,7 +45,7 @@ import { ReactComponent as Default } from "../../images/ShoppingList/default.svg
           <ShopTitle>Remove</ShopTitle>
         </ShopWrap>
       </ShopWrapper>
-      <ul>{elements}</ul>
+      <ShopListWrap>{elements}</ShopListWrap>
     </>
   ); 
 }; 
