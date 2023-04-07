@@ -31,18 +31,12 @@ import ValigationStatus from './validationStatus';
 // import { SignupSchema } from '../../validation/inputsValidationSchema';
 
 import { register } from '../../redux/auth/operations';
-import { Link } from 'components/Socials/Socials.styled';
+// import { Link } from 'components/Socials/Socials.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = data => {
     dispatch(register(data));
-    console.log(data);
-  };
-  const initialState = {
-    name: '',
-    email: '',
-    password: '',
   };
 
   // const validationSchema = SignupSchema;
@@ -62,7 +56,11 @@ export const RegisterForm = () => {
               </GoogleLink>
               <Title>Registration</Title>
               <Formik
-                initialValues={initialState}
+                initialValues={{
+                  name: '',
+                  email: '',
+                  password: '',
+                }}
                 // validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >

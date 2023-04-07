@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
+axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,44 +9,39 @@ const setToken = token => {
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (credentials, thunkAPI) => {
+  async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/auth/register', credentials);
-      return response.data;
+      const { data } = await axios.post('/auth/register', user);
+      setToken(data.token);
+      return data;
     } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const login = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkAPI) => {
+  async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/auth/login', credentials);
-      setToken(response.data.user.token);
-      return response.data;
+      const { data } = await axios.post('/auth/login', user);
+      setToken(data.token);
+      return data;
     } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
-
-  // if (persistedToken === null) {
-  //   return thunkAPI.rejectWithValue('Unable to download user information');
-  // }
+  const { auth } = thunkAPI.getState();
+  const token = auth.token;
+  if (!token) return thunkAPI.rejectWithValue();
+  setToken(token);
   try {
-    setToken(persistedToken);
-    const response = await axios.get('/auth/current');
-    return response.data;
+    const { data } = await axios.get('/auth/current');
+    return data;
   } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });

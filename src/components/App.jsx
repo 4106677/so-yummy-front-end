@@ -11,6 +11,7 @@ import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
+import { Layout } from 'components/Layout/Layout';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -23,20 +24,57 @@ import { useAuth } from '../components/Hooks/useAuth';
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const { isRefreshing } = useAuth();
+  const { isRefreshing, token, isLoggedIn } = useAuth();
 
-  useEffect(
-    function () {
+  useEffect(() => {
+    if (isLoggedIn && token) {
       dispatch(current());
-    },
-    [dispatch]
-  );
-  // return isRefreshing ? (
-  //   'Refreshing user ...'
-  // ) : (
-  return (
+    }
+  }, [dispatch, isLoggedIn, token]);
+
+  return isRefreshing ? (
+    'Refreshing user ...'
+  ) : (
     <>
       <Routes>
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute
+              component={<WellcomePage />}
+              restricted
+              redirectTo="/main"
+            />
+          }
+        />
+        <Route
+          path="register"
+          element={<RestrictedRoute component={<RegisterPage />} restricted />}
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute
+              component={<SigninPage />}
+              restricted
+              redirectTo="/main"
+            />
+          }
+        />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="main"
+            index
+            element={<PrivateRoute component={<MainPage />} />}
+          />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="recipe/:recipeId" element={<RecipePage />} />
+          <Route path="add-recipe" element={<AddRecipePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+      {/* //work */}
+      {/* <Routes>
         <Route path="/" element={<WellcomePage />} />
         <Route
           path="/register"
@@ -55,12 +93,20 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<MainPage />} />
           }
         />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/recipe/:recipeId" element={<RecipePage />} />
+        <Route path="/add-recipe" element={<AddRecipePage />} />
         <Route path="*" element={<NotFoundPage />} />
-
-        {/* <Route path="/" element={<WellcomePage />} />
+      </Routes> */}
+      {/* <Routes>
+        <Route path="/" element={<WellcomePage />} />
         <Route element={<RestrictedRoute />}>
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<SigninPage />} />
+          <Route
+            path="/register"
+            component={<RegisterPage />}
+            redirectTo="/main"
+          />
+          <Route path="/login" component={<SigninPage />} redirectTo="/main" />
         </Route>
         <Route element={<PrivateRoute />}>
           <Route path="/main" element={<MainPage />} />
@@ -69,8 +115,7 @@ export const App = () => {
           <Route path="/add-recipe" element={<AddRecipePage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="*" element={<NotFoundPage />} /> */}
-      </Routes>
+      </Routes> */}
       <GlobalStyle />
       <ToastContainer autoClose={3000} />
     </>
