@@ -22,6 +22,9 @@ import { FiEdit2 } from 'react-icons/fi';
 
 export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const [image, setImage] = useState(avatar);
+const [name, setName] = useState(user)
+
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -45,12 +48,21 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     if (file) {
       setImage(URL.createObjectURL(file));
     }
-
-    const handleSubmit = e => {
-      const files = e.target.elements.files;
-      const data = { avatar: files[0], name: '' };
-    };
   };
+
+
+  const handleOnSubmit = e => {
+    e.preventDefault();
+      const files = e.target.elements[0].files[0];
+      const data = { avatar: files, name: name };
+
+    };
+
+  
+  const nameOnChange = e => {
+    setName(e.target.value)
+  }
+
   return (
     <HeaderEditModalOverlayStyled onClick={handleOverlayClick}>
       <HeaderEditModalBodyStyled>
@@ -69,7 +81,7 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
               <FaUserCircle />
             )}
           </HeaderEditModalStyledImgContainer>
-          <HeaderEditModalForm>
+          <HeaderEditModalForm onSubmit={handleOnSubmit}>
             <HeaderEditModalFileLabel>
               <HeaderEditModalFileInput
                 type={'file'}
@@ -79,7 +91,7 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
               <AddPhotoIcon />
             </HeaderEditModalFileLabel>
             <HeaderEditModalNameLabel>
-              <HeaderEditModalNameInput/>
+              <HeaderEditModalNameInput value={name} onChange={nameOnChange} />
               <BiUser />
            <FiEdit2/>
             </HeaderEditModalNameLabel>
