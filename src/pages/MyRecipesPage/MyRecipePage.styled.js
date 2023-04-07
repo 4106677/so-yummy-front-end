@@ -20,7 +20,7 @@ import bgTabletPngx2 from '../../images/PageLayout/page-layout-bg-tablet-x2.png'
 import bgDesktopPngx1 from '../../images/PageLayout/page-layout-bg-desktop-x1.png';
 import bgDesktopPngx2 from '../../images/PageLayout/page-layout-bg-desktop-x2.png';
 
-const darckMode = true;
+const darkMode = true;
 
 const objectColors = {
   bgrDarkMode: '#1E1F28',
@@ -38,7 +38,7 @@ const objectColors = {
 export const Section = styled.section`
   z-index: 2;
   position: relative;
-  background-color: ${darckMode
+  background-color: ${darkMode
     ? objectColors.bgrDarkMode
     : objectColors.colorWhite};
 
@@ -182,7 +182,7 @@ export const DecorativeSquare = styled.div`
   }
 
   &[data-2] {
-    background-color: ${darckMode
+    background-color: ${darkMode
       ? objectColors.colorWhite
       : objectColors.colorBlack};
     top: 141px;

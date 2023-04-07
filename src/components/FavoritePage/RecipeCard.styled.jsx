@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const darckMode = true;
+const darkMode = true;
 
 const objectColors = {
   bgrDarkMode: '#1E1F28',
@@ -18,7 +18,7 @@ const objectColors = {
 export const Recipeitem = styled.li`
   width: 343px;
   height: 152px;
-  background: ${darckMode
+  background: ${darkMode
     ? objectColors.bgrCardDarkMode
     : objectColors.colorWhite};
   border-radius: 8px;
@@ -61,7 +61,7 @@ export const Title = styled.h3`
   line-height: 1;
   letter-spacing: -0.24px;
 
-  color: ${darckMode
+  color: ${darkMode
     ? objectColors.colorWhite
     : objectColors.darkColorTitelCard};
 
@@ -93,7 +93,7 @@ export const BtnRemove = styled.button`
   color: ${objectColors.colorWhite};
   background-color: ${objectColors.colorGreen};
   &:hover {
-    background-color: ${darckMode
+    background-color: ${darkMode
       ? objectColors.colorGreen
       : objectColors.colorBlack};
   }
@@ -121,7 +121,7 @@ export const Time = styled.p`
   line-height: 1.4;
   letter-spacing: -0.24px;
 
-  color: ${darckMode
+  color: ${darkMode
     ? objectColors.colorWhite
     : objectColors.darkColorTitelCard};
 
@@ -201,7 +201,7 @@ export const Text = styled.p`
   font-weight: 400;
   font-size: 8px;
   line-height: 1.25;
-  color: ${darckMode
+  color: ${darkMode
     ? objectColors.colorTextDarkMode
     : objectColors.darkColorTextCard};
 

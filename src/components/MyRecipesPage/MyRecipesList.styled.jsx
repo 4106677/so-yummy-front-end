@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const darckMode = true;
+const darkMode = true;
 
 const objectColors = {
   bgrDarkMode: '#1E1F28',
@@ -16,7 +16,7 @@ const objectColors = {
 };
 
 export const Error = styled.h3`
-  color: ${darckMode ? objectColors.colorWhite : objectColors.darkColorTitel};
+  color: ${darkMode ? objectColors.colorWhite : objectColors.darkColorTitel};
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -62,7 +62,7 @@ export const MyRecipesContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: ${darckMode ? objectColors.colorWhite : objectColors.darkColorTitel};
+  color: ${darkMode ? objectColors.colorWhite : objectColors.darkColorTitel};
 
   font-family: 'Poppins';
   font-style: normal;
