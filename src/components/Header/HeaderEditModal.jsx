@@ -10,7 +10,7 @@ import {
   HeaderEditModalFileLabel,
   HeaderEditModalNameLabel,
   HeaderEditModalNameInput,
-  HeaderEditModalSubmitButton
+  HeaderEditModalSubmitButton,
 } from './HeaderModals.styled';
 import { useEffect, useState } from 'react';
 import { CrossIcon } from './HeaderIcons';
@@ -18,12 +18,14 @@ import { FaUserCircle } from 'react-icons/fa';
 import { AddPhotoIcon } from './HeaderIcons';
 import { BiUser } from 'react-icons/bi';
 import { FiEdit2 } from 'react-icons/fi';
-
+import { updateUser } from 'redux/header/operations';
+import { useDispatch } from 'react-redux';
 
 export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const [image, setImage] = useState(avatar);
-const [name, setName] = useState(user)
+  const [name, setName] = useState(user);
 
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -50,18 +52,23 @@ const [name, setName] = useState(user)
     }
   };
 
-
   const handleOnSubmit = e => {
     e.preventDefault();
-      const files = e.target.elements[0].files[0];
-      const data = { avatar: files, name: name };
+    const files = e.target.elements[0].files[0];
+    const data = {};
+    if (files) {
+      data.avatar = files;
+    }
+    if (name) {
+      data.name = name;
+    }
 
-    };
+    dispatch(updateUser(data));
+  };
 
-  
   const nameOnChange = e => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
 
   return (
     <HeaderEditModalOverlayStyled onClick={handleOverlayClick}>
@@ -93,7 +100,7 @@ const [name, setName] = useState(user)
             <HeaderEditModalNameLabel>
               <HeaderEditModalNameInput value={name} onChange={nameOnChange} />
               <BiUser />
-           <FiEdit2/>
+              <FiEdit2 />
             </HeaderEditModalNameLabel>
             <HeaderEditModalSubmitButton>
               Save changes

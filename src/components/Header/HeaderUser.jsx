@@ -6,13 +6,17 @@ import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
 import { useSelector } from 'react-redux';
 import { getUser } from 'redux/auth/selectors';
+import { Loader } from 'components/Loader/Loader';
+import { getIsLoading } from 'redux/header/selectors';
 
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const {name, avatar} = useSelector(getUser)
+  const { name, avatar } = useSelector(getUser)
+  
+  const isLoading = useSelector(getIsLoading)
 
   const openUserModal = e => {
     togleUserModal();
@@ -40,6 +44,7 @@ export const HeaderUser = () => {
 
   return (
     <>
+      {isLoading && <Loader/>}
       <HeaderStyledUser onClick={openUserModal}>
         {avatar
           ? <HeaderStyledUserImg src={avatar} alt="user-avatar"  />
