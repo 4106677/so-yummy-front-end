@@ -11,7 +11,7 @@ import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
-import { NotFound } from 'pages/NotFound/NotFound';
+import { NotFoundPage } from 'pages/NotFound/NotFound';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -36,12 +36,10 @@ export const App = () => {
         {/* <Route path="/categories/:categoryName" element={<CategoriesPage />}></Route>
         <Route path="/favorite" element={<FavoriteRecipeList />}></Route>
         <Route path="/my" element={<MyRecipesList />}></Route> */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyle />
       <ToastContainer autoClose={3000} />
     </>
   );
 };
-
-
