@@ -6,14 +6,14 @@ const getToken = () => {
     serializedState === null ? undefined : JSON.parse(serializedState);
   return serializedStateParse.token;
 };
-axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
+// axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
 const MyRecipesBase = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
-  // headers: {
-  //   Authorization:
-  //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmM2NDAwMTBjNWU1MjY2MzZlYWNlNiIsImlhdCI6MTY4MDc3ODQ0OSwiZXhwIjoxNjgwODY0ODQ5fQ.R1DsjhK0rFcUtrNFS0mQX2A_LT8rXy0xRNM9dC1tZHM',
-  // },
+  headers: {
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmM2NDAwMTBjNWU1MjY2MzZlYWNlNiIsImlhdCI6MTY4MDg5ODk0MSwiZXhwIjoxNjgwOTg1MzQxfQ.17cYMAwQxlr8LuL8O6LRFsHIm1qdMGep37grJhHtsgg',
+  },
 });
 export const getAllRecipesSearch = async () => {
   const { data } = await MyRecipesBase.get(
