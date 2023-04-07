@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
 import {
   ShopWrapper,
   ShopWrap,
   ShopTitle,
 } from './IngridientsShoppingList.styled';
-import {
-  getAllShoppingList,
-  deleteShoppingList,
-} from '../../services/shoppingListAPI';
-import { Loader } from "components/Loader/Loader";
 import { ReactComponent as Default } from "../../images/ShoppingList/default.svg"
 
-  export const IngridientsShoppingList = () => {
-  const [ingridients, setIngridients] = useState([]);
-  const [deleteId, setDeleteId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  export const IngridientsShoppingList = ({items, onClick }) => {
 
-  console.log(ingridients);
-
-    const elements = ingridients.map(
+    const elements = items.map(
       (
         { _id, thb, ttl, time } //добавить thb c картинкой
       ) => (
@@ -28,43 +17,14 @@ import { ReactComponent as Default } from "../../images/ShoppingList/default.svg
           </a>) : <Default/>}
           <div>{ttl}</div>
           <div>{time}</div>
-          <button type="button" onClick={() => setDeleteId(_id)}>
+          <button type="button" onClick={() => onClick(_id)}>
             X
           </button>
         </li>
       )
     ); 
   
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchIngridients = async () => {
-      try { 
-        const data = await getAllShoppingList();
-        setIngridients(data);
-        setIsLoading(false);
-      }
-      catch ({ response }) {
-        console.log(response.data.message);
-        setIsLoading(false);
-      }
-    }
-    fetchIngridients();
-  }, [])
-  
-    useEffect(() => {
-      const fetchDeleteShoppingList = async () => {
-        try {
-          await deleteShoppingList(deleteId);
-         setIngridients(prevIngridients => prevIngridients.filter(({id}) => id !== deleteId));
-        } catch ({ response }) {
-          console.log(response.data.message);
-        }
-      };
-      if (deleteId) {
-          fetchDeleteShoppingList();
-      }
-    }, [deleteId]);
-  
+
 
   return (
     <>
@@ -75,7 +35,6 @@ import { ReactComponent as Default } from "../../images/ShoppingList/default.svg
           <ShopTitle>Remove</ShopTitle>
         </ShopWrap>
       </ShopWrapper>
-      {isLoading && <Loader />}
       <ul>{elements}</ul>
     </>
   ); 
