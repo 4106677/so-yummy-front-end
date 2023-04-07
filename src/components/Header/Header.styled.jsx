@@ -74,6 +74,7 @@ export const HeaderStyledNavLink = styled(NavLink)`
   svg {
     width: 24px;
     height: 24px;
+
   }
   @media(max-width: 830px){
     margin-right: 15px;
@@ -95,6 +96,7 @@ export const HeaderStyledUser = styled.div`
     width: 44px;
     height: 44px;
     margin-right: 14px;
+    fill: #D9D9D9; 
     @media (max-width: 477px) {
       width: 34px;
       height: 34px;
@@ -113,6 +115,7 @@ border-radius: 50px;
       height: 34px;
   }
 `;
+
 
 export const HeaderStyledUserText = styled.p`
   font-family: 'Poppins';

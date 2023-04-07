@@ -10,8 +10,12 @@ import {
 } from './HeaderModals.styled';
 import { CrossIcon } from './HeaderIcons';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from 'redux/auth/operations';
 
 export const HeaderLogoutModal = ({ onClose }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -44,7 +48,10 @@ export const HeaderLogoutModal = ({ onClose }) => {
             Are you sure you want to log out?
           </HeaderLogoutModalTextStyled>
           <HeaderLogoutModalButtonsContainerStyled>
-            <HeaderLogoutModalLogoutButtonStyled>
+            <HeaderLogoutModalLogoutButtonStyled onClick={() => {
+              dispatch(logout());
+              onClose();
+            }}>
               Log out
             </HeaderLogoutModalLogoutButtonStyled>
             <HeaderLogoutModalCancelButtonStyled
