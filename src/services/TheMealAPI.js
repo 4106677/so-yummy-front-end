@@ -11,12 +11,14 @@ export const getSetOfCategoriestAPI = () => {
 };
 export const getCategoryListAPI = () => {
   return axios.get('/recipes/category-list ').then(({ data }) => {
+    console.log(data);
     return data;
   });
 };
 
 export const getAllRecipesByCategoryAPI = category => {
   return axios.get(`/recipes/byCategory/${category}`).then(({ data }) => {
+    console.log(data);
     return data;
   });
 };
@@ -34,15 +36,17 @@ export const getOneRecipeByIdAPI = id => {
 };
 
 export const getPopularRecipesAPI = () => {
-  return axios.get('/recipes/popular').then(({ data }) => {
+  return axios.get('/recipes/popular-recipes').then(({ data }) => {
+    console.log(data);
     return data;
   });
 };
 
-export const getRecipesByQueryAPI = (query, page = 1, per_page = 12) => {
+export const getRecipesByQueryAPI = (query, page = 1, limit = 12) => {
   return axios
-    .get(`/recipes/search/${query}?page=${page}&per_page=${per_page}`)
+    .get(`/recipes/search/${query}?page=${page}&limit=${limit}`)
     .then(({ data }) => {
+      console.log(data);
       return data;
     });
 };
