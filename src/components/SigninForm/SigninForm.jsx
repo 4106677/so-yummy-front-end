@@ -21,6 +21,7 @@ import {
   Title,
   Input,
   LinkStyled,
+  GoogleLink,
 } from './SigninForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
@@ -52,7 +53,9 @@ export const SigninForm = () => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
-              <GoogleAuth />
+              <GoogleLink to="https://recipes-becend-49lg.onrender.com/auth/google">
+                <GoogleAuth />
+              </GoogleLink>
               <Title>Sign In</Title>
               <Formik
                 initialValues={initialValues}
