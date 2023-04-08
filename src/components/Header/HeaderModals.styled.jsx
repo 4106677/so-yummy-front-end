@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderUserModalContainer = styled.div`
   max-width: 1240px;
   height: 100%;
-  width: 1240px;
+  width: 1440px;
   top: 0;
   position: relative;
   padding-left: 20px;
