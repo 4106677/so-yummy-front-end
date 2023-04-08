@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const darkMode = true;
+const darkMode = false;
 
 const objectColors = {
   bgrDarkMode: '#1E1F28',
