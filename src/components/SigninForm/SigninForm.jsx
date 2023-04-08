@@ -20,6 +20,7 @@ import {
   InputBox,
   Title,
   Input,
+  GoogleLink,
   LinkStyled,
   GoogleLink,
 } from './SigninForm.styled';
@@ -27,23 +28,22 @@ import {
 import useMediaQuery from '../Hooks/useMediaQuery';
 import ValigationStatus from './validationStatus';
 
-import { SigninSchema } from '../../validation/inputsValidationSchema';
+import { login } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+
+// import { SigninSchema } from '../../validation/inputsValidationSchema';
 
 export const SigninForm = () => {
-  const initialValues = {
-    email: '',
-    password: '',
+  const dispatch = useDispatch();
+
+  const handleSubmit = data => {
+    dispatch(login(data));
+    console.log(data);
   };
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
-  const validationSchema = SigninSchema;
-
-  const onSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    form.reset();
-  };
+  // const validationSchema = SigninSchema;
 
   return (
     <>
@@ -58,9 +58,12 @@ export const SigninForm = () => {
               </GoogleLink>
               <Title>Sign In</Title>
               <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
+                initialValues={{
+                  email: '',
+                  password: '',
+                }}
+                // validationSchema={validationSchema}
+                onSubmit={handleSubmit}
               >
                 {({ errors, touched }) => (
                   <Form>
@@ -73,12 +76,10 @@ export const SigninForm = () => {
                           $success={!errors.email && touched.email}
                         />
                         <Input
-                          // value={email}
-                          // onSubmit={handleChange}
+                          id="email"
                           name="email"
                           type="email"
                           placeholder="Email"
-                          autoComplete="off"
                           $error={errors.email && touched.email}
                           $success={!errors.email && touched.email}
                         />
@@ -97,12 +98,10 @@ export const SigninForm = () => {
                           $success={!errors.password && touched.password}
                         />
                         <Input
-                          // value={password}
-                          // onSubmit={handleChange}
+                          id="password"
                           name="password"
                           type="password"
                           placeholder="Password"
-                          autoComplete="off"
                           $error={errors.password && touched.password}
                           $success={!errors.password && touched.password}
                         />

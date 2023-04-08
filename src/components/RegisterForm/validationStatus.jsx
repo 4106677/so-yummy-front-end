@@ -8,7 +8,7 @@ const ValigationStatus = ({
   name = '',
   error = '',
   success = '',
-  warning = '',
+  // warning = '',
 }) => {
   if (name && error) {
     return <ErrorText> {error} </ErrorText>;
