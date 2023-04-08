@@ -14,7 +14,7 @@ import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
 import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 import { NotFoundPage } from 'pages/NotFound/NotFound';
-import {FavoritePage } from 'pages/FavoritePage/FavoritePage';
+import { FavoritePage } from 'pages/FavoritePage/FavoritePage';
 import { Layout } from 'components/Layout/Layout';
 
 import { ToastContainer } from 'react-toastify';
@@ -77,9 +77,6 @@ export const App = () => {
           <Route path="recipe/:recipeId" element={<RecipePage />} />
           <Route path="add-recipe" element={<AddRecipePage />} />
           <Route path="shopping-list" element={<ShoppingListPage />} />
-          <Route path="add-recipe" element={<AddRecipePage />} />
-          <Route path="shopping-list" element={<ShoppingListPage />} />
-          <Route path="add-recipe" element={<AddRecipePage />} />
           <Route path="categories/:categoryName" element={<CategoriesPage />} />
           <Route path="/favorite" element={<FavoritePage />}></Route>
           <Route path="my" element={<MyRecipePage />} />
