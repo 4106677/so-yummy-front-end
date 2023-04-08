@@ -38,13 +38,14 @@ export const getSingleRecipe = state => state.outerRecipes.singleRecipe;
 // ---- возвращает массив объектов
   // Используйте с функцией "getPopularRecipes()"
 export const getPopular = state => state.outerRecipes.popularRecipes;
+console.log(getPopular);
 
 // ------------------ Recipes by Query ------------------
 // ---- возвращает объект с ключами: meals и totalHits
   // В качестве аргумента вы ДОЛЖНЫ отправить запрос (строка)
   // Используйте с функцией "getRecipesByQuery(query)"
 export const getRecipesBySearchQuery = state =>
-  state.outerRecipes.recipesByQuery;
+  state.outerRecipes.recipesByQuery.meals;
 
 // ------------------ Additional ------------------
 export const getIsCategoryFetching = state =>
