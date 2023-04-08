@@ -15,7 +15,6 @@ import {
   EmailIcon,
   PasswordIcon,
   ErrorIcon,
-  // WarningIcon,
   SuccessIcon,
   InputFormBox,
   InputBox,
@@ -37,7 +36,7 @@ export const SigninForm = () => {
 
   const handleSubmit = data => {
     dispatch(login(data));
-  };
+     };
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
