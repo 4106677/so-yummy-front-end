@@ -9,7 +9,7 @@ const shoppingInstance = axios.create({
 });
 
 export const addToShoppingList = async (id) => {
-  const data = await shoppingInstance.get(
+  const data = await shoppingInstance.post(
     `recipes/byIdToShoplist/${id}`
   );
   return data;
