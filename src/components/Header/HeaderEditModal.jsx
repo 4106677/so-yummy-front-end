@@ -19,7 +19,8 @@ import { AddPhotoIcon } from './HeaderIcons';
 import { BiUser } from 'react-icons/bi';
 import { FiEdit2 } from 'react-icons/fi';
 import { updateUser } from 'redux/header/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
+
 
 export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const [image, setImage] = useState(avatar);
@@ -52,7 +53,7 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     }
   };
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = async e => {
     e.preventDefault();
     const files = e.target.elements[0].files[0];
     const data = {};
@@ -62,9 +63,9 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     if (name) {
       data.name = name;
     }
-
     dispatch(updateUser(data));
   };
+
 
   const nameOnChange = e => {
     setName(e.target.value);

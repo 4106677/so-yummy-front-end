@@ -1,5 +1,9 @@
 import { useState, useCallback } from 'react';
-import { HeaderStyledUser, HeaderStyledUserText, HeaderStyledUserImg } from './Header.styled';
+import {
+  HeaderStyledUser,
+  HeaderStyledUserText,
+  HeaderStyledUserImg,
+} from './Header.styled';
 import { FaUserCircle } from 'react-icons/fa';
 import { HeaderUserModal } from './HeaderUserModal';
 import { HeaderEditModal } from './HeaderEditModal';
@@ -14,9 +18,9 @@ export const HeaderUser = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const { name, avatar } = useSelector(getUser)
-  
-  const isLoading = useSelector(getIsLoading)
+  const { name, avatar } = useSelector(getUser);
+
+  const isLoading = useSelector(getIsLoading);
 
   const openUserModal = e => {
     togleUserModal();
@@ -44,13 +48,14 @@ export const HeaderUser = () => {
 
   return (
     <>
-      {isLoading && <Loader/>}
+      {isLoading && <Loader />}
       <HeaderStyledUser onClick={openUserModal}>
-        {avatar
-          ? <HeaderStyledUserImg src={avatar} alt="user-avatar"  />
-          : <FaUserCircle />
-          }
-        
+        {avatar ? (
+          <HeaderStyledUserImg src={avatar} alt="user-avatar" />
+        ) : (
+          <FaUserCircle />
+        )}
+
         <HeaderStyledUserText>{name}</HeaderStyledUserText>
       </HeaderStyledUser>
       {showUserModal && (
@@ -61,7 +66,9 @@ export const HeaderUser = () => {
         />
       )}
       {showLogoutModal && <HeaderLogoutModal onClose={togleLogoutModal} />}
-      {showEditModal && <HeaderEditModal user={name} avatar={avatar} onClose={togleEditModal} />}
+      {showEditModal && (
+        <HeaderEditModal user={name} avatar={avatar} onClose={togleEditModal} />
+      )}
     </>
   );
 };
