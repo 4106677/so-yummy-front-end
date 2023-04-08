@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
   z-index: 3;
   right: 0;
   left: 0;
-  max-width: 1240px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -77,7 +77,7 @@ export const HeaderStyledNavLink = styled(NavLink)`
 
   }
   @media(max-width: 830px){
-    margin-right: 15px;
+    margin-right: 9px;
   }
 `;
 

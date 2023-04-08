@@ -56,7 +56,7 @@ export const HeaderUser = () => {
           <FaUserCircle />
         )}
 
-        <HeaderStyledUserText>{name}</HeaderStyledUserText>
+        <HeaderStyledUserText>{name}User-name</HeaderStyledUserText>
       </HeaderStyledUser>
       {showUserModal && (
         <HeaderUserModal
