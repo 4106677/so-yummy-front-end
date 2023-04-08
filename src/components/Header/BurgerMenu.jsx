@@ -23,7 +23,7 @@ export const BurgerMenu = () => {
   };
 
   return (
-    <BurgerMenuContainer>
+    <BurgerMenuContainer >
       <Menu
         customBurgerIcon={<BurgerIcon />}
         customCrossIcon={<CrossIcon />}

@@ -19,9 +19,21 @@ const middleware = getDefaultMiddleware =>
     },
   });
 
+const outerRecipesPersistConfig = {
+  key: 'outerRecipes',
+  storage,
+  whitelist: ['mainCategories', 'categoryList', 'popularRecipes'],
+};
+
+const persistedOuterRecipesReducer = persistReducer(
+  outerRecipesPersistConfig,
+  mainRecipeReduser
+);
+
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    outerRecipes: persistedOuterRecipesReducer,
+    auth: persistedAuthReducer,
     recipe: mainRecipeReduser,
   },
   middleware,

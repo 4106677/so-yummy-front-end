@@ -22,6 +22,7 @@ import {
   Input,
   GoogleLink,
   LinkStyled,
+  GoogleLink,
 } from './SigninForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';

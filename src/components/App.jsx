@@ -10,6 +10,7 @@ import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
 import { RecipePage } from 'pages/RecipePage/RecipePage';
+
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { Layout } from 'components/Layout/Layout';
 
@@ -21,6 +22,11 @@ import RestrictedRoute from '../components/RestrictedRoute.js';
 import { useDispatch } from 'react-redux';
 import { current } from '../redux/auth/operations';
 import { useAuth } from '../components/Hooks/useAuth';
+
+import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
+
+import { CategoriesPage } from 'pages/CategoriesPage/CategoriesPage';
+import { MyRecipePage } from 'pages/MyRecipesPage/MyRecipesPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -70,6 +76,9 @@ export const App = () => {
           <Route path="search" element={<SearchPage />} />
           <Route path="recipe/:recipeId" element={<RecipePage />} />
           <Route path="add-recipe" element={<AddRecipePage />} />
+          <Route path="shopping-list" element={<ShoppingListPage />}></Route>
+          <Route path="categories/:categoryName" element={<CategoriesPage />} />
+          <Route path="my" element={<MyRecipePage />}></Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

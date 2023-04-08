@@ -23,6 +23,7 @@ export const SelectWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   @media (min-width: 1440px) {
     margin-top: 1.75rem;
   }
@@ -37,6 +38,7 @@ export const Select = styled.select`
   outline: none;
   border-radius: 6px 6px 6px 6px;
   padding-left: 14px;
+  padding-right: 15px;
 
   font-family: 'Poppins';
   height: 2rem;

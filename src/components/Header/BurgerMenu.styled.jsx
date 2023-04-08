@@ -43,6 +43,7 @@ export const BurgerMenuStyles = {
 };
 
 export const BurgerMenuContainer = styled.div`
+
   display: none;
   @media (max-width: 767px) {
     display: block;

@@ -8,25 +8,26 @@ import RecipeImgTab from '../../images/RecipePage/recipeImgTab.jpg';
 export const RecipePreparationWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 50px 16px 100px;
+  padding: 50px 0 100px;
   background-image: url(${BackgroundRecipe});
+
   background-repeat: no-repeat;
   background-position: 10% 210%;
 
   @media screen and (min-width: 768px) {
-    padding: 96px 32px 200px;
+    padding: 96px 0 200px;
     background-image: url(${BackgroundRecipeTab});
     background-position: bottom -370px right 250px;
   }
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    padding: 100px 100px 200px;
+    justify-content: space-between;
+    padding: 100px 0 200px;
     background-image: url(${BackgroundRecipeDesk});
     background-position: bottom -450px right 780px;
   }
 
   h2 {
-    margin: 0;
     margin-bottom: 28px;
     font-weight: 600;
     font-size: 24px;
@@ -63,18 +64,69 @@ export const CookingRecipe = styled.div`
   }
 `;
 export const RecipeImageWrapper = styled.div`
-  background-image: url(${RecipeImg});
+  /* background-image: url(${RecipeImg}); */
+  background-image: url(${props => props.img});
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border-radius: 8px;
   width: 343px;
   height: 250px;
   @media screen and (min-width: 768px) {
-    background-image: url(${RecipeImgTab});
+    /* background-image: url(${RecipeImgTab}); */
+    background-image: url(${props => props.img});
     width: 433px;
     height: 332px;
   }
   @media screen and (min-width: 1440px) {
     width: 433px;
     height: 332px;
+  }
+`;
+
+export const CookingSteps = styled.ol`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: step;
+`;
+
+export const CookingStep = styled.li`
+  display: flex;
+
+  &:not(:last-child) {
+    margin-bottom: 14px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 18px;
+    }
+  }
+
+  &::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    counter-increment: step;
+    content: counter(step);
+    margin-right: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #ffffff;
+    background: #8baa36;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+  }
+
+  p {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.8);
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 1.29;
+    }
   }
 `;

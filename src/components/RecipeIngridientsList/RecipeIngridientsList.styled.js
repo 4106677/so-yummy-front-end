@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const RecipeIngridientsWrapper = styled.div`
-  padding: 32px 16px 0 16px;
+  padding-top: 32px;
   @media screen and (min-width: 768px) {
-    padding: 50px 32px 0 32px;
+    padding-top: 50px;
   }
-
   @media screen and (min-width: 1440px) {
-    padding: 50px 100px 0 100px;
+    padding-top: 50px;
   }
 `;
 
@@ -34,10 +33,6 @@ export const IngridientsTableHeader = styled.div`
   @media screen and (min-width: 1440px) {
     padding: 21px 40px;
     margin-bottom: 50px;
-  }
-
-  p {
-    margin: 0;
   }
 
   p:first-child {
@@ -92,8 +87,6 @@ export const IngridientInfo = styled.div`
   flex: 1;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-between; */
-  /* width: 100%; */
   margin-left: 8px;
   @media screen and (min-width: 768px) {
     margin-left: 24px;
@@ -104,10 +97,7 @@ export const IngridientInfo = styled.div`
 `;
 
 export const IngridientName = styled.p`
-  margin: 0;
-  /* white-space: nowrap; */
-  /* overflow: hidden; */
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   flex-grow: 1;
   font-weight: 500;
   font-size: 12px;
@@ -191,9 +181,6 @@ export const IngridientPlaceholder = styled.div`
   height: 65px;
   background-color: #ccc;
 
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   @media screen and (min-width: 768px) {
     width: 144px;
     height: 146px;

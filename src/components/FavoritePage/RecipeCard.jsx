@@ -1,19 +1,40 @@
-import { Image, RecipeCardContainer, Title, Text } from 'styled-components';
+import {
+  Image,
+  Title,
+  Text,
+  Recipeitem,
+  TopCard,
+  Info,
+  BottomCard,
+  Time,
+  SeeRecipe,
+  BtnRemove,
+  Icon,
+} from './RecipeCard.styled';
+import IconDes from '../../images/icons/Des.svg';
 
 export function RecipeCard({ recipe, onDelete }) {
-  const handleDelete = () => {
-    onDelete(recipe.id);
-  }
+  const handleDelete = ev => {
+    onDelete(ev.target.id);
+  };
+  console.log(recipe);
 
   return (
-    <RecipeCardContainer>
+    <Recipeitem>
       <Image src={recipe.image} alt={recipe.title} />
-      <div>
-        <Title>{recipe.title}</Title>
+      <Info>
+        <TopCard>
+          <Title>{recipe.title}</Title>
+          <BtnRemove id={recipe._id} onClick={handleDelete}>
+            <Icon id={recipe._id} src={IconDes} alt="Icon" />
+          </BtnRemove>
+        </TopCard>
         <Text>{recipe.texst}</Text>
-        <button onClick={handleDelete}>Remove</button>
-        <button>See recipe</button>
-      </div>
-    </RecipeCardContainer>
+        <BottomCard>
+          <Time>{recipe.time} min</Time>
+          <SeeRecipe>See recipe</SeeRecipe>
+        </BottomCard>
+      </Info>
+    </Recipeitem>
   );
 }
