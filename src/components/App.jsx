@@ -84,6 +84,8 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <GlobalStyle />
+      <ToastContainer autoClose={3000} />
       {/* //   <Routes>
     //     <Route path="/" element={<WellcomePage />}></Route>
     //     <Route path="/register" element={<RegisterPage />}></Route>
@@ -100,8 +102,6 @@ export const App = () => {
     //     <Route path="/my" element={<MyRecipePage />}></Route>
     //     <Route path="*" element={<NotFoundPage />} /> */}
       {/* //   </Routes> */}
-      <GlobalStyle />
-      <ToastContainer autoClose={3000} />
     </>
   );
 };
