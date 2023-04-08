@@ -1,9 +1,26 @@
 import styled from 'styled-components';
 
+const darkMode = true;
+
+const objectColors = {
+  bgrDarkMode: '#1E1F28',
+  bgrCardDarkMode: '#2A2C36',
+  bgrBtnDelDarkMode: '#1E1F28',
+  colorGreen: '#8BAA36',
+  colorWhite: '#FAFAFA',
+  colorBlack: '#22252A',
+  colorTextDarkMode: 'rgba(250, 250, 250, 0.6)',
+  darkColorTitel: '#001833',
+  darkColorTitelCard: '#3e4462',
+  darkColorTextCard: '#23262a',
+};
+
 export const Recipeitem = styled.li`
   width: 343px;
   height: 152px;
-  background: #ffffff;
+  background: ${darkMode
+    ? objectColors.bgrCardDarkMode
+    : objectColors.colorWhite};
   border-radius: 8px;
   margin-bottom: 18px;
   display: flex;
@@ -44,7 +61,9 @@ export const Title = styled.h3`
   line-height: 1;
   letter-spacing: -0.24px;
 
-  color: #3e4462;
+  color: ${darkMode
+    ? objectColors.colorWhite
+    : objectColors.darkColorTitelCard};
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -64,9 +83,6 @@ export const Icon = styled.img`
 `;
 
 export const BtnRemove = styled.button`
-  &:hover {
-    background-color: #22252a;
-  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,8 +90,13 @@ export const BtnRemove = styled.button`
   width: 24px;
   border-radius: 4px;
   border: none;
-  color: #fff;
-  background-color: #8baa36;
+  color: ${objectColors.colorWhite};
+  background-color: ${objectColors.colorGreen};
+  &:hover {
+    background-color: ${darkMode
+      ? objectColors.colorGreen
+      : objectColors.colorBlack};
+  }
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -100,7 +121,9 @@ export const Time = styled.p`
   line-height: 1.4;
   letter-spacing: -0.24px;
 
-  color: #3e4462;
+  color: ${darkMode
+    ? objectColors.colorWhite
+    : objectColors.darkColorTitelCard};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -110,7 +133,7 @@ export const Time = styled.p`
 
 export const SeeRecipe = styled.button`
   &:hover {
-    background-color: #22252a;
+    background-color: ${objectColors.colorBlack};
   }
 
   color: rgb(255, 255, 255);
@@ -123,9 +146,8 @@ export const SeeRecipe = styled.button`
   font-size: 10px;
   line-height: 1.5;
 
-  background-color: #8baa36;
+  background-color: ${objectColors.colorGreen};
 
-  ${'' /* height: 45px; */}
   padding: 6px 14px;
   width: 87px;
 
@@ -179,7 +201,9 @@ export const Text = styled.p`
   font-weight: 400;
   font-size: 8px;
   line-height: 1.25;
-  color: #23262a;
+  color: ${darkMode
+    ? objectColors.colorTextDarkMode
+    : objectColors.darkColorTextCard};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
