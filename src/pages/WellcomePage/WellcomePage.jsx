@@ -30,7 +30,7 @@ export const WellcomePage = () => {
               Registration
             </StyledLink>
 
-            <StyledLinkTransp type="button" onClick={handleClick} to="/login">
+            <StyledLinkTransp type="button" onClick={handleClick} to="/signin">
               Sign in
             </StyledLinkTransp>
           </div>
