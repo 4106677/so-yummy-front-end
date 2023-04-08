@@ -1,6 +1,6 @@
 import { SearchBar } from "components/SearchBar/SearchBar";
 import { SearchHeader, DecorativeSquare } from "./SearchPage.styled";
-import { MainConteiner } from "components/Container/Container.styled";
+import { Container } from "components/Container/Container";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -99,7 +99,7 @@ export const SearchPage = () => {
   
     return (
       <div>
-        <MainConteiner>
+        <Container>
           <Header />
           <DecorativeSquare
             data-1
@@ -123,7 +123,7 @@ export const SearchPage = () => {
           />
           {isLoading && <Loader />}
           <Footer />
-        </MainConteiner>
+        </Container>
       </div>
     );
 }

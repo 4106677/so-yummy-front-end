@@ -13,8 +13,8 @@ export const addToFavoriteList = async () => {
   return data;
 };
 
-export const getAllFavoriteList = async () => {
-  const response = await favoriteInstance.get('/favorite');
+export const getAllFavoriteList = async (id) => {
+  const response = await favoriteInstance.get(`/favorite/${id}`);
   const data = response.data;
   console.log(data);
   return data;

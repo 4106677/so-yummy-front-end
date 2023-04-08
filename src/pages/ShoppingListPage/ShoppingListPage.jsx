@@ -1,5 +1,5 @@
 import { IngridientsShoppingList } from "components/IngridientsShoppingList/IngridientsShoppingList";
-import { MainConteiner } from "components/Container/Container.styled";
+import { Container } from "components/Container/Container";
 import { ShopListTitle, DecorativeSquare } from "./ShoppingListPage.styled";
 import {
   getAllShoppingList,
@@ -48,7 +48,7 @@ export const ShoppingListPage = () => {
   
   return (
     <div>
-      <MainConteiner>
+      <Container>
         <Header />
         <DecorativeSquare
           data-1
@@ -67,7 +67,7 @@ export const ShoppingListPage = () => {
         {isLoading && <Loader />}
         <IngridientsShoppingList items={ingredients} onClick={setDeleteId} />
         <Footer />
-      </MainConteiner>
+      </Container>
     </div>
   );
 };
