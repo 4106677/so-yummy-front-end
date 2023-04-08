@@ -1,6 +1,11 @@
-export const isUserLogin = ({ auth }) => auth.isLogin;
-export const getAuth = ({ auth }) => {
-  const { isLogin, token } = auth;
-  return { isLogin, token };
-};
-export const getUser = ({ auth }) => auth.user;
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+
+export const selectUser = state => state.auth.user;
+
+export const selectToken = state => state.auth.token;
+
+export const selectIsRefreshing = state => state.auth.isRefreshing;
+
+export const selectIsLoading = state => state.auth.isLoading;
+
+export const selectError = state => state.auth.error;
