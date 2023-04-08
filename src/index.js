@@ -15,9 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/so-yummy-front-end">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+
           <AuthLayout>
             <App />
           </AuthLayout>
+
         </PersistGate>
       </Provider>
     </BrowserRouter>
