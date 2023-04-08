@@ -1,12 +1,14 @@
 import { IngridientsShoppingList } from "components/IngridientsShoppingList/IngridientsShoppingList";
 import { MainConteiner } from "components/Container/Container.styled";
-import { ShopListTitle } from "./ShoppingListPage.styled";
+import { ShopListTitle, DecorativeSquare } from "./ShoppingListPage.styled";
 import {
   getAllShoppingList,
   deleteShoppingList,
 } from '../../services/shoppingListAPI';
 import { useState, useEffect } from 'react';
 import { Loader } from 'components/Loader/Loader';
+import { Header } from 'components/Header/Header';
+import { Footer } from "components/Footer/Footer";
 
 export const ShoppingListPage = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -47,9 +49,24 @@ export const ShoppingListPage = () => {
   return (
     <div>
       <MainConteiner>
+        <Header />
+        <DecorativeSquare
+          data-1
+          color="#8BAA36"
+          top="3.375rem"
+          left="14.75rem"
+        />
+        <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
+        <DecorativeSquare
+          data-3
+          color="#8BAA36"
+          top="4.125rem"
+          right="4.5rem"
+        />
         <ShopListTitle>Shopping list</ShopListTitle>
-        {isLoading && <Loader/>}
-        <IngridientsShoppingList items={ ingredients} onClick={setDeleteId} />
+        {isLoading && <Loader />}
+        <IngridientsShoppingList items={ingredients} onClick={setDeleteId} />
+        <Footer />
       </MainConteiner>
     </div>
   );
