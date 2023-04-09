@@ -5,26 +5,55 @@ import {
   FavoriteDescription,
   FavoriteItems,
   FavoriteTimeWrap,
+  BasketSvg,
+  BasketWrap,
+  Time,
+  FavoriteTextPartWrap,
 } from './FavoriteList.styled';
+import useMediaQuery from 'components/Hooks/useMediaQuery';
 
 export const FavoriteList = ({ items, onClick }) => {
- const elements = items.map(({ _id, title, preview, description, time }) => (
+
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  
+ const elementsMob = items.map(({ _id, title, preview, description, time }) => (
    <FavoriteCard key={_id}>
      <FavoriteImage src={preview} alt="dish" />
-     <div>
+     <FavoriteTextPartWrap>
        <FavoriteTitle>{title}</FavoriteTitle>
        <FavoriteDescription>{description}</FavoriteDescription>
        <FavoriteTimeWrap>
-         <div>{time} min</div>
-         <img src="" alt="" />
+         <Time>{time} min</Time>
+         <BasketWrap>
+           <BasketSvg />
+         </BasketWrap>
        </FavoriteTimeWrap>
-     </div>
+     </FavoriteTextPartWrap>
    </FavoriteCard>
  )); 
+  
+   const elementsDesktop = items.map(
+     ({ _id, title, preview, description, time }) => (
+       <FavoriteCard key={_id}>
+         <FavoriteImage src={preview} alt="dish" />
+         <div>
+           <div>
+             <FavoriteTitle>{title}</FavoriteTitle>
+             <img src="" alt="" />
+           </div>
+           <FavoriteDescription>{description}</FavoriteDescription>
+           <FavoriteTimeWrap>
+             <div>{time} min</div>
+             <button type="button" onClick={() => onClick(_id)}></button>
+           </FavoriteTimeWrap>
+         </div>
+       </FavoriteCard>
+     )
+   ); 
 
   return (
     <>
-      <FavoriteItems>{elements}</FavoriteItems>
+      <FavoriteItems>{isMobile ? elementsMob : elementsDesktop}</FavoriteItems>
     </>
   );
 };

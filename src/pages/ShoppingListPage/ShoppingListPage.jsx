@@ -7,8 +7,6 @@ import {
 } from '../../services/shoppingListAPI';
 import { useState, useEffect } from 'react';
 import { Loader } from 'components/Loader/Loader';
-import { Header } from 'components/Header/Header';
-import { Footer } from "components/Footer/Footer";
 
 export const ShoppingListPage = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -49,7 +47,6 @@ export const ShoppingListPage = () => {
   return (
     <div>
       <Container>
-        <Header />
         <DecorativeSquare
           data-1
           color="#8BAA36"
@@ -66,7 +63,6 @@ export const ShoppingListPage = () => {
         <ShopListTitle>Shopping list</ShopListTitle>
         {isLoading && <Loader />}
         <IngridientsShoppingList items={ingredients} onClick={setDeleteId} />
-        <Footer />
       </Container>
     </div>
   );
