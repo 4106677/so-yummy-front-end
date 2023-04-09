@@ -34,7 +34,7 @@ export const FavoritePage = () => {
         try {
           await deleteFavoriteList(deleteId);
           setfavoriteRecipe(prevIngredients =>
-            prevIngredients.filter(({ id }) => id !== deleteId)
+            prevIngredients.filter(({ _id }) => _id !== deleteId)
           );
         } catch ({ response }) {
           console.log(response.data.message);

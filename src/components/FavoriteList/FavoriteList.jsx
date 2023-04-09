@@ -24,11 +24,11 @@ export const FavoriteList = ({ items, onClick }) => {
    <FavoriteCard key={_id}>
      <FavoriteImage src={preview} alt="dish" />
      <FavoriteTextPartWrap>
-       <FavoriteTitle>{time ? time : 20}</FavoriteTitle>
+       <FavoriteTitle>{title}</FavoriteTitle>
        <FavoriteDescription>{description}</FavoriteDescription>
        <FavoriteTimeWrap>
-         <Time>{time} min</Time>
-         <BasketWrap>
+         <Time>{time ? time : 20} min</Time>
+         <BasketWrap type="button" onClick={() => onClick(_id)}>
            <BasketSvg />
          </BasketWrap>
        </FavoriteTimeWrap>
@@ -43,18 +43,15 @@ export const FavoriteList = ({ items, onClick }) => {
          <FavoriteTextPartWrap>
            <div>
              <FavoriteTitle>{title}</FavoriteTitle>
-             <BasketWrap>
-              { isDesktop ? <BasketSvg /> : <BasketSvgWhite />}
+             <BasketWrap type="button" onClick={() => onClick(_id)}>
+               {isDesktop ? <BasketSvg /> : <BasketSvgWhite />}
              </BasketWrap>
            </div>
            <FavoriteDescription>{description}</FavoriteDescription>
            <FavoriteInstraction>{instructions}</FavoriteInstraction>
            <FavoriteTimeWrap>
              <Time>{time ? time : 20} min</Time>
-             <FavoriteBtn
-               type="button"
-               onClick={() => onClick(_id)}
-             >See recipe</FavoriteBtn>
+             <FavoriteBtn>See recipe</FavoriteBtn>
            </FavoriteTimeWrap>
          </FavoriteTextPartWrap>
        </FavoriteCard>

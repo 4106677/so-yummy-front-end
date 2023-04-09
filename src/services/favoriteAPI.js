@@ -20,8 +20,8 @@ export const getAllFavoriteList = async () => {
   return data;
 };
 
-export const deleteFavoriteList = async(id) => {
-  const data = await favoriteInstance.delete(`/favorite/${id}`);
+export const deleteFavoriteList = async(_id) => {
+  const data = await favoriteInstance.delete(`/favorite/${_id}`);
   console.log(data);
   return data;
 };
