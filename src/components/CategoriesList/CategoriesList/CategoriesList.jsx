@@ -40,9 +40,9 @@ export function CategoriesList() {
     
   return (
        <CategoryList>
-        {categories.map(({ idx, name }) => (
+        {categories.map(({ name }, idx) => (
           <CategoryItem key={idx}>
-            <Title>{name}</Title>
+            <Title onClick={() => dispatch(getAllRecipesByCategory(name))}>{name}</Title>
             <CardWrapper>
               {meals.slice(0, numCard).map(({ _id, title, preview }) => (
                 <CardWrap key={_id}>
@@ -61,7 +61,7 @@ export function CategoriesList() {
         ))}
       </CategoryList>
     );
-}
+};
 
 
 
