@@ -1,12 +1,12 @@
 import * as Yup from 'yup';
 
 export const addRecipeValidationSchema = Yup.object().shape({
-  image: Yup.string(),
+  preview: Yup.string(),
   title: Yup.string().required('Required field'),
   description: Yup.string(),
-  preparationSteps: Yup.string(),
   category: Yup.string().required('Required field'),
-  cookingTime: Yup.string().required('Required field'),
+  instructions: Yup.string().required('Required field'),
+  time: Yup.string().required('Required field'),
   ingredients: Yup.array()
     .of(
       Yup.object().shape({

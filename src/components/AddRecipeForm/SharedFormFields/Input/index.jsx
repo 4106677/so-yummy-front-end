@@ -26,8 +26,9 @@ export const Input = ({
   const wrapperRef = React.useRef(null);
 
   const datalist =
-    dataListOptions?.filter((option) => option.toLowerCase().includes(inputValue.toLowerCase())) ??
-    [];
+    dataListOptions?.filter((option) => {
+      return option?.toLowerCase().includes(inputValue?.toLowerCase());
+    }) ?? [];
 
   // handlers
   function handleInputChange(event) {
@@ -115,12 +116,12 @@ export const Input = ({
         </Styled.DropdownList>
       ) : null}
 
-      {!asFieldGroup && touched && error && <Styled.Error>{error}</Styled.Error>}
+      {!asFieldGroup && touched && error ? <Styled.Error>{error}</Styled.Error> : null}
 
       {(asFieldGroup && isGroupInputTouched && errorMsg) ||
-        (asFieldGroup && isSubmit && errorMsg && (
-          <Styled.Error asFieldGroup={asFieldGroup}>{errorMsg}</Styled.Error>
-        ))}
+      (asFieldGroup && isSubmit && errorMsg) ? (
+        <Styled.Error asFieldGroup={asFieldGroup}>{errorMsg}</Styled.Error>
+      ) : null}
     </Styled.Wrapper>
   );
 };

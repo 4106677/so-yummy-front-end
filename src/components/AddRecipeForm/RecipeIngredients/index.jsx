@@ -10,7 +10,13 @@ import { Counter } from './Counter';
 import * as Styled from './RecipeIngredients.styled';
 import { IngredientField } from './IngredientField';
 
-export function RecipeIngredients({ name, selectOptionList = [], inputOptionList = [], isSubmit }) {
+export function RecipeIngredients({
+  name,
+  selectOptionList = [],
+  inputOptionList = [],
+  inputDatalistKeyExtractor,
+  isSubmit
+}) {
   const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
 
@@ -18,8 +24,8 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
   function onQuanityChange(updatedQuantity) {
     if (updatedQuantity > actualQuatity) {
       setValue([
-        ...fields.value,
-        { id: uuidv4(), ingredient: '', amount: '', measurementUnit: selectOptionList[0] }
+        { id: uuidv4(), amount: '', ingredient: '', measurementUnit: selectOptionList[0] },
+        ...fields.value
       ]);
     } else {
       const filedValuesArray = [...fields.value];
@@ -67,6 +73,7 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
                 inputOptionList={inputOptionList}
                 error={error && error[idx]}
                 isSubmit={isSubmit}
+                inputDatalistKeyExtractor={inputDatalistKeyExtractor}
                 inputHandlers={{
                   inputValue: ingredient,
                   onInputChange: handleValueChange.bind(null, 'ingredient', field.id)

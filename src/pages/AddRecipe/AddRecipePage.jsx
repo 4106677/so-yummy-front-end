@@ -1,6 +1,8 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // components
+import { PageLayout } from 'components/Layout/PageLayout/PageLayout.jsx';
 import { AddRecipeForm } from 'components/AddRecipeForm/index.jsx';
 import { Socials } from 'components/Socials/index.jsx';
 import { PopularRecipes } from 'components/PopularRecipes/index.jsx';
@@ -8,71 +10,51 @@ import { PopularRecipes } from 'components/PopularRecipes/index.jsx';
 // styles
 import * as Styled from './AddRecipePage.styled.js';
 
-// hooks and utils
+// hooks, services, utils
 import { useMatchMediaQuery } from 'components/Hooks/useMatchMediaQuery.js';
-
-//temp
-import img from '../../images//icons/youtube.svg';
-import { PageLayout } from 'components/Layout/PageLayout/PageLayout.jsx';
-
-// mock data, DELETE once backend ready
-const recipes = [
-  {
-    id: 1,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  },
-  {
-    id: 2,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  },
-  {
-    id: 3,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  },
-  {
-    id: 4,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  },
-  {
-    id: 5,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  },
-  {
-    id: 6,
-    title: 'Pancakes',
-    description: 'Just simple banana pancakes. Very tasty. Very delicious',
-    image: img
-  }
-];
+import { recipeService } from 'services/RecipeService.js';
 
 const defaultHeading = 'Add recipe';
 
 export function AddRecipePage({ heading = defaultHeading }) {
+  const [data, setData] = React.useState([]);
+
+  const isFirstRender = React.useRef(true);
   const { isLaptop } = useMatchMediaQuery();
+
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      Promise.allSettled([
+        recipeService.getPopular(),
+        recipeService.getIngredients({
+          transform: (data) => data.map(({ ttl, _id }) => ({ ingredient: ttl, id: _id }))
+        }),
+        recipeService.getCategories()
+      ]).then((data) => setData(data));
+
+      isFirstRender.current = false;
+    }
+  }, []);
+
+  const [popularRecipes, ingredients, categories] = data;
 
   return (
     <PageLayout title={heading}>
       <Styled.Wrapper>
         {/* LEFT SIDE */}
         <Styled.SubWrapper1>
-          <AddRecipeForm />
+          {ingredients?.value && categories?.value ? (
+            <AddRecipeForm categories={categories?.value} ingredients={ingredients?.value} />
+          ) : null}
         </Styled.SubWrapper1>
 
         {/* RIGHT SIDE */}
         <Styled.SubWrapper2>
           {isLaptop ? <Socials /> : null}
 
-          <PopularRecipes recipes={recipes} />
+          {popularRecipes && popularRecipes.value.length ? (
+            <PopularRecipes recipes={popularRecipes.value} />
+          ) : null}
         </Styled.SubWrapper2>
       </Styled.Wrapper>
     </PageLayout>
