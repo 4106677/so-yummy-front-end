@@ -6,6 +6,13 @@ import notFoundSearchTabRetina from '../../../images/SearchPage/search_not_found
 import notFoundSearchDesk from '../../../images/SearchPage/search_not_found_desk_1x.png';
 import notFoundSearchDeskRetina from '../../../images/SearchPage/search_not_found_desk_2x.png';
 
+export const SearchListWrap = styled.div`
+  padding-bottom: 100px;
+  @media screen and (min-width: 768px) {
+  padding-bottom: 200px;
+  }
+`;
+
 export const ListWrap = styled.ul`
   text-align: center;
   display: grid;

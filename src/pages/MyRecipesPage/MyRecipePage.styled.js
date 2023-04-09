@@ -20,9 +20,27 @@ import bgTabletPngx2 from '../../images/PageLayout/page-layout-bg-tablet-x2.png'
 import bgDesktopPngx1 from '../../images/PageLayout/page-layout-bg-desktop-x1.png';
 import bgDesktopPngx2 from '../../images/PageLayout/page-layout-bg-desktop-x2.png';
 
+const darkMode = false;
+
+const objectColors = {
+  bgrDarkMode: '#1E1F28',
+  bgrCardDarkMode: '#2A2C36',
+  bgrBtnDelDarkMode: '#1E1F28',
+  colorGreen: '#8BAA36',
+  colorWhite: '#FAFAFA',
+  colorBlack: '#22252A',
+  colorTextDarkMode: 'rgba(250, 250, 250, 0.6)',
+  darkColorTitel: '#001833',
+  darkColorTitelCard: '#3e4462',
+  darkColorTextCard: '#23262a',
+};
+
 export const Section = styled.section`
   z-index: 2;
   position: relative;
+  background-color: ${darkMode
+    ? objectColors.bgrDarkMode
+    : objectColors.colorWhite};
 
   padding-top: 4.625rem;
   padding-bottom: 6.25rem;
@@ -135,10 +153,8 @@ export const RecipeContainer = styled.div`
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
-  /* padding-left: 16px;
-  padding-right: 16px; */
-
-  @media screen and (min-width 375px) {
+  padding-right: 16px;
+  */ @media screen and (min-width 375px) {
     width: 375px;
   }
 
@@ -157,7 +173,7 @@ export const DecorativeSquare = styled.div`
 
   aspect-ratio: 1 / 1;
   border-radius: 3px;
-  background-color: ${({ color }) => color ?? '#22252A'};
+  background-color: ${({ color }) => color ?? objectColors.colorBlack};
   transform: rotate(-25deg);
 
   &[data-1] {
@@ -166,6 +182,9 @@ export const DecorativeSquare = styled.div`
   }
 
   &[data-2] {
+    background-color: ${darkMode
+      ? objectColors.colorWhite
+      : objectColors.colorBlack};
     top: 141px;
     left: 67%;
     width: 0.35rem;

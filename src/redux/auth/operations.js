@@ -1,59 +1,49 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../services/authAPI';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
+
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (data, { rejectWithValue }) => {
+  async (user, { rejectWithValue }) => {
     try {
-      const result = await api.register(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
+      const { data } = await axios.post('auth/register', user);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const login = createAsyncThunk(
   'auth/login',
-  async (data, { rejectWithValue }) => {
+  async (user, { rejectWithValue }) => {
     try {
-      const result = await api.login(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
+      const { data } = await axios.post('auth/login', user);
+
+      setToken(data.token);
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk(
-  'auth/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      const result = await api.logout();
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
+export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
+  const { auth } = thunkAPI.getState();
+  const token = auth.token;
+  if (!token) return thunkAPI.rejectWithValue();
+  setToken(token);
+  try {
+    const { data } = await axios.get('/auth/current');
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
   }
-);
-
-export const current = createAsyncThunk(
-  'auth/current',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      const { auth } = getState();
-      const result = await api.getCurrent(auth.token);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
-  },
-  {
-    condition: (_, { getState }) => {
-      const { auth } = getState();
-      if (!auth.token) {
-        return false;
-      }
-    },
-  }
-);
+});

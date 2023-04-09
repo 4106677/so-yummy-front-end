@@ -5,8 +5,9 @@
     NotFoundText,
     Image,
     RecipeTitle,
-    RecipeWrap
-} from './SearchedRecipesList.styled';
+    RecipeWrap,
+    SearchListWrap,
+  } from './SearchedRecipesList.styled';
   import defaultPic from "../../../images/SearchPage/defaultPic.png"
 
 export const SearchedRecipesList = ({ items = [] }) => {
@@ -21,13 +22,16 @@ export const SearchedRecipesList = ({ items = [] }) => {
   ));
     
   return (
-    <div>
-      {(items.length !== 0) ? (<ListWrap>{recipeCreator}</ListWrap>) :  (
-      <NotFoundWrap>
-        <NotFoundPhoto></NotFoundPhoto>
-        <NotFoundText>Try looking for something else...</NotFoundText>
-      </NotFoundWrap>
-    )}      
-    </div>);
+    <SearchListWrap>
+      {items.length !== 0 ? (
+        <ListWrap>{recipeCreator}</ListWrap>
+      ) : (
+        <NotFoundWrap>
+          <NotFoundPhoto></NotFoundPhoto>
+          <NotFoundText>Try looking for something else...</NotFoundText>
+        </NotFoundWrap>
+      )}
+    </SearchListWrap>
+  );
 
 }
