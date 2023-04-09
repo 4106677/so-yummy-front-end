@@ -1,14 +1,26 @@
 import { useState, useCallback } from 'react';
-import { HeaderStyledUser, HeaderStyledUserText } from './Header.styled';
+import {
+  HeaderStyledUser,
+  HeaderStyledUserText,
+  HeaderStyledUserImg,
+} from './Header.styled';
 import { FaUserCircle } from 'react-icons/fa';
 import { HeaderUserModal } from './HeaderUserModal';
 import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
+import { useSelector } from 'react-redux';
+import { getUser } from 'redux/auth/selectors';
+import { Loader } from 'components/Loader/Loader';
+import { getIsLoading } from 'redux/header/selectors';
 
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const { name, avatar } = useSelector(getUser);
+
+  const isLoading = useSelector(getIsLoading);
 
   const openUserModal = e => {
     togleUserModal();
@@ -36,13 +48,15 @@ export const HeaderUser = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <HeaderStyledUser onClick={openUserModal}>
-        {/* {
-          ? <HeaderStyledUserImg alt="user-avatar" />
-          : 
-          } */}
-        <FaUserCircle />
-        <HeaderStyledUserText>User-name</HeaderStyledUserText>
+        {avatar ? (
+          <HeaderStyledUserImg src={avatar} alt="user-avatar" />
+        ) : (
+          <FaUserCircle />
+        )}
+
+        <HeaderStyledUserText>{name}User-name</HeaderStyledUserText>
       </HeaderStyledUser>
       {showUserModal && (
         <HeaderUserModal
@@ -52,7 +66,9 @@ export const HeaderUser = () => {
         />
       )}
       {showLogoutModal && <HeaderLogoutModal onClose={togleLogoutModal} />}
-      {showEditModal && <HeaderEditModal onClose={togleEditModal} />}
+      {showEditModal && (
+        <HeaderEditModal user={name} avatar={avatar} onClose={togleEditModal} />
+      )}
     </>
   );
 };
