@@ -13,8 +13,6 @@ import {
   UserIcon,
   EmailIcon,
   PasswordIcon,
-  ErrorIcon,
-  SuccessIcon,
   InputFormBox,
   InputBox,
   Title,
@@ -22,13 +20,16 @@ import {
   LinkStyled,
   GoogleAuth,
   GoogleLink,
-  // WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 
-import ValigationStatus from './validationStatus';
-// import { SignupSchema } from '../../validation/inputsValidationSchema';
+import { ValigationStatus, SwitchStatusIcon } from './validationStatus';
+import { WarningText } from './validationStatus.styled';
+import {
+  SignupSchema,
+  warningPasswordValidation,
+} from '../../validation/inputsValidationSchema';
 
 import { register } from '../../redux/auth/operations';
 
@@ -39,7 +40,7 @@ export const RegisterForm = () => {
     dispatch(register(data));
   };
 
-  // const validationSchema = SignupSchema;
+  const validationSchema = SignupSchema;
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -61,10 +62,10 @@ export const RegisterForm = () => {
                   email: '',
                   password: '',
                 }}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >
-                {({ errors, touched }) => (
+                {({ values, errors, touched }) => (
                   <Form>
                     <InputFormBox
                       $gap={errors.name || errors.email || errors.password}
@@ -80,11 +81,19 @@ export const RegisterForm = () => {
                           name="name"
                           placeholder="Name"
                           autoComplete="off"
+                          value={values.name}
                           $success={!errors.name && touched.name}
                           $error={errors.name && touched.name}
                         />
-                        {!errors.name && touched.name && <SuccessIcon />}
-                        {errors.name && touched.name && <ErrorIcon />}
+                        {
+                          <SwitchStatusIcon
+                            name="name"
+                            error={errors.name}
+                            touched={touched.name}
+                            value={values.name}
+                          />
+                        }
+
                         {errors.name && (
                           <ValigationStatus name="name" error={errors.name} />
                         )}
@@ -103,8 +112,7 @@ export const RegisterForm = () => {
                           $error={errors.email && touched.email}
                           $success={!errors.email && touched.email}
                         />
-                        {!errors.email && touched.email && <SuccessIcon />}
-                        {errors.email && touched.email && <ErrorIcon />}
+                        {/* {switchStatusIcon()} */}
                         {errors.email && (
                           <ValigationStatus name="email" error={errors.email} />
                         )}
@@ -113,6 +121,7 @@ export const RegisterForm = () => {
                         style={{ marginBottom: 0 }}
                         $gap={errors.password}
                       >
+                        {/* set icon color */}
                         <PasswordIcon
                           $error={errors.password && touched.password}
                           $success={!errors.password && touched.password}
@@ -121,20 +130,39 @@ export const RegisterForm = () => {
                           id="password"
                           name="password"
                           type="password"
+                          value={values.password}
                           placeholder="Password"
                           autoComplete="off"
+                          // set input color
+                          $warning={
+                            touched.password &&
+                            !warningPasswordValidation(values.password)
+                          }
                           $error={errors.password && touched.password}
                           $success={!errors.password && touched.password}
                         />
-                        {!errors.password && touched.password && (
-                          <SuccessIcon />
-                        )}
-                        {errors.password && touched.password && <ErrorIcon />}
-                        {errors.password && (
+                        {/* set icon validation status */}
+                        {/* {switchStatusIcon()} */}
+                        {/* set text*/}
+                        {!errors.password &&
+                        values.password &&
+                        !warningPasswordValidation(values.password) ? (
+                          <WarningText>
+                            Your password is little secure. Add a capital
+                            letter.
+                          </WarningText>
+                        ) : !errors.password && touched.password ? (
+                          <ValigationStatus
+                            name="password"
+                            success="Password is secure"
+                          />
+                        ) : errors.password && touched.password ? (
                           <ValigationStatus
                             name="password"
                             error={errors.password}
                           />
+                        ) : (
+                          <></>
                         )}
                       </InputBox>
                     </InputFormBox>

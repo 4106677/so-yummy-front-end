@@ -21,53 +21,7 @@ import { ReactComponent as User } from '../../images/startPage/icon-user-name.sv
 import { ReactComponent as Email } from '../../images/startPage/icon-email.svg';
 import { ReactComponent as Password } from '../../images/startPage/icon-password.svg';
 
-import { ReactComponent as Success } from '../../images/startPage/icon-success.svg';
-import { ReactComponent as Warning } from '../../images/startPage/icon-warning.svg';
-import { ReactComponent as Error } from '../../images/startPage/icon-error.svg';
-
 export const GoogleLink = styled(Link)``;
-
-export const SuccessIcon = styled(Success)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
-  }
-`;
-
-export const WarningIcon = styled(Warning)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
-  }
-`;
-
-export const ErrorIcon = styled(Error)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
-  }
-`;
 
 export const UserIcon = styled(User)`
   box-sizing: border-box;
@@ -116,13 +70,17 @@ export const EmailIcon = styled(Email)`
   ${props =>
     props.$error &&
     css`
-      fill: none;
       stroke: #e74a3b;
     `}
   ${props =>
     props.$success &&
     css`
       stroke: #3cbc81;
+    `}
+  ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
     `}
   @media screen and (min-width: 768px) {
     height: 24px;
@@ -156,6 +114,11 @@ export const PasswordIcon = styled(Password)`
     props.$success &&
     css`
       stroke: #3cbc81;
+    `}
+  ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
     `}
   @media screen and (min-width: 768px) {
     height: 24px;
@@ -395,6 +358,11 @@ export const Input = styled(Field)`
     props.$error &&
     css`
       border-color: #e74a3b;
+    `}
+  ${props =>
+    props.$warning &&
+    css`
+      border-color: #f6c23e;
     `}
   ${props =>
     props.$success &&
