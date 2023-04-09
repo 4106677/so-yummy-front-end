@@ -4,17 +4,18 @@ export const CatigoryHeader = styled.h1`
   font: 'Poppins';
   font-weight: 600;
   font-size: 28px;
-  margin-bottom: 3.125rem;
-  padding: 114px 16px 60px 16px;
+  color: #001833;
+  margin-bottom: 3.125rem; 
+   padding: 114px 16px 60px 16px;
   @media (min-width: 768px) {
     font-size: 32px;
-    margin-bottom: 2.5rem;
-    padding: 136px 32px 60px 32px;
+     margin-bottom: 2.5rem; 
+    padding: 136px 32px 60px 32px; 
   }
   @media (min-width: 1440px) {
     font-size: 44px;
-    margin-bottom: 3.125rem;
-    padding: 164px 100px 110px 100px;
+     margin-bottom: 3.125rem; 
+     padding: 164px 100px 110px 100px; 
   }
 `;
 
