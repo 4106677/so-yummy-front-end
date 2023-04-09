@@ -1,6 +1,9 @@
 import { SearchBar } from "components/SearchBar/SearchBar";
-import { SearchHeader, DecorativeSquare } from "./SearchPage.styled";
-import { Container } from "components/Container/Container";
+import {
+  SearchHeader,
+  DecorativeSquare,
+  Container,
+} from './SearchPage.styled';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,12 +11,8 @@ import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
-import { Loader } from 'components/Loader/Loader'
+import { Loader } from 'components/Loader/Loader';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
-import { Header } from 'components/Header/Header';
-import { Footer } from 'components/Footer/Footer';
-
-
 
 export const SearchPage = () => {
   const [search, setSearch] = useState('');
@@ -98,9 +97,8 @@ export const SearchPage = () => {
     };
   
     return (
-      <div>
+      <>
         <Container>
-          <Header />
           <DecorativeSquare
             data-1
             color="#8BAA36"
@@ -122,8 +120,7 @@ export const SearchPage = () => {
             items={recipes}
           />
           {isLoading && <Loader />}
-          <Footer />
         </Container>
-      </div>
+      </>
     );
 }

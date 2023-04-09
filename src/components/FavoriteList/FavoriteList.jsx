@@ -1,21 +1,30 @@
+import {
+  FavoriteCard,
+  FavoriteImage,
+  FavoriteTitle,
+  FavoriteDescription,
+  FavoriteItems,
+  FavoriteTimeWrap,
+} from './FavoriteList.styled';
+
 export const FavoriteList = ({ items, onClick }) => {
  const elements = items.map(({ _id, title, preview, description, time }) => (
-   <li key={_id}>
-     <img src={preview} alt="dish" />
+   <FavoriteCard key={_id}>
+     <FavoriteImage src={preview} alt="dish" />
      <div>
-       <p>{title}</p>
-       <p>{description}</p>
-       <div>
+       <FavoriteTitle>{title}</FavoriteTitle>
+       <FavoriteDescription>{description}</FavoriteDescription>
+       <FavoriteTimeWrap>
          <div>{time} min</div>
          <img src="" alt="" />
-       </div>
+       </FavoriteTimeWrap>
      </div>
-   </li>
+   </FavoriteCard>
  )); 
 
   return (
     <>
-      <ul>{elements}</ul>
+      <FavoriteItems>{elements}</FavoriteItems>
     </>
   );
 };

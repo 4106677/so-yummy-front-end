@@ -20,10 +20,11 @@ export const FavoritePage = () => {
       const fetchFavoriteRecipes = async () => {
         try {
           const data = await getAllFavoriteList();
+          console.log(data);
           setfavoriteRecipe(data);
           setIsLoading(false);
         } catch ({ response }) {
-          console.log(response.data.message);
+          console.log(response.data);
           setIsLoading(false);
         }
       };
