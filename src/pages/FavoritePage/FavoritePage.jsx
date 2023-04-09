@@ -1,8 +1,6 @@
 import { Container } from 'components/Container/Container';
 import { DecorativeSquare } from "./FavoritePage.styled";
 import 'react-toastify/dist/ReactToastify.css';
-import { Header } from 'components/Header/Header';
-import { Footer } from 'components/Footer/Footer';
 import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 import { FavoriteTitle } from "./FavoritePage.styled";
 import { Loader } from 'components/Loader/Loader';
@@ -49,7 +47,6 @@ export const FavoritePage = () => {
   return (
     <div>
       <Container>
-        <Header />
         <DecorativeSquare
           data-1
           color="#8BAA36"
@@ -66,7 +63,6 @@ export const FavoritePage = () => {
         <FavoriteTitle>Favorite</FavoriteTitle>
         {isLoading && <Loader />}
         <FavoriteList items={favoriteRecipe} onClick={setDeleteId} />
-        <Footer />
       </Container>
     </div>
   );

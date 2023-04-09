@@ -9,18 +9,22 @@ import {
   BasketWrap,
   Time,
   FavoriteTextPartWrap,
+  FavoriteInstraction,
+  BasketSvgWhite,
+  FavoriteBtn,
 } from './FavoriteList.styled';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 
 export const FavoriteList = ({ items, onClick }) => {
 
   const isMobile = useMediaQuery('(max-width: 767px)');
+   const isDesktop = useMediaQuery('(min-width: 1440px)');
   
  const elementsMob = items.map(({ _id, title, preview, description, time }) => (
    <FavoriteCard key={_id}>
      <FavoriteImage src={preview} alt="dish" />
      <FavoriteTextPartWrap>
-       <FavoriteTitle>{title}</FavoriteTitle>
+       <FavoriteTitle>{time ? time : 20}</FavoriteTitle>
        <FavoriteDescription>{description}</FavoriteDescription>
        <FavoriteTimeWrap>
          <Time>{time} min</Time>
@@ -33,20 +37,26 @@ export const FavoriteList = ({ items, onClick }) => {
  )); 
   
    const elementsDesktop = items.map(
-     ({ _id, title, preview, description, time }) => (
+     ({ _id, title, preview, description, time, instructions }) => (
        <FavoriteCard key={_id}>
          <FavoriteImage src={preview} alt="dish" />
-         <div>
+         <FavoriteTextPartWrap>
            <div>
              <FavoriteTitle>{title}</FavoriteTitle>
-             <img src="" alt="" />
+             <BasketWrap>
+              { isDesktop ? <BasketSvg /> : <BasketSvgWhite />}
+             </BasketWrap>
            </div>
            <FavoriteDescription>{description}</FavoriteDescription>
+           <FavoriteInstraction>{instructions}</FavoriteInstraction>
            <FavoriteTimeWrap>
-             <div>{time} min</div>
-             <button type="button" onClick={() => onClick(_id)}></button>
+             <Time>{time ? time : 20} min</Time>
+             <FavoriteBtn
+               type="button"
+               onClick={() => onClick(_id)}
+             >See recipe</FavoriteBtn>
            </FavoriteTimeWrap>
-         </div>
+         </FavoriteTextPartWrap>
        </FavoriteCard>
      )
    ); 
