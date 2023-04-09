@@ -9,7 +9,7 @@ import { HeaderUserModal } from './HeaderUserModal';
 import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
 import { useSelector } from 'react-redux';
-// import { getUser } from 'redux/auth/selectors';
+import { selectUser } from 'redux/auth/selectors';
 import { Loader } from 'components/Loader/Loader';
 import { getIsLoading } from 'redux/header/selectors';
 
@@ -18,8 +18,7 @@ export const HeaderUser = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // const { name, avatar } = useSelector(getUser);
-  const { name, avatar } = useSelector();
+  const { name, avatar } = useSelector(selectUser);
 
   const isLoading = useSelector(getIsLoading);
 
@@ -57,7 +56,7 @@ export const HeaderUser = () => {
           <FaUserCircle />
         )}
 
-        <HeaderStyledUserText>{name}User-name</HeaderStyledUserText>
+        <HeaderStyledUserText>{name}</HeaderStyledUserText>
       </HeaderStyledUser>
       {showUserModal && (
         <HeaderUserModal
