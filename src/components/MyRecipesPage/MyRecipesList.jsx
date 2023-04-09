@@ -10,7 +10,7 @@ import {
 } from '../../services/myRecipes';
 import { useEffect, useState } from 'react';
 
-import { RecipeCard } from '../FavoritePage/RecipeCard';
+import { RecipeCard } from './RecipeCard';
 // import { Header } from '../../components/Header/Header';
 
 export function MyRecipesList() {

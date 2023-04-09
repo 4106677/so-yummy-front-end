@@ -20,7 +20,7 @@ import bgTabletPngx2 from '../../images/PageLayout/page-layout-bg-tablet-x2.png'
 import bgDesktopPngx1 from '../../images/PageLayout/page-layout-bg-desktop-x1.png';
 import bgDesktopPngx2 from '../../images/PageLayout/page-layout-bg-desktop-x2.png';
 
-const darkMode = true;
+const darkMode = false;
 
 const objectColors = {
   bgrDarkMode: '#1E1F28',
