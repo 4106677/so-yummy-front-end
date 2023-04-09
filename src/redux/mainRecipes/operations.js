@@ -8,7 +8,7 @@ import {
   getOneRecipeByIdAPI,
   getPopularRecipesAPI,
   getRecipesByQueryAPI,
-  
+  getRecipesByIngredientAPI,
 } from '../../services/TheMealAPI';
 
 
@@ -80,6 +80,7 @@ export const getPopularRecipes = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getPopularRecipesAPI();
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -93,6 +94,19 @@ export const getRecipesByQuery = createAsyncThunk(
     try {
       const { query, page, per_page } = params;
       const data = await getRecipesByQueryAPI(query, page, per_page);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.status);
+    }
+  }
+);
+
+export const getRecipesByIngredient = createAsyncThunk(
+  'ingredients/recipes',
+  async (params, { rejectWithValue }) => {
+    try {
+      const { ingredient, page, per_page } = params;
+      const data = await getRecipesByIngredientAPI(ingredient, page, per_page);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);

@@ -1,37 +1,41 @@
-  import {
+import {
     ListWrap,
     NotFoundPhoto,
     NotFoundWrap,
     NotFoundText,
     Image,
     RecipeTitle,
-    RecipeWrap,
-    SearchListWrap,
-  } from './SearchedRecipesList.styled';
-  import defaultPic from "../../../images/SearchPage/defaultPic.png"
+    RecipeWrap
+} from './RecipeList.styled';
+  // import defaultPic from "../../../images/SearchPage/defaultPic.png"
 
-export const SearchedRecipesList = ({ items = [] }) => {
+export const RecipeList = ({ items = [] }) => {
   console.log(items);
   const recipeCreator = items.map(({ _id, preview, title }) => (
     <RecipeWrap key={_id}>
       <a href={preview}>
-        <Image src={preview ? preview : defaultPic} alt="dish" />
+        <Image src={preview} alt="dish" />
       </a>
       <RecipeTitle>{title}</RecipeTitle>
     </RecipeWrap>
   ));
     
   return (
-    <SearchListWrap>
-      {items.length !== 0 ? (
+    <div>
+      {items ? (
         <ListWrap>{recipeCreator}</ListWrap>
       ) : (
         <NotFoundWrap>
           <NotFoundPhoto></NotFoundPhoto>
           <NotFoundText>Try looking for something else...</NotFoundText>
-        </NotFoundWrap>
-      )}
-    </SearchListWrap>
-  );
+        </NotFoundWrap>)}
+    </div>);
 
 }
+
+
+
+
+
+
+

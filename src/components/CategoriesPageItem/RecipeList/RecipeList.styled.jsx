@@ -6,13 +6,6 @@ import notFoundSearchTabRetina from '../../../images/SearchPage/search_not_found
 import notFoundSearchDesk from '../../../images/SearchPage/search_not_found_desk_1x.png';
 import notFoundSearchDeskRetina from '../../../images/SearchPage/search_not_found_desk_2x.png';
 
-export const SearchListWrap = styled.div`
-  padding-bottom: 100px;
-  @media screen and (min-width: 768px) {
-  padding-bottom: 200px;
-  }
-`;
-
 export const ListWrap = styled.ul`
   text-align: center;
   display: grid;
@@ -44,7 +37,6 @@ export const NotFoundPhoto = styled.div`
     (min-resolution: 2dppx) {
     background-image: url(${notFoundSearchMobRetina});
   }
-
   @media screen and (min-width: 768px) {
     height: 225px;
     width: 350px;
@@ -55,7 +47,6 @@ export const NotFoundPhoto = styled.div`
       background-image: url(${notFoundSearchTabRetina});
     }
   }
-
   @media screen and (min-width: 1440px) {
     background-image: url(${notFoundSearchDesk});
     @media screen and (min-device-pixel-ratio: 2),
@@ -78,7 +69,6 @@ export const NotFoundText = styled.p`
   font-size: 14px;
   color: #000000;
   opacity: 0.5;
-
   @media screen and (min-width: 768px) {
     font-size: 24px;
   }
@@ -105,17 +95,14 @@ export const RecipeTitle = styled.p`
   z-index: 1;
   text-align: start;
   padding-left: 16px;
-
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #3e4462;
   line-height: 1.25;
-
   background-color: #ffffff;
   border-radius: 8px;
-
   height: 3.25rem;
   width: 19.19rem;
   line-height: 3.25rem;
@@ -124,4 +111,3 @@ export const RecipeTitle = styled.p`
 export const RecipeWrap = styled.li`
   position: relative;
 `;
-

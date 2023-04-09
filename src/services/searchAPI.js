@@ -7,7 +7,7 @@ const recipesSearchInstance = axios.create({
 export const getAllRecipesSearchTitle = async (search, page, limit) => {
   try {
     const  response  = await recipesSearchInstance.get(
-      `/recipes/search/${search}?type=title&pages${page}1&limit=${limit}`
+      `/recipes/search/${search}?type=title&pages${page}&limit=${limit}`
     );
     console.log(response.data);
     return response.data;
@@ -19,7 +19,7 @@ export const getAllRecipesSearchTitle = async (search, page, limit) => {
 export const getAllRecipesSearchIngredients = async (search, page, limit) => {
   try {
     const response = await recipesSearchInstance.get(
-      `/recipes/search/${search}?type=ingredients&pages${page}1&limit=${limit}`
+      `/recipes/search/${search}?type=ingredients&pages${page}&limit=${limit}`
     );
     console.log(response.data);
     return response.data;

@@ -1,24 +1,5 @@
 import styled from 'styled-components';
 
-export const SearchHeader = styled.h1`
-  font: 'Poppins';
-  font-weight: 600;
-  font-size: 28px;
-  margin-bottom: 3.125rem;
-  padding-top: 114px;
-
-  @media (min-width: 768px) {
-    font-size: 32px;
-    margin-bottom: 2.5rem;
-    padding-top: 136px;
-  }
-  @media (min-width: 1440px) {
-    font-size: 44px;
-    margin-bottom: 3.125rem;
-    padding-top: 164px;
-  }
-`;
-
 export const DecorativeSquare = styled.div`
   position: absolute;
   width: 0.5rem;
@@ -89,5 +70,24 @@ export const DecorativeSquare = styled.div`
       top: 129px;
       right: 10%;
     }
+  }
+`;
+
+export const FavoriteTitle = styled.h1`
+  font: 'Poppins';
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 3.125rem;
+  padding-top: 114px;
+
+  @media (min-width: 768px) {
+    font-size: 32px;
+    margin-bottom: 2.5rem;
+    padding-top: 136px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 44px;
+    margin-bottom: 3.125rem;
+    padding-top: 164px;
   }
 `;

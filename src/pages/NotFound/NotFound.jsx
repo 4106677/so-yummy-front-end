@@ -1,18 +1,9 @@
-import {
-    NFtitle,
-    NFText,
-    NFImg,
-    NFDivWrap
-} from './NotFound.styled';
+import { NotFound } from '../../components/NotFound/NotFound';
 
-export const NotFound = () => {
-    return (
-        <>
-        <NFDivWrap>
-            <NFImg/>
-            <NFtitle>We are sorry,</NFtitle>
-            <NFText>but the page you were looking for can’t be found..</NFText>
-        </NFDivWrap>
-        </>
-    )
-}
+export const NotFoundPage = () => {
+  return (
+    <>
+      <NotFound />
+    </>
+  );
+};

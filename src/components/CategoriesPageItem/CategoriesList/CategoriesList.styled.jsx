@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CategoryListContainer = styled.ul`
+export const CategoryListContainer = styled.div`
   display: flex;
   justify-content: center;
   list-style: none;
@@ -8,7 +8,7 @@ export const CategoryListContainer = styled.ul`
   padding: 0;
 `;
 
-export const CategoryListItem = styled.li`
+export const CategoryList = styled.li`
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
@@ -19,3 +19,7 @@ color: #8BAA36;
   /* margin: 0 10px;
   border-bottom: ${({ active }) => (active ? '2px solid #8BAA36' : 'none')}; */
 `;
+
+export const CategoryName = styled.title``;
+
+// export const CategoryItem = styled.ul``;

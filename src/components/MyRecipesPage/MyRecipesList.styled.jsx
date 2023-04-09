@@ -1,12 +1,27 @@
 import styled from 'styled-components';
 
+const darkMode = true;
+
+const objectColors = {
+  bgrDarkMode: '#1E1F28',
+  bgrCardDarkMode: '#2A2C36',
+  bgrBtnDelDarkMode: '#1E1F28',
+  colorGreen: '#8BAA36',
+  colorWhite: '#FAFAFA',
+  colorBlack: '#22252A',
+  colorTextDarkMode: 'rgba(250, 250, 250, 0.6)',
+  darkColorTitel: '#001833',
+  darkColorTitelCard: '#3e4462',
+  darkColorTextCard: '#23262a',
+};
+
 export const Error = styled.h3`
+  color: ${darkMode ? objectColors.colorWhite : objectColors.darkColorTitel};
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
   line-height: 1;
-  color: #001833;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
@@ -35,7 +50,6 @@ export const RecipeList = styled.ul`
 `;
 
 export const MyRecipesContainer = styled.div`
-  // background: #fafafa;
   padding-top: 114px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
@@ -48,12 +62,13 @@ export const MyRecipesContainer = styled.div`
 `;
 
 export const Title = styled.h2`
+  color: ${darkMode ? objectColors.colorWhite : objectColors.darkColorTitel};
+
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 1;
-  color: #001833;
   margin-bottom: 50px;
   margin-left: 16px;
 
