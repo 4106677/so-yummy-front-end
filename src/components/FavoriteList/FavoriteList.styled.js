@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as Basket } from "images/Favorite/basket.svg"
 import { ReactComponent as BasketWhite } from 'images/Favorite/basketWhite.svg';
 
+
 export const FavoriteItems = styled.ul`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -17,6 +18,7 @@ export const FavoriteItems = styled.ul`
     gap: 3.125rem;
   }
 `;
+
 
 export const FavoriteCard = styled.li`
   height: 152px;
