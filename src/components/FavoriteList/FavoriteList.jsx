@@ -1,5 +1,3 @@
-
-
 import {
   FavoriteCard,
   FavoriteImage,
@@ -17,14 +15,26 @@ import {
 } from './FavoriteList.styled';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getFavorites } from 'redux/favorite/selectors';
+import { useEffect } from 'react';
+import {
+  fetchFavoriteRecipe,
+  deleteFavoriteRecipe,
+} from '../../redux/favorite/operations';
 
-export const FavoriteList = ({ onClick }) => {
+export const FavoriteList = () => {
   const navigate = useNavigate();
   const favorites = useSelector(getFavorites);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isDesktop = useMediaQuery('(min-width: 1440px)');
+
+      const dispatch = useDispatch();
+
+      useEffect(() => {
+        dispatch(fetchFavoriteRecipe());
+      }, [dispatch]);
+
 
   const handleClick = _id => {
     setTimeout(() => {
@@ -32,7 +42,8 @@ export const FavoriteList = ({ onClick }) => {
   };
 
   const elementsMob = favorites.map(
-    ({ _id, title, preview, description, time }) => (
+    function ({ _id, title, preview, description, time }) {
+    return (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />
         <FavoriteTextPartWrap>
@@ -40,13 +51,17 @@ export const FavoriteList = ({ onClick }) => {
           <FavoriteDescription>{description}</FavoriteDescription>
           <FavoriteTimeWrap>
             <Time>{time ? time : 20} min</Time>
-            <BasketWrap type="button" onClick={() => onClick(_id)}>
+            <BasketWrap
+              type="button"
+              onClick={() => dispatch(deleteFavoriteRecipe(_id))}
+            >
               <BasketSvg />
             </BasketWrap>
           </FavoriteTimeWrap>
         </FavoriteTextPartWrap>
       </FavoriteCard>
-    )
+    );
+  }
   );
 
   const elementsDesktop = favorites.map(
@@ -56,7 +71,10 @@ export const FavoriteList = ({ onClick }) => {
         <FavoriteTextPartWrap>
           <div>
             <FavoriteTitle>{title}</FavoriteTitle>
-            <BasketWrap type="button" onClick={() => onClick(_id)}>
+            <BasketWrap
+              type="button"
+              onClick={() => dispatch(deleteFavoriteRecipe(_id))}
+            >
               {isDesktop ? <BasketSvg /> : <BasketSvgWhite />}
             </BasketWrap>
           </div>
