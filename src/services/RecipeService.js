@@ -11,16 +11,14 @@ class RecipeService {
     this.tokenKey = tokenKey;
   }
 
-  //sdsd
   async addRecipe(recipe) {
-    const response = await this.httpClient.post(
-      '/postrecipes/ownRecipes/addRecipe',
-      { body: recipe },
-      {
-        headers: { Authorization: `Bearer ${this.getToken()}` }
+    const response = await this.httpClient.post('/recipes/ownRecipes/addRecipe', recipe, {
+      // headers: { Authorization: `Bearer ${this.getToken()}` }
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzNiNzdiZmVlMWZhMWY2MjY0MmIyZiIsImlhdCI6MTY4MTExMDkwNywiZXhwIjoxNjgxMTk3MzA3fQ.bk6y2oBIb78LCTPL7sZQlYtRcomuiXxyyhclX9rw51w`
       }
-    );
-    return response;
+    });
+    return response.status;
   }
 
   async getIngredients({ transform } = {}) {

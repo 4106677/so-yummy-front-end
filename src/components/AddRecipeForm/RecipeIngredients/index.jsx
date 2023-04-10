@@ -55,7 +55,17 @@ export function RecipeIngredients({
 
             function handleValueChange(key, id, value) {
               const updatedFields = fields.value.map((fld) => {
-                if (fld.id === id) return { ...fld, [key]: value };
+                const isIngredientField = key === 'ingredient';
+
+                if (fld.id === id) {
+                  const newField = { ...fld, [key]: value };
+
+                  // here we must set unique id coming from server
+                  // but it is onle for ingredient field
+                  if (isIngredientField) newField.id = id;
+
+                  return newField;
+                }
 
                 return { ...fld };
               });

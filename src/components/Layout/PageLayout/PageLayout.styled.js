@@ -29,7 +29,7 @@ export const Section = styled.section`
   background-size: 256px 392px;
   background-position-x: 0;
   background-position-y: 111.5%;
-  min-height: 100%;
+  min-height: 100dvh;
 
   @media screen and (min-width: 768px) {
     padding-bottom: 12.5rem;

@@ -23,28 +23,26 @@ const initialValues = {
   instructions: '' // required
 };
 
-// {
-//   id: '', // id of ingredient from backend REQUIRED ----> /ingredients/list
-//   // measure: '', // required AMOUNT + MEASUREMENT_UNIT, e.g '1 tlbsp'
-//   amount: '',
-//   ingredient: '',
-//   measurementUnit: ''
-// }
-
-export function AddRecipeForm({ categories, ingredients }) {
+export function AddRecipeForm({ categories, ingredients, onSubmit }) {
   const [isSubmit, setIsSubmit] = React.useState(false);
 
-  function handleFormSubmit(values) {
-    const newValues = values.ingredients.map((product) => {
+  function handleFormSubmit(values, resetForm) {
+    let recipe = { ...values };
+
+    for (const key in recipe) {
+      if (!recipe[key]) delete recipe[key];
+    }
+
+    recipe.ingredients = recipe.ingredients.map((product) => {
       delete product.ingredient;
       const { amount, measurementUnit, ...restIngredient } = product;
 
       return { ...restIngredient, measure: `${amount} ${measurementUnit}` };
     });
-    // temp
-    alert(JSON.stringify(newValues, null, 2));
-    // TODO
-    // send data to server
+
+    // console.log('recipe -->', recipe);
+
+    onSubmit(recipe, resetForm);
   }
 
   return (
@@ -52,7 +50,9 @@ export function AddRecipeForm({ categories, ingredients }) {
       <Formik
         initialValues={{ ...initialValues, category: categories[0] }}
         validationSchema={addRecipeValidationSchema}
-        onSubmit={handleFormSubmit}
+        onSubmit={(values, { resetForm }) => {
+          handleFormSubmit(values, resetForm);
+        }}
       >
         {({ handleSubmit }) => {
           return (

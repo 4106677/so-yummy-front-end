@@ -14,11 +14,10 @@ import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 
 import { ToastContainer } from 'react-toastify';
 
-
 export const App = () => {
   return (
     <>
- <Routes>
+      <Routes>
         <Route path="/" element={<WellcomePage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
