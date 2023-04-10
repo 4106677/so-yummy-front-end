@@ -42,10 +42,10 @@ export const PreviewCategories = () => {
   } else {
     numCard = 1; // Мобильный
   }
-  const cate = [];
+
   return (
     <CategoryList>
-      {cate.map(({ _id, meals }) => (
+      {categories.map(({ _id, meals }) => (
         <CategoryItem key={_id}>
           <TitlePrew>{_id}</TitlePrew>
           <CardWrapper>
