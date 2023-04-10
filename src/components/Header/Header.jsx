@@ -22,7 +22,9 @@ export const Header = () => {
           <HeaderStyledNavLink to={'categories'}>
             Categories
           </HeaderStyledNavLink>
-          <HeaderStyledNavLink to={'add'}>Add recipes</HeaderStyledNavLink>
+          <HeaderStyledNavLink to={'add-recipe'}>
+            Add recipes
+          </HeaderStyledNavLink>
           <HeaderStyledNavLink to={'my'}>My recipes</HeaderStyledNavLink>
           <HeaderStyledNavLink to={'favorite'}>Favorites</HeaderStyledNavLink>
           <HeaderStyledNavLink to={'shopping-list'}>
@@ -32,7 +34,7 @@ export const Header = () => {
             <RiSearchLine />
           </HeaderStyledNavLink>
         </HeaderStyledNav>
-        <HeaderUser/>
+        <HeaderUser />
       </HeaderStyled>
       <BurgerMenu />
     </>
