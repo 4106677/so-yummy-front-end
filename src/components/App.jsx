@@ -16,8 +16,10 @@ import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
 import { NotFoundPage } from 'pages/NotFound/NotFound';
 import { FavoritePage } from 'pages/FavoritePage/FavoritePage';
 import { Layout } from 'components/Layout/Layout';
+import { Loader } from './Loader/Loader';
 
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { CategoriesPage } from 'pages/CategoriesPage/CategoriesPage';
 import { MyRecipePage } from 'pages/MyRecipesPage/MyRecipesPage';
@@ -39,7 +41,7 @@ export const App = () => {
   }, [dispatch, isLoggedIn, token]);
 
   return isRefreshing ? (
-    'Refreshing user ...'
+   <Loader/>
   ) : (
     <>
       <Routes>

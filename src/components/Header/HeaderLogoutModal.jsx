@@ -10,11 +10,13 @@ import {
 } from './HeaderModals.styled';
 import { CrossIcon } from './HeaderIcons';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
+
 
 export const HeaderLogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -34,38 +36,38 @@ export const HeaderLogoutModal = ({ onClose }) => {
     }
   };
   return (
-    <HeaderLogoutModalOverlayStyled onClick={handleOverlayClick}>
-      <HeaderLogoutModalBodyStyled>
-        <HeaderLogoutModalContainerStyled>
-          <HeaderLogoutModalCloseButtonStyled
-            onClick={() => {
-              onClose();
-            }}
-          >
-            <CrossIcon />
-          </HeaderLogoutModalCloseButtonStyled>
-          <HeaderLogoutModalTextStyled>
-            Are you sure you want to log out?
-          </HeaderLogoutModalTextStyled>
-          <HeaderLogoutModalButtonsContainerStyled>
-            <HeaderLogoutModalLogoutButtonStyled
-              onClick={() => {
-                dispatch(logOut());
-                onClose();
-              }}
-            >
-              Log out
-            </HeaderLogoutModalLogoutButtonStyled>
-            <HeaderLogoutModalCancelButtonStyled
+      <HeaderLogoutModalOverlayStyled onClick={handleOverlayClick}>
+        <HeaderLogoutModalBodyStyled>
+          <HeaderLogoutModalContainerStyled>
+            <HeaderLogoutModalCloseButtonStyled
               onClick={() => {
                 onClose();
               }}
             >
-              Cancel
-            </HeaderLogoutModalCancelButtonStyled>
-          </HeaderLogoutModalButtonsContainerStyled>
-        </HeaderLogoutModalContainerStyled>
-      </HeaderLogoutModalBodyStyled>
-    </HeaderLogoutModalOverlayStyled>
+              <CrossIcon />
+            </HeaderLogoutModalCloseButtonStyled>
+            <HeaderLogoutModalTextStyled>
+              Are you sure you want to log out?
+            </HeaderLogoutModalTextStyled>
+            <HeaderLogoutModalButtonsContainerStyled>
+              <HeaderLogoutModalLogoutButtonStyled
+                onClick={() => {
+                  dispatch(logOut());
+                  onClose();
+                }}
+              >
+                Log out
+              </HeaderLogoutModalLogoutButtonStyled>
+              <HeaderLogoutModalCancelButtonStyled
+                onClick={() => {
+                  onClose();
+                }}
+              >
+                Cancel
+              </HeaderLogoutModalCancelButtonStyled>
+            </HeaderLogoutModalButtonsContainerStyled>
+          </HeaderLogoutModalContainerStyled>
+        </HeaderLogoutModalBodyStyled>
+      </HeaderLogoutModalOverlayStyled>
   );
 };
