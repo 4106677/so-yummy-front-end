@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MainConteiner = styled.div`
-  
   padding: 0 16px;
 
   @media screen and (min-width: 768px) {
