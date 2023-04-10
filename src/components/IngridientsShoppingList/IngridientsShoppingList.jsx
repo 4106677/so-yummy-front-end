@@ -13,8 +13,7 @@ import { ReactComponent as Default } from "../../images/ShoppingList/default.svg
 
   export const IngridientsShoppingList = ({items, onClick }) => {
 
-    const elements = items.map(
-      (
+    const elements = items.map((
         { _id, thb, ttl, t } //добавить thb c картинкой
       ) => (
         <ShopItem key={_id}>
