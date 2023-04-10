@@ -16,7 +16,7 @@ export const SearchForm = ({
 
   function handleSubmit(event) {
     event.preventDefault();
-    handleOnSubmit(searchValue, type);
+    handleOnSubmit({ ...searchValue }, type);
   }
 
   return (

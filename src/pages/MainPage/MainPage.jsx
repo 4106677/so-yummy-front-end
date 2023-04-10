@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { Container } from 'components/Container/Container';
@@ -18,23 +18,23 @@ import { toastWarnEmptyField } from '../../services/toasts';
 import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
 
 import { SearchForm } from '../../components/SearchFormMain/SearchFormMain';
-import { Footer } from 'components/Footer/Footer';
-import {
-  getPopular,
-  getFullCategoryList,
-} from '../../redux/mainRecipes/selectors';
-import {
-  getPopularRecipes,
-  getCategoryList,
-} from 'redux/mainRecipes/operations';
+
+// import {
+//   getPopular,
+//   getFullCategoryList,
+// } from '../../redux/mainRecipes/selectors';
+// import {
+//   getPopularRecipes,
+//   getCategoryList,
+// } from 'redux/mainRecipes/operations';
 
 export const MainPage = () => {
-  const popularRecipes = useSelector(getPopular);
-  console.log(popularRecipes);
-  const categories = useSelector(getFullCategoryList);
-   console.log(categories);
+  // const popularRecipes = useSelector(getPopular);
+  // console.log(popularRecipes);
+  // const categories = useSelector(getFullCategoryList);
+  //  console.log(categories);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const onClick = e => {
     navigate('/categories');
@@ -48,15 +48,15 @@ export const MainPage = () => {
     }
   };
 
-  useEffect(() => {
+//   useEffect(() => {
     
-      dispatch(getPopularRecipes());
+//       dispatch(getPopularRecipes());
     
-  }, [dispatch]);
+//   }, [dispatch]);
 
- useEffect(() => {
-   dispatch(getCategoryList());
- }, [dispatch]);
+//  useEffect(() => {
+//    dispatch(getCategoryList());
+//  }, [dispatch]);
 
 
   return (
@@ -82,7 +82,7 @@ export const MainPage = () => {
           <PreviewCategories />
           <ButtonOthCtgWrap>
             <Link
-              to="/byCategory/beef"
+              to="/categories/beef"
               onClick={() => {
                 window.scrollTo(0, 0);
               }}
@@ -97,7 +97,7 @@ export const MainPage = () => {
           </ButtonOthCtgWrap>
         </Container>
       </ColorWrap>
-      <Footer />
+      
     </>
   );
 };
