@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import {
   BackgroundImage,
@@ -21,34 +21,25 @@ import {
   Input,
   LinkStyled,
   GoogleAuth,
+  GoogleLink,
   // WarningIcon,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
+
 import ValigationStatus from './validationStatus';
-// import useForm from '../sHooks/useForm';
+// import { SignupSchema } from '../../validation/inputsValidationSchema';
 
-import { SignupSchema } from '../../validation/inputsValidationSchema';
-// import initialState from './initialState';
+import { register } from '../../redux/auth/operations';
 
-export const RegisterForm = ({ onSubmit }) => {
-  // const { state, handleChange, handleSubmit } = useForm({
-  //   initialState,
-  //   onSubmit,
-  // });
-  const initialState = {
-    name: '',
-    email: '',
-    password: '',
+export const RegisterForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = data => {
+    dispatch(register(data));
   };
 
-  const handleSubmit = () => {
-    console.log('initialState');
-  };
-
-  // const { name, email, password } = value;
-
-  const validationSchema = SignupSchema;
+  // const validationSchema = SignupSchema;
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -60,11 +51,17 @@ export const RegisterForm = ({ onSubmit }) => {
           <AuthFormBox>
             <InnerBox>
               {isDesktop ? <FormSvgWhite /> : <FormSvgBlack />}
-              <GoogleAuth />
+              <GoogleLink to="https://recipes-becend-49lg.onrender.com/auth/google">
+                <GoogleAuth />
+              </GoogleLink>
               <Title>Registration</Title>
               <Formik
-                initialValues={initialState}
-                validationSchema={validationSchema}
+                initialValues={{
+                  name: '',
+                  email: '',
+                  password: '',
+                }}
+                // validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >
                 {({ errors, touched }) => (
@@ -78,8 +75,7 @@ export const RegisterForm = ({ onSubmit }) => {
                           $error={errors.name && touched.name}
                         />
                         <Input
-                          // value={name}
-                          // onSubmit={handleChange}
+                          id="name"
                           type="text"
                           name="name"
                           placeholder="Name"
@@ -99,8 +95,7 @@ export const RegisterForm = ({ onSubmit }) => {
                           $success={!errors.email && touched.email}
                         />
                         <Input
-                          // value={email}
-                          // onSubmit={handleChange}
+                          id="email"
                           name="email"
                           type="email"
                           placeholder="Email"
@@ -123,8 +118,7 @@ export const RegisterForm = ({ onSubmit }) => {
                           $success={!errors.password && touched.password}
                         />
                         <Input
-                          // value={password}
-                          // onSubmit={handleChange}
+                          id="password"
                           name="password"
                           type="password"
                           placeholder="Password"
@@ -150,7 +144,7 @@ export const RegisterForm = ({ onSubmit }) => {
               </Formik>
             </InnerBox>
           </AuthFormBox>
-          <LinkStyled to="/signin">Sign In</LinkStyled>
+          <LinkStyled to="/login">Sign In</LinkStyled>
         </MainWrapper>
       </Container>
     </>

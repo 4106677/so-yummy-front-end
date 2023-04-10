@@ -9,18 +9,22 @@ import { RiSearchLine } from 'react-icons/ri';
 import { BurgerMenu } from './BurgerMenu';
 import { HeaderUser } from './HeaderUser';
 
+
 export const Header = () => {
+
   return (
     <>
       <HeaderStyled>
         <HeaderStyledLogoLink to={'/'}>
           <HeaderLogo />
         </HeaderStyledLogoLink>
-    <HeaderStyledNav>
+        <HeaderStyledNav>
           <HeaderStyledNavLink to={'categories'}>
             Categories
           </HeaderStyledNavLink>
-          <HeaderStyledNavLink to={'add'}>Add recipes</HeaderStyledNavLink>
+          <HeaderStyledNavLink to={'add-recipe'}>
+            Add recipes
+          </HeaderStyledNavLink>
           <HeaderStyledNavLink to={'my'}>My recipes</HeaderStyledNavLink>
           <HeaderStyledNavLink to={'favorite'}>Favorites</HeaderStyledNavLink>
           <HeaderStyledNavLink to={'shopping-list'}>
@@ -30,7 +34,7 @@ export const Header = () => {
             <RiSearchLine />
           </HeaderStyledNavLink>
         </HeaderStyledNav>
-   <HeaderUser/>
+        <HeaderUser />
       </HeaderStyled>
       <BurgerMenu />
     </>

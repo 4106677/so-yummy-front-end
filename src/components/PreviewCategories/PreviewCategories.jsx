@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-tooltip/dist/react-tooltip.css';
 import { useMediaQuery } from 'react-responsive';
-import { CardMeal } from 'components/CardMeal/CardMeal';
+
 import {
   BtnCategories,
   CardWrapper,
@@ -13,20 +13,23 @@ import {
 
 import { getMainCategories } from '../../redux/mainRecipes/operations';
 
-import { selectCatogories } from '../../redux/mainRecipes/selectors';
+import { getContentForMain } from '../../redux/mainRecipes/selectors';
+import { Link } from 'react-router-dom';
 
+import { CardImg, CardTitle, CardDish } from '../../components/CardMeal/CardMeal.styled';
+import NoImage from '../../images/default.jpg';
 
 export const PreviewCategories = () => {
-    const mainCategories = useSelector(selectCatogories);
-    console.log(mainCategories);
+    const categories = useSelector(getContentForMain);
+    console.log(categories);
     const dispatch = useDispatch();
     const isDesktop = useMediaQuery({ minWidth: 1440 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
 
     useEffect(() => {
-      if (mainCategories !== null) return;
+      
       dispatch(getMainCategories());
-    }, [dispatch, mainCategories]);
+    }, [dispatch]);
 
     let numCard;
     if (isDesktop) {
@@ -39,22 +42,26 @@ export const PreviewCategories = () => {
 
     return (
       <CategoryList>
-        {mainCategories &&
-          Object.entries(mainCategories).map(([category, meals]) => (
-            <CategoryItem key={category}>
-              <TitlePrew>{category}</TitlePrew>
-              <CardWrapper>
-                {meals.slice(0, numCard).map(meal => (
-                  
-                  <CardMeal key={meal._id} meal={meal} />
-                  
-                ))}
-              </CardWrapper>
-              <BtnCategories to={`/categories/${category}`}>
-                See all
-              </BtnCategories>
-            </CategoryItem>
-          ))}
+        {categories.map(({ _id, meals }) => (
+          <CategoryItem key={_id}>
+            <TitlePrew>{_id}</TitlePrew>
+            <CardWrapper>
+              {meals.slice(0, numCard).map(({ _id, title, preview }) => (
+                
+                <CardDish key={_id}>
+                  <Link to={`/recipes/byId/${_id}`}>
+                    <CardImg
+                      src={preview ? preview : NoImage }
+                      alt={title}
+                    />
+                    <CardTitle>{title}</CardTitle>
+                  </Link>
+                </CardDish>
+              ))}
+            </CardWrapper>
+            <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
+          </CategoryItem>
+        ))}
       </CategoryList>
     );
 }

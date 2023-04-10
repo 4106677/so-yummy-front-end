@@ -23,6 +23,7 @@ export const SelectWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   @media (min-width: 1440px) {
     margin-top: 1.75rem;
   }
@@ -36,7 +37,8 @@ export const Select = styled.select`
   background-color: #ececec;
   outline: none;
   border-radius: 6px 6px 6px 6px;
-  padding-left: 14px;
+  padding-left: 0.875rem;
+  padding-right: 0.9375rem;
 
   font-family: 'Poppins';
   height: 2rem;
@@ -48,12 +50,12 @@ export const Select = styled.select`
   width: 146px;
 
   @media (min-width: 768px) {
-    width: 175px;
+    width: 10.9375rem;
     height: 2.31rem;
     background-color: #d9d9d9;
   }
   @media (min-width: 1440px) {
-    width: 198px;
+    width: 12.375rem;
     height: 3.06rem;
   }
 `;

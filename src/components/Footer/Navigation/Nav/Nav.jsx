@@ -6,11 +6,11 @@ import {
 export const Nav = () => {
     return (
         <FooterNav>
-            <FooterNaviLink>Ingredients</FooterNaviLink>
-            <FooterNaviLink>Add recipes</FooterNaviLink>
-            <FooterNaviLink>My recipes</FooterNaviLink>
-            <FooterNaviLink>Favorite</FooterNaviLink>
-            <FooterNaviLink>Shopping list</FooterNaviLink>
+            <FooterNaviLink to={'search'}>Ingredients</FooterNaviLink>
+            <FooterNaviLink to={'add-recipe'}>Add recipes</FooterNaviLink>
+            <FooterNaviLink to={'my'}>My recipes</FooterNaviLink>
+            <FooterNaviLink to={'favorite'}>Favorite</FooterNaviLink>
+            <FooterNaviLink to={'shopping-list'}>Shopping list</FooterNaviLink>
         </FooterNav>
     )
 }

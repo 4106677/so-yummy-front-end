@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
 
+
 export const SearchForm = ({ onSubmit }) => {
   const [state, setState] = useState({ search: "" });
 
@@ -16,7 +17,8 @@ export const SearchForm = ({ onSubmit }) => {
     e.preventDefault();
     onSubmit({ ...state });
     setState({ search: '' });
-  }
+  };
+  
 
 
     return (
@@ -39,4 +41,4 @@ export const SearchForm = ({ onSubmit }) => {
         </Formik>
       </div>
     );
-  };
+  }; 

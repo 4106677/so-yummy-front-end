@@ -25,6 +25,8 @@ import { ReactComponent as Success } from '../../images/startPage/icon-success.s
 import { ReactComponent as Warning } from '../../images/startPage/icon-warning.svg';
 import { ReactComponent as Error } from '../../images/startPage/icon-error.svg';
 
+export const GoogleLink = styled(Link)``;
+
 export const SuccessIcon = styled(Success)`
   width: 18px;
   height: 18px;

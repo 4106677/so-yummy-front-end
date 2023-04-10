@@ -4,6 +4,10 @@
   "private": true,
   "homepage": "https://4106677.github.io/so-yummy-front-end/",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.16",
+    "@mui/styled-engine": "^5.11.16",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

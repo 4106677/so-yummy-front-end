@@ -4,11 +4,26 @@ const recipesSearchInstance = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
 });
 
- export const getAllRecipesSearch = async () => {
-    const { data } = await recipesSearchInstance.get(
-      `/recipes/search/beef?type=title&pages=1&limit=6`
+export const getAllRecipesSearchTitle = async (search, page, limit) => {
+  try {
+    const  response  = await recipesSearchInstance.get(
+      `/recipes/search/${search}?type=title&pages${page}&limit=${limit}`
     );
-  console.log(data);
-  return data;
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err.message);
+  }
 }; 
 
+export const getAllRecipesSearchIngredients = async (search, page, limit) => {
+  try {
+    const response = await recipesSearchInstance.get(
+      `/recipes/search/${search}?type=ingredients&pages${page}&limit=${limit}`
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err.message);
+  }
+};

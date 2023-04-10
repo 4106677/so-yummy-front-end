@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
   z-index: 3;
   right: 0;
   left: 0;
-  max-width: 1240px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -74,9 +74,10 @@ export const HeaderStyledNavLink = styled(NavLink)`
   svg {
     width: 24px;
     height: 24px;
+
   }
   @media(max-width: 830px){
-    margin-right: 15px;
+    margin-right: 9px;
   }
 `;
 
@@ -95,12 +96,26 @@ export const HeaderStyledUser = styled.div`
     width: 44px;
     height: 44px;
     margin-right: 14px;
+    fill: #9c9c9c; 
     @media (max-width: 477px) {
       width: 34px;
       height: 34px;
     }
   }
 `;
+
+
+export const HeaderStyledUserImg = styled.img`
+border-radius: 50px;
+    width: 44px;
+    height: 44px;
+    margin-right: 14px;
+    @media (max-width: 477px) {
+      width: 34px;
+      height: 34px;
+  }
+`;
+
 
 export const HeaderStyledUserText = styled.p`
   font-family: 'Poppins';

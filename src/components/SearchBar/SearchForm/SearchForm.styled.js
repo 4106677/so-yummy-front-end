@@ -2,20 +2,19 @@ import styled from "styled-components";
 import { Form, Field } from "formik";
 
 export const FormWrap = styled(Form)`
-  width: 295px;
+  width: 18.4375rem;
   position: relative;
   align-item: center;
   justify-content: center;
   flex-wrap: nowrap;
   display: flex;
   margin: 0 auto;
+  border-radius: 24px 44px;
   @media (min-width: 768px) {
-    width: 362px;
-    border-radius: 22px 42px;
+    width: 22.625rem;
   }
   @media (min-width: 1440px) {
-    width: 510px;
-    border-radius: 22px 42px;
+    width: 31.875rem;
   }
 `;
 
@@ -39,16 +38,14 @@ export const FormWrap = styled(Form)`
    font-weight: 400;
    font-size: 16px;
    line-height: 1.5;
-   height: 53px;
-   width: 113px;
+   height:3.3125rem;
+   width: 7.0625rem;
    @media (min-width: 768px) {
-     height: 57px;
-     width: 161px;
-     border-radius: 22px 42px;
+     height: 3.5625rem;
+     width: 10.0625rem;
    }
    @media (min-width: 1440px) {
-     height: 70px;
-     border-radius: 22px 42px;
+     height: 4.375rem;
    }
  `;
 
@@ -66,19 +63,19 @@ export const Input = styled(Field)`
   background: #fafafa;
 
   padding: 0 0 0 32px;
-  height: 53px;
-  width: 263px;
+  height: 3.3125rem;
+  width: 16.4375rem;
 
   @media (min-width: 768px) {
-    height: 57px;
-    width: 324px;
+    height: 3.5625rem;
+    width: 20.25rem;
     padding: 0 0 0 38px;
     font-size: 14px;
   }
 
   @media (min-width: 1440px) {
-    height: 70px;
-    width: 462px;
+    height: 4.375rem;
+    width: 28.875rem;
     padding: 0 0 0 48px;
     font-size: 16px;
   }
