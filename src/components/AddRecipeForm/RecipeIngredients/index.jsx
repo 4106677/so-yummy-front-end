@@ -10,7 +10,13 @@ import { Counter } from './Counter';
 import * as Styled from './RecipeIngredients.styled';
 import { IngredientField } from './IngredientField';
 
-export function RecipeIngredients({ name, selectOptionList = [], inputOptionList = [], isSubmit }) {
+export function RecipeIngredients({
+  name,
+  selectOptionList = [],
+  inputOptionList = [],
+  inputDatalistKeyExtractor,
+  isSubmit
+}) {
   const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
 
@@ -18,8 +24,8 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
   function onQuanityChange(updatedQuantity) {
     if (updatedQuantity > actualQuatity) {
       setValue([
-        ...fields.value,
-        { id: uuidv4(), ingredient: '', amount: '', measurementUnit: selectOptionList[0] }
+        { id: uuidv4(), amount: '', ingredient: '', measurementUnit: selectOptionList[0] },
+        ...fields.value
       ]);
     } else {
       const filedValuesArray = [...fields.value];
@@ -49,7 +55,17 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
 
             function handleValueChange(key, id, value) {
               const updatedFields = fields.value.map((fld) => {
-                if (fld.id === id) return { ...fld, [key]: value };
+                const isIngredientField = key === 'ingredient';
+
+                if (fld.id === id) {
+                  const newField = { ...fld, [key]: value };
+
+                  // here we must set unique id coming from server
+                  // but it is onle for ingredient field
+                  if (isIngredientField) newField.id = id;
+
+                  return newField;
+                }
 
                 return { ...fld };
               });
@@ -67,6 +83,7 @@ export function RecipeIngredients({ name, selectOptionList = [], inputOptionList
                 inputOptionList={inputOptionList}
                 error={error && error[idx]}
                 isSubmit={isSubmit}
+                inputDatalistKeyExtractor={inputDatalistKeyExtractor}
                 inputHandlers={{
                   inputValue: ingredient,
                   onInputChange: handleValueChange.bind(null, 'ingredient', field.id)

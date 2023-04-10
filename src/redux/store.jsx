@@ -14,8 +14,8 @@ import storage from 'redux-persist/lib/storage';
 import { mainRecipeReduser } from './mainRecipes/slice';
 import { authReducer } from './auth/slice';
 import { updateReducer } from './header/slice';
-import { favoriteReducer } from './favorite/slice';
-import { shoppingListReducer } from './shoppingList/slice';
+import { persistedFavorites } from './favorite/slice';
+import { persistedShoppingList } from './shoppingList/slice';
 
 const middleware = getDefaultMiddleware =>
   getDefaultMiddleware({
@@ -41,8 +41,8 @@ export const store = configureStore({
     auth: authReducer,
     recipe: mainRecipeReduser,
     update: updateReducer,
-    favorites: favoriteReducer,
-    shoppingList: shoppingListReducer,
+    favorites: persistedFavorites,
+    shoppingList: persistedShoppingList,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

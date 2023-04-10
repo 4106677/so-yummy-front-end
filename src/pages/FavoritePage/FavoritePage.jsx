@@ -4,46 +4,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 import { FavoriteTitle } from "./FavoritePage.styled";
 import { Loader } from 'components/Loader/Loader';
-import { useState, useEffect } from 'react';
-import { getAllFavoriteList } from 'services/favoriteAPI';
-import { deleteFavoriteList } from 'services/favoriteAPI';
+import { getIsLoading } from "../../redux/favorite/selectors";
+import { useSelector } from 'react-redux';
 
 export const FavoritePage = () => {
-    const [favoriteRecipe, setfavoriteRecipe] = useState([]);
-    const [deleteId, setDeleteId] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-      setIsLoading(true);
-      const fetchFavoriteRecipes = async () => {
-        try {
-          const data = await getAllFavoriteList();
-          console.log(data);
-          setfavoriteRecipe(data);
-          setIsLoading(false);
-        } catch ({ response }) {
-          console.log(response.data);
-          setIsLoading(false);
-        }
-      };
-      fetchFavoriteRecipes();
-    }, []);
-
-    useEffect(() => {
-      const fetchDeleteShoppingList = async () => {
-        try {
-          await deleteFavoriteList(deleteId);
-          setfavoriteRecipe(prevIngredients =>
-            prevIngredients.filter(({ _id }) => _id !== deleteId)
-          );
-        } catch ({ response }) {
-          console.log(response.data.message);
-        }
-      };
-      if (deleteId) {
-        fetchDeleteShoppingList();
-      }
-    }, [deleteId]);
+  const isLoading = useSelector(getIsLoading)
+    
   return (
     <div>
       <Container>
@@ -62,7 +28,7 @@ export const FavoritePage = () => {
         />
         <FavoriteTitle>Favorite</FavoriteTitle>
         {isLoading && <Loader />}
-        <FavoriteList items={favoriteRecipe} onClick={setDeleteId} />
+        <FavoriteList />
       </Container>
     </div>
   );

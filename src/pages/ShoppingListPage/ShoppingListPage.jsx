@@ -1,48 +1,12 @@
 import { IngridientsShoppingList } from "components/IngridientsShoppingList/IngridientsShoppingList";
 import { Container } from "components/Container/Container";
 import { ShopListTitle, DecorativeSquare } from "./ShoppingListPage.styled";
-import {
-  getAllShoppingList,
-  deleteShoppingList,
-} from '../../services/shoppingListAPI';
-import { useState, useEffect } from 'react';
 import { Loader } from 'components/Loader/Loader';
+import { useSelector } from "react-redux";
+import {getIsLoading} from "../../redux/shoppingList/selectors"
 
 export const ShoppingListPage = () => {
-  const [ingredients, setIngredients] = useState([]);
-  const [deleteId, setDeleteId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-      setIsLoading(true);
-      const fetchIngridients = async () => {
-        try {
-          const data = await getAllShoppingList();
-          setIngredients(data);
-          setIsLoading(false);
-        } catch ({ response }) {
-          console.log(response.data.message);
-          setIsLoading(false);
-        }
-      };
-      fetchIngridients();
-    }, []);
-
-    useEffect(() => {
-      const fetchDeleteShoppingList = async () => {
-        try {
-          await deleteShoppingList(deleteId);
-          setIngredients(prevIngredients =>
-            prevIngredients.filter(({ id }) => id !== deleteId)
-          );
-        } catch ({ response }) {
-          console.log(response.data.message);
-        }
-      };
-      if (deleteId) {
-        fetchDeleteShoppingList();
-      }
-    }, [deleteId]);
+  const isLoading = useSelector(getIsLoading);
   
   return (
     <div>
@@ -62,7 +26,7 @@ export const ShoppingListPage = () => {
         />
         <ShopListTitle>Shopping list</ShopListTitle>
         {isLoading && <Loader />}
-        <IngridientsShoppingList items={ingredients} onClick={setDeleteId} />
+        <IngridientsShoppingList />
       </Container>
     </div>
   );

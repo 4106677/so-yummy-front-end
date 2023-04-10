@@ -16,52 +16,51 @@ import { getMainCategories } from '../../redux/mainRecipes/operations';
 import { getContentForMain } from '../../redux/mainRecipes/selectors';
 import { Link } from 'react-router-dom';
 
-import { CardImg, CardTitle, CardDish } from '../../components/CardMeal/CardMeal.styled';
+import {
+  CardImg,
+  CardTitle,
+  CardDish,
+} from '../../components/CardMeal/CardMeal.styled';
 import NoImage from '../../images/default.jpg';
 
 export const PreviewCategories = () => {
-    const categories = useSelector(getContentForMain);
-    console.log(categories);
-    const dispatch = useDispatch();
-    const isDesktop = useMediaQuery({ minWidth: 1440 });
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
+  const categories = useSelector(getContentForMain);
+  console.log(categories);
+  const dispatch = useDispatch();
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
 
-    useEffect(() => {
-      
-      dispatch(getMainCategories());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getMainCategories());
+  }, [dispatch]);
 
-    let numCard;
-    if (isDesktop) {
-      numCard = 4; // Десктоп
-    } else if (isTablet) {
-      numCard = 2; // Планшет
-    } else {
-      numCard = 1; // Мобильный
-    };
+  let numCard;
+  if (isDesktop) {
+    numCard = 4; // Десктоп
+  } else if (isTablet) {
+    numCard = 2; // Планшет
+  } else {
+    numCard = 1; // Мобильный
+  }
 
-    return (
-      <CategoryList>
-        {categories.map(({ _id, meals }) => (
-          <CategoryItem key={_id}>
-            <TitlePrew>{_id}</TitlePrew>
-            <CardWrapper>
-              {meals.slice(0, numCard).map(({ _id, title, preview }) => (
-                
-                <CardDish key={_id}>
-                  <Link to={`/recipes/byId/${_id}`}>
-                    <CardImg
-                      src={preview ? preview : NoImage }
-                      alt={title}
-                    />
-                    <CardTitle>{title}</CardTitle>
-                  </Link>
-                </CardDish>
-              ))}
-            </CardWrapper>
-            <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
-          </CategoryItem>
-        ))}
-      </CategoryList>
-    );
-}
+  return (
+    <CategoryList>
+      {categories.map(({ _id, meals }) => (
+        <CategoryItem key={_id}>
+          <TitlePrew>{_id}</TitlePrew>
+          <CardWrapper>
+            {meals.slice(0, numCard).map(({ _id, title, preview }) => (
+              <CardDish key={_id}>
+                <Link to={`/recipes/byId/${_id}`}>
+                  <CardImg src={preview ? preview : NoImage} alt={title} />
+                  <CardTitle>{title}</CardTitle>
+                </Link>
+              </CardDish>
+            ))}
+          </CardWrapper>
+          <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
+        </CategoryItem>
+      ))}
+    </CategoryList>
+  );
+};

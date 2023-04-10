@@ -13,7 +13,7 @@ export const СhooseYourBreakfast = () => {
         <ChooseSpan>Delicious and healthy &nbsp;</ChooseSpan>
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </ChooseText>
-      <ChooseLink to="/categories/breakfast">
+      <ChooseLink to={`/category-list`}>
         See recipes
         <RightArrow
           width="18"

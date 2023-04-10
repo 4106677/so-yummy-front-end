@@ -5,6 +5,8 @@ import {
   deleteShoppingList,
 } from './operations';
 import { toast } from 'react-toastify';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 export const shoppingListSlice = createSlice({
   name: 'shoppingList',
@@ -58,4 +60,12 @@ export const shoppingListSlice = createSlice({
   },
 });
 
-export const shoppingListReducer = shoppingListSlice.reducer;
+const persistConfig = {
+  key: 'shoppingList',
+  storage,
+};
+
+export const persistedShoppingList = persistReducer(
+  persistConfig,
+  shoppingListSlice.reducer
+);
