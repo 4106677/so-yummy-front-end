@@ -1,12 +1,24 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  max-width: 768px;
+  padding: 0 16px;
+  @media (min-width: 768px) {
+    max-width: 1440px;
+    padding: 0 32px;
+  }
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+   padding: 0 100px;
+  };`
+
+
 export const SearchHeader = styled.h1`
   font: 'Poppins';
   font-weight: 600;
   font-size: 28px;
   margin-bottom: 3.125rem;
   padding-top: 114px;
-
   @media (min-width: 768px) {
     font-size: 32px;
     margin-bottom: 2.5rem;
@@ -18,47 +30,38 @@ export const SearchHeader = styled.h1`
     padding-top: 164px;
   }
 `;
-
 export const DecorativeSquare = styled.div`
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;
-
   aspect-ratio: 1 / 1;
   border-radius: 3px;
   background-color: ${({ color }) => color ?? '#22252A'};
   transform: rotate(-25deg);
-
   &[data-1] {
     top: 76px;
     left: 36%;
   }
-
   &[data-2] {
     top: 141px;
     left: 67%;
     width: 0.35rem;
     height: 0.35rem;
   }
-
   &[data-3] {
     top: 108px;
     right: 5%;
   }
-
   @media screen and (min-width: 768px) {
     width: 0.875rem;
     height: 0.875rem;
-
     &[data-1] {
       top: 85px;
       left: 219px;
     }
-
     &[data-2] {
       width: 0.65rem;
       height: 0.65rem;
-
       top: 155px;
       left: 57%;
     }
@@ -67,24 +70,19 @@ export const DecorativeSquare = styled.div`
       right: 5%;
     }
   }
-
   @media screen and (min-width: 1440px) {
     width: 0.875rem;
     height: 0.875rem;
-
     &[data-1] {
       top: 116px;
       left: 328px;
     }
-
     &[data-2] {
       width: 0.65rem;
       height: 0.65rem;
-
       top: 199px;
       left: 57%;
     }
-
     &[data-3] {
       top: 129px;
       right: 10%;

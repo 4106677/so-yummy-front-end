@@ -4,7 +4,7 @@ const shoppingInstance = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
   headers: {
     Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmVhYzYyYjUyMGQwNThiMzkwZWI5OSIsImlhdCI6MTY4MDg4NDUwNSwiZXhwIjoxNjgwOTcwOTA1fQ.7hB4_WLpC9opXocHO3iDzRJzR-izbrR8jW0od3dmPZU',
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmVhYzYyYjUyMGQwNThiMzkwZWI5OSIsImlhdCI6MTY4MDk3Mzc1MCwiZXhwIjoxNjgxMDYwMTUwfQ.yBK0ehdYS6ieY38IUfH03ngF_mNt2MF_AAZj6G5XvtE',
   },
 });
 

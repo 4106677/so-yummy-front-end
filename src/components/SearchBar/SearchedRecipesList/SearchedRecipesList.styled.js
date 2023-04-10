@@ -7,9 +7,9 @@ import notFoundSearchDesk from '../../../images/SearchPage/search_not_found_desk
 import notFoundSearchDeskRetina from '../../../images/SearchPage/search_not_found_desk_2x.png';
 
 export const SearchListWrap = styled.div`
-  padding-bottom: 100px;
+  padding-bottom: 6.25rem;
   @media screen and (min-width: 768px) {
-  padding-bottom: 200px;
+  padding-bottom: 12.5rem;
   }
 `;
 
@@ -35,8 +35,8 @@ export const ListWrap = styled.ul`
 export const NotFoundPhoto = styled.div`
   background-size: cover;
   display: inline-block;
-  height: 133px;
-  width: 208px;
+  height: 8.3125rem;
+  width: 13rem;
   background-repeat: no-repeat;
   background-image: url(${notFoundSearchMob});
   @media screen and (min-device-pixel-ratio: 2),
@@ -46,8 +46,8 @@ export const NotFoundPhoto = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    height: 225px;
-    width: 350px;
+    height: 14.0625rem;
+    width: 21.875rem;
     background-image: url(${notFoundSearchTab});
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -85,13 +85,13 @@ export const NotFoundText = styled.p`
 `;
 
 export const Image = styled.img`
-  width: calc(100% - 32px) / 2;
+  width: 100%;
   border-radius: 8px;
   @media screen and (min-width: 768px) {
-    width: calc(100% - 32px - 64px) / 2;
+    width: calc(100% - 96px) / 2;
   }
   @media screen and (min-width: 1440px) {
-    width: calc(100% - 14px - 198px) / 4;
+    width: calc(100% - 240px) / 4;
   }
 `;
 
@@ -99,12 +99,12 @@ export const RecipeTitle = styled.p`
   position: absolute;
   margin: 0 auto;
   top: auto;
-  left: 18px;
-  right: 18px;
-  bottom: 26px;
+  left: 1.125rem;
+  right: 1.125rem;
+  bottom: 1.625rem;
   z-index: 1;
   text-align: start;
-  padding-left: 16px;
+  padding-left: 1rem;
 
   font-family: 'Poppins';
   font-style: normal;
@@ -119,6 +119,12 @@ export const RecipeTitle = styled.p`
   height: 3.25rem;
   width: 19.19rem;
   line-height: 3.25rem;
+  @media screen and (min-width: 768px) {
+    width: 18.75rem;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 16.75rem;
+  }
 `;
 
 export const RecipeWrap = styled.li`
