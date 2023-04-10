@@ -17,7 +17,7 @@ export const Navigation = () => {
             <WrapperLogoNavSub>
                 <WrapperLogoAboutNav>
                     <div>
-                    <LogoFooterLink to="/">
+                    <LogoFooterLink to="/main">
                         <LogoFooterSvg />
                         <LogoLinkSpan>
                             So Yummy
