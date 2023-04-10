@@ -41,7 +41,7 @@ export const App = () => {
   }, [dispatch, isLoggedIn, token]);
 
   return isRefreshing ? (
-   <Loader/>
+    <Loader />
   ) : (
     <>
       <Routes>
@@ -69,21 +69,26 @@ export const App = () => {
             />
           }
         />
-        <Route path="/" element={<Layout />}>
-          <Route
-            path="main"
-            index
-            element={<PrivateRoute component={<MainPage />} />}
-          />
-          <Route path="search" element={<SearchPage />} />
-          <Route path="recipe/:recipeId" element={<RecipePage />} />
-          <Route path="add-recipe" element={<AddRecipePage />} />
-          <Route path="shopping-list" element={<ShoppingListPage />} />
-          <Route path="categories/:categoryName" element={<CategoriesPage />} />
-          <Route path="/favorite" element={<FavoritePage />}></Route>
-          <Route path="my" element={<MyRecipePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+        {isLoggedIn && (
+          <Route path="/" element={<Layout />}>
+            <Route
+              path="main"
+              index
+              element={<PrivateRoute component={<MainPage />} />}
+            />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="recipe/:recipeId" element={<RecipePage />} />
+            <Route path="add-recipe" element={<AddRecipePage />} />
+            <Route path="shopping-list" element={<ShoppingListPage />} />
+            <Route
+              path="categories/:categoryName"
+              element={<CategoriesPage />}
+            />
+            <Route path="/favorite" element={<FavoritePage />}></Route>
+            <Route path="my" element={<MyRecipePage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        )}
       </Routes>
       <GlobalStyle />
       <ToastContainer autoClose={3000} />
