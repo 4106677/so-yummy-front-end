@@ -7,8 +7,8 @@ export const updateUser = createAsyncThunk(
     try {
       const result = await updateUserAPI(data);
       return result;
-    } catch ( response ) {
-      return rejectWithValue(response);
+    } catch ( err ) {
+      return rejectWithValue(err.message);
     }
   }
 );

@@ -96,7 +96,7 @@ export const HeaderStyledUser = styled.div`
     width: 44px;
     height: 44px;
     margin-right: 14px;
-    fill: #D9D9D9; 
+    fill: #9c9c9c; 
     @media (max-width: 477px) {
       width: 34px;
       height: 34px;
