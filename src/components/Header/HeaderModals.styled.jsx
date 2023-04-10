@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderUserModalContainer = styled.div`
-  max-width: 1240px;
+  max-width: 1440px;
   height: 100%;
   width: 1440px;
   top: 0;
