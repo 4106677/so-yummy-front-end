@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-//svg validation icons
-import { ReactComponent as Success } from '../../images/startPage/icon-success.svg';
-import { ReactComponent as Warning } from '../../images/startPage/icon-warning.svg';
-import { ReactComponent as Error } from '../../images/startPage/icon-error.svg';
-
 export const ErrorText = styled.p`
    {
     color: #e74a3b;
@@ -40,47 +35,5 @@ export const WarningText = styled.p`
   position: relative;
   @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
-`;
-
-export const SuccessIcon = styled(Success)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
-  }
-`;
-
-export const WarningIcon = styled(Warning)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
-  }
-`;
-
-export const ErrorIcon = styled(Error)`
-  width: 18px;
-  height: 18px;
-  top: 14px;
-  right: 10px;
-  position: absolute;
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 10.5px;
-    right: 10px;
   }
 `;

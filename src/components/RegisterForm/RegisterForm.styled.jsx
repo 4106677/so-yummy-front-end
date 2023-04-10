@@ -1,5 +1,6 @@
 import { Field } from 'formik';
 import { Link } from 'react-router-dom';
+import { FiUnlock } from 'react-icons/fi';
 import styled, { css } from 'styled-components';
 
 //background
@@ -17,11 +18,58 @@ import { ReactComponent as SvgAuthWhite } from '../../images/startPage/Order-foo
 //svg icons
 import { ReactComponent as GoogleLogo } from '../../images/startPage/logo-google-icon.svg';
 
+//svg validation icons
+import { ReactComponent as Success } from '../../images/startPage/icon-success.svg';
+import { ReactComponent as Warning } from '../../images/startPage/icon-warning.svg';
+import { ReactComponent as Error } from '../../images/startPage/icon-error.svg';
+
 import { ReactComponent as User } from '../../images/startPage/icon-user-name.svg';
 import { ReactComponent as Email } from '../../images/startPage/icon-email.svg';
 import { ReactComponent as Password } from '../../images/startPage/icon-password.svg';
 
 export const GoogleLink = styled(Link)``;
+
+export const SuccessIcon = styled(Success)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
+
+export const WarningIcon = styled(Warning)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
+
+export const ErrorIcon = styled(Error)`
+  width: 18px;
+  height: 18px;
+  top: 14px;
+  right: 10px;
+  position: absolute;
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    top: 10.5px;
+    right: 10px;
+  }
+`;
 
 export const UserIcon = styled(User)`
   box-sizing: border-box;
@@ -44,6 +92,11 @@ export const UserIcon = styled(User)`
     props.$success &&
     css`
       stroke: #3cbc81;
+    `}
+  ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
     `}
   @media screen and (min-width: 768px) {
     height: 24px;
@@ -68,6 +121,11 @@ export const EmailIcon = styled(Email)`
   fill: none;
   stroke: #fafafa;
   ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
+    `}
+  ${props =>
     props.$error &&
     css`
       stroke: #e74a3b;
@@ -76,11 +134,6 @@ export const EmailIcon = styled(Email)`
     props.$success &&
     css`
       stroke: #3cbc81;
-    `}
-  ${props =>
-    props.$warning &&
-    css`
-      stroke: #f6c23e;
     `}
   @media screen and (min-width: 768px) {
     height: 24px;
@@ -131,6 +184,46 @@ export const PasswordIcon = styled(Password)`
   }
 `;
 
+export const PasswordIconLock = styled(FiUnlock)`
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  opacity: 80%;
+  top: 15px;
+  left: 16px;
+  fill: none;
+  stroke: #fafafa;
+  ${props =>
+    props.$error &&
+    css`
+      stroke: #e74a3b;
+      opacity: 80%;
+    `}
+  ${props =>
+    props.$success &&
+    css`
+      stroke: #3cbc81;
+      opacity: 80%;
+    `}
+  ${props =>
+    props.$warning &&
+    css`
+      stroke: #f6c23e;
+      opacity: 80%;
+    `}
+  @media screen and (min-width: 768px) {
+    height: 22px;
+    width: 22px;
+    top: 11.5px;
+    left: 17px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 10.5px;
+  }
+`;
+
 export const Container = styled.div`
   box-sizing: border-box;
   padding: 0 20px 118px;
@@ -157,10 +250,10 @@ export const AuthFormBox = styled.div`
 
 export const GoogleAuth = styled(GoogleLogo)`
   position: absolute;
-  width: 60px;
-  height: 60px;
-  top: 12px;
-  left: 252px;
+  width: 45px;
+  height: 45px;
+  top: 20px;
+  right: 29px;
   animation: pulse 1s infinite;
   @keyframes pulse {
     from {
@@ -179,12 +272,13 @@ export const GoogleAuth = styled(GoogleLogo)`
     }
   }
   @media screen and (min-width: 768px) {
-    width: 80px;
-    height: 80px;
-    left: 379px;
+    width: 60px;
+    height: 60px;
+    right: 50px;
+    top: 26px;
   }
   @media screen and (min-width: 1440px) {
-    top: 14px;
+    top: 28px;
   }
 `;
 
@@ -300,14 +394,17 @@ export const InputFormBox = styled.div`
   ${props =>
     props.$gap &&
     css`
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     `}
-  @media screen and (min-width: 768px) {
+  @media
+    screen
+    and
+    (min-width: 768px) {
     margin-bottom: 50px;
     ${props =>
       props.$gap &&
       css`
-        margin-bottom: 35px;
+        margin-bottom: 40px;
       `}
   }
   @media screen and (min-width: 1440px) {
@@ -334,6 +431,7 @@ export const InputBox = styled.div`
 `;
 
 export const Input = styled(Field)`
+position: relative;
   box-sizing: border-box;
   background-color: initial;
   padding: 12px 16px 12px 40px;
@@ -360,16 +458,15 @@ export const Input = styled(Field)`
       border-color: #e74a3b;
     `}
   ${props =>
-    props.$warning &&
-    css`
-      border-color: #f6c23e;
-    `}
-  ${props =>
     props.$success &&
     css`
       border-color: #3cbc81;
     `}
-
+  ${props =>
+    props.$warning &&
+    css`
+      border-color: #f6c23e;
+    `}
   :-webkit-autofill,
   :-webkit-autofill:focus {
       transition: background-color 600000s 0s, color 600000s 0s;
@@ -386,11 +483,16 @@ export const Input = styled(Field)`
       css`
         border-color: #e74a3b;
       `}
-  ${props =>
-    props.$success &&
-    css`
-      border-color: #3cbc81;
-    `}
+    ${props =>
+      props.$success &&
+      css`
+        border-color: #3cbc81;
+      `}
+    ${props =>
+      props.$warning &&
+      css`
+        border-color: #f6c23e;
+      `}
   }
   ::placeholder {
     color: #ffffff;
@@ -445,4 +547,35 @@ export const LinkStyled = styled(Link)`
   @media screen and (min-width: 1440px) {
     margin-left: 619px;
   }
+`;
+
+export const SecureEntry = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  ${props =>
+    props.$secure &&
+    css`
+      top: 13px;
+      right: 38px;
+      @media screen and (min-width: 768px) {
+        right: 44px;
+      }
+    `}
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+
+  fornt-family: 'Poppins',
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+  opacity: 0.8;
+  outline: none;
+
+  letter-spacing: -0.02em;
+  color: #fafafa;
+      @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
 `;
