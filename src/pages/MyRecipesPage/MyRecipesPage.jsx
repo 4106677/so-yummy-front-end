@@ -6,8 +6,8 @@ import {
 // import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
 import React from 'react';
 import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
-import { Header } from 'components/Header/Header';
-import { Footer } from 'components/Footer/Footer';
+// import { Header } from 'components/Header/Header';
+// import { Footer } from 'components/Footer/Footer';
 import { checkWebpSupport } from 'components/Utils/checkWebpSupport';
 import { DeleteMyRecipeById } from '../../services/myRecipes';
 
@@ -23,7 +23,7 @@ export const MyRecipePage = () => {
   }, []);
   return (
     <RecipeContainer>
-      <Header />
+      {/* <Header /> */}
 
       <Section ref={sectionRef}>
         <DecorativeSquare
@@ -42,7 +42,7 @@ export const MyRecipePage = () => {
 
         <MyRecipesList onDelete={DeleteMyRecipeById} />
       </Section>
-      <Footer />
+      {/* <Footer /> */}
     </RecipeContainer>
   );
 };
