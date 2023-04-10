@@ -14,7 +14,8 @@ export const FooterSection = styled.footer`
     padding: 50px 32px 24px 32px;
   }
   @media (min-width: 1440px) {
-    max-width: 1440px;
+    min-width: 1440px;
+    
     padding: 64px 100px 0px;
 
   }

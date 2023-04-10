@@ -48,7 +48,7 @@ export const SubscribeText = styled.p`
 }
 
 `
-export const Form = styled.form`
+export const FormWrap = styled.div`
   @media screen and (min-width: 768px){
      display: flex;
   }
@@ -117,9 +117,15 @@ export const SubBtn = styled.button`
   font-size: 14px;
   line-height: 16px;
   cursor: pointer;
+  &:hover{
+    color:black;
+  }
   &:disabled{
     background: rgba(139, 170, 54, 0.5);
     cursor: auto;
+      &:hover{
+    color:white;
+  }
   }
   @media(min-width: 768px){
     width: 171px;
