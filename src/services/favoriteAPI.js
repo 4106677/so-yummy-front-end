@@ -4,7 +4,7 @@ const favoriteInstance = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
   headers: {
     Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhMDNiYzI1OGYzMDE2NWZkODI1ZCIsImlhdCI6MTY4MDk3NDg3MywiZXhwIjoxNjgxMDYxMjczfQ.Pqa2tYKlB0sNFUReNacqLVu6WAd488bf2lvxk-OPrhM',
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhMDNiYzI1OGYzMDE2NWZkODI1ZCIsImlhdCI6MTY4MTExODM1MywiZXhwIjoxNjgxMjA0NzUzfQ.7QxeZ6HDZgIUJUOYBbbtfiig01b5oV_16RO0buUK53M',
   },
 });
 
