@@ -19,12 +19,18 @@ import { AddPhotoIcon } from './HeaderIcons';
 import { BiUser } from 'react-icons/bi';
 import { FiEdit2 } from 'react-icons/fi';
 import { updateUser } from 'redux/header/operations';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsSuccess } from 'redux/header/selectors';
+import { current } from 'redux/auth/operations';
+import { toast } from 'react-toastify';
+
 
 
 export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const [image, setImage] = useState(avatar);
   const [name, setName] = useState(user);
+
+  const isSuccess = useSelector(getIsSuccess)
 
   const dispatch = useDispatch();
 
@@ -56,14 +62,18 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const handleOnSubmit = async e => {
     e.preventDefault();
     const files = e.target.elements[0].files[0];
-    const data = {};
+    const formData = new FormData();
+  
+    if (name === '') {
+      return toast.warning('Please enter your name')
+    }
     if (files) {
-      data.avatar = files;
+      formData.append('avatar', files);
     }
     if (name) {
-      data.name = name;
+      formData.append('name', name);
     }
-    dispatch(updateUser(data));
+    dispatch(updateUser(formData));
   };
 
 
@@ -71,44 +81,52 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     setName(e.target.value);
   };
 
+
+
   return (
-    <HeaderEditModalOverlayStyled onClick={handleOverlayClick}>
-      <HeaderEditModalBodyStyled>
-        <HeaderEditModalContainerStyled>
-          <HeaderEditModalCloseButtonStyled
-            onClick={() => {
-              onClose();
-            }}
-          >
-            <CrossIcon />
-          </HeaderEditModalCloseButtonStyled>
-          <HeaderEditModalStyledImgContainer>
-            {image ? (
-              <HeaderEditModalStyledImg src={image} />
-            ) : (
-              <FaUserCircle />
-            )}
-          </HeaderEditModalStyledImgContainer>
-          <HeaderEditModalForm onSubmit={handleOnSubmit}>
-            <HeaderEditModalFileLabel>
-              <HeaderEditModalFileInput
-                type={'file'}
-                accept={'image/jpeg,image/png,image/gif'}
-                onChange={previewOnChangeImg}
-              />
-              <AddPhotoIcon />
-            </HeaderEditModalFileLabel>
-            <HeaderEditModalNameLabel>
-              <HeaderEditModalNameInput value={name} onChange={nameOnChange} />
-              <BiUser />
-              <FiEdit2 />
-            </HeaderEditModalNameLabel>
-            <HeaderEditModalSubmitButton>
-              Save changes
-            </HeaderEditModalSubmitButton>
-          </HeaderEditModalForm>
-        </HeaderEditModalContainerStyled>
-      </HeaderEditModalBodyStyled>
-    </HeaderEditModalOverlayStyled>
+    <>
+      {isSuccess && dispatch(current())}
+      <HeaderEditModalOverlayStyled onClick={handleOverlayClick}>
+        <HeaderEditModalBodyStyled>
+          <HeaderEditModalContainerStyled>
+            <HeaderEditModalCloseButtonStyled
+              onClick={() => {
+                onClose();
+              }}
+            >
+              <CrossIcon />
+            </HeaderEditModalCloseButtonStyled>
+            <HeaderEditModalStyledImgContainer>
+              {image ? (
+                <HeaderEditModalStyledImg src={image} />
+              ) : (
+                <FaUserCircle />
+              )}
+            </HeaderEditModalStyledImgContainer>
+            <HeaderEditModalForm onSubmit={handleOnSubmit}>
+              <HeaderEditModalFileLabel>
+                <HeaderEditModalFileInput
+                  type={'file'}
+                  accept={'image/jpeg,image/png,image/gif'}
+                  onChange={previewOnChangeImg}
+                />
+                <AddPhotoIcon />
+              </HeaderEditModalFileLabel>
+              <HeaderEditModalNameLabel>
+                <HeaderEditModalNameInput
+                  value={name}
+                  onChange={nameOnChange}
+                />
+                <BiUser />
+                <FiEdit2 />
+              </HeaderEditModalNameLabel>
+              <HeaderEditModalSubmitButton>
+                Save changes
+              </HeaderEditModalSubmitButton>
+            </HeaderEditModalForm>
+          </HeaderEditModalContainerStyled>
+        </HeaderEditModalBodyStyled>
+      </HeaderEditModalOverlayStyled>
+    </>
   );
 };
