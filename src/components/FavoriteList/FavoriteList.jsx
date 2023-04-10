@@ -17,9 +17,12 @@ import {
 } from './FavoriteList.styled';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getFavorites } from 'redux/favorite/selectors';
 
-export const FavoriteList = ({ items, onClick }) => {
+export const FavoriteList = ({ onClick }) => {
   const navigate = useNavigate();
+  const favorites = useSelector(getFavorites);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -28,7 +31,7 @@ export const FavoriteList = ({ items, onClick }) => {
       navigate(`/recipe/${_id}`)}, 500);
   };
 
-  const elementsMob = items.map(
+  const elementsMob = favorites.map(
     ({ _id, title, preview, description, time }) => (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />
@@ -46,7 +49,7 @@ export const FavoriteList = ({ items, onClick }) => {
     )
   );
 
-  const elementsDesktop = items.map(
+  const elementsDesktop = favorites.map(
     ({ _id, title, preview, description, time, instructions }) => (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />

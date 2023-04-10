@@ -18,8 +18,8 @@ export const addToShoppingList = async (id) => {
 
 export const getAllShoppingList = async () => {
    const response = await shoppingInstance.get(
-     '/shopping-list'
-  );
+     '/shopping-list?&pages=1&limit=5'
+   );
   const data = response.data;
   console.log(data);
   return data;

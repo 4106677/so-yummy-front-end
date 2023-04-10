@@ -15,6 +15,7 @@ import { mainRecipeReduser } from './mainRecipes/slice';
 import { authReducer } from './auth/slice';
 import { updateReducer } from './header/slice';
 import { favoriteReducer } from './favorite/slice';
+import { shoppingListReducer } from './shoppingList/slice';
 
 const middleware = getDefaultMiddleware =>
   getDefaultMiddleware({
@@ -41,6 +42,7 @@ export const store = configureStore({
     recipe: mainRecipeReduser,
     update: updateReducer,
     favorites: favoriteReducer,
+    shoppingList: shoppingListReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
