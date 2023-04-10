@@ -5,14 +5,14 @@ import { PopularRecipeCard } from './PopularRecipeCard';
 import * as Styled from './PopularRecipes.styled';
 
 const defaultTitle = 'Popular recipe';
-const defaultBaseLinkUrl = '/popular-recipe';
+const defaultRecipePageUrl = '/recipes/';
 
 export function PopularRecipes({
   title = defaultTitle,
   titleGap = '2.5rem',
   tag = 'h3',
   recipes = [],
-  baseLinkUrl = defaultBaseLinkUrl
+  recipePageRouterUrl = defaultRecipePageUrl
 }) {
   return (
     <Styled.Wrapper>
@@ -24,9 +24,9 @@ export function PopularRecipes({
 
       {recipes.length ? (
         <Styled.RecipeList>
-          {recipes.map(({ id, ...recipe }) => (
-            <Styled.ListItem key={id}>
-              <Link to={`${baseLinkUrl}/${id}`}>
+          {recipes.map(({ _id, ...recipe }) => (
+            <Styled.ListItem key={_id}>
+              <Link to={`${recipePageRouterUrl}/${_id}`}>
                 <PopularRecipeCard {...recipe} />
               </Link>
             </Styled.ListItem>
@@ -42,5 +42,5 @@ PopularRecipes.propTypes = {
   titleGap: PropTypes.string,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   recipes: PropTypes.array,
-  baseLinkUrl: PropTypes.string
+  recipePageRouterUrl: PropTypes.string
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
 // Components
@@ -13,50 +14,77 @@ import { addRecipeValidationSchema } from 'validation/addRecipeValidationSchema'
 import * as Styled from './AddRecipeForm.styled';
 
 const initialValues = {
-  image: '',
-  title: '',
-  description: '',
-  preparationSteps: '',
-  category: 'food',
-  cookingTime: '40min',
-  ingredients: []
+  preview: '', // not required
+  title: '', // required
+  description: '', // not required
+  category: '', // required ---> /recipes/category-list
+  time: '5min', // required string
+  ingredients: [],
+  instructions: '' // required
 };
 
-export function AddRecipeForm() {
+export function AddRecipeForm({ categories, ingredients, onSubmit }) {
   const [isSubmit, setIsSubmit] = React.useState(false);
 
-  function handleFormSubmit(values) {
-    values.ingredients.forEach((ingredient) => delete ingredient.id);
-    // temp
-    alert(JSON.stringify(values, null, 2));
-    // TODO
-    // send data to server
+  function handleFormSubmit(values, resetForm) {
+    let recipe = { ...values };
+
+    for (const key in recipe) {
+      if (!recipe[key]) delete recipe[key];
+    }
+
+    recipe.ingredients = recipe.ingredients.map((product) => {
+      delete product.ingredient;
+      const { amount, measurementUnit, ...restIngredient } = product;
+
+      return { ...restIngredient, measure: `${amount} ${measurementUnit}` };
+    });
+
+    // console.log('recipe -->', recipe);
+
+    onSubmit(recipe, resetForm);
   }
 
   return (
     <React.Fragment>
       <Formik
-        initialValues={initialValues}
+        initialValues={{ ...initialValues, category: categories[0] }}
         validationSchema={addRecipeValidationSchema}
-        onSubmit={handleFormSubmit}
+        onSubmit={(values, { resetForm }) => {
+          handleFormSubmit(values, resetForm);
+        }}
       >
         {({ handleSubmit }) => {
           return (
             <Styled.FormikForm onSubmit={handleSubmit}>
               <RecipeGeneralInfo
-                names={['image', 'title', 'description', 'category', 'cookingTime']}
-                selectOneOptionList={['food', 'drink', 'else']}
-                selectTwoOptionList={['40min', '20min', '1h']}
+                names={['preview', 'title', 'description', 'category', 'time']}
+                selectOneOptionList={categories}
+                selectTwoOptionList={[
+                  '5min',
+                  '10min',
+                  '15min',
+                  '20min',
+                  '25min',
+                  '30min',
+                  '35min',
+                  '40min',
+                  '45min',
+                  '50min',
+                  '55min',
+                  '1h'
+                ]}
               />
 
               <RecipeIngredients
                 name="ingredients"
                 selectOptionList={['tbs', 'tsp', 'kg', 'g']}
-                inputOptionList={['cola', 'tea', 'coffee', 'sprite']}
+                inputOptionList={ingredients}
                 isSubmit={isSubmit}
+                inputDatalistKeyExtractor={(option) => option.ingredient}
               />
 
-              <RecipePreparation name="preparationSteps" />
+              <RecipePreparation name="instructions" />
 
               <Styled.SubmitFormButton type="submit" onClick={() => setIsSubmit(true)}>
                 Add
@@ -68,3 +96,8 @@ export function AddRecipeForm() {
     </React.Fragment>
   );
 }
+
+AddRecipeForm.propTypes = {
+  categories: PropTypes.array,
+  ingredients: PropTypes.arrayOf(PropTypes.shape)
+};

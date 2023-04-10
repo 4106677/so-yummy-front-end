@@ -45,7 +45,6 @@ export const DropdownList = styled.ul`
   // Size & position
   position: absolute;
   top: 100%;
-  left: 0;
   right: 0;
 
   // Styles
@@ -128,6 +127,7 @@ export const Wrapper = styled.div`
     & ${DropdownList} {
       box-shadow: 0px 6.51852px 7.82222px rgba(0, 0, 0, 0.0314074);
       max-height: 162px;
+      width: fit-content;
       overflow-y: auto;
       padding: 0.5rem 0;
     }

@@ -7,8 +7,7 @@ export const Article = styled.article`
   padding-bottom: 0.875rem;
   padding-right: 0.875rem;
 
-  opacity: 0.17;
-  border-bottom: 1px solid #707070;
+  border-bottom: 1px solid #7070702b;
 `;
 export const Wrapper = styled.div`
   margin-left: 0.625rem;
