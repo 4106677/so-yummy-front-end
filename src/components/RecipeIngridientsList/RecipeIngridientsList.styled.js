@@ -151,7 +151,6 @@ export const IngridientCheck = styled.div`
   input:checked {
     & + label::before {
       content: '\\002714';
-
       display: flex;
       justify-content: center;
       align-items: center;
