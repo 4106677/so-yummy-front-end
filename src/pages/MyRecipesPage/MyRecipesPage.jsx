@@ -23,6 +23,7 @@ export const MyRecipePage = () => {
       .catch(err => err);
   }, []);
   return (
+    // <Section>
     <RecipeContainer>
       <Container ref={sectionRef}>
         <DecorativeSquare
@@ -43,5 +44,6 @@ export const MyRecipePage = () => {
         <MyRecipesList onDelete={DeleteMyRecipeById} />
       </Container>
     </RecipeContainer>
+    // </Section>
   );
 };
