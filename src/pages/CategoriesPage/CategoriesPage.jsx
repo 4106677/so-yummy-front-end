@@ -1,56 +1,57 @@
 // import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
+// import { useParams } from "react-router-dom";
+//  import { CategoriesList } from "components/CategoriesList/CategoriesList/CategoriesList";
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+import { getAllCategoryListAPI, getRecipesByCategory } from "../../services/categoriesAPI";
+
 import { CategoriesList } from "components/CategoriesList/CategoriesList/CategoriesList";
+import { RecipeList } from "components/CategoriesList/RecipeList/RecipeList";
+
 import {
+  PageContainer,
   CatigoryHeader,
   DecorativeSquare,
 } from "./CategoriesPage.styled";
-import { Container } from "components/Container/Container";
 
-import { Header } from "components/Header/Header";
-import { Footer } from "components/Footer/Footer";
 
-// import {
-//   getFullCategoryList,
-//   getAllRecipes,
-// } from "redux/mainRecipes/selectors";
-// import {
-//   getCategoryList,
-//   getAllRecipesByCategory,
-// } from "redux/mainRecipes/operations";
+export function CategoriesPage() {
+  const [categories, setCategories] = useState([]);
+  const [meals, setMeals] = useState([]);
 
- export function CategoriesPage() {
-
-//   const categories = useSelector(getFullCategoryList);
-//   console.log(categories);
-//   const categoryRecipes = useSelector(getAllRecipes);
-//   console.log(categoryRecipes);
-
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();  
-
-//   const onClick = e => {
-//     navigate('/categories');
-//   };
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const categoryIdx = categories[0]?.idx;
+        const data = await getAllCategoryListAPI(categoryIdx);
+        console.log(data);
+        setCategories(data);
+      } catch (err) {
+        console.log(err.message);
+      };
+    }
+    fetchCategories();
+  }, [categories]);
   
-// useEffect(() => {
-    
-//       dispatch(getCategoryList());
-    
-//   }, [dispatch]);
-
-//   useEffect(() => {
-//     const category = 'beef';
-//    dispatch(getAllRecipesByCategory(category));
-//  }, [dispatch]);
-
-
-
+ useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const data = await getRecipesByCategory();
+        console.log(data);
+        setMeals(data);
+      } catch (err) {
+        console.log(err.message);
+      };
+    }
+    fetchRecipes();
+  }, []);
 
     return (  
-      <> 
-        <Container>
-          <Header />
+      <>
+       
+        <PageContainer>
             <DecorativeSquare
           data-1
           color="#8BAA36"
@@ -64,10 +65,12 @@ import { Footer } from "components/Footer/Footer";
           top="4.125rem"
           right="4.5rem"
         />
+        
           <CatigoryHeader>Categories</CatigoryHeader>
-          <CategoriesList />
-            <Footer />   
-        </Container>
+          <CategoriesList items={categories} />
+          <RecipeList items={meals} />
+          </PageContainer>
+          
       </>
     );
 };
