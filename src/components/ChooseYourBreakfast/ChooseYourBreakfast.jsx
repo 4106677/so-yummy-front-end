@@ -4,9 +4,9 @@ import {
   ChooseSpan,
   ChooseText,
   RightArrow,
-} from './СhooseYourBreakfast.styles';
+} from './ChooseYourBreakfast.styles';
 
-export const СhooseYourBreakfast = () => {
+export const ChooseYourBreakfast = () => {
   return (
     <ChooseBlock>
       <ChooseText>
