@@ -1,22 +1,20 @@
 import axios from 'axios';
-import { setToken } from '../redux/auth/operations';
 
-// const getToken = () => {
-//   const serializedState = localStorage.getItem('persist:auth');
-//   const serializedStateParse =
-//     serializedState === null ? undefined : JSON.parse(serializedState);
-//   return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
-// };
+ const getToken = () => {
+   let serializedState = localStorage.getItem('persist:auth');
+   const serializedStateParse =
+     serializedState === null ? undefined : JSON.parse(serializedState);
+   return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
+ };
 
-const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
+ const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
 
-const shoppingInstance = axios.create({
-  baseURL: REACT_APP_API_URL,
-  headers: {
-    // Authorization: getToken(),
-    Authorization: setToken(),
-  },
-});
+ const shoppingInstance = axios.create({
+   baseURL: REACT_APP_API_URL,
+   headers: {
+     Authorization: getToken(),
+   },
+ });
 
 export const addShoppingList = async data => {
   const response = await shoppingInstance.post(
