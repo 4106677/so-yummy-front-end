@@ -1,10 +1,19 @@
 import axios from 'axios';
 
+const getToken = () => {
+  const serializedState = localStorage.getItem('persist:auth');
+  const serializedStateParse =
+    serializedState === null ? undefined : JSON.parse(serializedState);
+  return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
+};
+
+const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
+
+
 const favoriteInstance = axios.create({
-  baseURL: 'https://recipes-becend-49lg.onrender.com',
+   baseURL: REACT_APP_API_URL,
   headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzNjZDJjZmVkZDA0MWJiYjhkNzU1ZSIsImlhdCI6MTY4MTEzOTg5MCwiZXhwIjoxNjgxMjI2MjkwfQ.bkHhLIWZq2ba4QEZbaGDGV53slti0lXMWXFUsX9UqG4',
+    Authorization: getToken(),
   },
 });
 
@@ -14,8 +23,7 @@ export const addToFavoriteList = async (data) => {
 };
 
 export const getAllFavoriteList = async () => {
-  const response = await favoriteInstance.get(`/favorite`);
-  const data = response.data;
+  const data = await favoriteInstance.get(`/favorite`);
   console.log(data);
   return data;
 };

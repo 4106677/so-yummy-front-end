@@ -26,30 +26,25 @@ export const IngridientsShoppingList = () => {
   console.log(shoppingList);
     
   
-    const elements = shoppingList.map(
-      ({ _id, ingredientInfo, t }) => {
-        const picture = ingredientInfo.find(photo => photo.type === 'thb');
-        
-        return (
-          <ShopItem key={_id}>
-            {picture ? (
-              <a href={picture}>
-                <ShopImg src={picture} alt="dish" />
-              </a>
-            ) : (
-              <Default />
-            )}
-            <ShopName>{ingredientInfo.map(ttl => ttl)}</ShopName>
-            <ShopQuantity>{t ? t : 1}</ShopQuantity>
-            <ShopBtn
-              type="button"
-              onClick={() => dispatch(deleteShoppingList(_id))}
-            >
-              X
-            </ShopBtn>
-          </ShopItem>
-        );
-      }); 
+    const elements = shoppingList.map(({ _id, ingredientInfo, t }) => (
+      <ShopItem key={_id}>
+        {ingredientInfo.thb ? (
+          <a href={ingredientInfo.thb}>
+            <ShopImg src={ingredientInfo.thb} alt="dish" />
+          </a>
+        ) : (
+          <Default />
+        )}
+        <ShopName>{ingredientInfo.ttl}</ShopName>
+        <ShopQuantity>{t ? t : 1}</ShopQuantity>
+        <ShopBtn
+          type="button"
+          onClick={() => dispatch(deleteShoppingList(_id))}
+        >
+          X
+        </ShopBtn>
+      </ShopItem>
+    )); 
   
 
 

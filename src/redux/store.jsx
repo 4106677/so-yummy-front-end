@@ -41,7 +41,7 @@ export const store = configureStore({
     auth: authReducer,
     recipe: mainRecipeReduser,
     update: updateReducer,
-    favorites: persistedFavorites,
+    favorite: persistedFavorites,
     shoppingList: persistedShoppingList,
   },
   middleware,
