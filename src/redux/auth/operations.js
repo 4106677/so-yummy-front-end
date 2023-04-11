@@ -3,7 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
 
-const setToken = token => {
+export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -51,7 +51,6 @@ export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error);
   }
 });
-
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {

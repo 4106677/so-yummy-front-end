@@ -1,13 +1,14 @@
 import axios from 'axios';
+import { setToken } from '../redux/auth/operations';
 
-const getToken = () => {
-  const serializedState = localStorage.getItem('persist:auth');
-  const serializedStateParse =
-    serializedState === null ? undefined : JSON.parse(serializedState);
-  const token = 'Bearer ' + serializedStateParse.token;
-  return token.replace(/"/g, '');
-};
-axios.defaults.headers.common.Authorization = getToken();
+// const getToken = () => {
+//   const serializedState = localStorage.getItem('persist:auth');
+//   const serializedStateParse =
+//     serializedState === null ? undefined : JSON.parse(serializedState);
+//   const token = 'Bearer ' + serializedStateParse.token;
+//   return token.replace(/"/g, '');
+// };
+axios.defaults.headers.common.Authorization = setToken();
 
 const MyRecipesBase = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
