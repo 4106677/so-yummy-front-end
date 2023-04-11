@@ -23,10 +23,7 @@ export const outerRecipesSlice = createSlice({
     mainCategories: [],
     popularRecipes: [],
     categoryList: [],
-    recipesByQuery: {
-      meals: [],
-      totalHits: 0,
-    },
+    recipesByQuery: [],
     isError: false,
   },
 
@@ -63,8 +60,8 @@ export const outerRecipesSlice = createSlice({
       .addCase(getRecipesByQuery.rejected, state => {
         state.isCategoryFetching = false;
         state.isError = true;
-        state.recipesByQuery.meals = [];
-        state.recipesByQuery.totalHits = 0;
+        state.recipesByQuery = [];
+        state.recipesByQuery.length = 0;
       })
 });
 

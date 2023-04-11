@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 
@@ -13,8 +14,6 @@ import {
   UserIcon,
   EmailIcon,
   PasswordIcon,
-  ErrorIcon,
-  SuccessIcon,
   InputFormBox,
   InputBox,
   Title,
@@ -22,24 +21,38 @@ import {
   LinkStyled,
   GoogleAuth,
   GoogleLink,
-  // WarningIcon,
+  SuccessIcon,
+  WarningIcon,
+  ErrorIcon,
+  SecureEntry,
+  PasswordIconLock,
 } from './RegisterForm.styled';
 
 import useMediaQuery from '../Hooks/useMediaQuery';
 
-import ValigationStatus from './validationStatus';
-// import { SignupSchema } from '../../validation/inputsValidationSchema';
+import { ValigationStatus } from './validationStatus';
+import { WarningText } from './validationStatus.styled';
+import {
+  SignupSchema,
+  warningPasswordValidation,
+} from '../../validation/inputsValidationSchema';
 
 import { register } from '../../redux/auth/operations';
 
 export const RegisterForm = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleSubmit = data => {
     dispatch(register(data));
   };
 
-  // const validationSchema = SignupSchema;
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
+  const validationSchema = SignupSchema;
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -61,86 +74,148 @@ export const RegisterForm = () => {
                   email: '',
                   password: '',
                 }}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >
-                {({ errors, touched }) => (
-                  <Form>
-                    <InputFormBox
-                      $gap={errors.name || errors.email || errors.password}
-                    >
-                      <InputBox $gap={errors.name}>
-                        <UserIcon
-                          $success={!errors.name && touched.name}
-                          $error={errors.name && touched.name}
-                        />
-                        <Input
-                          id="name"
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                          autoComplete="off"
-                          $success={!errors.name && touched.name}
-                          $error={errors.name && touched.name}
-                        />
-                        {!errors.name && touched.name && <SuccessIcon />}
-                        {errors.name && touched.name && <ErrorIcon />}
-                        {errors.name && (
-                          <ValigationStatus name="name" error={errors.name} />
-                        )}
-                      </InputBox>
-                      <InputBox $gap={errors.email}>
-                        <EmailIcon
-                          $error={errors.email && touched.email}
-                          $success={!errors.email && touched.email}
-                        />
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="Email"
-                          autoComplete="off"
-                          $error={errors.email && touched.email}
-                          $success={!errors.email && touched.email}
-                        />
-                        {!errors.email && touched.email && <SuccessIcon />}
-                        {errors.email && touched.email && <ErrorIcon />}
-                        {errors.email && (
-                          <ValigationStatus name="email" error={errors.email} />
-                        )}
-                      </InputBox>
-                      <InputBox
-                        style={{ marginBottom: 0 }}
-                        $gap={errors.password}
-                      >
-                        <PasswordIcon
-                          $error={errors.password && touched.password}
-                          $success={!errors.password && touched.password}
-                        />
-                        <Input
-                          id="password"
-                          name="password"
-                          type="password"
-                          placeholder="Password"
-                          autoComplete="off"
-                          $error={errors.password && touched.password}
-                          $success={!errors.password && touched.password}
-                        />
-                        {!errors.password && touched.password && (
-                          <SuccessIcon />
-                        )}
-                        {errors.password && touched.password && <ErrorIcon />}
-                        {errors.password && (
-                          <ValigationStatus
-                            name="password"
-                            error={errors.password}
+                {({ values, errors, touched }) => {
+                  const nameError = errors.name && touched.name;
+                  const nameSuccess = !errors.name && touched.name;
+                  const emailError = errors.email && touched.email;
+                  const emailSuccess = !errors.email && touched.email;
+                  const passwordWarning =
+                    !errors.password &&
+                    values.password &&
+                    !warningPasswordValidation(values.password);
+                  const passwordError = errors.password && touched.password;
+                  const passwordSuccess = !errors.password && touched.password;
+                  const inputGap =
+                    errors.name ||
+                    errors.email ||
+                    errors.password ||
+                    !errors.password ||
+                    passwordWarning;
+                  return (
+                    <Form>
+                      <InputFormBox $gap={inputGap}>
+                        <InputBox $gap={nameError}>
+                          <UserIcon $success={nameSuccess} $error={nameError} />
+                          <Input
+                            id="name"
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            autoComplete="off"
+                            $success={nameSuccess}
+                            $error={nameError}
                           />
-                        )}
-                      </InputBox>
-                    </InputFormBox>
-                    <Button type="submit">Sign up</Button>
-                  </Form>
-                )}
+                          {nameSuccess ? (
+                            <SuccessIcon />
+                          ) : nameError ? (
+                            <ErrorIcon />
+                          ) : null}
+                          {nameError && (
+                            <ValigationStatus name="name" error={errors.name} />
+                          )}
+                        </InputBox>
+                        <InputBox $gap={emailError}>
+                          <EmailIcon
+                            $error={emailError}
+                            $success={emailSuccess}
+                          />
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            autoComplete="off"
+                            $error={emailError}
+                            $success={emailSuccess}
+                          />
+                          {emailSuccess ? (
+                            <SuccessIcon />
+                          ) : emailError ? (
+                            <ErrorIcon />
+                          ) : null}
+                          {emailError && (
+                            <ValigationStatus
+                              name="email"
+                              error={errors.email}
+                            />
+                          )}
+                        </InputBox>
+                        <InputBox
+                          style={{ marginBottom: 0 }}
+                          $gap={
+                            errors.password ||
+                            !errors.password ||
+                            passwordWarning
+                          }
+                        >
+                          {passwordShown === true ? (
+                            <PasswordIconLock
+                              $warning={passwordWarning}
+                              $error={passwordError}
+                              $success={passwordSuccess}
+                            />
+                          ) : (
+                            <PasswordIcon
+                              $warning={passwordWarning}
+                              $error={passwordError}
+                              $success={passwordSuccess}
+                            />
+                          )}
+                          <Input
+                            id="password"
+                            name="password"
+                            type={passwordShown ? 'text' : 'password'}
+                            value={values.password}
+                            placeholder="Password"
+                            autoComplete="off"
+                            $error={passwordError}
+                            $success={passwordSuccess}
+                            $warning={passwordWarning}
+                          />
+                          <SecureEntry
+                            $secure={
+                              passwordWarning ||
+                              passwordSuccess ||
+                              passwordError
+                            }
+                            onClick={togglePassword}
+                          >
+                            {passwordShown ? 'Hide' : 'Show'}
+                          </SecureEntry>
+                          {passwordWarning ? (
+                            <WarningIcon />
+                          ) : passwordSuccess ? (
+                            <SuccessIcon />
+                          ) : passwordError ? (
+                            <ErrorIcon />
+                          ) : (
+                            <></>
+                          )}
+                          {passwordWarning ? (
+                            <WarningText>
+                              Your password is little secure. Add a capital
+                              letter.
+                            </WarningText>
+                          ) : passwordSuccess ? (
+                            <ValigationStatus
+                              name="password"
+                              success="Password is secure"
+                            />
+                          ) : passwordError ? (
+                            <ValigationStatus
+                              name="password"
+                              error={errors.password}
+                            />
+                          ) : null}
+                        </InputBox>
+                      </InputFormBox>
+                      <Button type="submit">Sign up</Button>
+                    </Form>
+                  );
+                }}
               </Formik>
             </InnerBox>
           </AuthFormBox>

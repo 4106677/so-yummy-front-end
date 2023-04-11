@@ -11,8 +11,19 @@ import {
   IngridientCheck,
   IngridientImage,
 } from './RecipeIngridientsList.styled';
+import { getShoppingList } from 'redux/shoppingList/selectors';
+import { addShoppingList } from 'redux/shoppingList/operations';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const RecipeIngridientsList = ({ ingridientsData }) => {
+  const shoppingList = useSelector(getShoppingList);
+  // console.log(shoppingList);
+  const dispatch = useDispatch();
+
+  // const handleCheckboxChange = id => {
+  //   dispatch(addShoppingList(id));
+  // };
+
   return (
     <RecipeIngridientsWrapper>
       <IngridientsTableHeader>
@@ -33,7 +44,14 @@ export const RecipeIngridientsList = ({ ingridientsData }) => {
               <IngridientDetails>
                 <IngridientQuantity>{ingridient.measure}</IngridientQuantity>
                 <IngridientCheck>
-                  <input type={'checkbox'} id={ingridient._id} />
+                  <input
+                    type="checkbox"
+                    id={ingridient._id}
+                    disabled={shoppingList.some(
+                      item => item.ttl === ingridient.ttl
+                    )}
+                    onChange={() => dispatch(addShoppingList(ingridient))}
+                  />
                   <label htmlFor={ingridient._id}></label>
                 </IngridientCheck>
               </IngridientDetails>

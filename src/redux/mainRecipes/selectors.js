@@ -45,7 +45,7 @@ console.log(getPopular);
   // В качестве аргумента вы ДОЛЖНЫ отправить запрос (строка)
   // Используйте с функцией "getRecipesByQuery(query)"
 export const getRecipesBySearchQuery = state =>
-  state.outerRecipes.recipesByQuery.meals;
+  state.outerRecipes.recipesByQuery;
 
 // ------------------ Additional ------------------
 export const getIsCategoryFetching = state =>
