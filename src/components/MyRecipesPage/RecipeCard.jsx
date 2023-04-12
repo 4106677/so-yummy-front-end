@@ -17,6 +17,7 @@ export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = ev => {
     onDelete(ev.target.id);
   };
+  console.log(recipe);
 
   return (
     <Recipeitem>
