@@ -25,7 +25,7 @@ import {
 
 export const FavoriteList = () => {
   const navigate = useNavigate();
-  const favorites = useSelector(getFavorites);
+  const favorite = useSelector(getFavorites);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -41,7 +41,7 @@ export const FavoriteList = () => {
       navigate(`/recipe/${_id}`)}, 500);
   };
 
-  const elementsMob = favorites.map(
+  const elementsMob = favorite.map(
     function ({ _id, title, preview, description, time }) {
     return (
       <FavoriteCard key={_id}>
@@ -64,7 +64,7 @@ export const FavoriteList = () => {
   }
   );
 
-  const elementsDesktop = favorites.map(
+  const elementsDesktop = favorite.map(
     ({ _id, title, preview, description, time, instructions }) => (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />

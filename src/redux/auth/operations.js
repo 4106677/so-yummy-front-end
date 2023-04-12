@@ -3,7 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
 
-const setToken = token => {
+export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -52,12 +52,24 @@ export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
   }
 });
 
-
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('auth/logout');
     clearAuthHeader();
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
+  }
+});
+
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  const { token } = thunkAPI.getState().auth;
+  if (!token) return thunkAPI.rejectWithValue('No available token ');
+
+  try {
+    setToken(token);
+    const res = await axios.get('/users/current');
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
 });

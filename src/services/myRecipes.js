@@ -1,12 +1,13 @@
 import axios from 'axios';
+// import { setToken } from 'redux/auth/operations';
 
 const getToken = () => {
-  const serializedState = localStorage.getItem('persist:auth');
+  let serializedState = localStorage.getItem('persist:auth');
   const serializedStateParse =
     serializedState === null ? undefined : JSON.parse(serializedState);
-  const token = 'Bearer ' + serializedStateParse.token;
-  return token.replace(/"/g, '');
+  return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
 };
+console.log(getToken());
 axios.defaults.headers.common.Authorization = getToken();
 
 const MyRecipesBase = axios.create({

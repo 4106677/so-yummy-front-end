@@ -10,7 +10,7 @@ import { persistReducer } from 'redux-persist';
 export const favoriteSlice = createSlice({
   name: 'favorites',
   initialState: {
-    favorites: [],
+    favorite: [],
     loading: false,
     error: null,
   },
@@ -23,7 +23,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(fetchFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorites = payload;
+        state.favorite = payload;
       })
       .addCase(fetchFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;
@@ -35,7 +35,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(addFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorites.push(payload);
+        state.favorite.push(payload);
       })
       .addCase(addFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;
@@ -47,7 +47,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(deleteFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorites = state.favorites.filter(({ id }) => id !== payload);
+        state.favorite = state.favorites.filter(({ id }) => id !== payload);
       })
       .addCase(deleteFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;

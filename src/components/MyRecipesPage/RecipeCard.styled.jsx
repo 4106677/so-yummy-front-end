@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const darkMode = false;
 
@@ -8,6 +9,7 @@ const objectColors = {
   bgrBtnDelDarkMode: '#1E1F28',
   colorGreen: '#8BAA36',
   colorWhite: '#FAFAFA',
+  colorWhiteWhite: '#fff',
   colorBlack: '#22252A',
   colorTextDarkMode: 'rgba(250, 250, 250, 0.6)',
   darkColorTitel: '#001833',
@@ -20,7 +22,7 @@ export const Recipeitem = styled.li`
   height: 152px;
   background: ${darkMode
     ? objectColors.bgrCardDarkMode
-    : objectColors.colorWhite};
+    : objectColors.colorWhiteWhite};
   border-radius: 8px;
   margin-bottom: 18px;
   display: flex;
@@ -131,7 +133,7 @@ export const Time = styled.p`
   }
 `;
 
-export const SeeRecipe = styled.button`
+export const SeeRecipe = styled(Link)`
   &:hover {
     background-color: ${objectColors.colorBlack};
   }
