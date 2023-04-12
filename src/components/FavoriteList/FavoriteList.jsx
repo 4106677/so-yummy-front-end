@@ -79,15 +79,13 @@ export const FavoriteList = () => {
           <FavoriteInstraction>{instructions}</FavoriteInstraction>
           <FavoriteTimeWrap>
             <Time>{time ? time : 20} min</Time>
-            <FavoriteBtn>
-              <Link
-                to={`/recipe/${_id}`}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                }}
-              />
-              See recipe
-            </FavoriteBtn>
+            <Link
+              to={`/recipe/${_id}`}
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
+            <FavoriteBtn>See recipe</FavoriteBtn>
+            </Link>
           </FavoriteTimeWrap>
         </FavoriteTextPartWrap>
       </FavoriteCard>
