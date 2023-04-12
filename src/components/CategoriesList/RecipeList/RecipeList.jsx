@@ -10,7 +10,7 @@ import {
 import {
   getFullCategoryList,
   getAllRecipes,
-  isLoadingRecipesOfCategory,
+  // isLoadingRecipesOfCategory,
 } from '../../../redux/mainRecipes/selectors';
 
 import {

@@ -44,7 +44,6 @@ export const App = () => {
 
   return isRefreshing ? (
     <Loader />
-    <Loader />
   ) : (
     <>
       <Routes>
