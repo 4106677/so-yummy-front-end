@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getToken = () => {
-  const serializedState = localStorage.getItem('persist:auth');
+  let serializedState = localStorage.getItem('persist:auth');
   const serializedStateParse =
     serializedState === null ? undefined : JSON.parse(serializedState);
   return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
