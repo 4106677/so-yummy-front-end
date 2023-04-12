@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { getToken } from './getToken';
+import { getToken } from '../../services/getToken';
 
 const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
 
