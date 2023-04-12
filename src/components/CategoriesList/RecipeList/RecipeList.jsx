@@ -1,54 +1,61 @@
-import { NavLink } from "react-router-dom";
+import { Link } from 'react-router-dom';
+// import { Loader } from 'components/Loader/Loader';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
-  CardWrapper,
+  getCategoryList,
+  getAllRecipesByCategory,
+} from '../../../redux/mainRecipes/operations';
+import {
+  getFullCategoryList,
+  getAllRecipes,
+  isLoadingRecipesOfCategory,
+} from '../../../redux/mainRecipes/selectors';
+
+import {
   CardImg,
   CardTitle,
-  CardWrap,
-  RecipeTitleWrapper,
-} from "./RecipeList.styled";
-import defaultImg from "../../../images/default.jpg";
+  CardDish,
+  RowTable,
+} from '../../CardMeal/CardMeal.styled';
+import NoImage from '../../../images/default.jpg';
 
-export function RecipeList({ array }) {
+export const RecipeList = () => {
+  const dispatch = useDispatch();
+  const { categoryName } = useParams();
+  const categories = useSelector(getFullCategoryList);
+  const recipes = useSelector(getAllRecipes);
+  console.log(recipes);
+  // const isLoading = useSelector(isLoadingRecipesOfCategory);
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (categoryName) {
+      dispatch(getAllRecipesByCategory(categoryName));
+    } else if (categories?.length) {
+      dispatch(getAllRecipesByCategory(categories[0]));
+    }
+  }, [dispatch, categoryName, categories]);
+
   return (
-    <CardWrapper>
-      {array.map(({ _id, title, thumb }) => (
-        <CardWrap key={_id}>
-          <NavLink to={`/recipe/${_id}`}>
-            <CardImg
-              src={thumb ? thumb : defaultImg}
-              alt={title}
-              loading="lazy"
-            />
-            <RecipeTitleWrapper>
+    <>
+      <RowTable>
+        {recipes.slice(0, 8).map(({ _id, title, preview }) => (
+          <CardDish key={_id}>
+            <Link to={`/recipes/byId/${_id}`}>
+              <CardImg src={preview ? preview : NoImage} alt={title} />
               <CardTitle>{title}</CardTitle>
-            </RecipeTitleWrapper>
-          </NavLink>
-        </CardWrap>
-      ))}
-    </CardWrapper>
+            </Link>
+          </CardDish>
+        ))}
+      </RowTable>
+    </>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { Link } from 'react-router-dom';
 
@@ -75,9 +82,3 @@ export function RecipeList({ array }) {
 //     </>
 //   );
 // };
-
-
-
-
-
-
