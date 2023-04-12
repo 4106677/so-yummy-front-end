@@ -27,9 +27,6 @@ export const FavoriteList = () => {
   const favorite = useSelector(getFavorites);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isDesktop = useMediaQuery('(min-width: 1440px)');
-
-   let items =
-    favorite.length > 4 ? favorite.slice(0, 4) : favorite;
   
       const dispatch = useDispatch();
 
@@ -38,7 +35,7 @@ export const FavoriteList = () => {
       }, [dispatch]);
 
 
-  const elementsMob = items.map(
+  const elementsMob = favorite.map(
     function ({ _id, title, preview, description, time }) {
     return (
       <FavoriteCard key={_id}>
