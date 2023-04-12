@@ -1,71 +1,100 @@
 import styled from 'styled-components';
 
 export const PaginationWrapper = styled.div`
-  position: relative;
-  max-width: 275px;
-  width: fit-content;
-  box-sizing: border-box;
-  height: 51px;
-  margin: 0 auto;
-  margin-top: 50px;
-  padding: 12px 26px;
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: center;
+  margin-bottom: 150px;
+  @media (min-width: 768px) {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -275%);
+  }
+  @media (min-width: 1280px) {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -275%);
+  }
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(135, 135, 135, 0.2) 0px 4px 4px;
+  flex-wrap: wrap;
+  min-width: 275px;
+  padding-top: 12px;
+  padding: 12px 20px;
+  ${'' /* background-color: #FAFAFA; */}
+  background-color: transparent;
   border-radius: 26px;
+  box-shadow: 0px 4px 4px 0px rgba(135, 135, 135, 0.2);
+  @media (min-width: 768px) {
+    min-width: 324px;
+    padding: 14px 20px;
+  }
+`;
 
-  & nav {
-    max-width: 100%;
+export const PageButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 27px;
+  width: 27px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #656565;
+  margin: 0 9px;
+  @media (min-width: 768px) {
+    margin: 0 12px;
   }
 
-  @media screen and (min-width: 768px) {
-    max-width: 324px;
-    height: 55px;
-    padding: 14px 24px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0;
   }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 436px;
-    padding: 14px 24px;
+  &:hover:not(:disabled) {
+    background-color: #ebf3d4;
+    color: #22252a;
   }
-
-  & .MuiPagination-ul {
-    margin-top: 0;
-    display: flex;
-    max-width: 100%;
-    flex-wrap: nowrap;
-    gap: 0px;
-    color: '#656565';
+  &.active {
+    color: white;
+    background-color: #ebf3d4;
+    color: #22252a;
   }
-
-  & .MuiPaginationItem-page {
-    color: '#656565';
-    padding: 0;
-    min-width: 27px;
-  }
-
-  & .MuiPaginationItem-icon {
-    fill: '#656565';
-  }
-
-  & .MuiPaginationItem-ellipsis {
-    color: '#656565';
-  }
-
-  & .MuiPaginationItem-page.Mui-selected {
-    background-color: '#EBF3D4';
-    transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)';
-    color: '#23262A';
-    width: 27px;
-    height: 27px;
-
-    &:hover,
-    &:focus {
-      background-color: '#22252A';
-      color: '#FFFFFF';
+  &:first-child {
+    margin-right: 24px;
+    @media (min-width: 768px) {
+      margin-right: 40px;
     }
+  }
+  &:last-child {
+    margin-right: 24px;
+    @media (min-width: 768px) {
+      margin-right: 40px;
+    }
+  }
+`;
+
+export const ArrowButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  color: rgba(169, 169, 169, 0.73);
+  height: 15px;
+  width: 8px;
+  opacity: 0.73;
+  &:disabled {
+    opacity: 0;
+    cursor: default;
   }
 `;

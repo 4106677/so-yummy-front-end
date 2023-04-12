@@ -4,6 +4,7 @@ import {
   getPopularRecipes,
   getCategoryList,
   getRecipesByQuery,
+  getAllRecipesByCategory,
 } from './operations';
 
 
@@ -24,7 +25,9 @@ export const outerRecipesSlice = createSlice({
     popularRecipes: [],
     categoryList: [],
     recipesByQuery: [],
+    recipesOfCategory: [],
     isError: false,
+    loadingRecipesOfCategory: false,
   },
 
   extraReducers: builder =>
@@ -63,6 +66,12 @@ export const outerRecipesSlice = createSlice({
         state.recipesByQuery = [];
         state.recipesByQuery.length = 0;
       })
+      .addCase(getAllRecipesByCategory.fulfilled, (state, { payload }) => {
+        state.recipesOfCategory = payload;
+        state.isCategoryFetching = false;
+      })
+      .addCase(getAllRecipesByCategory.pending, pending)
+      .addCase(getAllRecipesByCategory.rejected, rejected),
 });
 
 

@@ -17,11 +17,11 @@ export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = ev => {
     onDelete(ev.target.id);
   };
-  // console.log(recipe);
+  console.log(recipe);
 
   return (
     <Recipeitem>
-      <Image src={recipe.image} alt={recipe.title} />
+      <Image src={recipe.preview} alt={recipe.title} />
       <Info>
         <TopCard>
           <Title>{recipe.title}</Title>
@@ -29,7 +29,7 @@ export function RecipeCard({ recipe, onDelete }) {
             <Icon id={recipe._id} src={IconDes} alt="Icon" />
           </BtnRemove>
         </TopCard>
-        <Text>{recipe.texst}</Text>
+        <Text>{recipe.description}</Text>
         <BottomCard>
           <Time>{recipe.time} min</Time>
           <SeeRecipe to={`/recipe/${recipe._id}`}>See recipe</SeeRecipe>
