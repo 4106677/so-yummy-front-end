@@ -6544,6 +6544,11 @@
   "resolved" "https://registry.npmjs.org/normalize-url/-/normalize-url-6.1.0.tgz"
   "version" "6.1.0"
 
+"notiflix@^3.2.6":
+  "integrity" "sha512-mUoaJ/s9E4r8o1O8XRqcuXEylpgOkfXtI5SEkBBlBK+LK7nq1c6qQaQcF7QzS/S018Ww7uUqSZotOs5cHENvVw=="
+  "resolved" "https://registry.npmjs.org/notiflix/-/notiflix-3.2.6.tgz"
+  "version" "3.2.6"
+
 "npm-run-path@^4.0.1":
   "integrity" "sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw=="
   "resolved" "https://registry.npmjs.org/npm-run-path/-/npm-run-path-4.0.1.tgz"

@@ -1,3 +1,8 @@
+import React, { useState, useRef } from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { SubEmail } from 'validation/subscribeEmail';
 import {
     SubInputEmail,
     SubBtn,
@@ -6,26 +11,35 @@ import {
     SubscribeText,
     FormWrap
 } from './SubscribeForm.styled';
-import React, { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import { SubEmail } from 'validation/subscribeEmail';
 
 export const SubscribeForm = () => {
     const [inputValue, setInputValue] = useState('');
+    const formRef = useRef(null);
 
     const isInputValid = inputValue.trim().length > 5;
 
-    // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const sendSubscriptionEmail = (subEmail) => {
+        const options = {
+            method: "POST",
+            email: JSON.stringify(subEmail),
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+        };
+
+        fetch('/subscribe', options)
+            .then(response => response.json())            
+            .catch(error => console.error(error));
+    }
     
-    const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-    };
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e.target.elements.email.value);
-        console.log(e);
-        setInputValue('');
+    const dispatch = useDispatch();
+
+     const handleSubmit = e => {
+        console.log(e.email);
+        setInputValue(e.email);
+        dispatch(SubEmail(e.email));
+        sendSubscriptionEmail(e.email)
+        formRef.current.reset()
     };
 
     return (
@@ -35,16 +49,14 @@ export const SubscribeForm = () => {
 
             <Formik
                 validationSchema={SubEmail}
-                initialValues={{ email: '' }}
+                initialValues={{ email: "" }}
                 onSubmit={handleSubmit}>
                 
-                <Form>    
+                <Form ref={formRef}>    
                     <FormWrap>
                         <SubInputEmail
                             type='email'
                             name='email'
-                            value={inputValue}
-                            onChange={handleInputChange}
                             placeholder="Enter your email address" />
                         
                         <ErrorMessage name="email" />
