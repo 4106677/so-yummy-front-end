@@ -1,14 +1,16 @@
 // import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { CategoriesList } from "components/CategoriesList/CategoriesList/CategoriesList";
+
 import {
   CatigoryHeader,
   DecorativeSquare,
 } from "./CategoriesPage.styled";
 import { Container } from "components/Container/Container";
+import { Loader } from "components/Loader/Loader";
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { Header } from "components/Header/Header";
-import { Footer } from "components/Footer/Footer";
 
 // import {
 //   getFullCategoryList,
@@ -47,26 +49,27 @@ import { Footer } from "components/Footer/Footer";
 
 
 
-    return (  
-      <> 
+    return (
+      <>
         <Container>
-          <Header />
-            <DecorativeSquare
-          data-1
-          color="#8BAA36"
-          top="3.375rem"
-          left="14.75rem"
-        />
-        <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
-        <DecorativeSquare
-          data-3
-          color="#8BAA36"
-          top="4.125rem"
-          right="4.5rem"
-        />
+          <DecorativeSquare
+            data-1
+            color="#8BAA36"
+            top="3.375rem"
+            left="14.75rem"
+          />
+          <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
+          <DecorativeSquare
+            data-3
+            color="#8BAA36"
+            top="4.125rem"
+            right="4.5rem"
+          />
           <CatigoryHeader>Categories</CatigoryHeader>
           <CategoriesList />
-            <Footer />   
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </Container>
       </>
     );
