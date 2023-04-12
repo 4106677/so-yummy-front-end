@@ -6,19 +6,16 @@ import HeroImg from '../../images/RecipePage/recipePageHeroImg.jpg';
 export const RecipeHeroWrapper = styled.div`
   text-align: center;
   background-image: url(${HeroImgMob});
-  padding: 80px 0 90px 0;
+  padding: 144px 0 90px 0;
   background-size: cover;
   background-position: center;
-  /* height: calc(100vh - 60px); */
-  /* margin-top: 60px; */
-
   @media screen and (min-width: 768px) {
     background-image: url(${HeroImgTab});
-    padding: 72px 0 32px 0;
+    padding: 136px 0 32px 0;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 100px 0 32px 0;
+    padding: 164px 0 32px 0;
     background-image: url(${HeroImg});
   }
   div {

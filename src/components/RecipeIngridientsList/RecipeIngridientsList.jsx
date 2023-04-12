@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const RecipeIngridientsList = ({ ingridientsData }) => {
   const shoppingList = useSelector(getShoppingList);
+  // console.log(ingridientsData);
   // console.log(shoppingList);
   const dispatch = useDispatch();
 
@@ -47,8 +48,15 @@ export const RecipeIngridientsList = ({ ingridientsData }) => {
                   <input
                     type="checkbox"
                     id={ingridient._id}
+                    checked={shoppingList.some(
+                      item =>
+                        item.ttl === ingridient.ttl &&
+                        item.recipeId === ingridient.recipeId
+                    )}
                     disabled={shoppingList.some(
-                      item => item.ttl === ingridient.ttl
+                      item =>
+                        item.ttl === ingridient.ttl &&
+                        item.recipeId === ingridient.recipeId
                     )}
                     onChange={() => dispatch(addShoppingList(ingridient))}
                   />
