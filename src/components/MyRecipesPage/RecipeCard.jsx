@@ -17,7 +17,7 @@ export function RecipeCard({ recipe, onDelete }) {
   const handleDelete = ev => {
     onDelete(ev.target.id);
   };
-  console.log(recipe);
+  // console.log(recipe);
 
   return (
     <Recipeitem>
@@ -32,7 +32,7 @@ export function RecipeCard({ recipe, onDelete }) {
         <Text>{recipe.texst}</Text>
         <BottomCard>
           <Time>{recipe.time} min</Time>
-          <SeeRecipe>See recipe</SeeRecipe>
+          <SeeRecipe to={`/recipe/${recipe._id}`}>See recipe</SeeRecipe>
         </BottomCard>
       </Info>
     </Recipeitem>

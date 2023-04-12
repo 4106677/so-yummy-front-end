@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../../services/favoriteAPI';
 
 export const fetchFavoriteRecipe = createAsyncThunk(
-  'favorites/fetch',
+  'favorite/fetch',
   async (_, thunkAPI) => {
     try {
       const { data } = await api.getAllFavoriteList();
@@ -25,7 +25,7 @@ export const addFavoriteRecipe = createAsyncThunk(
 );
 
 export const deleteFavoriteRecipe = createAsyncThunk(
-  'favorites/delete',
+  'favorite/delete',
   async (id, { rejectWithValue }) => {
     try {
       await api.deleteFavoriteList(id);
