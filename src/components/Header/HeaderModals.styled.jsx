@@ -61,6 +61,12 @@ export const HeaderUserModalEditButton = styled.button`
   display: flex;
   align-items: center;
   margin-bottom: 28px;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #8baa36;
+  }
   svg {
     margin-left: 37px;
     width: 14px;
@@ -89,6 +95,12 @@ export const HeaderUserModalLogoutButton = styled.button`
   line-height: 21px;
   padding: 12px 24px;
   width: 125px;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #d3d3d3;
+  }
   svg {
     margin-left: 4px;
     width: 17px;
@@ -187,6 +199,12 @@ export const HeaderLogoutModalLogoutButtonStyled = styled.button`
   padding: 14px 18px;
   width: 137px;
   margin-right: 8px;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #d3d3d3;
+  }
   @media (min-width: 478px) {
     width: 192px;
     padding: 18px 39px;
@@ -211,6 +229,12 @@ export const HeaderLogoutModalCancelButtonStyled = styled.button`
   line-height: 21px;
   padding: 14px 18px;
   width: 137px;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #8baa36;
+  }
   @media (min-width: 478px) {
     width: 192px;
     padding: 18px 39px;
@@ -320,6 +344,7 @@ export const HeaderEditModalFileInput = styled.input`
 
 export const HeaderEditModalNameLabel = styled.label`
   position: relative;
+
   svg {
     width: 18px;
     height: 18px;
@@ -368,6 +393,12 @@ export const HeaderEditModalNameInput = styled.input`
   opacity: 0.8;
   margin-bottom: 24px;
   color: #23262a;
+  transition-property: border-color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    border-color: #8baa36;
+  }
   @media (min-width: 478px) {
     width: 400px;
     height: 58px;
@@ -377,7 +408,6 @@ export const HeaderEditModalNameInput = styled.input`
     line-height: 27px;
   }
 `;
-
 
 export const HeaderEditModalSubmitButton = styled.button`
   padding-top: 14px;
@@ -395,7 +425,12 @@ export const HeaderEditModalSubmitButton = styled.button`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #d3d3d3;
+  }
   width: 282px;
   @media (min-width: 478px) {
     padding-top: 18px;

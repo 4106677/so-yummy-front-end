@@ -9,9 +9,7 @@ import { RiSearchLine } from 'react-icons/ri';
 import { BurgerMenu } from './BurgerMenu';
 import { HeaderUser } from './HeaderUser';
 
-
 export const Header = () => {
-
   return (
     <>
       <HeaderStyled>
