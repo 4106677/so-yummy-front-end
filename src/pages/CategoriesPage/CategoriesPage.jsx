@@ -1,35 +1,50 @@
+// import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+import { CategoriesList } from 'components/CategoriesList/CategoriesList/CategoriesList';
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { CatigoryHeader, DecorativeSquare } from './CategoriesPage.styled';
+import { Container } from 'components/Container/Container';
+import { Loader } from 'components/Loader/Loader';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { getCategories, getCategoryRecipes } from "redux/categories/operations";
-import { selectCategories } from "redux/categories/selectors";
-import {
-  CatigoryHeader,
-  DecorativeSquare,
-} from "./CategoriesPage.styled";
-import { Container } from "components/Container/Container";
-import { CategoriesList } from "components/CategoriesList/CategoriesList/CategoriesList";
-import { SearchRecipesList } from "components/CategoriesList/CategoryList";
-import { getIsLoading } from "../../redux/shoppingList/selectors";
+// import {
+//   getFullCategoryList,
+//   getAllRecipes,
+// } from "redux/mainRecipes/selectors";
+// import {
+//   getCategoryList,
+//   getAllRecipesByCategory,
+// } from "redux/mainRecipes/operations";
 
 export function CategoriesPage() {
-  const isLoading = useSelector(getIsLoading);
-  const dispatch = useDispatch();
-  const { categoryName } = useParams();
-  const { recipeCategories, error } =
-    useSelector(selectCategories);
+  //   const categories = useSelector(getFullCategoryList);
+  //   console.log(categories);
+  //   const categoryRecipes = useSelector(getAllRecipes);
+  //   console.log(categoryRecipes);
 
-  useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getCategoryRecipes(categoryName));
-  }, [dispatch, categoryName]);
+  //   const navigate = useNavigate();
+  //   const dispatch = useDispatch();
+
+  //   const onClick = e => {
+  //     navigate('/categories');
+  //   };
+
+  // useEffect(() => {
+
+  //       dispatch(getCategoryList());
+
+  //   }, [dispatch]);
+
+  //   useEffect(() => {
+  //     const category = 'beef';
+  //    dispatch(getAllRecipesByCategory(category));
+  //  }, [dispatch]);
 
   return (
     <>
       <Container>
-             <DecorativeSquare
+        <DecorativeSquare
           data-1
           color="#8BAA36"
           top="3.375rem"
@@ -44,55 +59,18 @@ export function CategoriesPage() {
         />
         <CatigoryHeader>Categories</CatigoryHeader>
         <CategoriesList />
-        <SearchRecipesList
-          array={recipeCategories}
-         isLoading={isLoading}
-          error={error}
-        />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import { useEffect } from 'react';
-
-// import { getAllRecipesByCategoryAPI } from "../../services/TheMealAPI";
-// import { Container } from "components/Container/Container";
-// import { CategoriesList } from "components/CategoriesList/CategoriesList/CategoriesList";
-// import { RecipeList } from "components/CategoriesList/RecipeList/RecipeList";
-
-// import {
-//   PageContainer,
-//   CatigoryHeader,
-//   DecorativeSquare,
-// } from "./CategoriesPage.styled";
-
+}
 
 // export function CategoriesPage() {
 //   ;
 //   const [meals, setMeals] = useState([]);
-  
-  
+
 //  useEffect(() => {
 //    const fetchRecipes = async () => {
 //       try {
@@ -107,7 +85,7 @@ export function CategoriesPage() {
 
 //   }, []);
 
-//     return (  
+//     return (
 //       <>
 //        <Container>
 //         <PageContainer>
@@ -124,17 +102,12 @@ export function CategoriesPage() {
 //           top="4.125rem"
 //           right="4.5rem"
 //         />
-        
+
 //           <CatigoryHeader>Categories</CatigoryHeader>
 //           <CategoriesList />
 //           <RecipeList items={meals} />
 //       </PageContainer>
-//       </Container>    
+//       </Container>
 //       </>
 //     );
 // };
-
-
-
-
-

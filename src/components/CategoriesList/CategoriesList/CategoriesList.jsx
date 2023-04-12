@@ -1,92 +1,122 @@
-import { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Tab, useMediaQuery } from "@mui/material";
-import { useSelector } from "react-redux";
-import { selectCategories } from "redux/categories/selectors";
-import {
-  CategoryItem,
-  CategoryList,
-} from './CategoriesList.styled';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+
+import { getCategoryList } from '../../../redux/mainRecipes/operations';
+import { getFullCategoryList } from '../../../redux/mainRecipes/selectors';
+
 export function CategoriesList() {
-  const { items, error } = useSelector(selectCategories);
-  const [value, setValue] = useState(0);
+  const categories = useSelector(getFullCategoryList);
+  console.log(categories);
   const { categoryName } = useParams();
-  let navigate = useNavigate();
+  const [value, setValue] = useState(0);
+  const [mapArray, setMapArray] = useState([]);
+  const navigate = useNavigate();
+  const [flag, setFlag] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const categoryIndex = items.findIndex(
-      (item) => item.toLowerCase() === categoryName
-    );
-    setValue(categoryIndex !== -1 ? categoryIndex : 0);
-  }, [categoryName, items]);
+    dispatch(getCategoryList());
+  }, [dispatch]);
 
-  const handleChange = (e, newValue) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (categories.length === 0) return;
+
+    setMapArray([...categories]);
+
+    const idx = categories.findIndex(e => {
+      return e.toLowerCase() === categoryName?.toLowerCase();
+    });
+
+    if (idx !== -1) {
+      setValue(idx);
+    }
+  }, [categories, categoryName]);
+
+  const handleChange = (event, newValue) => {
     setValue(newValue);
-    const newCategoryName = items[newValue];
-    navigate(`/categories/${newCategoryName.toLowerCase()}`);
+    navigate(`/categories/${event.target.textContent}`);
   };
 
-  const isDesktop = useMediaQuery("(min-width: 1439.9px)");
-  const isTablet = useMediaQuery(
-    "(min-width: 768px) and (max-width: 1439.8px)"
-  );
-  const isMobile = useMediaQuery(
-    "(min-width: 375px) and (max-width: 767.98px)"
-  );
-
-  const topRef = useRef();
-
-  useEffect(() => {
-    topRef.current.scrollIntoView({ behavior: "smooth" });
-  });
+  const meals = mapArray.map((e, index) => (
+    <Tab
+      label={e.toLowerCase()}
+      key={index}
+      sx={{
+        padding: '0',
+        paddingBottom: '28px',
+        color: '#BDBDBD',
+        '&.Mui-selected': {
+          color: '#8BAA36',
+        },
+      }}
+    />
+  ));
+  const onMouseEnter = () => {
+    setFlag(true);
+  };
+  const onMouseLeave = () => {
+    setFlag(false);
+  };
 
   return (
-    <CategoryList>
-      {error}
-      <CategoryItem
-        ref={topRef}
-        value={value}
+    <Box
+      sx={{
+        maxWidth: '100%',
+        bgcolor: 'transparent',
+        borderBottom: 1,
+        borderColor: '#E0E0E0',
+      }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <Tabs
         onChange={handleChange}
+        value={value}
         variant="scrollable"
-        TabIndicatorProps={{ sx: { backgroundColor: "#8BAA36", height: 2 } }}
-        aria-label="scrollable prevent tabs example"
+        scrollButtons={true}
+        aria-label="scrollable auto tabs example"
         sx={{
-          "& button": {
-            paddingLeft: isMobile
-              ? "12px"
-              : isTablet
-              ? "27px"
-              : isDesktop
-              ? "27px"
-              : "12px",
-            paddingRight: isMobile
-              ? "12px"
-              : isTablet
-              ? "27px"
-              : isDesktop
-              ? "27px"
-              : "12px",
-            paddingTop: "15px",
-            paddingBottom: "15px",
-            textTransform: "capitalize",
-            fontSize: isMobile ? 14 : isTablet ? 18 : isDesktop ? 18 : 14,
-            fontFamily: "Poppins",
-            fontWeight: 400,
+          '& .MuiTabs-scroller': {
+            '& .css-1aquho2-MuiTabs-indicator': { backgroundColor: '#8BAA36' },
+            '& .css-ttwr4n': { backgroundColor: '#8BAA36' },
+            overflowX: 'auto',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
           },
-          "& button.Mui-selected": {
-            color: "#8BAA36",
+          '& .MuiTabs-flexContainer': {
+            gap: '55px',
+            '& :hover': {
+              color: '#8BAA36',
+            },
+          },
+
+          '& .MuiTab-root': {
+            textTransform: 'capitalize',
+            minWidth: 'unset',
+            fontSize: '18px',
+            fontWeight: '400',
+            lineHeight: '18px',
+            borderColor: '#8BAA36',
+          },
+
+          '& svg': {
+            opacity: `${flag ? 1 : 0}`,
+            stroke: '#8BAA36',
+            strokeWidth: '3px',
+            transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
           },
         }}
       >
-        {items.map((item, i) => (
-          <Tab
-            key={i}
-            label={item}
-            className={value === i ? "Mui-selected" : ""}
-          ></Tab>
-        ))}
-      </CategoryItem>
-    </CategoryList>
+        {meals}
+      </Tabs>
+    </Box>
   );
-};
+}

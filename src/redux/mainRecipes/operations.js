@@ -43,6 +43,7 @@ export const getAllRecipesByCategory = createAsyncThunk(
   async (category, { rejectWithValue }) => {
     try {
       const data = await getAllRecipesByCategoryAPI(category);
+      console.log(data)
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
