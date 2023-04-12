@@ -24,12 +24,16 @@ export const IngridientsShoppingList = () => {
     }, [dispatch]);
     
   console.log(shoppingList);
-    
   
- const elements = shoppingList.map(item => {
+  let items = shoppingList.length > 5 ? shoppingList.slice(0, 5) : shoppingList;
+  
+ const elements = items.map(item => {
    const { _id, ingredientInfo, measure } = item;
-   const [thb, ttl] = Array.isArray(ingredientInfo) ? ingredientInfo : [];
-
+     const thb =
+       (ingredientInfo && ingredientInfo[0] && ingredientInfo[0].thb) || '';
+     const ttl =
+     (ingredientInfo && ingredientInfo[0] && ingredientInfo[0].ttl) || '';
+   
    return (
      <ShopItem key={_id}>
        {thb ? (
@@ -47,6 +51,8 @@ export const IngridientsShoppingList = () => {
      </ShopItem>
    );
  });
+  
+  console.log(elements);
 
 
   return (
@@ -58,7 +64,9 @@ export const IngridientsShoppingList = () => {
           <ShopTitle>Remove</ShopTitle>
         </ShopWrap>
       </ShopWrapper>
-      <ShopListWrap>{elements}</ShopListWrap>
+      <ShopListWrap>
+        { elements}
+      </ShopListWrap>
     </>
   ); 
 }; 

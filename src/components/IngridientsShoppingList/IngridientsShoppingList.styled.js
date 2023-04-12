@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ShopWrapper = styled.div`
-  padding: 10px;
+  padding: 0.625rem;
   margin-top: 3.125rem;
 
   display: flex;
@@ -50,7 +50,8 @@ export const ShopTitle = styled.div`
 
 export const ShopListWrap = styled.ul`
   margin: 0 auto;
-  margin-top: 32px;
+  margin-top: 2rem;
+  margin-bottom: 6.25rem;
   text-align: center;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
@@ -60,6 +61,7 @@ export const ShopListWrap = styled.ul`
   @media screen and (min-width: 768px) {
     margin-top: 51px;
     gap: 5.44rem;
+    margin-bottom: 12.5rem;
   }
 `;
 
@@ -90,8 +92,8 @@ export const ShopItem = styled.li`
 `;
 
 export const ShopImg = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 3.75rem;
+  height: 3.75rem;
   background: #ebf3d4;
   border-radius: 6px;
   padding: 6px;
@@ -99,14 +101,14 @@ export const ShopImg = styled.img`
   margin-left: 8px;
 
   @media screen and (min-width: 768px) {
-    width: 93px;
-    height: 97px;
+    width: 5.8125rem;
+    height: 6.0625rem;
     border-radius: 8px;
     padding: 8px 6px;
     margin-left: 0px;
   }
   @media screen and (min-width: 1440px) {
-    margin-left: 40px;
+    margin-left: 2.5rem;
   }
 `;
 
@@ -121,15 +123,15 @@ export const ShopName = styled.p`
   color: #3e4462;
 
   @media screen and (min-width: 768px) {
-    margin-left: 16px;
+    margin-left: 1rem;
     font-size: 16px;
     line-height: 1.5;
   }
 `;
 
 export const ShopQuantity = styled.div`
-  width: 37px;
-  height: 23px;
+  width: 2.3125rem;
+  height: 1.4375rem;
   margin-left: auto;
   background: #8baa36;
   border-radius: 4px;
@@ -146,8 +148,8 @@ export const ShopQuantity = styled.div`
   color: #fafafa;
 
   @media screen and (min-width: 768px) {
-    width: 68px;
-    height: 35px;
+    width: 4.25rem;
+    height: 2.1875rem;
     font-size: 18px;
     line-height: 35px;
   }
@@ -157,18 +159,18 @@ export const ShopQuantity = styled.div`
 export const ShopBtn = styled.button`
   background-color: transparent;
   border: none;
-  margin-right: 30px;
-  margin-left: 50px;
+  margin-right: 1.875rem;
+  margin-left: 3.125rem;
 
   @media screen and (min-width: 768px) {
-    width: 12px;
-    height: 12px;
+    width: 0.75rem;
+    height: 0.75rem;
     margin-top: 0;
-    margin-right: 50px;
-    margin-left: 115px;
+    margin-right: 3.125rem;
+    margin-left: 7.1875rem;
   }
   @media screen and (min-width: 1440px) {
-    margin-right: 73px;
-    margin-left: 179px;
+    margin-right: 4.5625rem;
+    margin-left: 11.1875rem;
   }
 `;
