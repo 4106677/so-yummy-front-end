@@ -1,5 +1,5 @@
 import { Container } from 'components/Container/Container';
-import { DecorativeSquare } from "./FavoritePage.styled";
+import { DecorativeSquare, FavoritePageWrapper } from './FavoritePage.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { FavoriteList } from 'components/FavoriteList/FavoriteList';
 import { FavoriteTitle } from "./FavoritePage.styled";
@@ -11,7 +11,7 @@ export const FavoritePage = () => {
   const isLoading = useSelector(getIsLoading)
     
   return (
-    <div>
+    <FavoritePageWrapper>
       <Container>
         <DecorativeSquare
           data-1
@@ -30,6 +30,6 @@ export const FavoritePage = () => {
         {isLoading && <Loader />}
         <FavoriteList />
       </Container>
-    </div>
+    </FavoritePageWrapper>
   );
 };

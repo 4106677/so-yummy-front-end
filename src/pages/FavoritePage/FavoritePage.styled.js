@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+
+export const FavoritePageWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
+`;
+
 export const DecorativeSquare = styled.div`
   position: absolute;
   width: 0.5rem;

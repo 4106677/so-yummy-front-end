@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const recipesSearchInstance = axios.create({
   baseURL: 'https://recipes-becend-49lg.onrender.com',
 });

@@ -30,7 +30,7 @@ import RestrictedRoute from '../components/RestrictedRoute.js';
 import { current } from '../redux/auth/operations';
 import { useAuth } from '../components/Hooks/useAuth';
 
-import {RecipeList} from '../components/CategoriesList/RecipeList/RecipeList'
+import { RecipeList } from '../components/CategoriesList/RecipeList/RecipeList';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ export const App = () => {
   }, [dispatch, isLoggedIn, token]);
 
   return isRefreshing ? (
+    <Loader />
     <Loader />
   ) : (
     <>

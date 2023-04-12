@@ -1,9 +1,4 @@
-import {
-  MyRecipesContainer,
-  Title,
-  RecipeList,
-  Error,
-} from './MyRecipesList.styled';
+import { MyRecipesContainer, RecipeList } from './MyRecipesList.styled';
 import {
   DeleteMyRecipeById,
   getAllRecipesSearch,
@@ -11,13 +6,15 @@ import {
 import { useEffect, useState } from 'react';
 
 import { RecipeCard } from './RecipeCard';
-// import { Header } from '../../components/Header/Header';
 
 export function MyRecipesList() {
   const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchIngridients = async () => {
+    setIsLoading(true);
+    const fetchRecipeList = async () => {
       try {
         const data = await getAllRecipesSearch();
         if (data === undefined) {
@@ -26,33 +23,38 @@ export function MyRecipesList() {
         }
         setRecipes(data);
       } catch ({ response }) {
-        console.log(response.data.message);
+        setError(response.data.message);
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchIngridients();
+    fetchRecipeList();
   }, []);
 
   const handleDeleteRecipe = async recipeId => {
     await DeleteMyRecipeById(recipeId);
-    const updatedRecipes = await getAllRecipesSearch();
-    setRecipes(updatedRecipes);
+    setRecipes(recipes.filter(recipe => recipe._id !== recipeId));
   };
 
   return (
-    <MyRecipesContainer>
-      <Title>My recipes</Title>
-      {recipes.length > 0 && (
-        <RecipeList>
-          {recipes.map(recipe => (
-            <RecipeCard
-              key={recipe._id}
-              recipe={recipe}
-              onDelete={() => handleDeleteRecipe(recipe._id)}
-            />
-          ))}
-        </RecipeList>
+    <>
+      {isLoading ? (
+        '...loading'
+      ) : error ? (
+        <h2>Data processing error. Try reloading the page.</h2>
+      ) : (
+        <MyRecipesContainer>
+          <RecipeList>
+            {recipes.map(recipe => (
+              <RecipeCard
+                key={recipe._id}
+                recipe={recipe}
+                onDelete={() => handleDeleteRecipe(recipe._id)}
+              />
+            ))}
+          </RecipeList>
+        </MyRecipesContainer>
       )}
-      {recipes.length <= 0 && <Error>Here empty!</Error>}
-    </MyRecipesContainer>
+    </>
   );
 }

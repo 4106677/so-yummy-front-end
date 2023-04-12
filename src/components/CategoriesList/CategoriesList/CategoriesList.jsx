@@ -7,14 +7,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-
 import { getCategoryList } from '../../../redux/mainRecipes/operations';
 import { getFullCategoryList } from '../../../redux/mainRecipes/selectors';
-
-
-
-
-
 
 export function CategoriesList() {
   const categories = useSelector(getFullCategoryList);
@@ -25,31 +19,29 @@ export function CategoriesList() {
   const navigate = useNavigate();
   const [flag, setFlag] = useState(false);
   const dispatch = useDispatch();
-    
+
   useEffect(() => {
-      
     dispatch(getCategoryList());
-    
   }, [dispatch]);
-  
-   useEffect(() => {
-     if (categories.length === 0) return;
 
-     setMapArray([...categories]);
+  useEffect(() => {
+    if (categories.length === 0) return;
 
-     const idx = categories.findIndex(e => {
-       return e.toLowerCase() === categoryName?.toLowerCase();
-     });
+    setMapArray([...categories]);
 
-     if (idx !== -1) {
-       setValue(idx);
-     }
-   }, [categories, categoryName]);
-   
-const handleChange = (event, newValue) => {
-  setValue(newValue);
-  navigate(`/categories/${event.target.textContent}`);
-};
+    const idx = categories.findIndex(e => {
+      return e.toLowerCase() === categoryName?.toLowerCase();
+    });
+
+    if (idx !== -1) {
+      setValue(idx);
+    }
+  }, [categories, categoryName]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    navigate(`/categories/${event.target.textContent}`);
+  };
 
   const meals = mapArray.map((e, index) => (
     <Tab
@@ -71,8 +63,7 @@ const handleChange = (event, newValue) => {
   const onMouseLeave = () => {
     setFlag(false);
   };
-  
-    
+
   return (
     <Box
       sx={{
@@ -128,7 +119,4 @@ const handleChange = (event, newValue) => {
       </Tabs>
     </Box>
   );
-};
-
-
-
+}

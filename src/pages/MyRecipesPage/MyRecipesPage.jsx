@@ -1,13 +1,14 @@
 import {
   RecipeContainer,
   DecorativeSquare,
-  Section,
+  MyRecipeTitle,
+  // Section,
 } from './MyRecipePage.styled';
-// import * as Styled from '../../components/Layout/PageLayout/PageLayout.styled';
+import { Container } from 'components/Container/Container';
+
 import React from 'react';
 import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
-// import { Header } from 'components/Header/Header';
-// import { Footer } from 'components/Footer/Footer';
+
 import { checkWebpSupport } from 'components/Utils/checkWebpSupport';
 import { DeleteMyRecipeById } from '../../services/myRecipes';
 
@@ -22,10 +23,9 @@ export const MyRecipePage = () => {
       .catch(err => err);
   }, []);
   return (
+    // <Section>
     <RecipeContainer>
-      {/* <Header /> */}
-
-      <Section ref={sectionRef}>
+      <Container ref={sectionRef}>
         <DecorativeSquare
           data-1
           color="#8BAA36"
@@ -39,10 +39,11 @@ export const MyRecipePage = () => {
           top="4.125rem"
           right="4.5rem"
         />
+        <MyRecipeTitle>My recipes</MyRecipeTitle>
 
         <MyRecipesList onDelete={DeleteMyRecipeById} />
-      </Section>
-      {/* <Footer /> */}
+      </Container>
     </RecipeContainer>
+    // </Section>
   );
 };
