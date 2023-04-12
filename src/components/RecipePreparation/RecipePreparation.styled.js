@@ -9,22 +9,22 @@ export const RecipePreparationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 50px 0 100px;
-  background-image: url(${BackgroundRecipe});
+  /* background-image: url(${BackgroundRecipe});
 
   background-repeat: no-repeat;
-  background-position: 10% 210%;
+  background-position: 10% 210%; */
 
   @media screen and (min-width: 768px) {
     padding: 96px 0 200px;
-    background-image: url(${BackgroundRecipeTab});
-    background-position: bottom -370px right 250px;
+    /* background-image: url(${BackgroundRecipeTab});
+    background-position: bottom -370px right 250px; */
   }
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     justify-content: space-between;
     padding: 100px 0 200px;
-    background-image: url(${BackgroundRecipeDesk});
-    background-position: bottom -450px right 780px;
+    /* background-image: url(${BackgroundRecipeDesk});
+    background-position: bottom -450px right 780px; */
   }
 
   h2 {

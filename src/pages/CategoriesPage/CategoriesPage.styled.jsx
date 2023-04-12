@@ -4,10 +4,6 @@ import styled from 'styled-components';
 // import NFbgImgDesktopX1 from 'images/PageLayout/page-layout-bg-desktop-x1.png';
 
 
-
-
-export const PageContainer = styled.div``;
-
 export const DecorativeSquare = styled.div`
   position: absolute;
   width: 0.5rem;
@@ -78,24 +74,24 @@ export const CatigoryHeader = styled.h1`
   color: #001833;
   margin-bottom: 3.125rem; 
    padding-top: 114px;
-   padding-left: 25px;
+  
  
   @media (min-width: 768px) {
     font-size: 32px;
     padding-top: 136px;
-  padding-left: 35px;
+
   }
   @media (min-width: 1440px) {
     font-size: 44px;
       margin-bottom: 100px; 
    padding-top: 164px;
-   padding-left: 85px;
+   ;
   }
 `;
 
 
 
-// import styled from 'styled-components'
+
 
 // export const PageContainer = styled.div`
 // background: #FFFFFF;

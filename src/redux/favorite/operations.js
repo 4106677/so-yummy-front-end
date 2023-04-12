@@ -1,12 +1,11 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as api from "../../services/favoriteAPI";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import * as api from '../../services/favoriteAPI';
 
 export const fetchFavoriteRecipe = createAsyncThunk(
   'favorite/fetch',
   async (_, thunkAPI) => {
     try {
       const { data } = await api.getAllFavoriteList();
-      console.log(data);
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response);
@@ -15,13 +14,12 @@ export const fetchFavoriteRecipe = createAsyncThunk(
 );
 
 export const addFavoriteRecipe = createAsyncThunk(
-  'favorite/add',
-  async (data, { rejectWithValue }) => {
+  'favorites/addFavoriteRecipe',
+  async (id, { rejectWithValue }) => {
     try {
-      const { data: result } = await api.addToFavoriteList(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response);
+      await api.addToFavoriteList(id);
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

@@ -19,7 +19,6 @@ export const addShoppingList = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       await api.addShoppingList(data);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

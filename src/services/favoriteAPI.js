@@ -1,29 +1,29 @@
 import axios from 'axios';
 
- const getToken = () => {
-   let serializedState = localStorage.getItem('persist:auth');
-   const serializedStateParse =
-     serializedState === null ? undefined : JSON.parse(serializedState);
-   return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
- };
+const getToken = () => {
+  const serializedState = localStorage.getItem('persist:auth');
+  const serializedStateParse =
+    serializedState === null ? undefined : JSON.parse(serializedState);
+  return `Bearer ${serializedStateParse.token.slice(1, -1)}`;
+};
 
- const { REACT_APP_API_URL } = 'https://recipes-becend-49lg.onrender.com/';
+const favoriteInstance = axios.create({
+  baseURL: 'https://recipes-becend-49lg.onrender.com',
+  headers: {
+    Authorization: getToken(),
+  },
+});
 
- const favoriteInstance = axios.create({
-   baseURL: REACT_APP_API_URL,
-   headers: {
-     Authorization: getToken(),
-   },
- });
-
-export const addToFavoriteList = async data => {
-  const response = await favoriteInstance.post(`/favorite`, data);
-  return response.data;
+export const addToFavoriteList = async id => {
+  await favoriteInstance.post(`/recipes/byIdToFavorite/${id}`);
+  // const response = await favoriteInstance.post(`/recipes/byIdToFavorite/${id}`);
+  // console.log(response);
+  // return response.data;
 };
 
 export const getAllFavoriteList = async () => {
-  const data = await favoriteInstance.get(`/favorite`);
-  console.log(data);
+  const response = await favoriteInstance.get(`/favorite`);
+  const data = response.data;
   return data;
 };
 
