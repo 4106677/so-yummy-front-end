@@ -17,13 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const RecipeIngridientsList = ({ ingridientsData }) => {
   const shoppingList = useSelector(getShoppingList);
-  // console.log(ingridientsData);
-  // console.log(shoppingList);
   const dispatch = useDispatch();
-
-  // const handleCheckboxChange = id => {
-  //   dispatch(addShoppingList(id));
-  // };
 
   return (
     <RecipeIngridientsWrapper>

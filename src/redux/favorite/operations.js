@@ -17,7 +17,8 @@ export const addFavoriteRecipe = createAsyncThunk(
   'favorite/addFavoriteRecipe',
   async (id, { rejectWithValue }) => {
     try {
-      await api.addToFavoriteList(id);
+      const { data } = await api.addToFavoriteList(id);
+      return data.recipe[0];
     } catch (error) {
       return rejectWithValue(error.message);
     }

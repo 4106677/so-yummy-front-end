@@ -15,10 +15,8 @@ const favoriteInstance = axios.create({
 });
 
 export const addToFavoriteList = async id => {
-  await favoriteInstance.post(`/recipes/byIdToFavorite/${id}`);
-  // const response = await favoriteInstance.post(`/recipes/byIdToFavorite/${id}`);
-  // console.log(response);
-  // return response.data;
+  const data = await favoriteInstance.post(`/recipes/byIdToFavorite/${id}`);
+  return data;
 };
 
 export const getAllFavoriteList = async () => {
