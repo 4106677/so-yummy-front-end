@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const ShoppinlListWrapper = styled.div`
+margin: 0 auto;
+max-width: 1440px;`
+
 export const ShopListTitle = styled.h1`
   font-family: 'Poppins';
   font-style: normal;

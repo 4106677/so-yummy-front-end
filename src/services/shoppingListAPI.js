@@ -23,8 +23,7 @@ export const addShoppingList = async data => {
 };
 
 export const getAllShoppingList = async () => {
-  const response = await shoppingInstance.get('/shopping-list');
-  const data = response.data;
+  const data = await shoppingInstance.get('/shopping-list');
   console.log(data);
   return data;
 };

@@ -113,6 +113,10 @@ export const RecipeTitle = styled.p`
   color: #3e4462;
   line-height: 1.25;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   background-color: #ffffff;
   border-radius: 8px;
 

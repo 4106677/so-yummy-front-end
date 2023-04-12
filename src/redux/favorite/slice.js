@@ -47,12 +47,12 @@ export const favoriteSlice = createSlice({
       })
       .addCase(deleteFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorite = state.favorites.filter(({ id }) => id !== payload);
+        state.favorite = state.favorite.filter(({ id }) => id !== payload);
       })
       .addCase(deleteFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      });
+      })
   },
 });
 

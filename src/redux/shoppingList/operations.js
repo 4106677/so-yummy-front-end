@@ -2,10 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../../services/shoppingListAPI';
 
 export const fetchShoppingList = createAsyncThunk(
-  'shoppingList/fetchShoppingList',
+  'shoppingList/fetch',
   async (_, thunkAPI) => {
     try {
       const { data } = await api.getAllShoppingList();
+      console.log(data);
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response);
@@ -26,10 +27,11 @@ export const addShoppingList = createAsyncThunk(
 );
 
 export const deleteShoppingList = createAsyncThunk(
-  'shoppingList/deleteShoppingList',
+  'shoppingList/delete',
   async (id, { rejectWithValue }) => {
     try {
       await api.deleteShoppingList(id);
+      console.log(id);
       return id;
     } catch ({ response }) {
       return rejectWithValue(response);

@@ -17,6 +17,7 @@ export const getAllRecipesSearch = async () => {
   const { data } = await MyRecipesBase.get(
     `/recipes/ownRecipes/getRecipes?type=title&pages=1&limit=6`
   );
+  console.log(data);
   return data;
 };
 
