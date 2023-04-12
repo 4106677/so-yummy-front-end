@@ -4,6 +4,7 @@ import {
   fetchShoppingList,
   deleteShoppingList,
 } from './operations';
+import { toast } from 'react-toastify';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
@@ -36,6 +37,7 @@ export const shoppingListSlice = createSlice({
       .addCase(addShoppingList.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.shoppingList.push(payload);
+        toast.success(`${payload.ttl} added to shopping list!`);
       })
       .addCase(addShoppingList.rejected, (state, { payload }) => {
         state.loading = false;
@@ -47,7 +49,9 @@ export const shoppingListSlice = createSlice({
       })
       .addCase(deleteShoppingList.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.shoppingList = state.shoppingList.filter(({ id }) => id !== payload);
+        state.shoppingList = state.shoppingList.filter(
+          ({ id }) => id !== payload
+        );
       })
       .addCase(deleteShoppingList.rejected, (state, { payload }) => {
         state.loading = false;
@@ -55,7 +59,6 @@ export const shoppingListSlice = createSlice({
       });
   },
 });
-
 
 const persistConfig = {
   key: 'shoppingList',

@@ -40,3 +40,5 @@ export const CardWrap = styled.li`
     width: calc((100% - 42px) / 4);
   }
 `;
+
+export const CardWrapper = styled.ul``;

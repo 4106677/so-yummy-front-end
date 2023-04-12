@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+// import NFbgImgMobileX1 from 'images/PageLayout/page-layout-bg-mobil-x1.png';
+// import NFbgImgTabletX1 from 'images/PageLayout/page-layout-bg-tablet-x1.png';
+// import NFbgImgDesktopX1 from 'images/PageLayout/page-layout-bg-desktop-x1.png';
+
+
+
+
+export const PageContainer = styled.div``;
 
 export const DecorativeSquare = styled.div`
   position: absolute;
@@ -62,20 +70,26 @@ export const DecorativeSquare = styled.div`
 
 export const CatigoryHeader = styled.h1`
   font: 'Poppins';
-  font-weight: 600;
-  font-size: 28px;
+  font-style: normal;
+ font-weight: 600;
+ font-size: 28px;
+ line-height: 1;
+ margin-bottom: 50px;
   color: #001833;
   margin-bottom: 3.125rem; 
-   padding: 114px 16px 60px 16px;
+   padding-top: 114px;
+   padding-left: 25px;
+ 
   @media (min-width: 768px) {
     font-size: 32px;
-     margin-bottom: 2.5rem; 
-    padding: 136px 32px 60px 32px; 
+    padding-top: 136px;
+  padding-left: 35px;
   }
   @media (min-width: 1440px) {
     font-size: 44px;
-     margin-bottom: 3.125rem; 
-     padding: 164px 100px 110px 100px; 
+      margin-bottom: 100px; 
+   padding-top: 164px;
+   padding-left: 85px;
   }
 `;
 

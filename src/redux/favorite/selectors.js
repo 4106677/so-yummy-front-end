@@ -1,2 +1,2 @@
-export const getFavorites = (state) => state.favorites.favorites;
-export const getIsLoading = (state) => state.favorites.loading;
+export const getFavorites = (state) => state.favorite.favorite;
+export const getIsLoading = (state) => state.favorite.loading;
