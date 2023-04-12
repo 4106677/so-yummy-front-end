@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 
 export const RecipePageHero = ({ heroData, recipeId }) => {
   const dispatch = useDispatch();
-  // console.log(recipeId);
   const { description, time, title } = heroData;
   return (
     <RecipeHeroWrapper>

@@ -21,8 +21,6 @@ const getRecipeDetails = async id => {
 
 export const RecipePage = () => {
   const { recipeId } = useParams();
-  // const { _id: userId } = useSelector(selectUser);
-  // console.log(userId);
   const [heroData, setHeroData] = useState([]);
   const [ingridientsData, setIngridientsData] = useState([]);
   const [preparationData, setPreparationData] = useState([]);
