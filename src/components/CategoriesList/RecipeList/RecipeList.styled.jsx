@@ -42,3 +42,4 @@ export const CardWrap = styled.li`
 `;
 
 export const CardWrapper = styled.ul``;
+export const RecipeTitleWrapper = styled.div``;
