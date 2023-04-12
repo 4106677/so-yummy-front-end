@@ -14,7 +14,6 @@ import {
   FavoriteBtn,
 } from './FavoriteList.styled';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
-import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFavorites } from 'redux/favorite/selectors';
 import { useEffect } from 'react';
@@ -22,14 +21,12 @@ import {
   fetchFavoriteRecipe,
   deleteFavoriteRecipe,
 } from '../../redux/favorite/operations';
+import { Link } from "react-router-dom";
 
 export const FavoriteList = () => {
-  const navigate = useNavigate();
   const favorite = useSelector(getFavorites);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const isDesktop = useMediaQuery('(min-width: 1440px)');
-
-  console.log(favorite);
 
    let items =
     favorite.length > 4 ? favorite.slice(0, 4) : favorite;
@@ -40,11 +37,6 @@ export const FavoriteList = () => {
         dispatch(fetchFavoriteRecipe());
       }, [dispatch]);
 
-
-  const handleClick = _id => {
-    setTimeout(() => {
-      navigate(`/recipe/${_id}`)}, 500);
-  };
 
   const elementsMob = items.map(
     function ({ _id, title, preview, description, time }) {
@@ -87,7 +79,13 @@ export const FavoriteList = () => {
           <FavoriteInstraction>{instructions}</FavoriteInstraction>
           <FavoriteTimeWrap>
             <Time>{time ? time : 20} min</Time>
-            <FavoriteBtn onClick={() => handleClick(_id)}>
+            <FavoriteBtn>
+              <Link
+                to={`/recipe/${_id}`}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              />
               See recipe
             </FavoriteBtn>
           </FavoriteTimeWrap>
