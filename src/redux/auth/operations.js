@@ -19,11 +19,12 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/register', user);
+      console.log('DATA', data);
       toast.success(`Welcome, ${data.user.name}!`);
       token.setToken(data.token);
       return data;
     } catch (error) {
-      if (error.response.status === 400) {
+      if (error.response.status === 400 || error.response) {
         toast.error(`Sorry, something went wrong there. Try again.`);
       }
       return rejectWithValue(error.message);
@@ -40,8 +41,7 @@ export const login = createAsyncThunk(
       token.setToken(data.token);
       return data;
     } catch (error) {
-      console.log(error);
-      if (error.response.status === 400) {
+      if (error.response.status === 400 || error.response) {
         toast.error(`Sorry, something went wrong there. Try again.`);
       }
       if (error.response.status === 401) {
