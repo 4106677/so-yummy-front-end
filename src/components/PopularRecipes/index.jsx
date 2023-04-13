@@ -5,7 +5,7 @@ import { PopularRecipeCard } from './PopularRecipeCard';
 import * as Styled from './PopularRecipes.styled';
 
 const defaultTitle = 'Popular recipe';
-const defaultRecipePageUrl = '/recipes/';
+const defaultRecipePageUrl = '/recipe/';
 
 export function PopularRecipes({
   title = defaultTitle,
