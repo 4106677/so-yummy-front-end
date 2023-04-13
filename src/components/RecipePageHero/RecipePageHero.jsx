@@ -12,20 +12,22 @@ import {
   deleteFavoriteRecipe,
 } from 'redux/favorite/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+// import { selectUser } from 'redux/auth/selectors';
+import { getFavorites } from 'redux/favorite/selectors';
 
 export const RecipePageHero = ({ heroData, recipeId }) => {
-  const { favorite } = useSelector(selectUser);
+  const favorite = useSelector(getFavorites);
   const dispatch = useDispatch();
   const { description, time, title } = heroData;
-  const isFavorite = favorite.some(item => item === recipeId);
+  const isFavorite = favorite.some(item => item._id === recipeId);
 
-  const handleFavoriteClick = () => {
-    if (isFavorite) {
-      dispatch(deleteFavoriteRecipe(recipeId));
-    } else {
-      dispatch(addFavoriteRecipe(recipeId));
-    }
+  const addFavorite = () => {
+    dispatch(addFavoriteRecipe(recipeId));
+  };
+
+  const deleteFavorite = () => {
+    const { _id } = favorite.find(item => item._id === recipeId);
+    dispatch(deleteFavoriteRecipe(_id));
   };
 
   return (
@@ -33,7 +35,9 @@ export const RecipePageHero = ({ heroData, recipeId }) => {
       <div>
         <RecipeTitle>{title}</RecipeTitle>
         <RecipeDescription>{description}</RecipeDescription>
-        <RecipeAddToFavotite onClick={handleFavoriteClick}>
+        <RecipeAddToFavotite
+          onClick={isFavorite ? deleteFavorite : addFavorite}
+        >
           {isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         </RecipeAddToFavotite>
         <RecipeTimer>
