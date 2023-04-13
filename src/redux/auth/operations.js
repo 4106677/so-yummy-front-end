@@ -19,9 +19,13 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/register', user);
+      toast.success(`Welcome, ${data.user.name}!`);
       token.setToken(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(`Sorry, something went wrong there. Try again.`);
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -32,11 +36,19 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/login', user);
-
+      toast.success(`Welcome back, ${data.user.name}!`);
       token.setToken(data.token);
-
       return data;
     } catch (error) {
+      console.log(error);
+      if (error.response.status === 400) {
+        toast.error(`Sorry, something went wrong there. Try again.`);
+      }
+      if (error.response.status === 401) {
+        toast.error(
+          `Incorrect email or password. Please try againe to sign in.`
+        );
+      }
       return rejectWithValue(error.message);
     }
   }
@@ -59,14 +71,16 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/auth/logout');
     clearAuthHeader();
+    toast.success('You have been successfully logged out!');
   } catch (e) {
+    toast.warn('You have been logged out! Please log back in.');
     return thunkAPI.rejectWithValue(e.message);
   }
 });
 
 export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth;
-  if (!token) return thunkAPI.rejectWithValue('No available token ');
+  if (!token) return thunkAPI.rejectWithValue('No available token');
 
   try {
     token.setToken(token);
