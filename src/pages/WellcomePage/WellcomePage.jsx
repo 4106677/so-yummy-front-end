@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginWithGoogle } from '../../redux/auth/slice';
+import { token } from '../../redux/auth/operations';
 import {
   Wrapper,
   H1,
@@ -14,6 +18,17 @@ const handleClick = () => {
 };
 
 export const WellcomePage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    const updToken = params.token;
+    if (updToken) {
+      token.setToken(updToken);
+      dispatch(loginWithGoogle(updToken));
+    }
+  }, [dispatch]);
+
   return (
     <>
       <Wrapper>
