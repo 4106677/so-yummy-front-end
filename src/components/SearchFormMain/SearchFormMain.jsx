@@ -1,8 +1,6 @@
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import React, { useState } from 'react';
 import { SearchBlock, SearchIn, SearchInput } from './SearchFormMain.styled';
-import { createContext } from 'react';
-export const searchContext = createContext({ searchValue: '' });
 
 export const SearchForm = ({
   handleOnSubmit,

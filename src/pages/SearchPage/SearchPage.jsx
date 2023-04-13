@@ -9,11 +9,11 @@ import {
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
-import { searchContext } from '../../components/SearchFormMain/SearchFormMain';
+
 
 export const SearchPage = () => {
   const [search, setSearch] = useState('');
@@ -24,8 +24,6 @@ export const SearchPage = () => {
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
-  const searchFromMain = useContext(searchContext);
-
   useEffect(() => {
     if (isDesktop) {
       setLimit(12);
@@ -33,23 +31,6 @@ export const SearchPage = () => {
       setLimit(6);
     }
   }, [isDesktop]);
-
-  useEffect(() => {
-     const fetchIngridientsFromMain = async () => {
-       try {
-        const data = await getAllRecipesSearchTitle(searchFromMain, page, limit);
-         console.log(data);
-         setRecipes(data);
-       } catch (err) {
-         console.log(err.message);
-       }
-     };
-     if (searchFromMain !== "") {
-       fetchIngridientsFromMain();
-     } else {
-       return;
-     }
-   }, [searchFromMain, page, limit, type]);
 
   useEffect(() => {
     const fetchIngridients = async () => {
