@@ -11,7 +11,7 @@ const MyRecipesBase = axios.create({
 });
 export const getAllRecipesSearch = async () => {
   const { data } = await MyRecipesBase.get(
-    `/recipes/ownRecipes/getRecipes?type=title&pages=1&limit=6`
+    `/recipes/ownRecipes/getRecipes?type=title&pages=1&limit=4`
   );
   console.log(data);
   return data;
