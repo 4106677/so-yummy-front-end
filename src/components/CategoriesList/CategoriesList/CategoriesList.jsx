@@ -12,7 +12,7 @@ import { getFullCategoryList } from '../../../redux/mainRecipes/selectors';
 
 export function CategoriesList() {
   const categories = useSelector(getFullCategoryList);
-  console.log(categories);
+  
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const [mapArray, setMapArray] = useState([]);

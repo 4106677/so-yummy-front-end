@@ -26,7 +26,7 @@ export const RecipeList = () => {
   const { categoryName } = useParams();
   const categories = useSelector(getFullCategoryList);
   const recipes = useSelector(getAllRecipes);
-  console.log(recipes);
+  
   // const isLoading = useSelector(isLoadingRecipesOfCategory);
 
   useEffect(() => {

@@ -1,10 +1,14 @@
 import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
-
+import { useSelector } from 'react-redux';
+import { getSearch } from '../../../redux/search/searchSelector';
 
 export const SearchForm = ({ onSubmit }) => {
-  const [state, setState] = useState({ search: "" });
+  const search1 = useSelector(getSearch);
+  console.log(search1);
+  const [state, setState] = useState({ search1 });
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +32,7 @@ export const SearchForm = ({ onSubmit }) => {
             <label name="search">
               <Input
                 type="text"
-                placeholder="Beef"
+                
                 name="search"
                 onChange={handleInputChange}
                 value={state.search}

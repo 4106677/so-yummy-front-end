@@ -19,20 +19,3 @@ export const CategoryItem = styled(Tabs)`
   cursor: pointer;
 `;
 
-// export const Title = styled.p`
-
-// &:hover {
-//       color: #8baa36;
-//     },
-//     &:focus {
-//       color: #8baa36,
-//     },
-//     &:active {
-//       color:#8baa36,
-//     },
-
-//   @media (min-width: 768px) {
-//     font-size: 18px;
-//     line-height: 18px;
-//   }
-// `;

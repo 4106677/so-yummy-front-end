@@ -2,20 +2,20 @@
 
 
 export const getContentForMain = state => state.outerRecipes.mainCategories;
-console.log(getContentForMain)
+
 
 
 
 
 export const getIsError = state => state.outerRecipes.isError;
-console.log(getIsError);
+
 
 
 //  Список категорий ------------------
 // возвращает массив с категориями ТОЛЬКО ИМЕНА
 // использовать с функцией "getCategoryList()"
 export const getFullCategoryList = state => state.outerRecipes.categoryList;
-console.log(getFullCategoryList);
+
 // ---- возвращает массив объектов с 4 или 12 рецептами по запрошенной категории
 // В качестве аргумента вы ДОЛЖНЫ отправить объект с категорией и лимитом
 // ---- Пример: const params = {category: 'beef', limit: 4}
@@ -38,7 +38,7 @@ export const getSingleRecipe = state => state.outerRecipes.singleRecipe;
 // ---- возвращает массив объектов
   // Используйте с функцией "getPopularRecipes()"
 export const getPopular = state => state.outerRecipes.popularRecipes;
-console.log(getPopular);
+
 
 // ------------------ Recipes by Query ------------------
 // ---- возвращает объект с ключами: meals и totalHits

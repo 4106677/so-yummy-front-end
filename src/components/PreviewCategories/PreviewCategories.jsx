@@ -25,7 +25,7 @@ import NoImage from '../../images/default.jpg';
 
 export const PreviewCategories = () => {
   const categories = useSelector(getContentForMain);
-  console.log(categories);
+  
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery({ minWidth: 1440 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
