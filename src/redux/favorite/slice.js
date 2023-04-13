@@ -47,21 +47,21 @@ export const favoriteSlice = createSlice({
       })
       .addCase(deleteFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorite = state.favorite.filter(({_id }) => _id !== payload);
+        state.favorite = state.favorite.filter(({ _id }) => _id !== payload);
       })
       .addCase(deleteFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      })
+      });
   },
 });
 
-
-        
 const persistConfig = {
   key: 'favorite',
   storage,
 };
 
-export const persistedFavorites = persistReducer(persistConfig, favoriteSlice.reducer);
-
+export const persistedFavorites = persistReducer(
+  persistConfig,
+  favoriteSlice.reducer
+);
