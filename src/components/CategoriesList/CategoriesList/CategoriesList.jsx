@@ -22,6 +22,7 @@ export function CategoriesList() {
 
   useEffect(() => {
     dispatch(getCategoryList());
+    navigate('/categories/beef');
   }, [dispatch]);
 
   useEffect(() => {

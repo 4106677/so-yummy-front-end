@@ -7,7 +7,7 @@ import BurgerMenuBackground480X2 from '../../images/Header/burgermenubackground4
 
 export const BurgerMenuStyles = {
   bmBurgerButton: {
-    position: 'fixed',
+    position: 'absolute',
     width: '24px',
     height: '16px',
     right: '33px',
