@@ -43,7 +43,6 @@ export const BurgerMenuStyles = {
 };
 
 export const BurgerMenuContainer = styled.div`
-
   display: none;
   @media (max-width: 767px) {
     display: block;
@@ -113,6 +112,12 @@ export const BurgerMenuStyledNavLink = styled(NavLink)`
   line-height: 18px;
   letter-spacing: -0.02em;
   color: #22252a;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #8baa36;
+  }
   @media (min-width: 478px) {
     font-size: 24px;
     line-height: 24px;

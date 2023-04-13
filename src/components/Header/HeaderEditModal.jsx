@@ -24,13 +24,11 @@ import { getIsSuccess } from 'redux/header/selectors';
 import { current } from 'redux/auth/operations';
 import { toast } from 'react-toastify';
 
-
-
 export const HeaderEditModal = ({ onClose, avatar, user }) => {
   const [image, setImage] = useState(avatar);
   const [name, setName] = useState(user);
 
-  const isSuccess = useSelector(getIsSuccess)
+  const isSuccess = useSelector(getIsSuccess);
 
   const dispatch = useDispatch();
 
@@ -63,9 +61,9 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     e.preventDefault();
     const files = e.target.elements[0].files[0];
     const formData = new FormData();
-  
+
     if (name === '') {
-      return toast.warning('Please enter your name')
+      return toast.warning('Please enter your name');
     }
     if (files) {
       formData.append('avatar', files);
@@ -76,12 +74,9 @@ export const HeaderEditModal = ({ onClose, avatar, user }) => {
     dispatch(updateUser(formData));
   };
 
-
   const nameOnChange = e => {
     setName(e.target.value);
   };
-
-
 
   return (
     <>

@@ -4,7 +4,7 @@ import {
   HeaderUserModalContainerStyled,
   HeaderUserModalEditButton,
   HeaderUserModalLogoutButton,
-  HeaderUserModalContainer
+  HeaderUserModalContainer,
 } from './HeaderModals.styled';
 import { useEffect } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
@@ -34,12 +34,12 @@ export const HeaderUserModal = ({ onClose, editOpen, logOutOpen }) => {
       <HeaderUserModalContainer onClick={handleOverlayClick}>
         <HeaderUserModalBodyStyled>
           <HeaderUserModalContainerStyled>
-            <HeaderUserModalEditButton onClick={
-              () => {
+            <HeaderUserModalEditButton
+              onClick={() => {
                 onClose();
                 editOpen();
-              }
-            }>
+              }}
+            >
               Edit profile
               <FiEdit2></FiEdit2>
             </HeaderUserModalEditButton>
