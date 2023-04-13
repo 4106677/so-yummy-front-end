@@ -47,7 +47,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(deleteFavoriteRecipe.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.favorite = state.favorite.filter(({ id }) => id !== payload);
+        state.favorite = state.favorite.filter(({_id }) => _id !== payload);
       })
       .addCase(deleteFavoriteRecipe.rejected, (state, { payload }) => {
         state.loading = false;
