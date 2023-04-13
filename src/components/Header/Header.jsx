@@ -17,7 +17,7 @@ export const Header = () => {
           <HeaderLogo />
         </HeaderStyledLogoLink>
         <HeaderStyledNav>
-          <HeaderStyledNavLink to={'categories'}>
+          <HeaderStyledNavLink to={'categories'} >
             Categories
           </HeaderStyledNavLink>
           <HeaderStyledNavLink to={'add-recipe'}>

@@ -22,6 +22,7 @@ export const HeaderUser = () => {
 
   const { name, avatar } = useSelector(selectUser);
 
+
   const isLoading = useSelector(getIsLoading);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
