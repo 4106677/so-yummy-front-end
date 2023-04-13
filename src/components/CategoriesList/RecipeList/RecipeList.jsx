@@ -46,7 +46,7 @@ export const RecipeList = () => {
       <RowTable>
         {recipes.slice(0, 8).map(({ _id, title, preview }) => (
           <CardDish key={_id}>
-            <Link to={`/recipes/byId/${_id}`}>
+            <Link to={`/recipe/${_id}`}>
               <CardImg src={preview ? preview : NoImage} alt={title} />
               <CardTitle>{title}</CardTitle>
             </Link>

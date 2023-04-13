@@ -5,14 +5,14 @@ import { PopularRecipeCard } from './PopularRecipeCard';
 import * as Styled from './PopularRecipes.styled';
 
 const defaultTitle = 'Popular recipe';
-const defaultRecipePageUrl = '/recipes/';
+const defaultRecipePageUrl = '/recipe/';
 
 export function PopularRecipes({
   title = defaultTitle,
   titleGap = '2.5rem',
   tag = 'h3',
   recipes = [],
-  recipePageRouterUrl = defaultRecipePageUrl
+  recipePageRouterUrl = defaultRecipePageUrl,
 }) {
   return (
     <Styled.Wrapper>
@@ -42,5 +42,5 @@ PopularRecipes.propTypes = {
   titleGap: PropTypes.string,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   recipes: PropTypes.array,
-  recipePageRouterUrl: PropTypes.string
+  recipePageRouterUrl: PropTypes.string,
 };
