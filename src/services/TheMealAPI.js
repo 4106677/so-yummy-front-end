@@ -5,20 +5,20 @@ axios.defaults.baseURL =
 
 export const getSetOfCategoriestAPI = () => {
   return axios.get('/recipes/main-page').then(({ data }) => {
-    console.log(data.data);
+    
     return data.data;
   });
 };
 export const getCategoryListAPI = () => {
   return axios.get('/recipes/category-list ').then(({ data }) => {
-    console.log(data);
+    
     return data;
   });
 };
 
 export const getAllRecipesByCategoryAPI = category => {
   return axios.get(`/recipes/byCategory/${category}`).then(({ data }) => {
-    console.log(data);
+    
     return data;
   });
 };
@@ -37,7 +37,7 @@ export const getOneRecipeByIdAPI = id => {
 
 export const getPopularRecipesAPI = () => {
   return axios.get('/recipes/popular-recipes').then(({ data }) => {
-    console.log(data);
+    
     return data;
   });
 };
@@ -46,7 +46,7 @@ export const getRecipesByQueryAPI = (query, page = 1, limit = 12) => {
   return axios
     .get(`/recipes/search/${query}?page=${page}&limit=${limit}`)
     .then(({ data }) => {
-      console.log(data);
+      
       return data;
     });
 };
@@ -69,3 +69,6 @@ export const getRecipesByIngredientAPI = (
     });
 };
 
+export const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};

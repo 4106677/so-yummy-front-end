@@ -14,49 +14,32 @@ import {
 import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast/ChooseYourBreakfast';
 import { ButtonOthCtgWrap } from 'components/ButtonOthCtg/ButtonOthCtg.styled';
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
-import { toastWarnEmptyField } from '../../services/toasts';
+
 import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
 
 import { SearchForm } from '../../components/SearchFormMain/SearchFormMain';
 
-// import {
-//   getPopular,
-//   getFullCategoryList,
-// } from '../../redux/mainRecipes/selectors';
-// import {
-//   getPopularRecipes,
-//   getCategoryList,
-// } from 'redux/mainRecipes/operations';
+
 
 export const MainPage = () => {
-  // const popularRecipes = useSelector(getPopular);
-  // console.log(popularRecipes);
-  // const categories = useSelector(getFullCategoryList);
-  //  console.log(categories);
+  
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  
 
   const onClick = e => {
     navigate('/categories');
   };
 
-  const handleOnSubmit = (query, type) => {
-    if (query === '') {
-      return toastWarnEmptyField(query);
-    } else {
-      navigate(`/search?query=${query}&type=${type}`);
-    }
-  };
+  // const handleOnSubmit = (query, type) => {
+  //   if (query === '') {
+  //     return toastWarnEmptyField(query);
+  //   }
+    // } else {
+    //   navigate(`/search?query=${query}&type=${type}`);
+    // }
+  // };
 
-  //   useEffect(() => {
-
-  //       dispatch(getPopularRecipes());
-
-  //   }, [dispatch]);
-
-  //  useEffect(() => {
-  //    dispatch(getCategoryList());
-  //  }, [dispatch]);
+  
 
   return (
     <>
@@ -73,7 +56,7 @@ export const MainPage = () => {
                 future.
               </MainPageText>
               <ChooseYourBreakfast />
-              <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
+              <SearchForm styled={'black'}  />
             </MainPageDiv>
           </Container>
         </MainPageBg>

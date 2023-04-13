@@ -80,6 +80,13 @@ export const ChooseLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  &:hover {
+    color: rgb(139, 170, 54);
+    svg path {
+      stroke: rgb(139, 170, 54);
+    }
+  }
 
   @media (min-width: 768px) {
     font-size: 14px;

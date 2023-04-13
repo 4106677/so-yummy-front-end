@@ -5,6 +5,7 @@ import {
   ChooseText,
   RightArrow,
 } from './ChooseYourBreakfast.styles';
+import {scrollToTop} from '../../services/TheMealAPI'
 
 export const ChooseYourBreakfast = () => {
   return (
@@ -13,7 +14,7 @@ export const ChooseYourBreakfast = () => {
         <ChooseSpan>Delicious and healthy &nbsp;</ChooseSpan>
         way to enjoy a variety of fresh ingredients in one satisfying meal
       </ChooseText>
-      <ChooseLink to={`/category-list`}>
+      <ChooseLink to={'/categories/breakfast'} onClick={scrollToTop}>
         See recipes
         <RightArrow
           width="18"

@@ -18,7 +18,7 @@ export const getMainCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getSetOfCategoriestAPI();
-      console.log(data)
+      
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -43,7 +43,7 @@ export const getAllRecipesByCategory = createAsyncThunk(
   async (category, { rejectWithValue }) => {
     try {
       const data = await getAllRecipesByCategoryAPI(category);
-      console.log(data)
+      
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -81,7 +81,7 @@ export const getPopularRecipes = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getPopularRecipesAPI();
-      console.log(data);
+      
       return data;
     } catch (error) {
       return rejectWithValue(error.response.status);
