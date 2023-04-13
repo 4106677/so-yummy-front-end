@@ -12,13 +12,19 @@ const persistConfig = {
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-
     user: { name: '', email: '', avatar: '' },
 
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
     error: null,
+  },
+  reducers: {
+    loginWithGoogle(state, { payload }) {
+      console.log('googleToken', payload);
+      state.token = payload;
+      state.isLoggedIn = true;
+    },
   },
   extraReducers: {
     [register.fulfilled](state, { payload }) {
@@ -47,8 +53,10 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-    }
+    },
   },
 });
+
+export const { loginWithGoogle } = authSlice.actions;
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);
