@@ -27,7 +27,7 @@ export const getLimitedRecipes = state =>
 // В качестве аргумента вы ДОЛЖНЫ отправить название категории (строка)
 //   Пример: const category = 'beef';
 //   Используйте с функцией "getAllRecipesByCategory(category)"
-export const getAllRecipes = state => state.outerRecipes.allRecipesByCategory;
+export const getAllRecipes = state => state.outerRecipes.recipesOfCategory;
 
 // ------------------ ONE Recipe ------------------
 // ---- возвращает ОБЪЕКТ с полной информацией о рецепте
@@ -50,3 +50,8 @@ export const getRecipesBySearchQuery = state =>
 // ------------------ Additional ------------------
 export const getIsCategoryFetching = state =>
   state.outerRecipes.isCategoryFetching;
+
+
+
+  export const isLoadingRecipesOfCategory = state =>
+    state.recipes.loadingRecipesOfCategory;
