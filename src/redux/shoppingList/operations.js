@@ -6,6 +6,7 @@ export const fetchShoppingList = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await api.getAllShoppingList();
+      // console.log(data);
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response);
@@ -18,7 +19,6 @@ export const addShoppingList = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       await api.addShoppingList(data);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -31,6 +31,7 @@ export const deleteShoppingList = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await api.deleteShoppingList(id);
+      console.log(id);
       return id;
     } catch ({ response }) {
       return rejectWithValue(response);

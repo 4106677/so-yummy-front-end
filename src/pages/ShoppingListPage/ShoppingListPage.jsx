@@ -1,6 +1,10 @@
 import { IngridientsShoppingList } from "components/IngridientsShoppingList/IngridientsShoppingList";
 import { Container } from "components/Container/Container";
-import { ShopListTitle, DecorativeSquare } from "./ShoppingListPage.styled";
+import {
+  ShopListTitle,
+  DecorativeSquare,
+  ShoppinlListWrapper,
+} from './ShoppingListPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { useSelector } from "react-redux";
 import {getIsLoading} from "../../redux/shoppingList/selectors"
@@ -9,7 +13,7 @@ export const ShoppingListPage = () => {
   const isLoading = useSelector(getIsLoading);
   
   return (
-    <div>
+    <ShoppinlListWrapper>
       <Container>
         <DecorativeSquare
           data-1
@@ -28,6 +32,6 @@ export const ShoppingListPage = () => {
         {isLoading && <Loader />}
         <IngridientsShoppingList />
       </Container>
-    </div>
+    </ShoppinlListWrapper>
   );
 };

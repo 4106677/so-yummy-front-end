@@ -11,14 +11,12 @@ import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
-import { Loader } from 'components/Loader/Loader';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
 
 export const SearchPage = () => {
   const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
    const [type, setType] = useState('title');
 
@@ -33,16 +31,15 @@ export const SearchPage = () => {
   }, [isDesktop]);
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchIngridients = async () => {
       try {
                const data =
                  type === 'title'
                    ? await getAllRecipesSearchTitle(search, page, limit)
                    : await getAllRecipesSearchIngredients(search, page, limit);
-               console.log(data);
-               setRecipes(data);
-               setIsLoading(false);
+        console.log(data);
+                               setRecipes(data);
+
         if (data.length === 0) {
           return toast.warn("We couldn't find result on your request.", {
             position: 'top-right',
@@ -66,9 +63,9 @@ export const SearchPage = () => {
             autoClose: 3000,
             theme: 'colored',
           });
+        
       } catch (err) {
         console.log(err.message);
-        setIsLoading(false);
       }
     };
     if (search) {
@@ -119,7 +116,6 @@ export const SearchPage = () => {
             onChange={handleTypeChange}
             items={recipes}
           />
-          {isLoading && <Loader />}
         </Container>
       </>
     );

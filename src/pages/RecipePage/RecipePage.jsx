@@ -1,11 +1,15 @@
-// import { RecipeContainer } from './RecipePage.styled';
 import axios from 'axios';
+import { Loading } from './RecipePage.styled';
+import { Grid } from 'react-loader-spinner';
+import { Error } from '../../components/Error/index';
 import { useParams } from 'react-router-dom';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngridientsList } from 'components/RecipeIngridientsList/RecipeIngridientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import { Container } from 'components/Container/Container';
 import { useEffect, useState } from 'react';
+// import { useSelector } from 'react-redux';
+// import { selectUser } from 'redux/auth/selectors';
 // import { PageLayout } from 'components/Layout/PageLayout/PageLayout';
 
 const BASE_URL = 'https://recipes-becend-49lg.onrender.com/';
@@ -44,7 +48,10 @@ export const RecipePage = () => {
         const preparationData = { thumb, preview, instructions };
         setPreparationData(preparationData);
 
-        setIngridientsData(ingredients);
+        const upgratedIngredients = ingredients.map(ingredient => {
+          return { ...ingredient, recipeId };
+        });
+        setIngridientsData(upgratedIngredients);
       } catch (error) {
         setError(error);
       } finally {
@@ -57,15 +64,30 @@ export const RecipePage = () => {
   return (
     <>
       {isLoading ? (
-        '...loading'
+        <Loading>
+          <Grid
+            height="80"
+            width="80"
+            color="#8baa36"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </Loading>
       ) : error ? (
-        <h2>Data processing error. Try reloading the page.</h2>
+        <Error errorMsg="Oops, something went wrong" />
       ) : (
         heroData &&
         ingridientsData &&
         preparationData && (
           <>
-            <RecipePageHero isOwnRecipe={false} heroData={heroData} />
+            <RecipePageHero
+              isOwnRecipe={false}
+              heroData={heroData}
+              recipeId={recipeId}
+            />
             <Container>
               <RecipeIngridientsList ingridientsData={ingridientsData} />
               <RecipePreparation preparationData={preparationData} />

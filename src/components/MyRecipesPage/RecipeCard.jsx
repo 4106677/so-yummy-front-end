@@ -21,7 +21,7 @@ export function RecipeCard({ recipe, onDelete }) {
 
   return (
     <Recipeitem>
-      <Image src={recipe.image} alt={recipe.title} />
+      <Image src={recipe.preview} alt={recipe.title} />
       <Info>
         <TopCard>
           <Title>{recipe.title}</Title>
@@ -29,10 +29,10 @@ export function RecipeCard({ recipe, onDelete }) {
             <Icon id={recipe._id} src={IconDes} alt="Icon" />
           </BtnRemove>
         </TopCard>
-        <Text>{recipe.texst}</Text>
+        <Text>{recipe.description}</Text>
         <BottomCard>
           <Time>{recipe.time} min</Time>
-          <SeeRecipe>See recipe</SeeRecipe>
+          <SeeRecipe to={`/recipe/${recipe._id}`}>See recipe</SeeRecipe>
         </BottomCard>
       </Info>
     </Recipeitem>

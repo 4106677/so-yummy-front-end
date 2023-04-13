@@ -65,6 +65,12 @@ export const HeaderStyledNavLink = styled(NavLink)`
   font-size: 14px;
   line-height: 1.6;
   color: #23262a;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #8baa36;
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -74,9 +80,8 @@ export const HeaderStyledNavLink = styled(NavLink)`
   svg {
     width: 24px;
     height: 24px;
-
   }
-  @media(max-width: 830px){
+  @media (max-width: 830px) {
     margin-right: 9px;
   }
 `;
@@ -86,6 +91,12 @@ export const HeaderStyledUser = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition-property: color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.06);
+  }
   @media (min-width: 768px) {
     margin-right: 0px;
   }
@@ -96,7 +107,7 @@ export const HeaderStyledUser = styled.div`
     width: 44px;
     height: 44px;
     margin-right: 14px;
-    fill: #9c9c9c; 
+    fill: #9c9c9c;
     @media (max-width: 477px) {
       width: 34px;
       height: 34px;
@@ -104,18 +115,17 @@ export const HeaderStyledUser = styled.div`
   }
 `;
 
-
 export const HeaderStyledUserImg = styled.img`
-border-radius: 50px;
-    width: 44px;
-    height: 44px;
-    margin-right: 14px;
-    @media (max-width: 477px) {
-      width: 34px;
-      height: 34px;
+  border-radius: 50px;
+  width: 44px;
+  height: 44px;
+  margin-right: 14px;
+
+  @media (max-width: 477px) {
+    width: 34px;
+    height: 34px;
   }
 `;
-
 
 export const HeaderStyledUserText = styled.p`
   font-family: 'Poppins';

@@ -43,11 +43,7 @@ export const BurgerIcon = () => {
 
 export const CrossIcon = () => {
   return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M14.6663 1.33334L1.33301 14.6667M1.33301 1.33334L14.6663 14.6667"
         stroke="#22252A"
@@ -59,14 +55,9 @@ export const CrossIcon = () => {
   );
 };
 
-
 export const AddPhotoIcon = () => {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="12" fill="#8BAA36" />
       <path
         d="M12 6.75V17.25"
@@ -84,4 +75,4 @@ export const AddPhotoIcon = () => {
       />
     </svg>
   );
-}
+};

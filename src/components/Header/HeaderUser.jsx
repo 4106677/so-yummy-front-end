@@ -13,7 +13,7 @@ import { selectUser } from 'redux/auth/selectors';
 import { Loader } from 'components/Loader/Loader';
 import { getIsLoading } from 'redux/header/selectors';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
@@ -24,7 +24,9 @@ export const HeaderUser = () => {
 
   const isLoading = useSelector(getIsLoading);
 
-  const isLogged = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const navigate = useNavigate();
 
   const openUserModal = e => {
     togleUserModal();
@@ -52,7 +54,7 @@ export const HeaderUser = () => {
 
   return (
     <>
-      {!isLogged && <Navigate to="/" />}
+      {!isLoggedIn && navigate('/')}
       {isLoading && <Loader />}
       <HeaderStyledUser onClick={openUserModal}>
         {avatar ? (

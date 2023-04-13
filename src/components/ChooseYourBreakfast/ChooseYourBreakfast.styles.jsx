@@ -34,7 +34,6 @@ export const ChooseBlock = styled.div`
 `;
 
 export const ChooseText = styled.p`
-  
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -52,8 +51,8 @@ export const ChooseText = styled.p`
 `;
 
 export const ChooseSpan = styled.span`
-  color: #8BAA36;
-  
+  color: #8baa36;
+
   font-style: normal;
   font-weight: 500;
   font-size: 12px;

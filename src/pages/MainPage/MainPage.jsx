@@ -11,7 +11,7 @@ import {
   SpanGr,
   ColorWrap,
 } from './MainPage.styled';
-import { СhooseYourBreakfast } from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
+import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast/ChooseYourBreakfast';
 import { ButtonOthCtgWrap } from 'components/ButtonOthCtg/ButtonOthCtg.styled';
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import { toastWarnEmptyField } from '../../services/toasts';
@@ -48,16 +48,15 @@ export const MainPage = () => {
     }
   };
 
-//   useEffect(() => {
-    
-//       dispatch(getPopularRecipes());
-    
-//   }, [dispatch]);
+  //   useEffect(() => {
 
-//  useEffect(() => {
-//    dispatch(getCategoryList());
-//  }, [dispatch]);
+  //       dispatch(getPopularRecipes());
 
+  //   }, [dispatch]);
+
+  //  useEffect(() => {
+  //    dispatch(getCategoryList());
+  //  }, [dispatch]);
 
   return (
     <>
@@ -73,7 +72,7 @@ export const MainPage = () => {
                 cookbook. You can add your own recipes to save them for the
                 future.
               </MainPageText>
-              <СhooseYourBreakfast />
+              <ChooseYourBreakfast />
               <SearchForm styled={'black'} handleOnSubmit={handleOnSubmit} />
             </MainPageDiv>
           </Container>
@@ -97,7 +96,6 @@ export const MainPage = () => {
           </ButtonOthCtgWrap>
         </Container>
       </ColorWrap>
-      
     </>
   );
 };
