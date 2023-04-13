@@ -12,6 +12,10 @@ import {
   FavoriteInstraction,
   BasketSvgWhite,
   FavoriteBtn,
+  NotFoundPhoto,
+  NotFoundWrap,
+  NotFoundText,
+  FavoriteListWrap,
 } from './FavoriteList.styled';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useSelector, useDispatch } from 'react-redux';
@@ -90,8 +94,17 @@ export const FavoriteList = () => {
   );
 
   return (
-    <>
-      <FavoriteItems>{isMobile ? elementsMob : elementsDesktop}</FavoriteItems>
-    </>
+    <FavoriteListWrap>
+      {favorite.length !== 0 ? (
+        <FavoriteItems>
+          {isMobile ? elementsMob : elementsDesktop}
+        </FavoriteItems>
+      ) : (
+        <NotFoundWrap>
+          <NotFoundPhoto></NotFoundPhoto>
+          <NotFoundText>You don't have favorite recipes...</NotFoundText>
+        </NotFoundWrap>
+      )}
+    </FavoriteListWrap>
   );
 };

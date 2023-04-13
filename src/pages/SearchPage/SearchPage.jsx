@@ -3,15 +3,17 @@ import {
   SearchHeader,
   DecorativeSquare,
   Container,
+  SearchPageWrapper,
 } from './SearchPage.styled';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
+import { searchContext } from '../../components/SearchFormMain/SearchFormMain';
 
 export const SearchPage = () => {
   const [search, setSearch] = useState('');
@@ -22,6 +24,8 @@ export const SearchPage = () => {
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
+  const searchFromMain = useContext(searchContext);
+
   useEffect(() => {
     if (isDesktop) {
       setLimit(12);
@@ -31,9 +35,25 @@ export const SearchPage = () => {
   }, [isDesktop]);
 
   useEffect(() => {
+     const fetchIngridientsFromMain = async () => {
+       try {
+        const data = await getAllRecipesSearchTitle(searchFromMain, page, limit);
+         console.log(data);
+         setRecipes(data);
+       } catch (err) {
+         console.log(err.message);
+       }
+     };
+     if (searchFromMain !== "") {
+       fetchIngridientsFromMain();
+     } else {
+       return;
+     }
+   }, [searchFromMain, page, limit, type]);
+
+  useEffect(() => {
     const fetchIngridients = async () => {
-      try {
-               const data =
+      try { const data =
                  type === 'title'
                    ? await getAllRecipesSearchTitle(search, page, limit)
                    : await getAllRecipesSearchIngredients(search, page, limit);
@@ -94,7 +114,7 @@ export const SearchPage = () => {
     };
   
     return (
-      <>
+      <SearchPageWrapper>
         <Container>
           <DecorativeSquare
             data-1
@@ -117,6 +137,6 @@ export const SearchPage = () => {
             items={recipes}
           />
         </Container>
-      </>
+      </SearchPageWrapper>
     );
 }

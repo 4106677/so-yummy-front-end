@@ -2,7 +2,6 @@ import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
 
-
 export const SearchForm = ({ onSubmit }) => {
   const [state, setState] = useState({ search: "" });
 
@@ -11,7 +10,7 @@ export const SearchForm = ({ onSubmit }) => {
     setState(prevState => { return { ...prevState, [name]: value } })
   };
   
-
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ export const SearchForm = ({ onSubmit }) => {
             <label name="search">
               <Input
                 type="text"
-                placeholder="Beef"
+                placeholder="Enter your search"
                 name="search"
                 onChange={handleInputChange}
                 value={state.search}
