@@ -50,8 +50,7 @@ export const shoppingListSlice = createSlice({
       .addCase(deleteShoppingList.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.shoppingList = state.shoppingList.filter(
-          ({ id }) => id !== payload
-        );
+         ({_id }) => _id !== payload)
       })
       .addCase(deleteShoppingList.rejected, (state, { payload }) => {
         state.loading = false;
