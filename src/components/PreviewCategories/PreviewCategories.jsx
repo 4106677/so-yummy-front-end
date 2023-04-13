@@ -51,7 +51,7 @@ export const PreviewCategories = () => {
           <CardWrapper>
             {meals.slice(0, numCard).map(({ _id, title, preview }) => (
               <CardDish key={_id}>
-                <Link to={`/recipes/byId/${_id}`}>
+                <Link to={`/recipe/${_id}`}>
                   <CardImg src={preview ? preview : NoImage} alt={title} />
                   <CardTitle>{title}</CardTitle>
                 </Link>

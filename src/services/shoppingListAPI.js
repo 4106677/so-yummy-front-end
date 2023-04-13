@@ -23,8 +23,8 @@ export const getAllShoppingList = async () => {
   return data;
 };
 
-export const deleteShoppingList = async id => {
-  const data = await shoppingInstance.delete(`/shopping-list/${id}`);
-  console.log(data);
+export const deleteShoppingList = async _id => {
+  const data = await shoppingInstance.delete(`/shopping-list/${_id}`);
+  console.log(_id);
   return data;
 };
