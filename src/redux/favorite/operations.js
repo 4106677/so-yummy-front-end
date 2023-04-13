@@ -26,7 +26,7 @@ export const addFavoriteRecipe = createAsyncThunk(
 );
 
 export const deleteFavoriteRecipe = createAsyncThunk(
-  'favorite/delete',
+  'favorite/deleteFavoriteRecipe',
   async (id, { rejectWithValue }) => {
     try {
       await api.deleteFavoriteList(id);
