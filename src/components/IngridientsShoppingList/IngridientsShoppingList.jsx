@@ -24,16 +24,15 @@ export const IngridientsShoppingList = () => {
     }, [dispatch]);
     
   console.log(shoppingList);
+
   
-  let items = shoppingList.length > 5 ? shoppingList.slice(0, 5) : shoppingList;
-  
- const elements = items.map(item => {
+ const elements = shoppingList.map(item => {
    const { _id, ingredientInfo, measure } = item;
-     const thb =
-       (ingredientInfo && ingredientInfo[0] && ingredientInfo[0].thb) || '';
-     const ttl =
+   const thb =
+     (ingredientInfo && ingredientInfo[0] && ingredientInfo[0].thb) || '';
+   const ttl =
      (ingredientInfo && ingredientInfo[0] && ingredientInfo[0].ttl) || '';
-   
+
    return (
      <ShopItem key={_id}>
        {thb ? (
@@ -51,8 +50,6 @@ export const IngridientsShoppingList = () => {
      </ShopItem>
    );
  });
-  
-  console.log(elements);
 
 
   return (
