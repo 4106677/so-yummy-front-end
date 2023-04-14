@@ -54,7 +54,6 @@ export const HeaderLogoutModal = ({ onClose }) => {
             <HeaderLogoutModalLogoutButtonStyled
               onClick={() => {
                 dispatch(logOut());
-                navigate('/');
               }}
             >
               Log out

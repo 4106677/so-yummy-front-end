@@ -8,9 +8,6 @@ import { RecipeIngridientsList } from 'components/RecipeIngridientsList/RecipeIn
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import { Container } from 'components/Container/Container';
 import { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { selectUser } from 'redux/auth/selectors';
-// import { PageLayout } from 'components/Layout/PageLayout/PageLayout';
 
 const BASE_URL = 'https://recipes-becend-49lg.onrender.com/';
 
@@ -95,24 +92,8 @@ const RecipePage = () => {
           </>
         )
       )}
-      {/* <PageLayout title={null}> */}
-      {/* // уточнить как приминить этот компонент к моей странице*/}
-      {/* </PageLayout> */}
     </>
   );
 };
-
-// const ingridientsData = await Promise.all(
-//   ingredients.map(async item => {
-//     const response = await getIngredientByID(item.id);
-//     const data = {
-//       measure: item.measure,
-//       name: response.ttl,
-//       img: response.thb,
-//       id: response._id,
-//     };
-//     return data;
-//   })
-// );
 
 export default RecipePage;

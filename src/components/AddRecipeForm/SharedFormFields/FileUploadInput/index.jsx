@@ -13,13 +13,8 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
 
   React.useEffect(() => {
     if (isBase64) {
-      // once it's base64 convert it to Blob format
-      fileService.base64ToBlob(field.value).then((blb) => {
-        // once we've got Blob from image
-        // convert it to imageUrl to be able to set it in img.src
+      fileService.base64ToBlob(field.value).then(blb => {
         const imageUrl = fileService.convertToImageUrl(blb);
-
-        // updating local state
         setImage(imageUrl);
       });
     }
@@ -30,7 +25,7 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
 
     const options = {
       maxSizeMB: 0.2,
-      maxWidthOrHeight: 600
+      maxWidthOrHeight: 600,
     };
     let compressedFile;
     try {
@@ -52,9 +47,6 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
     >
       <Styled.FileInput type="file" accept="image/*" onChange={onFileSelect} />
       {!image ? <Styled.FileUploadIcon /> : null}
-
-      {/* {image ? <Styled.Image src={image} alt="Dish sample" /> : null} */}
-
       {touched && error && <Styled.Error>{error}</Styled.Error>}
     </Styled.Wrapper>
   );
@@ -62,5 +54,5 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
 
 FileUploadInput.propTypes = {
   name: PropTypes.string.isRequired,
-  mb: PropTypes.string
+  mb: PropTypes.string,
 };

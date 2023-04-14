@@ -12,7 +12,6 @@ import {
   deleteFavoriteRecipe,
 } from 'redux/favorite/operations';
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectUser } from 'redux/auth/selectors';
 import { getFavorites } from 'redux/favorite/selectors';
 
 export const RecipePageHero = ({ heroData, recipeId }) => {

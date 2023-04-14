@@ -16,17 +16,15 @@ export const FooterSection = styled.footer`
   @media (min-width: 1440px) {
     min-width: 1440px;
     padding: 64px 100px 0px;
-
   }
 `;
 
 export const FooterWrap = styled.div`
- width: 100vw;
- background-color: #22252a;
-`
+  width: 100vw;
+  background-color: #22252a;
+`;
 
 export const ARRdiv = styled.div`
-  // width: 228px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 28px;
@@ -38,8 +36,7 @@ export const ARRdiv = styled.div`
   background-image: url(${footerBgImage});
   background-position: bottom right;
   background-repeat: no-repeat;
-
-`
+`;
 export const ARR = styled.span`
   font-family: 'Poppins';
   font-style: normal;
@@ -47,18 +44,18 @@ export const ARR = styled.span`
   font-size: 10px;
   line-height: 10px;
   letter-spacing: -0.01em;
-  color: #22252A;
+  color: #22252a;
   opacity: 0.5;
   margin-right: 40px;
-`
+`;
 
 export const ToS = styled.span`
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 10px;
-line-height: 10px;
-letter-spacing: -0.01em;
-color: #22252A;
-opacity: 0.5;
-`
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: -0.01em;
+  color: #22252a;
+  opacity: 0.5;
+`;

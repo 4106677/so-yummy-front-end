@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 
-// components
 import { BlockTitle } from '../SharedFormFields/BlockTitle';
 import { Counter } from './Counter';
 
@@ -16,17 +15,21 @@ export function RecipeIngredients({
   inputOptionList = [],
   inputDatalistKeyExtractor,
   isSubmit,
-  onDatalistError
+  onDatalistError,
 }) {
   const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
 
-  // handlers
   function onQuanityChange(updatedQuantity) {
     if (updatedQuantity > actualQuatity) {
       setValue([
-        { id: uuidv4(), amount: '', ingredient: '', measurementUnit: selectOptionList[0] },
-        ...fields.value
+        {
+          id: uuidv4(),
+          amount: '',
+          ingredient: '',
+          measurementUnit: selectOptionList[0],
+        },
+        ...fields.value,
       ]);
     } else {
       const filedValuesArray = [...fields.value];
@@ -36,10 +39,9 @@ export function RecipeIngredients({
   }
 
   function onDelete(id) {
-    setValue(fields.value.filter((i) => i.id !== id));
+    setValue(fields.value.filter(i => i.id !== id));
   }
 
-  // conditions
   const hasFields = !!fields.value.length;
 
   return (
@@ -55,14 +57,11 @@ export function RecipeIngredients({
             const zIndex = actualQuatity * 3;
 
             function handleValueChange(key, id, value, { error } = {}) {
-              const updatedFields = fields.value.map((fld) => {
+              const updatedFields = fields.value.map(fld => {
                 const isIngredientField = key === 'ingredient';
 
                 if (fld.id === id) {
                   const newField = { ...fld, [key]: value };
-
-                  // here we must set unique id coming from server
-                  // but it is onle for ingredient field
                   if (isIngredientField) {
                     newField.id = id;
                     console.log('error -->', error);
@@ -90,13 +89,25 @@ export function RecipeIngredients({
                 inputDatalistKeyExtractor={inputDatalistKeyExtractor}
                 inputHandlers={{
                   inputValue: ingredient,
-                  onInputChange: handleValueChange.bind(null, 'ingredient', field.id)
+                  onInputChange: handleValueChange.bind(
+                    null,
+                    'ingredient',
+                    field.id
+                  ),
                 }}
                 selectHandlers={{
                   inputValue: amount,
                   selectValue: measurementUnit,
-                  onInputChange: handleValueChange.bind(null, 'amount', field.id),
-                  onSelectChange: handleValueChange.bind(null, 'measurementUnit', field.id)
+                  onInputChange: handleValueChange.bind(
+                    null,
+                    'amount',
+                    field.id
+                  ),
+                  onSelectChange: handleValueChange.bind(
+                    null,
+                    'measurementUnit',
+                    field.id
+                  ),
                 }}
               />
             );
@@ -110,5 +121,5 @@ export function RecipeIngredients({
 RecipeIngredients.propTypes = {
   name: PropTypes.string.isRequired,
   selectOptionList: PropTypes.array,
-  inputOptionList: PropTypes.array
+  inputOptionList: PropTypes.array,
 };
