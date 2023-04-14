@@ -13,7 +13,7 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
 
   React.useEffect(() => {
     if (isBase64) {
-      fileService.base64ToBlob(field.value).then(blb => {
+      fileService.base64ToBlob(field.value).then((blb) => {
         const imageUrl = fileService.convertToImageUrl(blb);
         setImage(imageUrl);
       });
@@ -24,8 +24,8 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
     const [file] = event.currentTarget.files;
 
     const options = {
-      maxSizeMB: 0.2,
-      maxWidthOrHeight: 600,
+      maxSizeMB: 0.05,
+      maxWidthOrHeight: 600
     };
     let compressedFile;
     try {
@@ -35,6 +35,7 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
     }
 
     const base64img = await fileService.convertToBase64(compressedFile);
+    console.log('base64img -->', base64img);
     setValue(base64img);
   }
 
@@ -54,5 +55,5 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
 
 FileUploadInput.propTypes = {
   name: PropTypes.string.isRequired,
-  mb: PropTypes.string,
+  mb: PropTypes.string
 };
