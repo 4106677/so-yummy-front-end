@@ -7,9 +7,9 @@ import notFoundSearchDesk from '../../images/SearchPage/search_not_found_desk_1x
 import notFoundSearchDeskRetina from '../../images/SearchPage/search_not_found_desk_2x.png';
 
 export const IngredientShoppingListWrap = styled.div`
-  padding-bottom: 6.25rem;
+  padding-bottom: 0;
   @media screen and (min-width: 768px) {
-    padding-bottom: 12.5rem;
+    padding-bottom: 0;
   }
 `;
 
