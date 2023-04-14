@@ -25,7 +25,7 @@ export const HeaderUser = () => {
   const { name, avatar } = useSelector(selectUser);
   // const dispatch = useDispatch();
 
-  console.log(name, avatar);
+  // console.log(name, avatar);
 
   // useEffect(() => {
   //   dispatch(current());

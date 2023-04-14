@@ -13,10 +13,6 @@ import {
 } from './WellcomPage.styled';
 import LogoSVG from '../../images/Logo/logo.svg';
 
-const handleClick = () => {
-  console.log('Click');
-};
-
 export const WellcomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,11 +37,11 @@ export const WellcomePage = () => {
             and retrieve your own recipes at any time.
           </P>
           <div>
-            <StyledLink type="button" onClick={handleClick} to="/register">
+            <StyledLink type="button" to="/register">
               Registration
             </StyledLink>
 
-            <StyledLinkTransp type="button" onClick={handleClick} to="/login">
+            <StyledLinkTransp type="button" to="/login">
               Sign in
             </StyledLinkTransp>
           </div>

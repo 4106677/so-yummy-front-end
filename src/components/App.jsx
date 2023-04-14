@@ -71,12 +71,11 @@ export const App = () => {
             />
           }
         />
-        <Route path="/" element={<Layout />}>
-          <Route
-            path="main"
-            index
-            element={<PrivateRoute component={<MainPage />} />}
-          />
+        <Route
+          path="/"
+          element={<PrivateRoute component={<Layout />} redirectTo="/" />}
+        >
+          <Route path="main" index element={<MainPage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="recipe/:recipeId" element={<RecipePage />} />
           <Route path="add-recipe" element={<AddRecipePage />} />
