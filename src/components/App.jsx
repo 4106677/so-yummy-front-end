@@ -89,7 +89,7 @@ export const App = () => {
         </Route>
       </Routes>
       <GlobalStyle />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} limit={1} />
       {/* //   <Routes>
     //     <Route path="/" element={<WellcomePage />}></Route>
     //     <Route path="/register" element={<RegisterPage />}></Route>
