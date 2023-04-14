@@ -4,10 +4,8 @@ import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://recipes-becend-49lg.onrender.com/';
 
-export const token = {
-  setToken(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
+export const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
@@ -21,7 +19,7 @@ export const register = createAsyncThunk(
       const { data } = await axios.post('/auth/register', user);
       console.log('DATA', data);
       toast.success(`Welcome, ${data.user.name}!`);
-      token.setToken(data.token);
+      setAuthHeader(data.token);
       return data;
     } catch (error) {
       if (error.response.status === 400 || error.response) {
@@ -38,7 +36,7 @@ export const login = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/login', user);
       toast.success(`Welcome back, ${data.user.name}!`);
-      token.setToken(data.token);
+      setAuthHeader(data.token);
       return data;
     } catch (error) {
       if (error.response.status === 400 || error.response) {
@@ -58,7 +56,7 @@ export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
   const { auth } = thunkAPI.getState();
   const token = auth.token;
   if (!token) return thunkAPI.rejectWithValue();
-  token.setToken(token);
+  setAuthHeader(token);
   try {
     const { data } = await axios.get('/auth/current');
     return data;
@@ -83,7 +81,7 @@ export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   if (!token) return thunkAPI.rejectWithValue('No available token');
 
   try {
-    token.setToken(token);
+    setAuthHeader(token);
     const res = await axios.get('/users/current');
     return res.data;
   } catch (error) {

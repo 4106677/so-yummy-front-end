@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginWithGoogle } from '../../redux/auth/slice';
-import { token } from '../../redux/auth/operations';
+import { setAuthHeader } from '../../redux/auth/operations';
 import {
   Wrapper,
   H1,
@@ -13,10 +13,6 @@ import {
 } from './WellcomPage.styled';
 import LogoSVG from '../../images/Logo/logo.svg';
 
-const handleClick = () => {
-  console.log('Click');
-};
-
 export const WellcomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,7 +20,7 @@ export const WellcomePage = () => {
     const params = Object.fromEntries(urlSearchParams.entries());
     const updToken = params.token;
     if (updToken) {
-      token.setToken(updToken);
+      setAuthHeader(updToken);
       dispatch(loginWithGoogle(updToken));
     }
   }, [dispatch]);
@@ -41,11 +37,11 @@ export const WellcomePage = () => {
             and retrieve your own recipes at any time.
           </P>
           <div>
-            <StyledLink type="button" onClick={handleClick} to="/register">
+            <StyledLink type="button" to="/register">
               Registration
             </StyledLink>
 
-            <StyledLinkTransp type="button" onClick={handleClick} to="/login">
+            <StyledLinkTransp type="button" to="/login">
               Sign in
             </StyledLinkTransp>
           </div>
