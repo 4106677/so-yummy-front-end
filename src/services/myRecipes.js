@@ -12,7 +12,7 @@ export const getAllRecipesSearch = async () => {
   const { data } = await MyRecipesBase.get(
     `/recipes/ownRecipes/getRecipes?type=title&pages=1&limit=4`
   );
-  console.log(data);
+
   return data;
 };
 
@@ -20,6 +20,6 @@ export const DeleteMyRecipeById = async id => {
   const { data } = await MyRecipesBase.delete(
     `/recipes/ownRecipes/removeRecipe/${id}`
   );
-  console.log(data);
+
   return data;
 };
