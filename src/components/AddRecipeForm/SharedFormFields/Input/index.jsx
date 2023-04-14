@@ -50,8 +50,11 @@ export const Input = ({
     } else {
       if (!getIsDropdownActive()) showDropdown();
     }
+    const id = dataListOptions.find(
+      ({ ingredient }) => ingredient.toLowerCase() === value.toLowerCase()
+    );
 
-    onInputChange(value, datalist.length === 0);
+    onInputChange(value, datalist.length === 0, id);
   }
 
   function handleBlur() {

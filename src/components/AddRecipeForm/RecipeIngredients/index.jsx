@@ -62,10 +62,11 @@ export function RecipeIngredients({
                 if (fld.id === id) {
                   const newField = { ...fld, [key]: value };
                   if (isIngredientField) {
-                    newField.id = ingredientId;
+                    if (ingredientId) {
+                      newField.id = ingredientId;
+                    }
                     onDatalistError(err);
                   }
-                  console.log('newField.id -->', newField.id);
                   return newField;
                 }
 
