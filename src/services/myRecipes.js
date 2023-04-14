@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { setToken } from 'redux/auth/operations';
 
 import { getToken } from './getToken';
 
