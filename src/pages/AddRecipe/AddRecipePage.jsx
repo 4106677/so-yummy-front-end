@@ -65,7 +65,6 @@ function AddRecipePage({ heading = defaultHeading }) {
   }
 
   const [popularRecipes, ingredients, categories] = data;
-  console.log(ingredients?.value);
 
   return (
     <PageLayout title={heading}>
