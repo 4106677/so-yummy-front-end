@@ -30,7 +30,7 @@ export function RecipeCard({ recipe, onDelete }) {
         </TopCard>
         <Text>{recipe.description}</Text>
         <BottomCard>
-          <Time>{recipe.time} min</Time>
+          <Time>{recipe.time}</Time>
           <SeeRecipe to={`/recipe/${recipe._id}`}>See recipe</SeeRecipe>
         </BottomCard>
       </Info>
