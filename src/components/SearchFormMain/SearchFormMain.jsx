@@ -6,10 +6,13 @@ import { setSearch } from '../../redux/search/searchSlice';
 import { useNavigate } from 'react-router-dom';
 import { toastWarnEmptyField } from '../../services/toasts';
 
+
+
 export const SearchForm = ({ styled}) => {
   const dispatch = useDispatch();
   const [newQuery, setNewQuery] = useState('');
   const navigate = useNavigate();
+
 
   const validateSearchQuery = value => {
     let error;
@@ -29,14 +32,16 @@ export const SearchForm = ({ styled}) => {
     window.localStorage.setItem('search', newQuery);
   }, [dispatch, newQuery]);
 
-  const handleSubmit = (e, newQuery, type) => {
-    e.preventDefault();
-    if (newQuery === '') {
-      return toastWarnEmptyField(newQuery);
-    } else {
-      navigate(`/search?query=${newQuery}&type=${type}`);
-    }
+   const handleSubmit = e => {
+     e.preventDefault();
+     if (newQuery) {
+       const type = 'title';
+       navigate(`/search?query=${newQuery}&type=${type}`);
+     } else {
+       toastWarnEmptyField(newQuery);
+     }
   };
+  
 
   return (
     <SearchBlock>

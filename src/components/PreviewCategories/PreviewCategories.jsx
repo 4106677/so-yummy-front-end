@@ -45,22 +45,23 @@ export const PreviewCategories = () => {
 
   return (
     <CategoryList>
-      {categories.map(({ _id, meals }) => (
-        <CategoryItem key={_id}>
-          <TitlePrew>{_id}</TitlePrew>
-          <CardWrapper>
-            {meals.slice(0, numCard).map(({ _id, title, preview }) => (
-              <CardDish key={_id}>
-                <Link to={`/recipe/${_id}`}>
-                  <CardImg src={preview ? preview : NoImage} alt={title} />
-                  <CardTitle>{title}</CardTitle>
-                </Link>
-              </CardDish>
-            ))}
-          </CardWrapper>
-          <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
-        </CategoryItem>
-      ))}
+      {categories.length !== 0 &&
+        categories.map(({ _id, meals }) => (
+          <CategoryItem key={_id}>
+            <TitlePrew>{_id}</TitlePrew>
+            <CardWrapper>
+              {meals.slice(0, numCard).map(({ _id, title, preview }) => (
+                <CardDish key={_id}>
+                  <Link to={`/recipe/${_id}`}>
+                    <CardImg src={preview ? preview : NoImage} alt={title} />
+                    <CardTitle>{title}</CardTitle>
+                  </Link>
+                </CardDish>
+              ))}
+            </CardWrapper>
+            <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
+          </CategoryItem>
+        ))}
     </CategoryList>
   );
 };
