@@ -9,9 +9,9 @@ import notFoundSearchDesk from '../../images/SearchPage/search_not_found_desk_1x
 import notFoundSearchDeskRetina from '../../images/SearchPage/search_not_found_desk_2x.png';
 
 export const FavoriteListWrap = styled.div`
-  padding-bottom: 6.25rem;
+  padding-bottom: 0;
   @media screen and (min-width: 768px) {
-    padding-bottom: 12.5rem;
+    padding-bottom: 0;
   }
 `;
 
@@ -112,6 +112,7 @@ export const FavoriteDescription = styled.p`
 `;
 export const FavoriteTextPartWrap = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const FavoriteTimeWrap = styled.div`

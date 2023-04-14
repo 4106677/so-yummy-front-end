@@ -37,10 +37,17 @@ export const FavoriteList = () => {
       useEffect(() => {
         dispatch(fetchFavoriteRecipe());
       }, [dispatch]);
+  
+    let items = favorite.length > 4 ? favorite.slice(0, 4) : favorite;
 
 
-  const elementsMob = favorite.map(
-    function ({ _id, title, preview, description, time }) {
+  const elementsMob = items.map(function ({
+    _id,
+    title,
+    preview,
+    description,
+    time,
+  }) {
     return (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />
@@ -59,10 +66,9 @@ export const FavoriteList = () => {
         </FavoriteTextPartWrap>
       </FavoriteCard>
     );
-  }
-  );
+  });
 
-  const elementsDesktop = favorite.map(
+  const elementsDesktop = items.map(
     ({ _id, title, preview, description, time, instructions }) => (
       <FavoriteCard key={_id}>
         <FavoriteImage src={preview} alt="dish" />
@@ -84,8 +90,9 @@ export const FavoriteList = () => {
               to={`/recipe/${_id}`}
               onClick={() => {
                 window.scrollTo(0, 0);
-              }}>
-            <FavoriteBtn>See recipe</FavoriteBtn>
+              }}
+            >
+              <FavoriteBtn>See recipe</FavoriteBtn>
             </Link>
           </FavoriteTimeWrap>
         </FavoriteTextPartWrap>
