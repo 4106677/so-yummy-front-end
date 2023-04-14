@@ -8,6 +8,10 @@ import {
   ShopName,
   ShopQuantity,
   ShopBtn,
+  NotFoundPhoto,
+  NotFoundWrap,
+  NotFoundText,
+  IngredientShoppingListWrap,
 } from './IngridientsShoppingList.styled';
 import { ReactComponent as Default } from "../../images/ShoppingList/default.svg";
 import { getShoppingList } from 'redux/shoppingList/selectors';
@@ -53,17 +57,24 @@ export const IngridientsShoppingList = () => {
 
 
   return (
-    <>
-      <ShopWrapper>
-        <ShopTitle>Product</ShopTitle>
-        <ShopWrap>
-          <ShopTitle>Number</ShopTitle>
-          <ShopTitle>Remove</ShopTitle>
-        </ShopWrap>
-      </ShopWrapper>
-      <ShopListWrap>
-        { elements}
-      </ShopListWrap>
-    </>
+    <IngredientShoppingListWrap>
+      {shoppingList.length !== 0 ? (
+        <div>
+          <ShopWrapper>
+            <ShopTitle>Product</ShopTitle>
+            <ShopWrap>
+              <ShopTitle>Number</ShopTitle>
+              <ShopTitle>Remove</ShopTitle>
+            </ShopWrap>
+          </ShopWrapper>
+          <ShopListWrap>{elements}</ShopListWrap>
+        </div>
+      ) : (
+        <NotFoundWrap>
+          <NotFoundPhoto></NotFoundPhoto>
+          <NotFoundText>Your shopping list is empty...</NotFoundText>
+        </NotFoundWrap>
+      )}
+    </IngredientShoppingListWrap>
   ); 
 }; 

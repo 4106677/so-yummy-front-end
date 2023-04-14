@@ -13,8 +13,23 @@ import { Link } from 'react-router-dom';
 
 
 export const SearchedRecipesList = ({ items = [] }) => {
- 
- 
+ console.log(items);
+ items.map(({ _id, preview, title }) => (
+    <Link
+      key={_id}
+      to={`/recipe/${_id}`}
+      onClick={() => {
+        window.scrollTo(0, 0);
+      }}
+    >
+      <RecipeWrap key={_id}>
+        <a href={preview}>
+          <Image src={preview ? preview : defaultPic} alt="dish" />
+        </a>
+        <RecipeTitle>{title}</RecipeTitle>
+      </RecipeWrap>
+    </Link>
+  ));
     
   return (
     <SearchListWrap>

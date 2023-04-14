@@ -66,11 +66,16 @@ export const Input = styled(Field)`
   height: 3.3125rem;
   width: 16.4375rem;
 
+  &::placeholder {
+    font-size: 14px;
+  }
+
   @media (min-width: 768px) {
     height: 3.5625rem;
     width: 20.25rem;
     padding: 0 0 0 38px;
     font-size: 14px;
+
   }
 
   @media (min-width: 1440px) {
@@ -78,5 +83,9 @@ export const Input = styled(Field)`
     width: 28.875rem;
     padding: 0 0 0 48px;
     font-size: 16px;
+
+    &::placeholder {
+      font-size: 20px;
+    }
   }
 `;

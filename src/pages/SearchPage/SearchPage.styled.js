@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const SearchPageWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
+`;
+
 export const Container = styled.div`
   max-width: 768px;
   padding: 0 16px;

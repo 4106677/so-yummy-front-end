@@ -27,7 +27,7 @@ export const SearchForm = ({ onSubmit}) => {
     setSearchParams({ query: value});
   };
   
-
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +48,7 @@ export const SearchForm = ({ onSubmit}) => {
             <label name="search">
               <Input
                 type="text"
-                
+                placeholder="Enter your search"
                 name="search"
                 onChange={handleInputChange}
                 value={state.search}

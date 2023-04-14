@@ -2,7 +2,8 @@ import { SearchBar } from "components/SearchBar/SearchBar";
 import {
   SearchHeader,
   DecorativeSquare,
-  
+  Container,
+  SearchPageWrapper,
 } from './SearchPage.styled';
 import { Container } from 'components/Container/Container';
 
@@ -36,8 +37,7 @@ export const SearchPage = () => {
 
   useEffect(() => {
     const fetchIngridients = async () => {
-      try {
-               const data =
+      try { const data =
                  type === 'title'
                    ? await getAllRecipesSearchTitle(search, page, limit)
                    : await getAllRecipesSearchIngredients(search, page, limit);
@@ -98,7 +98,7 @@ export const SearchPage = () => {
     };
   
     return (
-      <>
+      <SearchPageWrapper>
         <Container>
           <DecorativeSquare
             data-1
@@ -122,6 +122,6 @@ export const SearchPage = () => {
             items={recipes}
           />
         </Container>
-      </>
+      </SearchPageWrapper>
     );
 }
