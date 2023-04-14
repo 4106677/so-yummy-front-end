@@ -13,9 +13,8 @@ export function RecipeIngredients({
   name,
   selectOptionList = [],
   inputOptionList = [],
-  inputDatalistKeyExtractor,
   isSubmit,
-  onDatalistError,
+  onDatalistError
 }) {
   const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
@@ -27,9 +26,9 @@ export function RecipeIngredients({
           id: uuidv4(),
           amount: '',
           ingredient: '',
-          measurementUnit: selectOptionList[0],
+          measurementUnit: selectOptionList[0]
         },
-        ...fields.value,
+        ...fields.value
       ]);
     } else {
       const filedValuesArray = [...fields.value];
@@ -39,7 +38,7 @@ export function RecipeIngredients({
   }
 
   function onDelete(id) {
-    setValue(fields.value.filter(i => i.id !== id));
+    setValue(fields.value.filter((i) => i.id !== id));
   }
 
   const hasFields = !!fields.value.length;
@@ -56,18 +55,17 @@ export function RecipeIngredients({
             const { ingredient, amount, measurementUnit } = field;
             const zIndex = actualQuatity * 3;
 
-            function handleValueChange(key, id, value, { error } = {}) {
-              const updatedFields = fields.value.map(fld => {
+            function handleValueChange(key, id, value, err, ingredientId) {
+              const updatedFields = fields.value.map((fld) => {
                 const isIngredientField = key === 'ingredient';
 
                 if (fld.id === id) {
                   const newField = { ...fld, [key]: value };
                   if (isIngredientField) {
-                    newField.id = id;
-                    console.log('error -->', error);
-                    onDatalistError(error);
+                    newField.id = ingredientId;
+                    onDatalistError(err);
                   }
-
+                  console.log('newField.id -->', newField.id);
                   return newField;
                 }
 
@@ -86,28 +84,18 @@ export function RecipeIngredients({
                 inputOptionList={inputOptionList}
                 error={error && error[idx]}
                 isSubmit={isSubmit}
-                inputDatalistKeyExtractor={inputDatalistKeyExtractor}
                 inputHandlers={{
                   inputValue: ingredient,
-                  onInputChange: handleValueChange.bind(
-                    null,
-                    'ingredient',
-                    field.id
-                  ),
+                  onInputChange: (value, err, id) =>
+                    handleValueChange('ingredient', field.id, value, err, id)
                 }}
                 selectHandlers={{
                   inputValue: amount,
                   selectValue: measurementUnit,
-                  onInputChange: handleValueChange.bind(
-                    null,
-                    'amount',
-                    field.id
-                  ),
-                  onSelectChange: handleValueChange.bind(
-                    null,
-                    'measurementUnit',
-                    field.id
-                  ),
+                  onInputChange: (value, err, id) =>
+                    handleValueChange('amount', field.id, value, err, id),
+                  onSelectChange: (value, err, id) =>
+                    handleValueChange('measurementUnit', field.id, value, err, id)
                 }}
               />
             );
@@ -121,5 +109,5 @@ export function RecipeIngredients({
 RecipeIngredients.propTypes = {
   name: PropTypes.string.isRequired,
   selectOptionList: PropTypes.array,
-  inputOptionList: PropTypes.array,
+  inputOptionList: PropTypes.array
 };

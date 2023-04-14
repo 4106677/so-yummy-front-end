@@ -17,7 +17,7 @@ const initialValues = {
   category: '',
   time: '5min',
   ingredients: [],
-  instructions: '',
+  instructions: ''
 };
 
 export function AddRecipeForm({ categories, ingredients, onSubmit }) {
@@ -33,7 +33,7 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
       if (!recipe[key]) delete recipe[key];
     }
 
-    recipe.ingredients = recipe.ingredients.map(product => {
+    recipe.ingredients = recipe.ingredients.map((product) => {
       delete product.ingredient;
       const { amount, measurementUnit, ...restIngredient } = product;
 
@@ -106,7 +106,7 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                   '3h 45min',
                   '3h 50min',
                   '3h 55min',
-                  '4h',
+                  '4h'
                 ]}
               />
 
@@ -115,16 +115,12 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                 selectOptionList={['tbs', 'tsp', 'kg', 'g']}
                 inputOptionList={ingredients}
                 isSubmit={isSubmit}
-                inputDatalistKeyExtractor={option => option.ingredient}
-                onDatalistError={er => setDatalistError(er)}
+                onDatalistError={(er) => setDatalistError(er)}
               />
 
               <RecipePreparation name="instructions" />
 
-              <Styled.SubmitFormButton
-                type="submit"
-                onClick={() => setIsSubmit(true)}
-              >
+              <Styled.SubmitFormButton type="submit" onClick={() => setIsSubmit(true)}>
                 Add
               </Styled.SubmitFormButton>
             </Styled.FormikForm>
@@ -137,5 +133,5 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
 
 AddRecipeForm.propTypes = {
   categories: PropTypes.array,
-  ingredients: PropTypes.arrayOf(PropTypes.shape),
+  ingredients: PropTypes.arrayOf(PropTypes.shape)
 };

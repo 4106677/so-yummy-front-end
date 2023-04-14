@@ -24,8 +24,7 @@ export function IngredientField({
   inputOptionList = [],
   zIndex,
   error = {},
-  isSubmit,
-  inputDatalistKeyExtractor
+  isSubmit
 }) {
   const selectFieldHandlers = {
     selectValue: selectHandlers?.selectValue,
@@ -38,17 +37,13 @@ export function IngredientField({
     onInputChange: inputHandlers?.onInputChange
   };
 
-  const datalist = inputOptionList.map((option) =>
-    inputDatalistKeyExtractor ? inputDatalistKeyExtractor(option) : option
-  );
-
   return (
     <Styled.FieldWrapper gap={gap}>
       <Styled.InputsWrapper>
         <Input
           asFieldGroup
           withDatalist
-          dataListOptions={datalist}
+          dataListOptions={inputOptionList}
           fieldGroupHandlers={inputFieldHandlers}
           placeholder="Enter ingredient"
           variant="filled"
