@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Label = styled.label`
   font-family: 'Poppins';
   font-weight: 400;
@@ -32,8 +33,7 @@ export const SelectWrapper = styled.div`
     gap: 1.125rem;
   }
 `;
-
-export const Select = styled.select`
+/*export const SelectForm = styled.select`
   background-color: #ececec;
   outline: none;
   border-radius: 6px 6px 6px 6px;
@@ -75,4 +75,4 @@ export const Option = styled.option`
   @media (min-width: 768px) {
     font-size: 14px;
   }
-`;
+`;*/
