@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginWithGoogle } from '../../redux/auth/slice';
-import { token } from '../../redux/auth/operations';
+import { setAuthHeader } from '../../redux/auth/operations';
 import {
   Wrapper,
   H1,
@@ -24,7 +24,7 @@ export const WellcomePage = () => {
     const params = Object.fromEntries(urlSearchParams.entries());
     const updToken = params.token;
     if (updToken) {
-      token.setToken(updToken);
+      setAuthHeader(updToken);
       dispatch(loginWithGoogle(updToken));
     }
   }, [dispatch]);

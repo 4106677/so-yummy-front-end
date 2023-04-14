@@ -10,6 +10,8 @@ import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+
+// import { current } from '../../redux/auth/operations';
 // import { Loader } from 'components/Loader/Loader';
 // import { getIsLoading } from 'redux/header/selectors';
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
@@ -21,6 +23,13 @@ export const HeaderUser = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const { name, avatar } = useSelector(selectUser);
+  // const dispatch = useDispatch();
+
+  console.log(name, avatar);
+
+  // useEffect(() => {
+  //   dispatch(current());
+  // }, [dispatch]);
 
   // const isLoading = useSelector(getIsLoading);
 
