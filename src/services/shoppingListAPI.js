@@ -19,12 +19,10 @@ export const addShoppingList = async data => {
 
 export const getAllShoppingList = async () => {
   const data = await shoppingInstance.get('/shopping-list');
-  console.log(data);
   return data;
 };
 
 export const deleteShoppingList = async _id => {
   const data = await shoppingInstance.delete(`/shopping-list/${_id}`);
-  console.log(_id);
   return data;
 };

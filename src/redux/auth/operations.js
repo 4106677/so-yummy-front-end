@@ -17,7 +17,6 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/register', user);
-      console.log('DATA', data);
       toast.success(`Welcome, ${data.user.name}!`);
       setAuthHeader(data.token);
       return data;

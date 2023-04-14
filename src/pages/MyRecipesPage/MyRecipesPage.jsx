@@ -10,7 +10,7 @@ import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
 import { checkWebpSupport } from 'components/Utils/checkWebpSupport';
 import { DeleteMyRecipeById } from '../../services/myRecipes';
 
-export const MyRecipePage = () => {
+const MyRecipePage = () => {
   const sectionRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -31,3 +31,5 @@ export const MyRecipePage = () => {
     </Section>
   );
 };
+
+export default MyRecipePage;

@@ -1,4 +1,4 @@
-import { SearchBar } from "components/SearchBar/SearchBar";
+import { SearchBar } from 'components/SearchBar/SearchBar';
 import {
   SearchHeader,
   DecorativeSquare,
@@ -14,15 +14,12 @@ import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
 
-
-export const SearchPage = () => {
-  
+const SearchPage = () => {
   const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [type, setType] = useState('query');
-   
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -36,12 +33,13 @@ export const SearchPage = () => {
 
   useEffect(() => {
     const fetchIngridients = async () => {
-      try { const data =
-                 type === 'title'
-                   ? await getAllRecipesSearchTitle(search, page, limit)
-                   : await getAllRecipesSearchIngredients(search, page, limit);
-        
-                               setRecipes(data);
+      try {
+        const data =
+          type === 'title'
+            ? await getAllRecipesSearchTitle(search, page, limit)
+            : await getAllRecipesSearchIngredients(search, page, limit);
+
+        setRecipes(data);
 
         if (data.length === 0) {
           return toast.warn("We couldn't find result on your request.", {
@@ -66,7 +64,6 @@ export const SearchPage = () => {
             autoClose: 3000,
             theme: 'colored',
           });
-        
       } catch (err) {
         console.log(err.message);
       }
@@ -87,40 +84,42 @@ export const SearchPage = () => {
         }
       );
     }
-    
+
     setPage(1);
     setSearch(value.search);
   };
 
-    const handleTypeChange = newType => {
-      setType(newType);
-    };
-  
-    return (
-      <SearchPageWrapper>
-        <Container>
-          <DecorativeSquare
-            data-1
-            color="#8BAA36"
-            top="3.375rem"
-            left="14.75rem"
-          />
-          <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
-          <DecorativeSquare
-            data-3
-            color="#8BAA36"
-            top="4.125rem"
-            right="4.5rem"
-          />
-          <SearchHeader>Search</SearchHeader>
-          <SearchBar
-            onSubmit={updateSearch}
-            type={type}
-            search={search}
-            onChange={handleTypeChange}
-            items={recipes}
-          />
-        </Container>
-      </SearchPageWrapper>
-    );
-}
+  const handleTypeChange = newType => {
+    setType(newType);
+  };
+
+  return (
+    <SearchPageWrapper>
+      <Container>
+        <DecorativeSquare
+          data-1
+          color="#8BAA36"
+          top="3.375rem"
+          left="14.75rem"
+        />
+        <DecorativeSquare data-2 top="8.5rem" left="44.125rem" />
+        <DecorativeSquare
+          data-3
+          color="#8BAA36"
+          top="4.125rem"
+          right="4.5rem"
+        />
+        <SearchHeader>Search</SearchHeader>
+        <SearchBar
+          onSubmit={updateSearch}
+          type={type}
+          search={search}
+          onChange={handleTypeChange}
+          items={recipes}
+        />
+      </Container>
+    </SearchPageWrapper>
+  );
+};
+
+export default SearchPage;

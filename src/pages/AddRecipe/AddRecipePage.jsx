@@ -18,7 +18,7 @@ import { Error } from 'components/Error/index.jsx';
 
 const defaultHeading = 'Add recipe';
 
-export function AddRecipePage({ heading = defaultHeading }) {
+function AddRecipePage({ heading = defaultHeading }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
@@ -34,11 +34,12 @@ export function AddRecipePage({ heading = defaultHeading }) {
       Promise.allSettled([
         recipeService.getPopular(),
         recipeService.getIngredients({
-          transform: (data) => data.map(({ ttl, _id }) => ({ ingredient: ttl, id: _id }))
+          transform: data =>
+            data.map(({ ttl, _id }) => ({ ingredient: ttl, id: _id })),
         }),
-        recipeService.getCategories()
+        recipeService.getCategories(),
       ])
-        .then((data) => setData(data))
+        .then(data => setData(data))
         .finally(() => setIsLoading(false));
 
       isFirstRender.current = false;
@@ -113,8 +114,13 @@ export function AddRecipePage({ heading = defaultHeading }) {
       {isSuccess ? (
         <Styled.SuccessModal>
           <Styled.SuccessWrapper>
-            <Styled.SuccessMessage>The recipe succesfully added!</Styled.SuccessMessage>
-            <Styled.SuccessCloseButton type="button" onClick={() => setIsSuccess(false)}>
+            <Styled.SuccessMessage>
+              The recipe succesfully added!
+            </Styled.SuccessMessage>
+            <Styled.SuccessCloseButton
+              type="button"
+              onClick={() => setIsSuccess(false)}
+            >
               Close
             </Styled.SuccessCloseButton>
           </Styled.SuccessWrapper>
@@ -125,5 +131,7 @@ export function AddRecipePage({ heading = defaultHeading }) {
 }
 
 AddRecipePage.propTypes = {
-  heading: PropTypes.string
+  heading: PropTypes.string,
 };
+
+export default AddRecipePage;

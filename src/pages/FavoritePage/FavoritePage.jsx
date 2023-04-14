@@ -2,14 +2,14 @@ import { Container } from 'components/Container/Container';
 import { DecorativeSquare, FavoritePageWrapper } from './FavoritePage.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { FavoriteList } from 'components/FavoriteList/FavoriteList';
-import { FavoriteTitle } from "./FavoritePage.styled";
+import { FavoriteTitle } from './FavoritePage.styled';
 import { Loader } from 'components/Loader/Loader';
-import { getIsLoading } from "../../redux/favorite/selectors";
+import { getIsLoading } from '../../redux/favorite/selectors';
 import { useSelector } from 'react-redux';
 
-export const FavoritePage = () => {
-  const isLoading = useSelector(getIsLoading)
-    
+const FavoritePage = () => {
+  const isLoading = useSelector(getIsLoading);
+
   return (
     <FavoritePageWrapper>
       <Container>
@@ -33,3 +33,5 @@ export const FavoritePage = () => {
     </FavoritePageWrapper>
   );
 };
+
+export default FavoritePage;

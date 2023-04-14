@@ -19,7 +19,7 @@ const getRecipeDetails = async id => {
   return response;
 };
 
-export const RecipePage = () => {
+const RecipePage = () => {
   const { recipeId } = useParams();
   const [heroData, setHeroData] = useState([]);
   const [ingridientsData, setIngridientsData] = useState([]);
@@ -114,3 +114,5 @@ export const RecipePage = () => {
 //     return data;
 //   })
 // );
+
+export default RecipePage;
