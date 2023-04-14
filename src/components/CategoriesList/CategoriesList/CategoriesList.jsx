@@ -22,8 +22,10 @@ export function CategoriesList() {
 
   useEffect(() => {
     dispatch(getCategoryList());
-    navigate('/categories/beef');
-  }, [dispatch, navigate]);
+    if (!categoryName) {
+      navigate('/categories/beef');
+    }
+  }, [dispatch, navigate, categoryName]);
 
   useEffect(() => {
     if (categories.length === 0) return;
