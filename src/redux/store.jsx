@@ -16,6 +16,7 @@ import { authReducer } from './auth/slice';
 import { updateReducer } from './header/slice';
 import { persistedFavorites } from './favorite/slice';
 import { persistedShoppingList } from './shoppingList/slice';
+import { searchReducer } from './search/searchSlice';
 
 const middleware = getDefaultMiddleware =>
   getDefaultMiddleware({
@@ -34,6 +35,15 @@ const persistedOuterRecipesReducer = persistReducer(
   outerRecipesPersistConfig,
   mainRecipeReduser
 );
+const searchPersistConfig = {
+  key: 'search',
+  storage,
+};
+
+const persistedSearchReducer = persistReducer(
+  searchPersistConfig,
+  searchReducer
+);
 
 export const store = configureStore({
   reducer: {
@@ -43,6 +53,7 @@ export const store = configureStore({
     update: updateReducer,
     favorite: persistedFavorites,
     shoppingList: persistedShoppingList,
+    search: persistedSearchReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

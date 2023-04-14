@@ -10,7 +10,7 @@ export const getAllRecipesSearchTitle = async (search, page, limit) => {
     const  response  = await recipesSearchInstance.get(
       `/recipes/search/${search}?type=title&pages${page}&limit=${limit}`
     );
-    console.log(response.data);
+    
     return response.data;
   } catch (err) {
     console.log(err.message);
@@ -22,7 +22,7 @@ export const getAllRecipesSearchIngredients = async (search, page, limit) => {
     const response = await recipesSearchInstance.get(
       `/recipes/search/${search}?type=ingredients&pages${page}&limit=${limit}`
     );
-    console.log(response.data);
+    
     return response.data;
   } catch (err) {
     console.log(err.message);

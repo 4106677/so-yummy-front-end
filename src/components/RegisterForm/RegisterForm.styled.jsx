@@ -541,6 +541,12 @@ export const LinkStyled = styled(Link)`
   display: block;
   cursor: pointer;
   text-decoration: underline;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  :hover,
+  :focus {
+    color: #8baa36;
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -575,6 +581,9 @@ export const SecureEntry = styled.button`
 
   letter-spacing: -0.02em;
   color: #fafafa;
+  :hover {
+  font-weight: 600;
+  }
       @media screen and (min-width: 768px) {
       font-size: 14px;
     }

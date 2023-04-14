@@ -5,6 +5,7 @@ import {
   Container,
   SearchPageWrapper,
 } from './SearchPage.styled';
+import { Container } from 'components/Container/Container';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,11 +17,13 @@ import { getAllRecipesSearchIngredients } from 'services/searchAPI';
 
 
 export const SearchPage = () => {
+  
   const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
-   const [type, setType] = useState('title');
+  const [type, setType] = useState('query');
+   
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -38,7 +41,7 @@ export const SearchPage = () => {
                  type === 'title'
                    ? await getAllRecipesSearchTitle(search, page, limit)
                    : await getAllRecipesSearchIngredients(search, page, limit);
-        console.log(data);
+        
                                setRecipes(data);
 
         if (data.length === 0) {
@@ -85,7 +88,7 @@ export const SearchPage = () => {
         }
       );
     }
-    console.log(value);
+    
     setPage(1);
     setSearch(value.search);
   };
@@ -114,6 +117,7 @@ export const SearchPage = () => {
           <SearchBar
             onSubmit={updateSearch}
             type={type}
+            search={search}
             onChange={handleTypeChange}
             items={recipes}
           />

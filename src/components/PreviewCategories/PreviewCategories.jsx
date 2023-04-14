@@ -25,7 +25,7 @@ import NoImage from '../../images/default.jpg';
 
 export const PreviewCategories = () => {
   const categories = useSelector(getContentForMain);
-  console.log(categories);
+  
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery({ minWidth: 1440 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
@@ -45,22 +45,23 @@ export const PreviewCategories = () => {
 
   return (
     <CategoryList>
-      {categories.map(({ _id, meals }) => (
-        <CategoryItem key={_id}>
-          <TitlePrew>{_id}</TitlePrew>
-          <CardWrapper>
-            {meals.slice(0, numCard).map(({ _id, title, preview }) => (
-              <CardDish key={_id}>
-                <Link to={`/recipe/${_id}`}>
-                  <CardImg src={preview ? preview : NoImage} alt={title} />
-                  <CardTitle>{title}</CardTitle>
-                </Link>
-              </CardDish>
-            ))}
-          </CardWrapper>
-          <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
-        </CategoryItem>
-      ))}
+      {categories.length !== 0 &&
+        categories.map(({ _id, meals }) => (
+          <CategoryItem key={_id}>
+            <TitlePrew>{_id}</TitlePrew>
+            <CardWrapper>
+              {meals.slice(0, numCard).map(({ _id, title, preview }) => (
+                <CardDish key={_id}>
+                  <Link to={`/recipe/${_id}`}>
+                    <CardImg src={preview ? preview : NoImage} alt={title} />
+                    <CardTitle>{title}</CardTitle>
+                  </Link>
+                </CardDish>
+              ))}
+            </CardWrapper>
+            <BtnCategories to={`/categories/${_id}`}>See all</BtnCategories>
+          </CategoryItem>
+        ))}
     </CategoryList>
   );
 };

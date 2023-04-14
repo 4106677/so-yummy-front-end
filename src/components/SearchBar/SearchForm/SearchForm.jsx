@@ -2,20 +2,41 @@ import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
 
-export const SearchForm = ({ onSubmit }) => {
-  const [state, setState] = useState({ search: "" });
+import { useEffect } from 'react';
+
+import { useSearchParams } from 'react-router-dom';
+
+export const SearchForm = ({ onSubmit}) => {
+ 
+  const [searchParams, setSearchParams] = useSearchParams('query');
+  const query = searchParams.get('query');
+ 
+  const [state, setState] = useState({search: query});
+  
+  useEffect(() => {
+  if (state.search !== '') {
+    onSubmit({ ...state });
+  } 
+  
+}, [onSubmit, state]);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState(prevState => { return { ...prevState, [name]: value } })
+    setSearchParams({ query: value});
   };
   
  
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (e.target.elements[0].value === '') {
+      return
+    }
     onSubmit({ ...state });
     setState({ search: '' });
+    setSearchParams('')
   };
   
 
