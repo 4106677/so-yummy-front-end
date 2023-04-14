@@ -52,7 +52,7 @@ export const Input = ({
       if (!getIsDropdownActive()) showDropdown();
     }
 
-    onInputChange(value);
+    onInputChange(value, { error: datalist.length === 0 });
   }
 
   function handleBlur() {
@@ -114,6 +114,9 @@ export const Input = ({
             </Styled.Option>
           ))}
         </Styled.DropdownList>
+      ) : null}
+      {withDatalist && inputValue && datalist.length === 0 ? (
+        <Styled.Error asDataList>Please, select ingredients from the list only</Styled.Error>
       ) : null}
 
       {!asFieldGroup && touched && error ? <Styled.Error>{error}</Styled.Error> : null}

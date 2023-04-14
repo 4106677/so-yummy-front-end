@@ -30,6 +30,7 @@ export const Section = styled.section`
   background-position-x: 0;
   background-position-y: 111.5%;
   min-height: 100dvh;
+  margin-top: 3rem;
 
   @media screen and (min-width: 768px) {
     padding-bottom: 12.5rem;
@@ -142,7 +143,7 @@ export const Heading = styled.h1`
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
 
-  color: #001833;
+  color: rgb(1, 67, 97);
 `;
 
 // TOP SQUARE

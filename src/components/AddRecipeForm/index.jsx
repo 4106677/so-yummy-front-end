@@ -25,9 +25,12 @@ const initialValues = {
 
 export function AddRecipeForm({ categories, ingredients, onSubmit }) {
   const [isSubmit, setIsSubmit] = React.useState(false);
+  const [datalistError, setDatalistError] = React.useState(false);
 
   function handleFormSubmit(values, resetForm) {
     let recipe = { ...values };
+
+    if (datalistError) return;
 
     for (const key in recipe) {
       if (!recipe[key]) delete recipe[key];
@@ -39,8 +42,6 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
 
       return { ...restIngredient, measure: `${amount} ${measurementUnit}` };
     });
-
-    // console.log('recipe -->', recipe);
 
     onSubmit(recipe, resetForm);
   }
@@ -72,7 +73,43 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                   '45min',
                   '50min',
                   '55min',
-                  '1h'
+                  '1h',
+                  '1h 5min',
+                  '1h 10min',
+                  '1h 15min',
+                  '1h 20min',
+                  '1h 25min',
+                  '1h 30min',
+                  '1h 35min',
+                  '1h 40min',
+                  '1h 45min',
+                  '1h 50min',
+                  '1h 55min',
+                  '2h',
+                  '2h 5min',
+                  '2h 10min',
+                  '2h 15min',
+                  '2h 20min',
+                  '2h 25min',
+                  '2h 30min',
+                  '2h 35min',
+                  '2h 40min',
+                  '2h 45min',
+                  '2h 50min',
+                  '2h 55min',
+                  '3h',
+                  '3h 5min',
+                  '3h 10min',
+                  '3h 15min',
+                  '3h 20min',
+                  '3h 25min',
+                  '3h 30min',
+                  '3h 35min',
+                  '3h 40min',
+                  '3h 45min',
+                  '3h 50min',
+                  '3h 55min',
+                  '4h'
                 ]}
               />
 
@@ -82,6 +119,7 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                 inputOptionList={ingredients}
                 isSubmit={isSubmit}
                 inputDatalistKeyExtractor={(option) => option.ingredient}
+                onDatalistError={(er) => setDatalistError(er)}
               />
 
               <RecipePreparation name="instructions" />

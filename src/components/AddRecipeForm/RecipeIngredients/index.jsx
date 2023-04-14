@@ -15,7 +15,8 @@ export function RecipeIngredients({
   selectOptionList = [],
   inputOptionList = [],
   inputDatalistKeyExtractor,
-  isSubmit
+  isSubmit,
+  onDatalistError
 }) {
   const [fields, { error }, { setValue }] = useField(name);
   const actualQuatity = fields.value.length;
@@ -53,7 +54,7 @@ export function RecipeIngredients({
             const { ingredient, amount, measurementUnit } = field;
             const zIndex = actualQuatity * 3;
 
-            function handleValueChange(key, id, value) {
+            function handleValueChange(key, id, value, { error } = {}) {
               const updatedFields = fields.value.map((fld) => {
                 const isIngredientField = key === 'ingredient';
 
@@ -62,14 +63,17 @@ export function RecipeIngredients({
 
                   // here we must set unique id coming from server
                   // but it is onle for ingredient field
-                  if (isIngredientField) newField.id = id;
+                  if (isIngredientField) {
+                    newField.id = id;
+                    console.log('error -->', error);
+                    onDatalistError(error);
+                  }
 
                   return newField;
                 }
 
                 return { ...fld };
               });
-
               setValue(updatedFields);
             }
 

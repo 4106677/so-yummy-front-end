@@ -16,6 +16,10 @@ export const Wrapper = styled.label`
   border-radius: 8px;
   background-color: ${({ hasImage }) => (hasImage ? 'transtapent' : '#8baa36')};
   isolation: isolate;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 
 const sharedStyles = css`
@@ -54,9 +58,9 @@ export const Error = styled.strong`
   text-align: center;
 `;
 
-export const Image = styled.img`
-  ${sharedStyles}
+// export const Image = styled.img`
+//   ${sharedStyles}
 
-  width: auto;
-  height: 100%;
-`;
+//   width: auto;
+//   height: 100%;
+// `;

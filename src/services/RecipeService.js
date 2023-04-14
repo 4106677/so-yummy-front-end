@@ -1,22 +1,22 @@
 import axios from 'axios';
+import { getToken } from './getToken';
 
 class RecipeService {
   constructor({
     baseUrl = 'https://recipes-becend-49lg.onrender.com',
     httpClient = axios,
-    tokenKey = 'token'
+    tokenKey = 'token',
+    getToken
   } = {}) {
     this.baseUrl = baseUrl;
     this.httpClient = httpClient.create({ baseURL: this.baseUrl });
     this.tokenKey = tokenKey;
+    this.getToken = getToken;
   }
 
   async addRecipe(recipe) {
     const response = await this.httpClient.post('/recipes/ownRecipes/addRecipe', recipe, {
-      // headers: { Authorization: `Bearer ${this.getToken()}` }
-      headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzNiNzdiZmVlMWZhMWY2MjY0MmIyZiIsImlhdCI6MTY4MTExMDkwNywiZXhwIjoxNjgxMTk3MzA3fQ.bk6y2oBIb78LCTPL7sZQlYtRcomuiXxyyhclX9rw51w`
-      }
+      headers: { Authorization: this.getToken() }
     });
     return response.status;
   }
@@ -40,14 +40,6 @@ class RecipeService {
 
     return data;
   }
-
-  getToken() {
-    try {
-      this.token = localStorage.getItem(this.tokenKey) ?? '';
-    } catch (err) {
-      return err;
-    }
-  }
 }
 
-export const recipeService = new RecipeService({});
+export const recipeService = new RecipeService({ getToken });

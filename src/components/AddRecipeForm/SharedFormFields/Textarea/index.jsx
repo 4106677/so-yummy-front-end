@@ -7,11 +7,17 @@ import * as Styled from './Textarea.styled';
 
 export function Textarea({ name, withResize = false, ...restProps }) {
   const textareaRef = React.useRef(null);
-  const [field] = useField(name);
+  const [field, { touched, error }] = useField(name);
 
   useAutoResizeTextArea(textareaRef.current, field.value);
 
-  return <Styled.Textarea ref={withResize ? textareaRef : null} {...field} {...restProps} />;
+  return (
+    <Styled.Wrapper>
+      <Styled.Textarea ref={withResize ? textareaRef : null} {...field} {...restProps} />
+
+      {touched && error ? <Styled.Error>{error}</Styled.Error> : null}
+    </Styled.Wrapper>
+  );
 }
 
 Textarea.propTypes = {
