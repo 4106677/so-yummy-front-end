@@ -2,25 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
-// Components
 import { RecipeGeneralInfo } from './RecipeGeneralInfo';
 import { RecipeIngredients } from './RecipeIngredients';
 import { RecipePreparation } from './RecipePreparation';
 
-// validation schema
 import { addRecipeValidationSchema } from 'validation/addRecipeValidationSchema';
 
-// styles
 import * as Styled from './AddRecipeForm.styled';
 
 const initialValues = {
-  preview: '', // not required
-  title: '', // required
-  description: '', // not required
-  category: '', // required ---> /recipes/category-list
-  time: '5min', // required string
+  preview: '',
+  title: '',
+  description: '',
+  category: '',
+  time: '5min',
   ingredients: [],
-  instructions: '' // required
+  instructions: '',
 };
 
 export function AddRecipeForm({ categories, ingredients, onSubmit }) {
@@ -36,7 +33,7 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
       if (!recipe[key]) delete recipe[key];
     }
 
-    recipe.ingredients = recipe.ingredients.map((product) => {
+    recipe.ingredients = recipe.ingredients.map(product => {
       delete product.ingredient;
       const { amount, measurementUnit, ...restIngredient } = product;
 
@@ -109,7 +106,7 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                   '3h 45min',
                   '3h 50min',
                   '3h 55min',
-                  '4h'
+                  '4h',
                 ]}
               />
 
@@ -118,13 +115,16 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
                 selectOptionList={['tbs', 'tsp', 'kg', 'g']}
                 inputOptionList={ingredients}
                 isSubmit={isSubmit}
-                inputDatalistKeyExtractor={(option) => option.ingredient}
-                onDatalistError={(er) => setDatalistError(er)}
+                inputDatalistKeyExtractor={option => option.ingredient}
+                onDatalistError={er => setDatalistError(er)}
               />
 
               <RecipePreparation name="instructions" />
 
-              <Styled.SubmitFormButton type="submit" onClick={() => setIsSubmit(true)}>
+              <Styled.SubmitFormButton
+                type="submit"
+                onClick={() => setIsSubmit(true)}
+              >
                 Add
               </Styled.SubmitFormButton>
             </Styled.FormikForm>
@@ -137,5 +137,5 @@ export function AddRecipeForm({ categories, ingredients, onSubmit }) {
 
 AddRecipeForm.propTypes = {
   categories: PropTypes.array,
-  ingredients: PropTypes.arrayOf(PropTypes.shape)
+  ingredients: PropTypes.arrayOf(PropTypes.shape),
 };

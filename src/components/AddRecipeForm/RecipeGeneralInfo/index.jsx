@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-// components
 import { FileUploadInput } from '../SharedFormFields/FileUploadInput';
 import { Select } from '../SharedFormFields/Select';
 import { Input } from '../SharedFormFields/Input';
@@ -11,13 +10,13 @@ const selectConfig = {
   optionAlign: 'left',
   chevronOffset: '0',
   variant: 'outlined',
-  className: 'general-info'
+  className: 'general-info',
 };
 
 export function RecipeGeneralInfo({
   names = [],
   selectOneOptionList = [],
-  selectTwoOptionList = []
+  selectTwoOptionList = [],
 }) {
   const [image, title, description, category, cookingTime] = names;
 
@@ -63,5 +62,5 @@ export function RecipeGeneralInfo({
 RecipeGeneralInfo.propTypes = {
   names: PropTypes.array,
   selectOneOptionList: PropTypes.array,
-  selectTwoOptionList: PropTypes.array
+  selectTwoOptionList: PropTypes.array,
 };

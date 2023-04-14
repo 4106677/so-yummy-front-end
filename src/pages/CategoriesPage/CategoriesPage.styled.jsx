@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-// import NFbgImgMobileX1 from 'images/PageLayout/page-layout-bg-mobil-x1.png';
-// import NFbgImgTabletX1 from 'images/PageLayout/page-layout-bg-tablet-x1.png';
-// import NFbgImgDesktopX1 from 'images/PageLayout/page-layout-bg-desktop-x1.png';
-
 
 export const DecorativeSquare = styled.div`
   position: absolute;
@@ -67,52 +63,21 @@ export const DecorativeSquare = styled.div`
 export const CatigoryHeader = styled.h1`
   font: 'Poppins';
   font-style: normal;
- font-weight: 600;
- font-size: 28px;
- line-height: 1;
- margin-bottom: 50px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 50px;
   color: #001833;
-  margin-bottom: 3.125rem; 
-   padding-top: 114px;
-  
- 
+  margin-bottom: 3.125rem;
+  padding-top: 114px;
+
   @media (min-width: 768px) {
     font-size: 32px;
     padding-top: 136px;
-
   }
   @media (min-width: 1440px) {
     font-size: 44px;
-      margin-bottom: 100px; 
-   padding-top: 164px;
-   ;
+    margin-bottom: 100px;
+    padding-top: 164px;
   }
 `;
-
-
-
-
-
-// export const PageContainer = styled.div`
-// background: #FFFFFF;
-// `;
-
-// export const Title = styled.h2`
-// font-family: 'Poppins';
-// font-style: normal;
-// font-weight: 600;
-// font-size: 28px;
-// line-height: 1;
-// padding: 114px 16px 60px 16px;
-// color: #001833;
-
-// @media screen and (min-width: 768px) {
-//    font-size: 32px;
-//    padding: 136px 32px 60px 32px;
-//   }
-//   @media screen and (min-width: 1440px) {
-//     font-size: 44px;
-//     padding: 164px 100px 110px 100px;
-//   }
-
-// `;

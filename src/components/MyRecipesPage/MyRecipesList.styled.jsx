@@ -50,13 +50,10 @@ export const RecipeList = styled.ul`
 `;
 
 export const MyRecipesContainer = styled.div`
-  // padding-top: 114px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
-    // padding-top: 136px;
     margin-bottom: 50px;
   }
   @media screen and (min-width: 1440px) {
-    // padding-top: 164px;
   }
 `;

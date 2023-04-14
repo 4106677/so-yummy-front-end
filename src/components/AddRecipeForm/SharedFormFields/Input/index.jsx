@@ -26,11 +26,10 @@ export const Input = ({
   const wrapperRef = React.useRef(null);
 
   const datalist =
-    dataListOptions?.filter((option) => {
+    dataListOptions?.filter(option => {
       return option?.toLowerCase().includes(inputValue?.toLowerCase());
     }) ?? [];
 
-  // handlers
   function handleInputChange(event) {
     const inputValue = event.currentTarget.value;
 
@@ -68,7 +67,6 @@ export const Input = ({
     isFirstFocus.current = false;
   }
 
-  // helpers
   function hideDropdown() {
     wrapperRef.current.classList.remove('is-active');
   }
@@ -109,17 +107,24 @@ export const Input = ({
       {withDatalist && datalist.length ? (
         <Styled.DropdownList>
           {datalist.map((option, idx) => (
-            <Styled.Option key={option + idx} onClick={handleOptionSelect.bind(null, option)}>
+            <Styled.Option
+              key={option + idx}
+              onClick={handleOptionSelect.bind(null, option)}
+            >
               {option}
             </Styled.Option>
           ))}
         </Styled.DropdownList>
       ) : null}
       {withDatalist && inputValue && datalist.length === 0 ? (
-        <Styled.Error asDataList>Please, select ingredients from the list only</Styled.Error>
+        <Styled.Error asDataList>
+          Please, select ingredients from the list only
+        </Styled.Error>
       ) : null}
 
-      {!asFieldGroup && touched && error ? <Styled.Error>{error}</Styled.Error> : null}
+      {!asFieldGroup && touched && error ? (
+        <Styled.Error>{error}</Styled.Error>
+      ) : null}
 
       {(asFieldGroup && isGroupInputTouched && errorMsg) ||
       (asFieldGroup && isSubmit && errorMsg) ? (
@@ -140,5 +145,5 @@ Input.propTypes = {
   asFieldGroup: PropTypes.bool,
   fieldGroupHandlers: PropTypes.object,
   errorMsg: PropTypes.string,
-  isSubmit: PropTypes.bool
+  isSubmit: PropTypes.bool,
 };

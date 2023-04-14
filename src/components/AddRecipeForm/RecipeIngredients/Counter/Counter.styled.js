@@ -21,7 +21,6 @@ export const CounterButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  //reset
   border: none;
   background-color: transparent;
 

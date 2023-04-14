@@ -11,31 +11,12 @@ import { HeaderLogoutModal } from './HeaderLogoutModal';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
-// import { current } from '../../redux/auth/operations';
-// import { Loader } from 'components/Loader/Loader';
-// import { getIsLoading } from 'redux/header/selectors';
-// import { selectIsLoggedIn } from 'redux/auth/selectors';
-// import { useNavigate } from 'react-router-dom';
-
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const { name, avatar } = useSelector(selectUser);
-  // const dispatch = useDispatch();
-
-  // console.log(name, avatar);
-
-  // useEffect(() => {
-  //   dispatch(current());
-  // }, [dispatch]);
-
-  // const isLoading = useSelector(getIsLoading);
-
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  // const navigate = useNavigate();
 
   const openUserModal = e => {
     togleUserModal();
@@ -63,8 +44,6 @@ export const HeaderUser = () => {
 
   return (
     <>
-      {/* {!isLoggedIn && navigate('/')} */}
-      {/* {isLoading && <Loader />} */}
       <HeaderStyledUser onClick={openUserModal}>
         {avatar ? (
           <HeaderStyledUserImg src={avatar} alt="user-avatar" />

@@ -40,11 +40,9 @@ export const RecipeList = styled.ul`
     flex-direction: row;
     overflow-x: auto;
 
-    // scroll snapping effect
     scroll-snap-type: x mandatory;
     scroll-snap-align: start;
 
-    // hide horizontal scroll
     &::-webkit-scrollbar {
       width: 0 !important;
     }

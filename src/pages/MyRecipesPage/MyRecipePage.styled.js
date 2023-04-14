@@ -60,7 +60,6 @@ export const Section = styled.section`
     ? objectColors.bgrDarkMode
     : objectColors.colorWhite};
 
-  // padding-top: 4.625rem;
   padding-bottom: 6.25rem;
   background-repeat: no-repeat;
   background-size: 256px 392px;
@@ -166,24 +165,6 @@ export const Section = styled.section`
   }
 `;
 
-// export const RecipeContainer = styled.div`
-//   position: relative;
-//   z-index: 1;
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding-right: 16px;
-//   */ @media screen and (min-width 375px) {
-//     width: 100%;
-//   }
-
-//   @media screen and (min-width: 768px) {
-//     width: 100%;
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//     width: 1440px;
-//   }
-// `;
 export const DecorativeSquare = styled.div`
   position: absolute;
   width: 0.5rem;

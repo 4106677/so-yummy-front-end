@@ -57,10 +57,3 @@ export const Error = styled.strong`
   display: block;
   text-align: center;
 `;
-
-// export const Image = styled.img`
-//   ${sharedStyles}
-
-//   width: auto;
-//   height: 100%;
-// `;

@@ -6,7 +6,7 @@ const COLORS = {
   inputBg: '#ececec',
   bgDefault: '#ffffff',
   focused: '#cecece',
-  text: 'rgba(0, 0, 0, .5)'
+  text: 'rgba(0, 0, 0, .5)',
 };
 
 const inputAppearencesMap = {
@@ -28,15 +28,17 @@ const inputAppearencesMap = {
       outline: none;
       border-bottom: 1px solid ${COLORS.accent};
     }
-  `
+  `,
 };
 
-export const Input = styled.input.attrs(({ gapFromLabel, height, variant, asGroupField }) => ({
-  gapFromLabel,
-  height,
-  variant,
-  asGroupField
-}))`
+export const Input = styled.input.attrs(
+  ({ gapFromLabel, height, variant, asGroupField }) => ({
+    gapFromLabel,
+    height,
+    variant,
+    asGroupField,
+  })
+)`
   display: block;
   width: 100%;
   height: ${({ height }) => height ?? '100%'};
@@ -141,15 +143,12 @@ export const Option = styled.li`
   }
 `;
 
-//======== LABEL =============//
 export const Label = styled.label`
   position: relative;
   display: block;
 
   text-transform: capitalize;
 `;
-
-// ============= WRAPPER ==========//
 
 export const Wrapper = styled.div`
   position: relative;

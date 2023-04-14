@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// webp
 import bgMobileWebpx1 from '../../../images/PageLayout/page-layout-bg-mobil-x1.webp';
 import bgMobileWebpx2 from '../../../images/PageLayout/page-layout-bg-mobil-x2.webp';
 
@@ -10,7 +9,6 @@ import bgTabletWebpx2 from '../../../images/PageLayout/page-layout-bg-tablet-x2.
 import bgDesktopWebpx1 from '../../../images/PageLayout/page-layout-bg-desktop-x1.webp';
 import bgDesktopWebpx2 from '../../../images/PageLayout/page-layout-bg-desktop-x2.webp';
 
-// png
 import bgMobilePngx1 from '../../../images/PageLayout/page-layout-bg-mobil-x1.png';
 import bgMobilePngx2 from '../../../images/PageLayout/page-layout-bg-mobil-x2.png';
 
@@ -36,9 +34,6 @@ export const Section = styled.section`
     padding-bottom: 12.5rem;
   }
 
-  // ================= adaptive bg images ===============//
-
-  // mobile with webp support
   &.webp {
     background-image: url(${bgMobileWebpx1});
   }
@@ -51,7 +46,6 @@ export const Section = styled.section`
     }
   }
 
-  // mobile without webp support
   &.no-webp {
     background-image: url(${bgMobilePngx1});
   }
@@ -64,7 +58,6 @@ export const Section = styled.section`
     }
   }
 
-  // tablet with webp support
   @media screen and (min-width: 768px) {
     & {
       background-size: 423px 646px;
@@ -83,7 +76,6 @@ export const Section = styled.section`
       }
     }
 
-    // tablet without webp support
     &.no-webp {
       background-image: url(${bgTabletPngx1});
     }
@@ -97,7 +89,6 @@ export const Section = styled.section`
     }
   }
 
-  // desktop with webp support
   @media screen and (min-width: 1024px) {
     & {
       background-size: 558px 852px;
@@ -116,7 +107,6 @@ export const Section = styled.section`
       }
     }
 
-    // desktop without webp support
     &.no-webp {
       background-image: url(${bgDesktopPngx1});
     }
@@ -145,8 +135,6 @@ export const Heading = styled.h1`
 
   color: rgb(1, 67, 97);
 `;
-
-// TOP SQUARE
 
 export const DecorativeSquare = styled.div`
   position: absolute;

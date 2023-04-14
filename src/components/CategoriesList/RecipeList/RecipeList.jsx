@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-// import { Loader } from 'components/Loader/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -10,7 +9,6 @@ import {
 import {
   getFullCategoryList,
   getAllRecipes,
-  // isLoadingRecipesOfCategory,
 } from '../../../redux/mainRecipes/selectors';
 
 import {
@@ -26,8 +24,6 @@ const RecipeList = () => {
   const { categoryName } = useParams();
   const categories = useSelector(getFullCategoryList);
   const recipes = useSelector(getAllRecipes);
-
-  // const isLoading = useSelector(isLoadingRecipesOfCategory);
 
   useEffect(() => {
     dispatch(getCategoryList());

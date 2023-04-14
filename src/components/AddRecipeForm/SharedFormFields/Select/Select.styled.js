@@ -7,7 +7,7 @@ const COLORS = {
   bgAlternative: '#ececec',
   selectedOption: '#23262A',
   border: '#E0E0E0',
-  scroll: '#E7E5E5'
+  scroll: '#E7E5E5',
 };
 
 const selectAppearencesMap = {
@@ -38,7 +38,7 @@ const selectAppearencesMap = {
   outlined: `
       background-color: transparent;
       padding-bottom: 1rem;
-    `
+    `,
 };
 
 export const DropdownList = styled.ul`
@@ -104,7 +104,6 @@ export const Wrapper = styled.div`
 
   ${({ variant }) => selectAppearencesMap[variant]}
 
-  // arrow or chevron
   &::after {
     content: '';
     width: 0;
@@ -150,7 +149,8 @@ export const OuterWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  ${({ variant }) => variant === 'outlined' && `border-bottom: 1px solid ${COLORS.border}`}
+  ${({ variant }) =>
+    variant === 'outlined' && `border-bottom: 1px solid ${COLORS.border}`}
 `;
 
 export const Input = styled.input`
@@ -165,7 +165,6 @@ export const Input = styled.input`
     outline: none;
   }
 
-  // reset arrows
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;

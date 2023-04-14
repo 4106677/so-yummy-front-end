@@ -27,7 +27,6 @@ export const Title = styled.h4`
 `;
 
 export const Description = styled.p`
-  // truncates choosen number of lines with ...
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: ${({ linesToTruncate }) => linesToTruncate};
