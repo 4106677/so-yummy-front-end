@@ -19,5 +19,7 @@ export const FollowUsNav = styled.nav`
 `
 
 export const FollowUsLink = styled(NavLink)`
-
+&:hover svg {
+  fill: red;
+}
 `
