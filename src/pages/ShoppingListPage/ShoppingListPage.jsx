@@ -1,17 +1,17 @@
-import { IngridientsShoppingList } from "components/IngridientsShoppingList/IngridientsShoppingList";
-import { Container } from "components/Container/Container";
+import { IngridientsShoppingList } from 'components/IngridientsShoppingList/IngridientsShoppingList';
+import { Container } from 'components/Container/Container';
 import {
   ShopListTitle,
   DecorativeSquare,
   ShoppinlListWrapper,
 } from './ShoppingListPage.styled';
 import { Loader } from 'components/Loader/Loader';
-import { useSelector } from "react-redux";
-import {getIsLoading} from "../../redux/shoppingList/selectors"
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../redux/shoppingList/selectors';
 
-export const ShoppingListPage = () => {
+const ShoppingListPage = () => {
   const isLoading = useSelector(getIsLoading);
-  
+
   return (
     <ShoppinlListWrapper>
       <Container>
@@ -35,3 +35,5 @@ export const ShoppingListPage = () => {
     </ShoppinlListWrapper>
   );
 };
+
+export default ShoppingListPage;

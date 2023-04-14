@@ -1,28 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { GlobalStyle } from './GlobalStyles';
-
-// import { Signin } from 'pages/Signin/Signin';
-import { SearchPage } from 'pages/SearchPage/SearchPage';
 import { RegisterPage } from 'pages/Register/Register';
 import { SigninPage } from 'pages/Signin/Signin';
-import { MainPage } from 'pages/MainPage/MainPage';
 import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
-import { AddRecipePage } from 'pages/AddRecipe/AddRecipePage';
-import { RecipePage } from 'pages/RecipePage/RecipePage';
-import { ShoppingListPage } from 'pages/ShoppingListPage/ShoppingListPage';
-import { NotFoundPage } from 'pages/NotFound/NotFound';
-import { FavoritePage } from 'pages/FavoritePage/FavoritePage';
 import { Layout } from 'components/Layout/Layout';
 import { Loader } from './Loader/Loader';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import { CategoriesPage } from 'pages/CategoriesPage/CategoriesPage';
-import { MyRecipePage } from 'pages/MyRecipesPage/MyRecipesPage';
 
 import PrivateRoute from '../components/PrivateRoute.js';
 import RestrictedRoute from '../components/RestrictedRoute.js';
@@ -30,7 +18,22 @@ import RestrictedRoute from '../components/RestrictedRoute.js';
 import { current } from '../redux/auth/operations';
 import { useAuth } from '../components/Hooks/useAuth';
 
-import { RecipeList } from '../components/CategoriesList/RecipeList/RecipeList';
+const MainPage = lazy(() => import('pages/MainPage/MainPage'));
+const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
+const AddRecipePage = lazy(() => import('pages/AddRecipe/AddRecipePage'));
+const RecipePage = lazy(() => import('pages/RecipePage/RecipePage'));
+const ShoppingListPage = lazy(() =>
+  import('pages/ShoppingListPage/ShoppingListPage')
+);
+const FavoritePage = lazy(() => import('pages/FavoritePage/FavoritePage'));
+const CategoriesPage = lazy(() =>
+  import('pages/CategoriesPage/CategoriesPage')
+);
+const MyRecipePage = lazy(() => import('pages/MyRecipesPage/MyRecipesPage'));
+const RecipeList = lazy(() =>
+  import('../components/CategoriesList/RecipeList/RecipeList')
+);
+const NotFoundPage = lazy(() => import('pages/NotFound/NotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -89,23 +92,7 @@ export const App = () => {
         </Route>
       </Routes>
       <GlobalStyle />
-      <ToastContainer autoClose={3000} />
-      {/* //   <Routes>
-    //     <Route path="/" element={<WellcomePage />}></Route>
-    //     <Route path="/register" element={<RegisterPage />}></Route>
-    //     <Route path="/signin" element={<SigninPage />}></Route>
-    //     <Route path="/main" element={<MainPage />}></Route>
-    //     <Route path="/search" element={<SearchPage />}></Route>
-    //     <Route path="/recipe/:recipeId" element={<RecipePage />}></Route>
-    //     <Route path="/shopping-list" element={<ShoppingListPage />}></Route>
-    //     <Route path="/add-recipe" element={<AddRecipePage />}></Route>
-    //     <Route */}
-      {/* //       path="/categories/:categoryName"
-    //       element={<CategoriesPage />} */}
-      {/* //     ></Route>
-    //     <Route path="/my" element={<MyRecipePage />}></Route>
-    //     <Route path="*" element={<NotFoundPage />} /> */}
-      {/* //   </Routes> */}
+      <ToastContainer autoClose={3000} limit={1} />
     </>
   );
 };

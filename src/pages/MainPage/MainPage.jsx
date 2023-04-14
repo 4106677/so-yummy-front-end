@@ -19,19 +19,12 @@ import { PreviewCategories } from '../../components/PreviewCategories/PreviewCat
 
 import { SearchForm } from '../../components/SearchFormMain/SearchFormMain';
 
-
-
-export const MainPage = () => {
-  
+const MainPage = () => {
   const navigate = useNavigate();
-  
 
   const onClick = e => {
     navigate('/categories');
   };
-
- 
-  
 
   return (
     <>
@@ -48,7 +41,7 @@ export const MainPage = () => {
                 future.
               </MainPageText>
               <ChooseYourBreakfast />
-              <SearchForm styled={'black'}  />
+              <SearchForm styled={'black'} />
             </MainPageDiv>
           </Container>
         </MainPageBg>
@@ -74,3 +67,5 @@ export const MainPage = () => {
     </>
   );
 };
+
+export default MainPage;

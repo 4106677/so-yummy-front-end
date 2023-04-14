@@ -1,9 +1,11 @@
 import { NotFound } from '../../components/NotFound/NotFound';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return (
     <>
       <NotFound />
     </>
   );
 };
+
+export default NotFoundPage;

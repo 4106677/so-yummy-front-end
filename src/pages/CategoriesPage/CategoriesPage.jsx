@@ -1,4 +1,3 @@
-
 import { CategoriesList } from 'components/CategoriesList/CategoriesList/CategoriesList';
 
 import { CatigoryHeader, DecorativeSquare } from './CategoriesPage.styled';
@@ -7,11 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-
-
-export function CategoriesPage() {
- 
-
+function CategoriesPage() {
   return (
     <>
       <Container>
@@ -38,3 +33,4 @@ export function CategoriesPage() {
   );
 }
 
+export default CategoriesPage;
