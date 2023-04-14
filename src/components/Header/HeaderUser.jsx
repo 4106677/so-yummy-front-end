@@ -10,10 +10,10 @@ import { HeaderEditModal } from './HeaderEditModal';
 import { HeaderLogoutModal } from './HeaderLogoutModal';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { Loader } from 'components/Loader/Loader';
-import { getIsLoading } from 'redux/header/selectors';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { useNavigate } from 'react-router-dom';
+// import { Loader } from 'components/Loader/Loader';
+// import { getIsLoading } from 'redux/header/selectors';
+// import { selectIsLoggedIn } from 'redux/auth/selectors';
+// import { useNavigate } from 'react-router-dom';
 
 export const HeaderUser = () => {
   const [showUserModal, setShowUserModal] = useState(false);
@@ -22,12 +22,11 @@ export const HeaderUser = () => {
 
   const { name, avatar } = useSelector(selectUser);
 
+  // const isLoading = useSelector(getIsLoading);
 
-  const isLoading = useSelector(getIsLoading);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const openUserModal = e => {
     togleUserModal();
@@ -55,8 +54,8 @@ export const HeaderUser = () => {
 
   return (
     <>
-      {!isLoggedIn && navigate('/')}
-      {isLoading && <Loader />}
+      {/* {!isLoggedIn && navigate('/')} */}
+      {/* {isLoading && <Loader />} */}
       <HeaderStyledUser onClick={openUserModal}>
         {avatar ? (
           <HeaderStyledUserImg src={avatar} alt="user-avatar" />

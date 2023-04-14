@@ -12,9 +12,12 @@ import { CrossIcon } from './HeaderIcons';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 export const HeaderLogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -51,6 +54,7 @@ export const HeaderLogoutModal = ({ onClose }) => {
             <HeaderLogoutModalLogoutButtonStyled
               onClick={() => {
                 dispatch(logOut());
+                navigate('/');
               }}
             >
               Log out
