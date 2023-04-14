@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
+import imageCompression from 'browser-image-compression';
 
 import { fileService } from 'services/FileService';
 import * as Styled from './FileUploadInput.styled';
@@ -27,16 +28,32 @@ export function FileUploadInput({ name, mb = '0', ...restProps }) {
   async function onFileSelect(event) {
     const [file] = event.currentTarget.files;
 
-    const base64img = await fileService.convertToBase64(file);
+    const options = {
+      maxSizeMB: 0.2,
+      maxWidthOrHeight: 600
+    };
+    let compressedFile;
+    try {
+      compressedFile = await imageCompression(file, options);
+    } catch (error) {
+      console.log(error);
+    }
+
+    const base64img = await fileService.convertToBase64(compressedFile);
     setValue(base64img);
   }
 
   return (
-    <Styled.Wrapper mb={mb} {...restProps} hasImage={image}>
+    <Styled.Wrapper
+      mb={mb}
+      {...restProps}
+      hasImage={image}
+      style={{ backgroundImage: `url('${image}')` }}
+    >
       <Styled.FileInput type="file" accept="image/*" onChange={onFileSelect} />
       {!image ? <Styled.FileUploadIcon /> : null}
 
-      {image ? <Styled.Image src={image} alt="Dish sample" /> : null}
+      {/* {image ? <Styled.Image src={image} alt="Dish sample" /> : null} */}
 
       {touched && error && <Styled.Error>{error}</Styled.Error>}
     </Styled.Wrapper>

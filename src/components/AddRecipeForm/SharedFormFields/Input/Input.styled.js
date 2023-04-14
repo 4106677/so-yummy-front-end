@@ -68,7 +68,7 @@ export const Input = styled.input.attrs(({ gapFromLabel, height, variant, asGrou
   }
 `;
 
-export const Error = styled.div`
+export const Error = styled.p`
   position: absolute;
   bottom: 0.25rem;
   left: 0.25rem;
@@ -79,6 +79,12 @@ export const Error = styled.div`
     asFieldGroup &&
     css`
       bottom: -0.85rem;
+      left: 0.75rem;
+    `}
+  ${({ asDataList }) =>
+    asDataList &&
+    css`
+      bottom: -1.25rem;
       left: 0.75rem;
     `}
 `;

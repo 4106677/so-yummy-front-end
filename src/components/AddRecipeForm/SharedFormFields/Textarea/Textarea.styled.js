@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Textarea = styled.textarea`
   display: block;
@@ -20,4 +20,16 @@ export const Textarea = styled.textarea`
   @media screen and (min-width: 768px) {
     width: 31.625rem;
   }
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
+export const Error = styled.p`
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0.25rem;
+  font-size: 0.6rem;
+  color: #f94b4b;
 `;
