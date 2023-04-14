@@ -25,6 +25,12 @@ export const FooterNaviLink = styled(NavLink)`
     line-height: 18px;
     letter-spacing: -0.02em;
     color: white;
+    &:hover{
+      color: #8baa36;
+    }
+    &:target{
+      color: #8baa36;
+    }
     margin-bottom 14px;
       &:last-child{
     margin-bottom: 0;

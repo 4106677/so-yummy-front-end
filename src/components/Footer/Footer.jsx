@@ -1,5 +1,6 @@
 import {
   FooterSection,
+  FooterWrap,
   ARRdiv,
   ARR,
   ToS
@@ -10,9 +11,11 @@ import { Navigation } from "./Navigation/Navigation"
 export const Footer = () => {
   return (
     <>
+      <FooterWrap>
       <FooterSection>
         <Navigation />
-      </FooterSection>
+        </FooterSection>
+     </FooterWrap>
       
         <ARRdiv>
         <ARR>© 2023 All Rights Reserved.</ARR>

@@ -15,12 +15,15 @@ export const FooterSection = styled.footer`
   }
   @media (min-width: 1440px) {
     min-width: 1440px;
-    
     padding: 64px 100px 0px;
 
   }
 `;
 
+export const FooterWrap = styled.div`
+ width: 100vw;
+ background-color: #22252a;
+`
 
 export const ARRdiv = styled.div`
   // width: 228px;

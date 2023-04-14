@@ -14,6 +14,9 @@ export const LogoFooterLink = styled(NavLink)`
     margin-left: auto;
     margin-right: auto;
     width: 143px;
+    &:hover{
+      color: #8BAA36;
+    }
     @media (min-width: 768px){
         margin-left: 0px;
         margin-right: 0px;

@@ -1,5 +1,6 @@
+import { Field } from 'formik';
 import styled from 'styled-components';
-
+import laterSVG from 'images/Footer/leter-form-svg.png'
 export const SubscribeFormWrapp = styled.div`
   
 @media(max-width: 767px){
@@ -57,7 +58,7 @@ export const FormWrap = styled.div`
   }
 `
 
-export const SubInputEmail = styled.input`
+export const SubInputEmail = styled(Field)`
   box-sizing: border-box;
   width: 204px;
   height: 38px;
@@ -73,6 +74,10 @@ export const SubInputEmail = styled.input`
   font-weight: 400;
   font-size: 10px;
   line-height: 15px;
+  background-image: url("${laterSVG}");
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  background-position: top 12px left 14px;
   &::placeholder {
     font-style: normal;
     font-weight: 400;
@@ -84,7 +89,10 @@ export const SubInputEmail = styled.input`
     width: 259px;
     height: 50px;
     font-size: 14px;
-      line-height: 21px;
+    line-height: 21px;
+    padding-left: 51px;
+    background-size: 20px 16px;
+    background-position: top 15px left 15px;
     &::placeholder{
       font-size: 14px;
       line-height: 21px;
@@ -94,8 +102,9 @@ export const SubInputEmail = styled.input`
     width: 339px;
     height: 60px;
     font-size: 18px;
-      line-height: 27px;
+    line-height: 27px;
     margin-bottom: 16px;
+    background-position: top 21px left 15px;
     &::placeholder{
       font-size: 18px;
       line-height: 27px;

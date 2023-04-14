@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { SubEmail } from 'validation/subscribeEmail';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import {
     SubInputEmail,
     SubBtn,
@@ -13,34 +12,48 @@ import {
 } from './SubscribeForm.styled';
 
 export const SubscribeForm = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [email, setEmail] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState(false);
     const formRef = useRef(null);
-
-    const isInputValid = inputValue.trim().length > 5;
-
-    const sendSubscriptionEmail = (subEmail) => {
-        const options = {
-            method: "POST",
-            email: JSON.stringify(subEmail),
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8",
-            },
-        };
-
-        fetch('/subscribe', options)
-            .then(response => response.json())            
-            .catch(error => console.error(error));
-    }
     
-    const dispatch = useDispatch();
-
-     const handleSubmit = e => {
-        console.log(e.email);
-        setInputValue(e.email);
-        dispatch(SubEmail(e.email));
-        sendSubscriptionEmail(e.email)
-        formRef.current.reset()
+    const handleSubmit = async (e) => {
+        try {
+            const response = await fetch('/subscribe', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                },
+                body: JSON.stringify({
+                    email: 'email'
+                }),
+            });
+            if (response.ok) {
+                Notify.success('You have successfully subscribed to our newsletter!');
+            } else {
+                Notify.failure('Something went wrong, please try again.');
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+        console.log(email);
+        setEmail('');
+       formRef.current.reset()
     };
+
+    const handleEmailChange = (event) => {
+        const newEmail = event.target.value;
+        setEmail(newEmail);
+        setIsEmailValid(validateEmail(newEmail));
+    };
+
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const isSubmitDisabled = !isEmailValid || email === '';
 
     return (
         <SubscribeFormWrapp>
@@ -48,27 +61,31 @@ export const SubscribeForm = () => {
             <SubscribeText>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</SubscribeText>
 
             <Formik
-                validationSchema={SubEmail}
                 initialValues={{ email: "" }}
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
                 
-                <Form ref={formRef}>    
+            >
+                <Form ref={formRef}>
                     <FormWrap>
                         <SubInputEmail
                             type='email'
                             name='email'
-                            placeholder="Enter your email address" />
-                        
+                            value={email}
+                            onChange={handleEmailChange}
+                            autoComplete="off"
+                            placeholder="Enter your email address"
+                        />
                         <ErrorMessage name="email" />
                         <SubBtn
-                            type='submit'
-                            disabled={!isInputValid}>
+                            type="submit"
+                            disabled={isSubmitDisabled}
+                        >
                             Subcribe
                         </SubBtn>
                     </FormWrap>
                 </Form>
+                
             </Formik>
-            
         </SubscribeFormWrapp>
     )   
 }
