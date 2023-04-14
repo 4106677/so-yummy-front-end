@@ -12,7 +12,7 @@ export const SearchTypeSelector = ({ type, onChange }) => {
   const handleSelectChange = selectedOption => {
     onChange(selectedOption.value);
   };
-
+  const defaultValue = { value: 'title', label: 'Title' };
   const selectedOption = options.find(o => o.value === type);
 
   return (
@@ -26,6 +26,7 @@ export const SearchTypeSelector = ({ type, onChange }) => {
           onChange={handleSelectChange}
           styles={customStyles}
           autoFocus={false}
+          defaultValue={defaultValue}
         />
       </Label>
     </SelectWrapper>
