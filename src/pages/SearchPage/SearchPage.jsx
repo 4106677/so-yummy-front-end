@@ -13,19 +13,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getSearch } from '../../redux/search/searchSelector';
+
 
 export const SearchPage = () => {
-  const search1 = useSelector(getSearch);
-  console.log(search1);
-  const { query } = useParams('');
-  const [search, setSearch] = useState('' ? query : search1);
+  
+  const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
-   const [type, setType] = useState('query');
+  const [type, setType] = useState('query');
+   
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -44,7 +41,7 @@ export const SearchPage = () => {
                  type === 'title'
                    ? await getAllRecipesSearchTitle(search, page, limit)
                    : await getAllRecipesSearchIngredients(search, page, limit);
-        console.log(data);
+        
                                setRecipes(data);
 
         if (data.length === 0) {
@@ -91,7 +88,7 @@ export const SearchPage = () => {
         }
       );
     }
-    console.log(value);
+    
     setPage(1);
     setSearch(value.search);
   };

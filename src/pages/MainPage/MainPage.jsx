@@ -30,15 +30,7 @@ export const MainPage = () => {
     navigate('/categories');
   };
 
-  // const handleOnSubmit = (query, type) => {
-  //   if (query === '') {
-  //     return toastWarnEmptyField(query);
-  //   }
-    // } else {
-    //   navigate(`/search?query=${query}&type=${type}`);
-    // }
-  // };
-
+ 
   
 
   return (

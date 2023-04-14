@@ -26,9 +26,9 @@ export const ChooseYourBreakfast = () => {
           <path
             d="M3 9H15M15 9L10.5 4.5M15 9L10.5 13.5"
             stroke="#3E4462"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </RightArrow>
       </ChooseLink>
