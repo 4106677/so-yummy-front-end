@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 
 
 export const SearchedRecipesList = ({ items = [] }) => {
- console.log(items);
  items.map(({ _id, preview, title }) => (
     <Link
       key={_id}

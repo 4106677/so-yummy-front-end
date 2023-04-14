@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
-import { Label, SelectWrapper } from "./SearchTypeSelector.styled";
+import { Label, SelectWrapper } from './SearchTypeSelector.styled';
+import { customStyles } from './CustomStyles';
 
 export const SearchTypeSelector = ({ type, onChange }) => {
   const options = [
@@ -13,33 +14,6 @@ export const SearchTypeSelector = ({ type, onChange }) => {
   };
 
   const selectedOption = options.find(o => o.value === type);
-
-  const customStyles = {
-    control: provided => ({
-      ...provided,
-      backgroundColor: '#ececec',
-      outline: 'none',
-      borderRadius: '6px 6px 6px 6px',
-      paddingLeft: '0.875rem',
-      paddingRight: '0.9375rem',
-      fontFamily: 'Poppins',
-      fontWeight: '400',
-      fontSize: '14px',
-      lineHeight: '1.5',
-      width: '10.9375rem',
-      height: '2.31rem',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      width: '10.9375rem',
-      height: '2.31rem',
-      backgroundColor: state.isSelected ? ' #8BAA36' : 'white',
-      /* color: state.isSelected ? 'white' : 'black',
-      ':hover': {
-        backgroundColor: 'gray',
-        color: 'white',*/
-    }),
-  };
 
   return (
     <SelectWrapper>
@@ -56,8 +30,6 @@ export const SearchTypeSelector = ({ type, onChange }) => {
       </Label>
     </SelectWrapper>
   );
-  };
+};
 
-
-  export default SearchTypeSelector;
-
+export default SearchTypeSelector;
