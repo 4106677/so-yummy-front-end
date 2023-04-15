@@ -7,38 +7,34 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 export const SearchForm = ({ onSubmit}) => {
- 
   const [searchParams, setSearchParams] = useSearchParams('query');
   const query = searchParams.get('query');
- 
-  const [state, setState] = useState({search: query});
-  
+
+  const [state, setState] = useState({ search: query });
+
   useEffect(() => {
-  if (state.search !== '') {
-    onSubmit({ ...state });
-  } 
-  
-}, [onSubmit, state]);
+    if (state.search !== '') {
+      onSubmit({ search: query });
+    }
+  }, [onSubmit, state, query]);
 
-
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
-    setState(prevState => { return { ...prevState, [name]: value } })
-    setSearchParams({ query: value});
+    setState(prevState => {
+      return { ...prevState, [name]: value };
+    });
   };
-  
- 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (e.target.elements[0].value === '') {
-      return
+      return;
     }
     onSubmit({ ...state });
     setState({ search: '' });
-    setSearchParams('')
+    setSearchParams('');
+    setSearchParams({ query: e.target.elements[0].value });
   };
-  
 
 
     return (
