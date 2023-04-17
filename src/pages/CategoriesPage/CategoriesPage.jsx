@@ -5,10 +5,14 @@ import { Container } from 'components/Container/Container';
 import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Section } from 'pages/MyRecipesPage/MyRecipePage.styled.js';
+import React from 'react';
 
 function CategoriesPage() {
+  const sectionRef = React.useRef(null);
+
   return (
-    <>
+    <Section ref={sectionRef}>
       <Container>
         <DecorativeSquare
           data-1
@@ -29,7 +33,7 @@ function CategoriesPage() {
           <Outlet />
         </Suspense>
       </Container>
-    </>
+    </Section>
   );
 }
 
