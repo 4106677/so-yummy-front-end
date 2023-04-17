@@ -5,21 +5,21 @@ import {
   Container,
   SearchPageWrapper,
 } from './SearchPage.styled';
-
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from 'components/Hooks/useMediaQuery';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SearchPage = () => {
   const [search, setSearch] = useState('');
   const [limit, setLimit] = useState(6);
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  const [type, setType] = useState('query');
+  const [type, setType] = useState('title');
 
   const isDesktop = useMediaQuery('(min-width: 1440px)');
 
@@ -38,32 +38,20 @@ const SearchPage = () => {
           type === 'title'
             ? await getAllRecipesSearchTitle(search, page, limit)
             : await getAllRecipesSearchIngredients(search, page, limit);
+                if (data.length === 0) {
+                  return toast.warn(
+                    "We couldn't find result on your request.",
+                    {
+                      position: 'top-right',
+                      autoClose: 3000,
+                      theme: 'colored',
+                    }
+                  );
+        }
+        
 
         setRecipes(data);
 
-        if (data.length === 0) {
-          return toast.warn("We couldn't find result on your request.", {
-            position: 'top-right',
-            autoClose: 3000,
-            theme: 'colored',
-          });
-        }
-
-        if (page === 1) {
-          return toast.success(`Wow! We found what you need!`, {
-            icon: '🚀',
-            position: 'top-right',
-            autoClose: 3000,
-            theme: 'colored',
-          });
-        }
-
-        if (data.length < 6)
-          return toast.info(`That's all. We don't have more images.`, {
-            position: 'top-right',
-            autoClose: 3000,
-            theme: 'colored',
-          });
       } catch (err) {
         console.log(err.message);
       }
@@ -74,17 +62,6 @@ const SearchPage = () => {
   }, [search, page, limit, type]);
 
   const updateSearch = value => {
-    if (value.search === '') {
-      return toast.error(
-        'Field for searching is empty. Add information for request.',
-        {
-          position: 'top-right',
-          autoClose: 3000,
-          theme: 'colored',
-        }
-      );
-    }
-
     setPage(1);
     setSearch(value.search);
   };
