@@ -1,8 +1,9 @@
 export const customStyles = {
-  control: provided => ({
-    ...provided,
+  control: base => ({
+    ...base,
+    border: 0,
+    boxShadow: 0,
     backgroundColor: '#ececec',
-    border: '#D9D9D9',
     borderRadius: '6px',
     fontFamily: 'Poppins',
     fontWeight: '400',
@@ -11,10 +12,10 @@ export const customStyles = {
     textAlign: 'left',
     width: '9.125rem',
     height: '2.125rem',
-    ':focus': {
+    outline: 'none',
+    '&:focus': {
+      border: '#D9D9D9',
       boxShadow: '0 0 0 1px transparent',
-      border: 'none',
-      outline: 'none',
     },
     '@media (min-width: 768px)': {
       fontWeight: '500',
@@ -54,5 +55,5 @@ export const customStyles = {
     '@media (min-width: 1280px)': {
       fontSize: '18px',
     },
-  })
+  }),
 };

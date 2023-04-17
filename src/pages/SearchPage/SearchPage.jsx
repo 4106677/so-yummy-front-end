@@ -11,6 +11,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAllRecipesSearchTitle } from 'services/searchAPI';
 import { getAllRecipesSearchIngredients } from 'services/searchAPI';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SearchPage = () => {
   const [search, setSearch] = useState('');
@@ -36,6 +38,17 @@ const SearchPage = () => {
           type === 'title'
             ? await getAllRecipesSearchTitle(search, page, limit)
             : await getAllRecipesSearchIngredients(search, page, limit);
+                if (data.length === 0) {
+                  return toast.warn(
+                    "We couldn't find result on your request.",
+                    {
+                      position: 'top-right',
+                      autoClose: 3000,
+                      theme: 'colored',
+                    }
+                  );
+        }
+        
 
         setRecipes(data);
 

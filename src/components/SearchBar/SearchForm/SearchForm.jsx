@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './SearchForm.styled';
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useEffect } from 'react';
 
@@ -28,7 +30,14 @@ export const SearchForm = ({ onSubmit}) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (e.target.elements[0].value === '') {
-      return;
+            return toast.warn(
+              'Field for searching is empty. Add information for request.',
+              {
+                position: 'top-right',
+                autoClose: 3000,
+                theme: 'colored',
+              }
+            );
     }
     onSubmit({ ...state });
     setState({ search: '' });
