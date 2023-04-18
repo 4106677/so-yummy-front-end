@@ -13,7 +13,6 @@ import {
 import { ChooseYourBreakfast } from '../../components/ChooseYourBreakfast/ChooseYourBreakfast';
 import { ButtonOthCtgWrap } from 'components/ButtonOthCtg/ButtonOthCtg.styled';
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
-import { Section } from 'pages/MyRecipesPage/MyRecipePage.styled.js';
 
 import { PreviewCategories } from '../../components/PreviewCategories/PreviewCategories';
 
@@ -21,7 +20,6 @@ import { SearchForm } from '../../components/SearchFormMain/SearchFormMain';
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const sectionRef = React.useRef(null);
 
   const onClick = e => {
     navigate('/categories');
@@ -46,7 +44,7 @@ const MainPage = () => {
             </MainPageDiv>
           </Container>
         </MainPageBg>
-        <Section ref={sectionRef}>
+        <Container>
           <PreviewCategories />
           <ButtonOthCtgWrap>
             <Link
@@ -63,7 +61,7 @@ const MainPage = () => {
               />
             </Link>
           </ButtonOthCtgWrap>
-        </Section>
+        </Container>
       </ColorWrap>
     </>
   );
