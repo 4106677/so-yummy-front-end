@@ -6,9 +6,8 @@ import { useParams } from 'react-router-dom';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngridientsList } from 'components/RecipeIngridientsList/RecipeIngridientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
+import { Container } from 'components/Container/Container';
 import { useEffect, useState } from 'react';
-import { Section } from 'pages/MyRecipesPage/MyRecipePage.styled.js';
-import React from 'react';
 
 const BASE_URL = 'https://recipes-becend-49lg.onrender.com/';
 
@@ -24,7 +23,6 @@ const RecipePage = () => {
   const [preparationData, setPreparationData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const sectionRef = React.useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -87,10 +85,10 @@ const RecipePage = () => {
               heroData={heroData}
               recipeId={recipeId}
             />
-            <Section ref={sectionRef}>
+            <Container>
               <RecipeIngridientsList ingridientsData={ingridientsData} />
               <RecipePreparation preparationData={preparationData} />
-            </Section>
+            </Container>
           </>
         )
       )}

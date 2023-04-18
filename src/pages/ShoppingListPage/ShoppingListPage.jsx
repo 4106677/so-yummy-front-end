@@ -1,4 +1,5 @@
 import { IngridientsShoppingList } from 'components/IngridientsShoppingList/IngridientsShoppingList';
+import { Container } from 'components/Container/Container';
 import {
   ShopListTitle,
   DecorativeSquare,
@@ -7,16 +8,13 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { getIsLoading } from '../../redux/shoppingList/selectors';
-import { Section } from 'pages/MyRecipesPage/MyRecipePage.styled.js';
-import React from 'react';
 
 const ShoppingListPage = () => {
   const isLoading = useSelector(getIsLoading);
-  const sectionRef = React.useRef(null);
 
   return (
     <ShoppinlListWrapper>
-      <Section ref={sectionRef}>
+      <Container>
         <DecorativeSquare
           data-1
           color="#8BAA36"
@@ -33,7 +31,7 @@ const ShoppingListPage = () => {
         <ShopListTitle>Shopping list</ShopListTitle>
         {isLoading && <Loader />}
         <IngridientsShoppingList />
-      </Section>
+      </Container>
     </ShoppinlListWrapper>
   );
 };
