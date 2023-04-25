@@ -25,7 +25,6 @@ The application has been developed taking into account the adaptive layout from 
 
 - [@Yaroslav Oliinyk](https://github.com/4106677) Team Lead  | [LinkedIn](https://www.linkedin.com/in/jon4106677/)
 - [@Ekaterina Kononenko](https://github.com/EkaterinaKononenko) Scrum Master  | [LinkedIn](https://www.linkedin.com/in/ekaterinakononenko/)
-- [@Ekaterina Kononenko](https://github.com/ProkoptsovD) Frontend Dev  | [LinkedIn](https://www.linkedin.com/in/prokoptsovd/)
 - [@Dmytro Prokoptsov](https://github.com/ProkoptsovD) Frontend Dev  | [LinkedIn](https://www.linkedin.com/in/prokoptsovd/)
 - [@Vitalii Kablukov](https://github.com/VitaliiKablukov) Backend Dev  | [LinkedIn](http://www.linkedin.com/in/vitalii-kablukov)
 - [@Kateryna Ostrynska](https://github.com/Ostrynska) Frontend Dev  | [LinkedIn](https://www.linkedin.com/in/kateryna-ostrynska-9155b0151)
