@@ -11,14 +11,14 @@ export const SearchForm = ({ onSubmit}) => {
   const [searchParams, setSearchParams] = useSearchParams('query');
   const query = searchParams.get('query');
  
-  const [state, setState] = useState({search: query});
+  const [state, setState] = useState({ search: query });
   
   useEffect(() => {
   if (state.search !== '') {
-    onSubmit({ ...state });
+    onSubmit({ search: query });
   } 
   
-}, [onSubmit, state]);
+}, [onSubmit, query, state]);
 
 
   const handleInputChange = (e) => {
@@ -26,7 +26,6 @@ export const SearchForm = ({ onSubmit}) => {
     setState(prevState => { return { ...prevState, [name]: value } })
     setSearchParams({ query: value});
   };
-  
 
 
   const handleSubmit = (e) => {
@@ -37,6 +36,7 @@ export const SearchForm = ({ onSubmit}) => {
     onSubmit({ ...state });
     setState({ search: '' });
     setSearchParams('')
+  setSearchParams({ query: e.target.elements[0].value });
   };
   
 

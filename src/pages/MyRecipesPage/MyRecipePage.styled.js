@@ -43,7 +43,7 @@ export const Section = styled.section`
   margin-left: auto;
   margin-right: auto;
   padding-right: 16px;
-  */ @media screen and (min-width 375px) {
+   @media screen and (min-width: 375px) {
     width: 100%;
   }
 
